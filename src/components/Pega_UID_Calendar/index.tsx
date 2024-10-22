@@ -1,9 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
-import type { EventContentArg, EventHoveringArg } from '@fullcalendar/core';
+import type { CalendarApi, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
 import FullCalendar from '@fullcalendar/react';
 import momentPlugin from '@fullcalendar/moment';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
+import rrulePlugin from '@fullcalendar/rrule';
+import moment from 'moment';
 import {
   withConfiguration,
   Icon,
@@ -24,7 +26,6 @@ import {
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
 import GlobalStyles from './global-styles';
-import type { CalendarApi } from '@fullcalendar/core';
 import * as LocationSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/locations-solid.icon';
 import * as Plus from '@pega/cosmos-react-core/lib/components/Icon/icons/plus.icon';
 import * as CalendarEmptySolid from '@pega/cosmos-react-core/lib/components/Icon/icons/calendar-empty-solid.icon';
@@ -35,6 +36,7 @@ import * as UserSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/us
 import * as WebcamSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/webcam-solid.icon';
 import * as PhoneSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/phone-solid.icon';
 import * as Building2Solid from '@pega/cosmos-react-core/lib/components/Icon/icons/building-2-solid.icon';
+import { RRule } from 'rrule';
 
 registerIcon(
   LocationSolid,
@@ -103,11 +105,13 @@ export type TEvent = {
   allDay?: boolean;
   startTime?: Date;
   endTime?: Date;
-  startRecur?: Date;
-  endRecur?: Date;
+  startRecur?: string;
+  endRecur?: string;
   daysOfWeek?: Array<string>;
   color: string;
+  rrule?: object;
   extendedProps?: { [key: string]: any };
+  duration?: string;
 };
 
 export interface IPegaObject {
@@ -300,30 +304,55 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           title = item.Subject;
           break;
       }
-      if (item.SerieRepeat) {
-        tmpevents.push({
-          id: item.pyGUID || '',
-          title,
-          start: item.StartTime,
-          end: item.EndTime,
-          daysOfWeek: [item.Weekday],
-          endRecur: item.SerieEndDate,
-          startRecur: item.StartTime,
-          display,
-          color,
-          allDay: item.CompleteDay,
-          item
-        });
+      const startDate = moment(item.StartTime);
+      const endDate = moment(item.EndTime);
+      const seriesEndDate = moment(item.SerieEndDate);
+      const duration = moment
+        // @ts-ignore
+        .utc(Math.abs(moment.duration(endDate - startDate).asMilliseconds()))
+        .format('HH:mm:ss');
+      const until = seriesEndDate || endDate;
+      let freq;
+      switch (item.SerieRepeat?.toLowerCase()) {
+        case 'wöchentlich':
+          freq = 'weekly';
+          break;
+        case 'täglich':
+          freq = 'daily';
+          break;
+        case 'monatlich':
+          freq = 'monthly';
+          break;
+        case 'jährlich':
+        default:
+          freq = 'yearly';
+      }
+      const tmpEvent = {
+        id: item.pyGUID || '',
+        title,
+        rrule: {
+          freq,
+          dtstart: item.StartTime,
+          until
+        },
+        duration: item.CompleteDay ? undefined : duration,
+        start: item.StartTime,
+        end: item.EndTime,
+        daysOfWeek: [item.Weekday],
+        display,
+        color,
+        allDay: item.CompleteDay,
+        item
+      };
+      if (item.IsSerie && !!item.SerieRepeat && !!item.Weekday) {
+        tmpevents.push(tmpEvent);
       } else {
         tmpevents.push({
-          id: item.pyGUID || '',
-          title,
-          start: item.StartTime,
-          end: item.EndTime,
-          display,
-          color,
-          allDay: item.CompleteDay,
-          item
+          ...tmpEvent,
+          rrule: {
+            ...tmpEvent.rrule,
+            count: 1
+          }
         });
       }
     });
@@ -646,7 +675,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               center: 'title',
               right: `MonthlyView weeklyView workingWeekView dailyView`
             }}
-            plugins={[dayGridPlugin, timeGridPlugin, momentPlugin]}
+            plugins={[rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin]}
             initialView={currentViewType}
             selectable
             nowIndicator={nowIndicator}

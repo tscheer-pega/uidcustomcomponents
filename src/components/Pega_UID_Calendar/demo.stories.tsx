@@ -2769,9 +2769,9 @@ const setPCore = () => {
                       {
                         Beratungsstelle: null,
                         AuthorID: 'c7949ca1-0c50-47ee-af2f-1dcd2486b589',
-                        EndTime: '2024-10-04T22:00:00.000Z',
+                        StartTime: '2024-10-04T16:00:00.000Z',
                         CompleteDay: null,
-                        StartTime: '2024-10-05T14:00:00.000Z',
+                        EndTime: '2024-10-05T14:00:00.000Z',
                         Termin: null,
                         SerieRepeat: null,
                         BeratungsstelleID: null,
@@ -2786,27 +2786,6 @@ const setPCore = () => {
                         pyGUID: '7b7b3bcd-7cd2-4336-9d9f-8f0f9b054fab',
                         TerminID: null,
                         MonthDisplayText: '2024_10'
-                      },
-                      {
-                        pyGUID: 'A-1004',
-                        Subject: 'Conference',
-                        CompleteDay: true,
-                        SerieRepeat: 'wöchentlich',
-                        SerieEndDate: '2024-12-31',
-                        EndTime: '2024-10-01T11:00:00.000Z',
-                        StartTime: '2024-10-01T10:00:00.000Z',
-                        Type: 'Sammel',
-                        Sammeltermin: {
-                          pzInsKey: 'Sammeltermin A-1004',
-                          Ortsadresse: 'Max-Joseph-Platz 2, 80539 München',
-                          Kapazitaet: 100,
-                          GenutzteKapazitat: 68,
-                          Ort: 'München'
-                        },
-                        Beratungsstelle: {
-                          Typ: 'Präsenzberatung'
-                        },
-                        Weekday: '4'
                       },
                       {
                         pyGUID: 'A-1005',
@@ -2897,7 +2876,7 @@ const setPCore = () => {
                       },
                       {
                         EndTime: '2024-10-10T15:00:00.000Z',
-                        StartTime: '2024-10-10T14:00:00.000Z0',
+                        StartTime: '2024-10-10T14:00:00.000Z',
                         pyGUID: 'A-1001',
                         Type: 'Termin',
                         Termin: {
@@ -3025,103 +3004,6 @@ const setPCore = () => {
                         pyGUID: 'A-1009'
                       },
                       {
-                        Sammeltermin: {
-                          pxObjClass: 'BW-KommC-Work-Grp1-Sammeltermin',
-                          Ort: 'Außenstelle Spandau',
-                          GenutzteKapazitat: 0,
-                          Ortstyp: 'Karriereberatungsbüro',
-                          AngemeldeteInteressenten: null,
-                          AndererOrt: null,
-                          Ortsadresse: 'Seegefelder Str. 14-16, 13597 Berlin',
-                          VerfugbareKapazitat: 8,
-                          Beratungsort: {
-                            Adresse: 'Seegefelder Str. 14-16, 13597 Berlin',
-                            pxObjClass: 'BW-KommC-Data-Beratungsort',
-                            pyGUID: '6707a733-831c-4410-a95a-84c3d20539bf',
-                            Beratungsort: 'Außenstelle Spandau'
-                          },
-                          Kapazitaet: 8
-                        }
-                      },
-                      {
-                        Sammeltermin: {
-                          Ort: 'Schule XYZ',
-                          pxObjClass: 'BW-KommC-Work-Grp1-Sammeltermin',
-                          GenutzteKapazitat: 5,
-                          Ortstyp: 'Anderer Ort',
-                          AndererOrt: {
-                            Ort: 'Musterhausen',
-                            pxObjClass: 'BW-BWEnt-Data-Beratungsadresse',
-                            Raum: '102',
-                            Gebaudeteil: '2',
-                            Strasse: 'Musterweg',
-                            Bezeichnung: 'Schule XYZ',
-                            Hausnummer: '1',
-                            PLZ: '12345'
-                          },
-                          AngemeldeteInteressenten: [
-                            {
-                              pxObjClass: 'BW-KommC-Data-SammelterminInteressent',
-                              Gesamtanzahl: 2,
-                              pxCreateOperator: 'Andrzej.Fudala.ext@bwi.de',
-                              InteressentID: 'Int-0000212',
-                              pxCreateDateTime: '2024-10-02T10:36:52.082Z',
-                              pzIndexOwnerKey: 'BW-KOMMC-WORK-GRP1 SAM-2019',
-                              AnzahlBegleitpersonen: 1,
-                              pxCreateSystemID: 'pega-tc',
-                              Interessent: {
-                                pxObjClass: 'Common-LDM-Entity-Contact',
-                                pyID: 'Int-0000212',
-                                FullName: 'Teresa Unerreichbar',
-                                pzInsKey: 'COMMON-LDM-ENTITY-CONTACT INT-0000212',
-                                ContactID: 'Int-0000212'
-                              },
-                              pxCreateOpName: 'Andrzej Fudala'
-                            },
-                            {
-                              pxObjClass: 'BW-KommC-Data-SammelterminInteressent',
-                              Gesamtanzahl: 2,
-                              pxCreateOperator: 'Andrzej.Fudala.ext@bwi.de',
-                              InteressentID: 'Int-0000152',
-                              pxCreateDateTime: '2024-10-02T11:19:51.177Z',
-                              pzIndexOwnerKey: 'BW-KOMMC-WORK-GRP1 SAM-2019',
-                              pxCreateSystemID: 'pega-tc',
-                              AnzahlBegleitpersonen: 1,
-                              Interessent: {
-                                pyID: 'Int-0000152',
-                                pxObjClass: 'Common-LDM-Entity-Contact',
-                                FullName: 'Max Mustermann',
-                                pzInsKey: 'COMMON-LDM-ENTITY-CONTACT INT-0000152',
-                                ContactID: 'Int-0000152'
-                              },
-                              pxCreateOpName: 'Andrzej Fudala'
-                            },
-                            {
-                              pxObjClass: 'BW-KommC-Data-SammelterminInteressent',
-                              Gesamtanzahl: 1,
-                              pxCreateOperator: 'Andrzej.Fudala.ext@bwi.de',
-                              InteressentID: 'Int-0000180',
-                              pzIndexOwnerKey: 'BW-KOMMC-WORK-GRP1 SAM-2019',
-                              pxCreateDateTime: '2024-10-02T13:52:15.874Z',
-                              pxCreateSystemID: 'pega-tc',
-                              AnzahlBegleitpersonen: 0,
-                              Interessent: {
-                                pyID: 'Int-0000180',
-                                pxObjClass: 'Common-LDM-Entity-Contact',
-                                FullName: 'Klara Fall',
-                                pzInsKey: 'COMMON-LDM-ENTITY-CONTACT INT-0000180',
-                                ContactID: 'Int-0000180'
-                              },
-                              pxCreateOpName: 'Andrzej Fudala'
-                            }
-                          ],
-                          Ortsadresse: 'Musterweg 1, 12345 Musterhausen, Gebäudeteil: 2, Raum: 102',
-                          VerfugbareKapazitat: 5,
-                          Beratungsort: null,
-                          Kapazitaet: 10
-                        }
-                      },
-                      {
                         pyGUID: 'A-1004',
                         Subject: 'Conference',
                         CompleteDay: true,
@@ -3139,7 +3021,31 @@ const setPCore = () => {
                         },
                         Beratungsstelle: {
                           Typ: 'Präsenzberatung'
-                        }
+                        },
+                        IsSerie: true,
+                        Weekday: '4'
+                      },
+                      {
+                        IsSerie: true,
+                        pyGUID: 'A-2110',
+                        Subject: 'Show & Tell',
+                        CompleteDay: false,
+                        SerieRepeat: 'täglich',
+                        SerieEndDate: '2024-10-26',
+                        EndTime: '2024-10-22T11:00:00.000Z',
+                        StartTime: '2024-10-22T10:00:00.000Z',
+                        Type: 'Sammel',
+                        Sammeltermin: {
+                          pzInsKey: 'Sammeltermin A-1004',
+                          Ortsadresse: 'Max-Joseph-Platz 2, 80539 München',
+                          Kapazitaet: 100,
+                          GenutzteKapazitat: 68,
+                          Ort: 'Online'
+                        },
+                        Beratungsstelle: {
+                          Typ: 'Präsenzberatung'
+                        },
+                        Weekday: '2'
                       }
                     ]
                   }

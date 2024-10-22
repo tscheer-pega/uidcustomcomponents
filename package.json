@@ -50,6 +50,7 @@
     "@fullcalendar/daygrid": "^6.1.15",
     "@fullcalendar/moment": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
+    "@fullcalendar/rrule": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
     "@pega/cosmos-react-core": "^4.2.4",
     "@pega/cosmos-react-work": "^4.2.4",
@@ -64,6 +65,7 @@
     "react-is": "^18.2.0",
     "react-player": "^2.10.1",
     "react-redux": "^7.2.6",
+    "rrule": "^2.8.1",
     "styled-components": "^5.3.5"
   },
   "devDependencies": {
