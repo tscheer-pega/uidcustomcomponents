@@ -39,17 +39,33 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       height: 100%;
       position: relative;
     }
+    .event-content {
+      padding: 0.25rem;
+    }
+    .event-content.Abwesend,
+    .event-content.Verfügbar {
+      color: #333;
+    }
     .event-content.availability > span {
       display: block;
       margin: 0.25rem auto;
     }
+    .event-content svg {
+      height: 14px;
+      width: 14px;
+      margin-right: 0.25rem;
+    }
     .event-content .event-subject {
+      margin-top: 0.5rem;
       text-overflow: ellipsis;
       overflow: hidden;
       white-space: nowrap;
       max-width: -webkit-fill-available;
       line-height: normal;
       font-size: max(0.6rem, 8px);
+    }
+    .event-content .event-label + svg {
+      margin: 0 4px 0.25rem 0;
     }
 
     .event-popover .event-subject {

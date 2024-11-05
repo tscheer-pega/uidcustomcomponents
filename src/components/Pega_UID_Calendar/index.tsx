@@ -36,7 +36,6 @@ import * as UserSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/us
 import * as WebcamSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/webcam-solid.icon';
 import * as PhoneSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/phone-solid.icon';
 import * as Building2Solid from '@pega/cosmos-react-core/lib/components/Icon/icons/building-2-solid.icon';
-import { RRule } from 'rrule';
 
 registerIcon(
   LocationSolid,
@@ -60,31 +59,6 @@ export enum EViewType {
   Month = 'dayGridMonth'
 }
 
-export enum ETerminGoal {
-  FirstContact = 'Erstberatung',
-  FollowUp = 'Folgeberatung',
-  ApplicationSubmission = 'Bewerbungsabgabe'
-}
-
-export enum EEventType {
-  Absence = 'Abwesend',
-  Availability = 'Verfügbar',
-  Appointment = 'Termin',
-  MassEvent = 'Sammel'
-}
-
-export enum EDateTimeType {
-  date = 'date',
-  time = 'time'
-}
-
-export enum EBeratungsTyp {
-  presence = 'Präsenzberatung',
-  online = 'Online',
-  phone = 'Telefon',
-  office = 'Außendienststelle'
-}
-
 export type TCalendarProps = {
   heading?: string;
   dataPage?: string;
@@ -98,13 +72,13 @@ export type TCalendarProps = {
 export type TEvent = {
   id: string;
   title: string;
-  start: Date;
-  end: Date;
+  start: string;
+  end: string;
   item: any;
   display: string;
   allDay?: boolean;
-  startTime?: Date;
-  endTime?: Date;
+  startTime?: string;
+  endTime?: string;
   startRecur?: string;
   endRecur?: string;
   daysOfWeek?: Array<string>;
@@ -114,37 +88,8 @@ export type TEvent = {
   duration?: string;
 };
 
-export interface IPegaObject {
-  pxUpdateSystemID?: string;
-  pxUpdateDateTime?: string;
-  pxUpdateOpName?: string;
-  pxUpdateOperator?: string;
-  pySourcePage?: {
-    pxObjClass: string;
-    pySourceIdentifier: string;
-    pySourceNumber: string;
-    pySourceClass: string;
-    pySourceType: string;
-  };
-  pxCreateDateTime?: string;
-  pxDPParameters?: {
-    pyGUID?: string;
-    Typ?: string;
-  };
-  pxSaveDateTime?: string | null;
-  pzLoadTime?: string;
-  pzPageNameHash?: string;
-  pzInsKey?: string;
-  pzPageNameBase?: string;
-  pxObjClass: string;
-  pxCreateOperator?: string;
-  pxCreateSystemID?: string;
-  pxCommitDateTime?: string | null;
-  pyGUID?: string;
-  pxCreateOpName?: string;
-}
-
-export interface IAdresse extends IPegaObject {
+/*
+export interface IAdresse {
   Raum: string;
   Hausnummer: string;
   Ort: string;
@@ -154,64 +99,93 @@ export interface IAdresse extends IPegaObject {
   Bezeichnung: string;
 }
 
-export interface IBeratungsstelle extends IPegaObject {
+export interface IBeratungsstelle {
+  Typ: EBeratungsTyp;
   Adresse: IAdresse;
   Webexlink: string;
   DisplayOrder: number;
   Beschreibung: string;
-  Typ: EBeratungsTyp;
   OrganisationseinheitID: string;
   AddressID: string;
 }
+ */
 
-export interface ITerminTyp extends IPegaObject {
+export enum EDateTimeType {
+  date = 'date',
+  time = 'time'
+}
+
+export enum ETerminGoal {
+  FirstContact = 'Erstberatung',
+  FollowUp = 'Folgeberatung',
+  ApplicationSubmission = 'Bewerbungsabgabe'
+}
+
+export enum EEventType {
+  Absence = 'Abwesend',
+  Availability = 'Verfügbar',
+  Appointment = 'Termin',
+  MassEvent = 'Sammel'
+}
+
+export enum EBeratungsTyp {
+  presence = 'Präsenzberatung',
+  online = 'Online',
+  phone = 'Telefon',
+  office = 'Außendienststelle'
+}
+
+export interface IBeratungsstelle {
+  Typ: EBeratungsTyp;
+}
+
+export interface ITerminTyp {
   Order: 1;
   Typ: 'Präsenzberatung';
 }
 
-export interface IContact extends IPegaObject {
+export interface IContact {
   FirstName: string;
   FullName: string;
   LastName: string;
   Salutation: string;
 }
 
-export interface ITermin extends IPegaObject {
+export interface ITermin {
+  pxObjClass: string;
   TerminTyp: Array<ITerminTyp>;
   Beratungsart: ETerminGoal;
   Contact: IContact;
 }
 
-export interface ISammeltermin extends IPegaObject {
+export interface ISammeltermin {
+  Bezeichnung: string;
   Ortsadresse: string;
+  Kapazitaet: number;
+  GenutzteKapazitat: number;
 }
 
-export interface IRawEvent extends IPegaObject {
+export interface IRawEvent {
   Beratungsstelle: IBeratungsstelle;
-  AuthorID: string;
-  EndTime: Date;
   CompleteDay: boolean;
-  StartTime: Date;
-  Termin: ITermin | null;
-  SerieRepeat: string;
-  Subject: string;
-  BeratungsstelleID: string;
-  Weekday: string;
-  Type: EEventType;
-  ParentSerieID: string;
-  Capacity: string;
+  EndTime: string;
   IsSerie: boolean;
-  SerieEndDate: Date;
+  Sammeltermin: ISammeltermin | null;
+  SerieEndDate: string;
+  SerieRepeat: string;
+  StartTime: string;
+  Subject: string;
+  Termin: ITermin | null;
   TerminID: string;
-  MonthDisplayText: string;
-  Sammeltermin?: ISammeltermin;
+  Type: EEventType;
+  Weekday: string;
 }
 
 export type TDateInfo = {
   view: { type: EViewType };
   startStr?: string;
-  start?: Date;
-  end?: Date;
+  start?: string;
+  end?: string;
 };
 
 export const PegaUidCalendar = (props: TCalendarProps) => {
@@ -295,13 +269,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           title = `${item.Termin?.Contact.FullName}`;
           break;
         case EEventType.Absence:
-          color = theme.base.colors.red.dark;
+          color = theme.base.colors.yellow.light;
           title = item.Subject;
           break;
         default:
         case EEventType.MassEvent:
           color = theme.base.colors.orange.dark;
-          title = item.Subject;
+          title = `${item.Sammeltermin?.Bezeichnung || item.Subject}`;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -328,7 +302,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           freq = 'yearly';
       }
       const tmpEvent = {
-        id: item.pyGUID || '',
+        id: item.TerminID,
         title,
         rrule: {
           freq,
@@ -478,7 +452,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       return (
         <div
-          className='event-content availability'
+          className={`event-content availability ${obj.Type}`}
           style={{
             backgroundColor: theme.base.colors.green.light,
             left
@@ -489,11 +463,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       );
     }
     return (
-      <div className='event-content'>
+      <div className={`event-content ${obj.Type}`}>
         <Text variant='h5' className='event-label'>
-          {obj.Type === EEventType.Availability && obj.Beratungsstelle.Typ && (
-            <span>{getTypeIcon(obj.Beratungsstelle.Typ)} </span>
-          )}
+          {obj.Type !== EEventType.Absence &&
+            (obj.Beratungsstelle?.Typ || obj.Termin?.TerminTyp?.Typ) && (
+              <span>{getTypeIcon(obj.Beratungsstelle?.Typ || obj.Termin?.TerminTyp?.Typ)}</span>
+            )}
           {eventLabel}
         </Text>
         {obj.Type === EEventType.Appointment && renderBeratungsartBadge(obj.Termin.Beratungsart)}
