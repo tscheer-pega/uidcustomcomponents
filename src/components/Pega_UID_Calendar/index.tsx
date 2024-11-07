@@ -333,10 +333,20 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     setEvents(tmpevents);
   };
 
+  const { activeStart = '', activeEnd = '' } =
+    calendarRef?.current?.calendar?.currentData?.viewApi || {};
+  const StartDate = moment(activeStart).toISOString();
+  const EndDate = moment(activeEnd).toISOString();
+  let lastStartDate = '';
+  let lastEndDate = '';
+
   const loadEvents = () => {
     setIsLoading(true);
     (window as any).PCore.getDataApiUtils()
-      .getData(dataPage, {})
+      .getData(dataPage, {
+        StartDate,
+        EndDate
+      })
       .then((response: any) => {
         if (response.data.data !== null) {
           setRawData(response.data.data);
@@ -365,8 +375,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   }, []);
 
   useEffect(() => {
-    loadEvents();
-  }, []);
+    if (StartDate !== lastStartDate || EndDate !== lastEndDate) {
+      lastStartDate = StartDate;
+      lastEndDate = EndDate;
+      loadEvents();
+    }
+  }, [StartDate, EndDate, lastStartDate, lastEndDate]);
 
   const getTypeIcon = (appointmentType: string) => {
     switch (appointmentType) {

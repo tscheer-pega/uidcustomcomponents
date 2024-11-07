@@ -6,7 +6,7 @@
     "sourceOfComponents": "Server",
     "devBuild": false,
     "serverType": "infinity",
-    "server": "https://lab-01660-bos.lab-internal.pega.com/prweb",
+    "server": "https://lab-04437-bos.lab-internal.pega.com/prweb",
     "grantType": "authCode",
     "redirectUri": "https://localhost:4010/",
     "cert": "./keys/dxcb.crt",

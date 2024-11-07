@@ -7,27 +7,6 @@ export declare enum EViewType {
     WorkWeek = "workingWeek",
     Month = "dayGridMonth"
 }
-export declare enum ETerminGoal {
-    FirstContact = "Erstberatung",
-    FollowUp = "Folgeberatung",
-    ApplicationSubmission = "Bewerbungsabgabe"
-}
-export declare enum EEventType {
-    Absence = "Abwesend",
-    Availability = "Verf\u00FCgbar",
-    Appointment = "Termin",
-    MassEvent = "Sammel"
-}
-export declare enum EDateTimeType {
-    date = "date",
-    time = "time"
-}
-export declare enum EBeratungsTyp {
-    presence = "Pr\u00E4senzberatung",
-    online = "Online",
-    phone = "Telefon",
-    office = "Au\u00DFendienststelle"
-}
 export declare type TCalendarProps = {
     heading?: string;
     dataPage?: string;
@@ -40,13 +19,13 @@ export declare type TCalendarProps = {
 export declare type TEvent = {
     id: string;
     title: string;
-    start: Date;
-    end: Date;
+    start: string;
+    end: string;
     item: any;
     display: string;
     allDay?: boolean;
-    startTime?: Date;
-    endTime?: Date;
+    startTime?: string;
+    endTime?: string;
     startRecur?: string;
     endRecur?: string;
     daysOfWeek?: Array<string>;
@@ -57,98 +36,74 @@ export declare type TEvent = {
     };
     duration?: string;
 };
-export interface IPegaObject {
-    pxUpdateSystemID?: string;
-    pxUpdateDateTime?: string;
-    pxUpdateOpName?: string;
-    pxUpdateOperator?: string;
-    pySourcePage?: {
-        pxObjClass: string;
-        pySourceIdentifier: string;
-        pySourceNumber: string;
-        pySourceClass: string;
-        pySourceType: string;
-    };
-    pxCreateDateTime?: string;
-    pxDPParameters?: {
-        pyGUID?: string;
-        Typ?: string;
-    };
-    pxSaveDateTime?: string | null;
-    pzLoadTime?: string;
-    pzPageNameHash?: string;
-    pzInsKey?: string;
-    pzPageNameBase?: string;
-    pxObjClass: string;
-    pxCreateOperator?: string;
-    pxCreateSystemID?: string;
-    pxCommitDateTime?: string | null;
-    pyGUID?: string;
-    pxCreateOpName?: string;
+export declare enum EDateTimeType {
+    date = "date",
+    time = "time"
 }
-export interface IAdresse extends IPegaObject {
-    Raum: string;
-    Hausnummer: string;
-    Ort: string;
-    Strasse: string;
-    PLZ: string;
-    Gebaudeteil: string;
-    Bezeichnung: string;
+export declare enum ETerminGoal {
+    FirstContact = "Erstberatung",
+    FollowUp = "Folgeberatung",
+    ApplicationSubmission = "Bewerbungsabgabe"
 }
-export interface IBeratungsstelle extends IPegaObject {
-    Adresse: IAdresse;
-    Webexlink: string;
-    DisplayOrder: number;
-    Beschreibung: string;
+export declare enum EEventType {
+    Absence = "Abwesend",
+    Availability = "Verf\u00FCgbar",
+    Appointment = "Termin",
+    MassEvent = "Sammel"
+}
+export declare enum EBeratungsTyp {
+    presence = "Pr\u00E4senzberatung",
+    online = "Online",
+    phone = "Telefon",
+    office = "Au\u00DFendienststelle"
+}
+export interface IBeratungsstelle {
     Typ: EBeratungsTyp;
-    OrganisationseinheitID: string;
-    AddressID: string;
 }
-export interface ITerminTyp extends IPegaObject {
+export interface ITerminTyp {
     Order: 1;
     Typ: 'Präsenzberatung';
 }
-export interface IContact extends IPegaObject {
+export interface IContact {
     FirstName: string;
     FullName: string;
     LastName: string;
     Salutation: string;
 }
-export interface ITermin extends IPegaObject {
+export interface ITermin {
+    pxObjClass: string;
     TerminTyp: Array<ITerminTyp>;
     Beratungsart: ETerminGoal;
     Contact: IContact;
 }
-export interface ISammeltermin extends IPegaObject {
+export interface ISammeltermin {
+    Bezeichnung: string;
     Ortsadresse: string;
+    Kapazitaet: number;
+    GenutzteKapazitat: number;
 }
-export interface IRawEvent extends IPegaObject {
+export interface IRawEvent {
     Beratungsstelle: IBeratungsstelle;
-    AuthorID: string;
-    EndTime: Date;
     CompleteDay: boolean;
-    StartTime: Date;
-    Termin: ITermin | null;
-    SerieRepeat: string;
-    Subject: string;
-    BeratungsstelleID: string;
-    Weekday: string;
-    Type: EEventType;
-    ParentSerieID: string;
-    Capacity: string;
+    EndTime: string;
     IsSerie: boolean;
-    SerieEndDate: Date;
+    Sammeltermin: ISammeltermin | null;
+    SerieEndDate: string;
+    SerieRepeat: string;
+    StartTime: string;
+    Subject: string;
+    Termin: ITermin | null;
     TerminID: string;
-    MonthDisplayText: string;
-    Sammeltermin?: ISammeltermin;
+    Type: EEventType;
+    Weekday: string;
 }
 export declare type TDateInfo = {
     view: {
         type: EViewType;
     };
     startStr?: string;
-    start?: Date;
-    end?: Date;
+    start?: string;
+    end?: string;
 };
 export declare const PegaUidCalendar: (props: TCalendarProps) => JSX.Element;
 declare const _default: (props: TCalendarProps) => JSX.Element;

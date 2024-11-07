@@ -1,6 +1,7 @@
 import type { StoryObj } from '@storybook/react';
 import PegaUidCalendar from './index';
 import { getData } from './helpers';
+import exampleData from './exampleData.json';
 
 export default {
   title: 'Widgets/Calendar',
@@ -62,21 +63,30 @@ const setPCore = () => {
         }
       };
     },
-    getDataApiUtils: () => {
-      return {
-        getData: () => {
-          return new Promise(resolve =>
-            setTimeout(() => {
-              const data = getData();
-              console.log('Generic Events:', data);
-              return resolve({
-                data
-              });
-            }, 3000)
-          );
-        }
-      };
-    }
+    getDataApiUtils: () => ({
+      getData: (dataViewName: string, props: { StartDate: string; EndDate: string }) => {
+        // eslint-disable-next-line no-console
+        console.log('Passed properties', props);
+        return new Promise(resolve =>
+          setTimeout(() => {
+            const useGenericData = true;
+            const data = getData(props);
+            // eslint-disable-next-line no-console
+            console.log(
+              'useGenericData',
+              useGenericData,
+              'Generic Data',
+              data,
+              'Example Data',
+              exampleData
+            );
+            return resolve({
+              data: useGenericData ? data : exampleData
+            });
+          }, 500)
+        );
+      }
+    })
   };
 };
 

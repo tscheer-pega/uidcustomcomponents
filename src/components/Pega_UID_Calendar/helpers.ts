@@ -21,15 +21,10 @@ const getContact = () =>
       Salutation: 'Herr'
     }
   ][Math.round(Math.random())];
-const getDataItem = () => {
+const getDataItem = (props: { StartDate: string; EndDate: string }) => {
   const eventType = eventTypes[Math.round(Math.random() * 4)];
   const eventSourceDate = moment
-    .utc(
-      randomDate(
-        moment(dateToday).subtract(20, 'days').toDate(),
-        moment(dateToday).add(20, 'days').toDate()
-      )
-    )
+    .utc(randomDate(moment(props.StartDate).toDate(), moment(props.EndDate).toDate()))
     .set('seconds', 0)
     .set('milliseconds', 0)
     .toISOString();
@@ -102,14 +97,15 @@ const getDataItem = () => {
   };
 };
 
-export const getData = () => {
-  const count = 60;
+export const getData = (props: { StartDate: string; EndDate: string }) => {
+  const diff = moment(props.EndDate).diff(props.StartDate, 'days');
+  const count = diff * Math.min(Math.abs(Math.random() * 5), 1);
   const data = [];
   for (let i = 0; i < count; i += 1) {
-    data.push(getDataItem());
+    data.push(getDataItem(props));
   }
   return {
-    fetchDateTime: '2024-09-30T14:41:40.071Z',
+    fetchDateTime: dateToday,
     pxObjClass: 'Pega-API-DataExploration-Data',
     resultCount: data.length,
     data: data.sort((a, b) => (a.StartTime > b.StartTime ? 1 : -1))
