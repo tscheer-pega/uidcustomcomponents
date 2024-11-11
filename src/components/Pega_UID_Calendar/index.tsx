@@ -159,6 +159,7 @@ export interface ITermin {
 }
 
 export interface ISammeltermin {
+  pxObjClass: string;
   Bezeichnung: string;
   Ortsadresse: string;
   Kapazitaet: number;
@@ -285,7 +286,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         // @ts-ignore
         .utc(Math.abs(moment.duration(endDate - startDate).asMilliseconds()))
         .format('HH:mm:ss');
-      const until = seriesEndDate || endDate;
+      const until = item.IsSerie ? seriesEndDate || '2099-12-31T23:59:59Z' : endDate;
       let freq;
       switch (item.SerieRepeat?.toLowerCase()) {
         case 'wöchentlich':
@@ -613,9 +614,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const openPreviewEventOnClick = () => {
     const eventInfoObj = eventInPopover.eventInfo?._def.extendedProps.item;
-    getPConnect().getActionsApi().showCasePreview(eventInfoObj.TerminID, {
-      caseClassName: eventInfoObj.Termin.pxObjClass
-    });
+    getPConnect()
+      .getActionsApi()
+      .showCasePreview(eventInfoObj.TerminID, {
+        caseClassName: eventInfoObj.Sammeltermin.pxObjClass || eventInfoObj.Termin.pxObjClass
+      });
   };
 
   const calTable = document.body.querySelector('.fc');

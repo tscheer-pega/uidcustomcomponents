@@ -77,6 +77,7 @@ export interface ITermin {
     Contact: IContact;
 }
 export interface ISammeltermin {
+    pxObjClass: string;
     Bezeichnung: string;
     Ortsadresse: string;
     Kapazitaet: number;

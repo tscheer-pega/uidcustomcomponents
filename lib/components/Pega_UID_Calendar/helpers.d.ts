@@ -14,6 +14,7 @@ export declare const getData: (props: {
         EndTime: string;
         IsSerie: boolean;
         Sammeltermin: {
+            pxObjClass: string;
             Bezeichnung: string;
             Ort: string;
             Kapazitaet: number;

@@ -55,12 +55,13 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
     Beratungsstelle: {
       Typ: consultationType
     },
-    CompleteDay: Math.random() * 10 > 7,
+    CompleteDay: Math.random() * 10 > 7, //
     EndTime: eventDates[1],
-    IsSerie: Math.random() * 10 > 9,
+    IsSerie: Math.random() * 10 > 9, //
     Sammeltermin:
       eventTypes.indexOf(eventType) === 3
         ? {
+            pxObjClass: 'Object Class',
             Bezeichnung: 'Sammeltermin A-1005',
             Ort: 'München',
             Kapazitaet: 500,
@@ -68,11 +69,11 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
             Ortsadresse: 'Max-Joseph-Platz 2, 80539 München'
           }
         : null,
-    SerieEndDate: endDate,
+    SerieEndDate: endDate, //
     SerieRepeat:
       Math.random() * 10 > 9
         ? 'Täglich'
-        : ['wöchentlich', 'monatlich', 'jährlich'][Math.round(Math.random() * 2)],
+        : ['wöchentlich', 'monatlich', 'jährlich'][Math.round(Math.random() * 2)], //
     StartTime: eventDates[0],
     Subject: title,
     Termin:
