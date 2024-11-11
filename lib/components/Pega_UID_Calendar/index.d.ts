@@ -89,7 +89,7 @@ export interface IRawEvent {
     EndTime: string;
     IsSerie: boolean;
     Sammeltermin: ISammeltermin | null;
-    SerieEndDate: string;
+    SerieEnd: string;
     SerieRepeat: string;
     StartTime: string;
     Subject: string;

@@ -69,7 +69,7 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
             Ortsadresse: 'Max-Joseph-Platz 2, 80539 München'
           }
         : null,
-    SerieEndDate: endDate, //
+    SerieEnd: Math.random() > 0.9 ? null : endDate,
     SerieRepeat:
       Math.random() * 10 > 9
         ? 'Täglich'

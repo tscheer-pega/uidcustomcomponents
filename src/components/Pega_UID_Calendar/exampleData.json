@@ -4,6 +4,436 @@
   "resultCount": 42,
   "data": [
     {
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-10-15T00:00:00.000Z",
+      "Address": null,
+      "CompleteDay": null,
+      "StartTime": "2024-10-14T22:00:00.000Z",
+      "SerieEnd": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": null,
+      "Subject": "test",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Weekday": "2",
+      "Beratungsstellentyp": null,
+      "Type": "Abwesend",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "IsSerie": false,
+      "Termintyp": null,
+      "UtilizedCapacity": null,
+      "pyGUID": "4fe78396-2130-47e2-9885-e5ee92221c03",
+      "Beratungsart": null,
+      "TerminID": null,
+      "MonthDisplayText": "2024_10"
+    },
+    {
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-10-29T16:00:00.000Z",
+      "Address": null,
+      "CompleteDay": null,
+      "StartTime": "2024-10-29T12:00:00.000Z",
+      "SerieEnd": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": null,
+      "Subject": "zzz",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Weekday": "3",
+      "Type": "Abwesend",
+      "Beratungsstellentyp": null,
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Termintyp": null,
+      "IsSerie": false,
+      "pyGUID": "b99ef2ca-5d05-47d1-bcd4-981f556f60be",
+      "UtilizedCapacity": null,
+      "Beratungsart": null,
+      "TerminID": null,
+      "MonthDisplayText": "2024_10"
+    },
+    {
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": null,
+      "EndTime": "2024-10-31T22:59:59.000Z",
+      "CompleteDay": true,
+      "StartTime": "2024-10-29T23:00:00.000Z",
+      "SerieEnd": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": null,
+      "Subject": "test",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Weekday": "3",
+      "Beratungsstellentyp": null,
+      "Type": "Abwesend",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "IsSerie": false,
+      "Termintyp": null,
+      "pyGUID": "b902bc48-a8b8-4688-8c8c-c33f38ead990",
+      "UtilizedCapacity": null,
+      "TerminID": null,
+      "Beratungsart": null,
+      "MonthDisplayText": "2024_10"
+    },
+    {
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": null,
+      "EndTime": "2024-10-30T16:30:00.000Z",
+      "CompleteDay": false,
+      "StartTime": "2024-10-30T07:00:00.000Z",
+      "SerieEnd": null,
+      "SerieRepeat": "Wöchentlich",
+      "Subject": "detail",
+      "BeratungsstelleID": null,
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Weekday": "4",
+      "Beratungsstellentyp": null,
+      "Type": "Abwesend",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Termintyp": null,
+      "IsSerie": true,
+      "UtilizedCapacity": null,
+      "pyGUID": "9f66dc72-a121-485a-a4db-db83a60835a7",
+      "TerminID": null,
+      "Beratungsart": null,
+      "MonthDisplayText": "2024_10"
+    },
+    {
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-10-31T14:00:00.000Z",
+      "Address": null,
+      "CompleteDay": null,
+      "StartTime": "2024-10-31T12:30:00.000Z",
+      "SerieEnd": null,
+      "SerieRepeat": null,
+      "Subject": "zzz23",
+      "BeratungsstelleID": null,
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Weekday": "5",
+      "Type": "Abwesend",
+      "Beratungsstellentyp": null,
+      "ParentSerieID": null,
+      "Capacity": null,
+      "IsSerie": false,
+      "Termintyp": null,
+      "UtilizedCapacity": null,
+      "pyGUID": "3a2aaa91-6b5d-4163-a417-c2e2c735bde0",
+      "TerminID": null,
+      "Beratungsart": null,
+      "MonthDisplayText": "2024_10"
+    },
+    {
+      "Beratungsstelle": {
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-11-01T10:30:00.000Z",
+      "Address": null,
+      "SerieEnd": null,
+      "Weekday": "6",
+      "Sammeltermin": {
+        "pxObjClass": "BW-KommC-Work-Grp1-Sammeltermin",
+        "Ort": null,
+        "GenutzteKapazitat": 0,
+        "Ortstyp": "Karriereberatungsbüro",
+        "AngemeldeteInteressenten": null,
+        "Ortsadresse": null,
+        "VerfugbareKapazitat": 6,
+        "Beratungsort": null,
+        "Kapazitaet": 6,
+        "BeratungsstelleID": null,
+        "Bezeichnung": "test",
+        "OrganisationseinheitID": null
+      },
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": false,
+      "StartTime": "2024-11-01T08:00:00.000Z",
+      "SerieRepeat": "Täglich",
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": null,
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Type": "Sammel",
+      "Beratungsstellentyp": null,
+      "Termintyp": null,
+      "IsSerie": false,
+      "pyGUID": "48212b60-caa5-482e-9778-3d349399813a",
+      "UtilizedCapacity": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 SAM-13027",
+      "MonthDisplayText": "2024_11"
+    },
+    {
+      "Beratungsstelle": {
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": null,
+      "EndTime": "2024-11-04T10:00:00.000Z",
+      "SerieEnd": null,
+      "Sammeltermin": null,
+      "Weekday": "2",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": null,
+      "StartTime": "2024-11-04T09:00:00.000Z",
+      "Termin": {
+        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
+        "TerminTyp": [
+          {
+            "Order": 1,
+            "pxSaveDateTime": null,
+            "pxUpdateSystemID": "pega-tc",
+            "pxUpdateDateTime": "2024-11-04T15:14:15.441Z",
+            "pzLoadTime": "November 11, 2024 at 12:24:15 PM GMT",
+            "pzPageNameHash": "_pa15038916197996139pz",
+            "pxUpdateOpName": "Andrzej Fudala",
+            "Typ": "Präsenzberatung",
+            "pzInsKey": "BW-KommC-Data-TerminTyp Präsenzberatung",
+            "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+            "pzPageNameBase": "D_TerminTyp",
+            "pxObjClass": "BW-KommC-Data-TerminTyp",
+            "pxCreateOperator": "Andrzej.Fudala.ext@bwi.de",
+            "pySourcePage": {
+              "pxObjClass": "Embed-DataSource",
+              "pySourceIdentifier": "Termin-Typ",
+              "pySourceNumber": "1",
+              "pySourceType": "Lookup",
+              "pySourceClass": "BW-KommC-Data-TerminTyp"
+            },
+            "pxCreateDateTime": "2024-11-04T15:14:15.440Z",
+            "pxCreateSystemID": "pega-tc",
+            "pxDPParameters": {
+              "Typ": "Präsenzberatung"
+            },
+            "pxCommitDateTime": null,
+            "pxCreateOpName": "Andrzej Fudala"
+          }
+        ],
+        "Beratungsart": "Erstberatung",
+        "Contact": {
+          "pxObjClass": "Common-LDM-Entity-Contact",
+          "FirstName": "Maja",
+          "FullName": "Maja Biene",
+          "LastName": "Biene",
+          "Salutation": "Frau"
+        }
+      },
+      "SerieRepeat": null,
+      "Subject": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Type": "Termin",
+      "Beratungsstellentyp": null,
+      "IsSerie": null,
+      "Termintyp": null,
+      "pyGUID": "5cab966a-cacb-484b-aaa9-23c63c4e14da",
+      "UtilizedCapacity": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-15033",
+      "MonthDisplayText": "2024_11"
+    },
+    {
       "Beratungsstelle": {
         "DisplayOrder": 2,
         "pxSaveDateTime": null,
@@ -131,986 +561,1044 @@
     },
     {
       "Beratungsstelle": {
-        "Typ": "Außendienststelle"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-10-30T10:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2024-12-03T07:14:01.892Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-10-30T06:30:00.000Z",
-      "Subject": "KommC-964",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-10-31T08:00:00.000Z",
-      "IsSerie": false,
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": null,
+      "EndTime": "2024-11-04T17:00:00.000Z",
+      "SerieEnd": null,
       "Sammeltermin": null,
-      "SerieEndDate": "2025-02-04T03:48:19.005Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-10-31T07:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
+      "Weekday": "2",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-10-31T14:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-01-28T06:09:38.786Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-10-31T09:30:00.000Z",
-      "Subject": "KommC-744",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-10-31T15:00:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-02-20T18:19:09.072Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-10-31T10:00:00.000Z",
-      "Subject": "KommC-219",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
+      "CompleteDay": null,
+      "StartTime": "2024-11-04T09:00:00.000Z",
+      "Termin": null,
+      "SerieRepeat": "Wöchentlich",
+      "Subject": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
       "Type": "Verfügbar",
-      "Weekday": 4
+      "Beratungsstellentyp": null,
+      "Termintyp": null,
+      "IsSerie": true,
+      "pyGUID": "e5266b51-06cb-4a0d-9b3f-cf498a1a2ca0",
+      "UtilizedCapacity": null,
+      "TerminID": null,
+      "MonthDisplayText": "2024_11"
     },
     {
       "Beratungsstelle": {
-        "Typ": "Außendienststelle"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-01T16:30:00.000Z",
-      "IsSerie": false,
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": null,
+      "EndTime": "2024-11-04T13:00:00.000Z",
+      "SerieEnd": null,
+      "Sammeltermin": {
+        "Ort": null,
+        "pxObjClass": "BW-KommC-Work-Grp1-Sammeltermin",
+        "GenutzteKapazitat": 1,
+        "Ortstyp": "Karriereberatungsbüro",
+        "AngemeldeteInteressenten": [
+          {
+            "pxObjClass": "BW-KommC-Data-SammelterminInteressent",
+            "Gesamtanzahl": 1,
+            "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+            "InteressentID": "Int-0000152",
+            "pxCreateDateTime": "2024-10-31T16:45:23.940Z",
+            "pzIndexOwnerKey": "BW-KOMMC-WORK-GRP1 SAM-13028",
+            "ConfirmationEmailSent": true,
+            "AnzahlBegleitpersonen": 0,
+            "pxCreateSystemID": "pega-tc",
+            "Interessent": {
+              "pyID": "Int-0000152",
+              "pxObjClass": "Common-LDM-Entity-Contact",
+              "FullName": "Max Mustermann",
+              "pzInsKey": "COMMON-LDM-ENTITY-CONTACT INT-0000152",
+              "ContactID": "Int-0000152"
+            },
+            "pxCreateOpName": "Christopher Rohde"
+          }
+        ],
+        "Ortsadresse": null,
+        "VerfugbareKapazitat": 4,
+        "Beratungsort": null,
+        "Kapazitaet": 5,
+        "BeratungsstelleID": null,
+        "Bezeichnung": "testest",
+        "OrganisationseinheitID": null
+      },
+      "Weekday": "2",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": null,
+      "StartTime": "2024-11-04T10:00:00.000Z",
+      "Termin": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": null,
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Type": "Sammel",
+      "Beratungsstellentyp": null,
+      "Termintyp": null,
+      "IsSerie": null,
+      "UtilizedCapacity": null,
+      "pyGUID": "0b5d7f4a-a60b-4619-84af-7f4dc48f67da",
+      "TerminID": "BW-KOMMC-WORK-GRP1 SAM-13028",
+      "MonthDisplayText": "2024_11"
+    },
+    {
+      "Beratungsstelle": {
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-11-05T14:00:00.000Z",
+      "Address": "Friedrichstraße 147, 10117 Berlin",
+      "SerieEnd": null,
       "Sammeltermin": null,
-      "SerieEndDate": "2025-01-03T19:45:58.176Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-01T15:30:00.000Z",
-      "Subject": "KommC-631",
+      "Weekday": "3",
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": "Erstberatung",
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": null,
+      "StartTime": "2024-11-05T13:00:00.000Z",
       "Termin": {
         "pxObjClass": "BW-KommC-Work-Grp1-Termin",
         "TerminTyp": [
           {
             "Order": 1,
-            "Typ": "Außendienststelle"
+            "pxSaveDateTime": null,
+            "pxUpdateSystemID": "pega-tc",
+            "pxUpdateDateTime": "2024-11-04T15:14:15.441Z",
+            "pzLoadTime": "November 11, 2024 at 12:24:15 PM GMT",
+            "pzPageNameHash": "_pa15038916197996139pz",
+            "pxUpdateOpName": "Andrzej Fudala",
+            "Typ": "Präsenzberatung",
+            "pzInsKey": "BW-KommC-Data-TerminTyp Präsenzberatung",
+            "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+            "pzPageNameBase": "D_TerminTyp",
+            "pxObjClass": "BW-KommC-Data-TerminTyp",
+            "pxCreateOperator": "Andrzej.Fudala.ext@bwi.de",
+            "pySourcePage": {
+              "pxObjClass": "Embed-DataSource",
+              "pySourceIdentifier": "Termin-Typ",
+              "pySourceNumber": "1",
+              "pySourceType": "Lookup",
+              "pySourceClass": "BW-KommC-Data-TerminTyp"
+            },
+            "pxCreateDateTime": "2024-11-04T15:14:15.440Z",
+            "pxCreateSystemID": "pega-tc",
+            "pxDPParameters": {
+              "Typ": "Präsenzberatung"
+            },
+            "pxCommitDateTime": null,
+            "pxCreateOpName": "Andrzej Fudala"
           }
         ],
-        "Beratungsart": "Folgeberatung",
+        "Beratungsart": "Erstberatung",
         "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
+          "pxObjClass": "Common-LDM-Entity-Contact",
+          "FirstName": "Maja",
+          "FullName": "Maja Biene",
+          "LastName": "Biene",
           "Salutation": "Frau"
         }
       },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
+      "SerieRepeat": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": "Maja Biene",
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Beratungsstellentyp": "Präsenzberatung",
       "Type": "Termin",
-      "Weekday": 5
+      "Termintyp": "Präsenzberatung",
+      "IsSerie": null,
+      "pyGUID": "05fcd838-7103-41ef-af3c-ab3eda35f5d5",
+      "UtilizedCapacity": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-15043",
+      "MonthDisplayText": "2024_11"
     },
     {
       "Beratungsstelle": {
-        "Typ": "Online"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": true,
-      "EndTime": "2024-11-04T12:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-21T13:26:41.618Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-04T12:30:00.000Z",
-      "Subject": "KommC-113",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-05T15:30:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-02-24T20:23:35.195Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-05T08:00:00.000Z",
-      "Subject": "KommC-833",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
       "EndTime": "2024-11-05T17:00:00.000Z",
+      "Address": null,
+      "SerieEnd": null,
+      "Weekday": "3",
+      "Sammeltermin": null,
+      "ParentSerieID": null,
+      "Capacity": null,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": null,
+      "StartTime": "2024-11-05T13:00:00.000Z",
+      "Termin": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": "test",
+      "OrganisationseinheitID": null,
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Beratungsstellentyp": null,
+      "Type": "Verfügbar",
+      "Termintyp": null,
       "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-02-25T18:05:40.837Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-05T14:30:00.000Z",
-      "Subject": "KommC-615",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 2
+      "pyGUID": "67bf6164-7bb5-4cf6-88ea-e04f966cd231",
+      "UtilizedCapacity": null,
+      "TerminID": null,
+      "MonthDisplayText": "2024_11"
     },
     {
       "Beratungsstelle": {
-        "Typ": "Außendienststelle"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-06T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-26T21:06:22.492Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-06T06:00:00.000Z",
-      "Subject": "KommC-7",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "EndTime": "2024-11-07T19:30:00.000Z",
+      "Address": "Friedrichstraße 147, 10117 Berlin",
+      "SerieEnd": null,
+      "Sammeltermin": {
+        "Ort": null,
+        "pxObjClass": "BW-KommC-Work-Grp1-Sammeltermin",
+        "GenutzteKapazitat": 1,
+        "Ortstyp": "Karriereberatungsbüro",
+        "Ortsadresse": null,
+        "AngemeldeteInteressenten": [
           {
-            "Order": 1,
-            "Typ": "Außendienststelle"
+            "pxObjClass": "BW-KommC-Data-SammelterminInteressent",
+            "Gesamtanzahl": 1,
+            "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+            "InteressentID": "Int-0000194",
+            "pzIndexOwnerKey": "BW-KOMMC-WORK-GRP1 SAM-14003",
+            "pxCreateDateTime": "2024-11-08T12:56:53.835Z",
+            "ConfirmationEmailSent": true,
+            "AnzahlBegleitpersonen": 0,
+            "pxCreateSystemID": "pega-tc",
+            "Interessent": {
+              "pyID": "Int-0000194",
+              "pxObjClass": "Common-LDM-Entity-Contact",
+              "FullName": "Maja Biene",
+              "pzInsKey": "COMMON-LDM-ENTITY-CONTACT INT-0000194",
+              "ContactID": "Int-0000194"
+            },
+            "pxCreateOpName": "Christopher Rohde"
           }
         ],
-        "Beratungsart": "Erstberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
+        "VerfugbareKapazitat": 19,
+        "Beratungsort": null,
+        "Kapazitaet": 20,
+        "BeratungsstelleID": null,
+        "Bezeichnung": "AktuelleWoche",
+        "OrganisationseinheitID": null
       },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 3
+      "Weekday": "5",
+      "ParentSerieID": null,
+      "Capacity": 20,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+      },
+      "CompleteDay": null,
+      "StartTime": "2024-11-07T17:00:00.000Z",
+      "Termin": null,
+      "SerieRepeat": null,
+      "Subject": "AktuelleWoche",
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
+      "Type": "Sammel",
+      "Beratungsstellentyp": null,
+      "IsSerie": null,
+      "Termintyp": null,
+      "pyGUID": "a6ad6075-f172-4a34-b085-e0e6fe2331b7",
+      "UtilizedCapacity": 1,
+      "TerminID": "BW-KOMMC-WORK-GRP1 SAM-14003",
+      "MonthDisplayText": "2024_11"
     },
     {
       "Beratungsstelle": {
-        "Typ": "Online"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-08T12:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-14T05:49:11.290Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-08T08:30:00.000Z",
-      "Subject": "KommC-508",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": "Friedrichstraße 147, 10117 Berlin",
+      "EndTime": "2024-11-18T13:45:00.000Z",
+      "SerieEnd": null,
+      "Sammeltermin": {
+        "pxObjClass": "BW-KommC-Work-Grp1-Sammeltermin",
+        "Ortstyp": "Karriereberatungsbüro",
+        "AngemeldeteInteressenten": [
           {
-            "Order": 1,
-            "Typ": "Online"
+            "pxObjClass": "BW-KommC-Data-SammelterminInteressent",
+            "Gesamtanzahl": 1,
+            "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+            "InteressentID": "Int-0000224",
+            "pxCreateDateTime": "2024-11-11T12:25:54.614Z",
+            "pzIndexOwnerKey": "BW-KOMMC-WORK-GRP1 SAM-15001",
+            "ConfirmationEmailSent": true,
+            "pxCreateSystemID": "pega-tc",
+            "AnzahlBegleitpersonen": 0,
+            "Interessent": {
+              "pxObjClass": "Common-LDM-Entity-Contact",
+              "pyID": "Int-0000224",
+              "FullName": "Tom Bla",
+              "pzInsKey": "COMMON-LDM-ENTITY-CONTACT INT-0000224",
+              "ContactID": "Int-0000224"
+            },
+            "pxCreateOpName": "Christopher Rohde"
           }
         ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
+        "Kapazitaet": 10,
+        "Bezeichnung": "18test"
       },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
+      "Weekday": "2",
+      "ParentSerieID": null,
+      "Capacity": 10,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-09T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-01-03T05:25:20.161Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-09T07:00:00.000Z",
-      "Subject": "KommC-832",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
+      "CompleteDay": null,
+      "StartTime": "2024-11-18T12:30:00.000Z",
+      "Termin": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": "18test",
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
       "Type": "Sammel",
-      "Weekday": 6
+      "Beratungsstellentyp": null,
+      "IsSerie": null,
+      "Termintyp": null,
+      "UtilizedCapacity": 1,
+      "pyGUID": "c3130df1-b581-4f0a-b629-2b8cb0470b8c",
+      "TerminID": "BW-KOMMC-WORK-GRP1 SAM-15001",
+      "MonthDisplayText": "2024_11"
     },
     {
       "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
+        "DisplayOrder": 1,
+        "pxUpdateSystemID": "pega-tc",
+        "Webexlink": null,
+        "pxSaveDateTime": null,
+        "pxUpdateDateTime": "2024-10-22T06:18:45.731Z",
+        "Beschreibung": "Beratungsstelle Berlin Mitte",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920879219810pz",
+        "pzInsKey": "BW-BWEnt-Data-Beratungsstelle 526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxUpdateOpName": "Christopher Rohde",
+        "Typ": "Präsenzberatung",
+        "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pzPageNameBase": "D_Beratungsstelle",
+        "OrganisationseinheitID": "Berlin_Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Beratungsstelle",
+          "pySourceNumber": "1",
+          "pySourceType": "Lookup",
+          "pySourceClass": "BW-BWEnt-Data-Beratungsstelle"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.731Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae"
+        },
+        "pyGUID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+        "pxCommitDateTime": null,
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-09T11:00:00.000Z",
-      "IsSerie": false,
+      "AuthorID": "c7949ca1-0c50-47ee-af2f-1dcd2486b589",
+      "Address": "Friedrichstraße 147, 10117 Berlin",
+      "EndTime": "2024-11-19T10:00:00.000Z",
+      "SerieEnd": null,
       "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-02-22T15:45:42.381Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-09T08:00:00.000Z",
-      "Subject": "KommC-35",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-10T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-26T09:38:03.822Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-10T08:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-10T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-11-22T23:57:17.371Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-10T09:00:00.000Z",
-      "Subject": "KommC-893",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-10T13:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-05T23:30:27.908Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-10T11:00:00.000Z",
-      "Subject": "KommC-98",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-11T12:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2024-12-19T21:42:48.792Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-11T08:00:00.000Z",
-      "Subject": "KommC-875",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-13T15:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-08T09:27:59.382Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-13T12:00:00.000Z",
-      "Subject": "KommC-760",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-14T13:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-06T05:20:04.085Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-14T13:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-16T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-11-24T21:40:27.946Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-16T05:00:00.000Z",
-      "Subject": "KommC-6",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-18T05:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-01-12T14:09:43.779Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-18T05:00:00.000Z",
-      "Subject": "KommC-743",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-19T13:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-29T10:55:59.603Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-19T11:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-21T09:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-03-12T22:00:52.278Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-21T07:00:00.000Z",
-      "Subject": "KommC-739",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-21T16:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-26T15:43:25.511Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-21T11:30:00.000Z",
-      "Subject": "KommC-197",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-23T09:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-15T22:32:57.735Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-23T08:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-24T13:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-21T15:26:19.128Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-24T11:30:00.000Z",
-      "Subject": "KommC-779",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-25T17:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-23T10:33:06.332Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-25T08:00:00.000Z",
-      "Subject": "KommC-526",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
+        "pxObjClass": "BW-KommC-Work-Grp1-Sammeltermin",
+        "Ortstyp": "Karriereberatungsbüro",
+        "AngemeldeteInteressenten": [
           {
-            "Order": 1,
-            "Typ": "Telefon"
+            "Gesamtanzahl": 1,
+            "pxObjClass": "BW-KommC-Data-SammelterminInteressent",
+            "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+            "InteressentID": "Int-0000194",
+            "pzIndexOwnerKey": "BW-KOMMC-WORK-GRP1 SAM-14002",
+            "pxCreateDateTime": "2024-11-08T12:50:38.804Z",
+            "ConfirmationEmailSent": true,
+            "AnzahlBegleitpersonen": 0,
+            "pxCreateSystemID": "pega-tc",
+            "Interessent": {
+              "pyID": "Int-0000194",
+              "pxObjClass": "Common-LDM-Entity-Contact",
+              "FullName": "Maja Biene",
+              "pzInsKey": "COMMON-LDM-ENTITY-CONTACT INT-0000194",
+              "ContactID": "Int-0000194"
+            },
+            "pxCreateOpName": "Christopher Rohde"
           }
         ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
+        "Kapazitaet": 10,
+        "Bezeichnung": "NeuTest"
       },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
+      "Weekday": "3",
+      "ParentSerieID": null,
+      "Capacity": 10,
+      "Beratungsart": null,
+      "Organisationseinheit": {
+        "Adresse": {
+          "Raum": null,
+          "pxUpdateSystemID": "pega-tc",
+          "pxUpdateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxUpdateOpName": "Christopher Rohde",
+          "pxUpdateOperator": "Christopher.Rohde.ext@bwi.de",
+          "Hausnummer": "147",
+          "Ort": "Berlin",
+          "pySourcePage": {
+            "pxObjClass": "Embed-DataSource",
+            "pySourceIdentifier": "Beratungsadresse",
+            "pySourceNumber": "1",
+            "pySourceClass": "BW-BWEnt-Data-Beratungsadresse",
+            "pySourceType": "Lookup"
+          },
+          "pxCreateDateTime": "2024-10-22T06:18:44.735Z",
+          "pxDPParameters": {
+            "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
+          },
+          "Strasse": "Friedrichstraße",
+          "PLZ": "10117",
+          "pxSaveDateTime": null,
+          "Gebaudeteil": null,
+          "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+          "pzPageNameHash": "_pa15038920381997879pz",
+          "pzInsKey": "BW-BWEnt-Data-Beratungsadresse e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pzPageNameBase": "D_Beratungsadresse",
+          "Bezeichnung": null,
+          "pxObjClass": "BW-BWEnt-Data-Beratungsadresse",
+          "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+          "pxCreateSystemID": "pega-tc",
+          "pxCommitDateTime": null,
+          "pyGUID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+          "pxCreateOpName": "Christopher Rohde"
+        },
+        "pxSaveDateTime": null,
+        "pxUpdateSystemID": "pega-tc",
+        "pxUpdateDateTime": "2024-10-22T15:30:51.378Z",
+        "pzLoadTime": "November 11, 2024 at 12:24:19 PM GMT",
+        "pzPageNameHash": "_pa15038920374042969pz",
+        "pzInsKey": "BW-BWEnt-Data-Organisationseinheit Berlin_Mitte",
+        "pxUpdateOpName": "Andrzej Fudala",
+        "pxUpdateOperator": "Andrzej.Fudala.ext@bwi.de",
+        "pzPageNameBase": "D_Organisationseinheit",
+        "Name": "Berlin Mitte",
+        "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+        "pxCreateOperator": "Christopher.Rohde.ext@bwi.de",
+        "pySourcePage": {
+          "pxObjClass": "Embed-DataSource",
+          "pySourceIdentifier": "Organisationseinheit",
+          "pySourceNumber": "1",
+          "pySourceClass": "BW-BWEnt-Data-Organisationseinheit",
+          "pySourceType": "Lookup"
+        },
+        "pxCreateDateTime": "2024-10-22T06:18:45.050Z",
+        "pxCreateSystemID": "pega-tc",
+        "pxDPParameters": {
+          "pyGUID": "Berlin_Mitte"
+        },
+        "pxCommitDateTime": null,
+        "pyGUID": "Berlin_Mitte",
+        "pxCreateOpName": "Christopher Rohde",
+        "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40"
       },
-      "CompleteDay": false,
-      "EndTime": "2024-11-27T16:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-02-03T23:27:23.436Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-27T09:00:00.000Z",
-      "Subject": "KommC-330",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Außendienststelle"
-          }
-        ],
-        "Beratungsart": "Erstberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-30T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-05T16:28:26.903Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-30T09:00:00.000Z",
-      "Subject": "KommC-169",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-30T13:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-28T21:57:57.847Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-30T12:00:00.000Z",
-      "Subject": "KommC-504",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-12-02T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-01-14T22:57:22.343Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-02T06:00:00.000Z",
-      "Subject": "KommC-218",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
+      "CompleteDay": null,
+      "StartTime": "2024-11-19T08:00:00.000Z",
+      "Termin": null,
+      "SerieRepeat": null,
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "Subject": "NeuTest",
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "pxObjClass": "BW-KommC-Data-TimeSlot",
       "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-12-02T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-30T14:21:18.953Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-02T11:00:00.000Z",
-      "Subject": "KommC-879",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Online"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-03T12:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-02-13T07:02:40.452Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-03T07:00:00.000Z",
-      "Subject": "KommC-897",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Außendienststelle"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-04T08:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-03-23T14:14:34.226Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-12-04T07:30:00.000Z",
-      "Subject": "KommC-987",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-04T11:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-06T06:54:38.763Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-12-04T10:00:00.000Z",
-      "Subject": "KommC-179",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-05T12:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-03-14T21:55:35.187Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-05T05:00:00.000Z",
-      "Subject": "KommC-552",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-05T11:00:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-30T10:10:34.282Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-05T08:30:00.000Z",
-      "Subject": "KommC-943",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-05T10:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "Bezeichnung": "Sammeltermin A-1005",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEndDate": "2025-01-17T08:22:14.494Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-05T10:00:00.000Z",
-      "Subject": "KommC-953",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-06T11:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2024-12-22T23:04:25.196Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-12-06T07:30:00.000Z",
-      "Subject": "KommC-12",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Online"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-06T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-22T02:16:41.390Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-06T09:00:00.000Z",
-      "Subject": "KommC-4",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-12-07T12:00:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-01-12T18:59:42.228Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-12-07T06:00:00.000Z",
-      "Subject": "KommC-321",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-07T16:30:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-03-26T12:16:07.574Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-07T15:00:00.000Z",
-      "Subject": "KommC-947",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-08T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEndDate": "2025-02-26T09:45:46.852Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-12-08T06:30:00.000Z",
-      "Subject": "KommC-221",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Telefon"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 0
+      "Beratungsstellentyp": null,
+      "IsSerie": null,
+      "Termintyp": null,
+      "pyGUID": "80d9d85b-88ce-4d73-b3e9-de03691cd3c0",
+      "UtilizedCapacity": 1,
+      "TerminID": "BW-KOMMC-WORK-GRP1 SAM-14002",
+      "MonthDisplayText": "2024_11"
     }
   ]
 }

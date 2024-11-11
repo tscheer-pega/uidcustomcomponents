@@ -21,7 +21,7 @@ export declare const getData: (props: {
             GenutzteKapazitat: number;
             Ortsadresse: string;
         } | null;
-        SerieEndDate: string;
+        SerieEnd: string | null;
         SerieRepeat: string;
         StartTime: string;
         Subject: string;

@@ -172,7 +172,7 @@ export interface IRawEvent {
   EndTime: string;
   IsSerie: boolean;
   Sammeltermin: ISammeltermin | null;
-  SerieEndDate: string;
+  SerieEnd: string;
   SerieRepeat: string;
   StartTime: string;
   Subject: string;
@@ -281,12 +281,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       const startDate = moment(item.StartTime);
       const endDate = moment(item.EndTime);
-      const seriesEndDate = moment(item.SerieEndDate);
+      const seriesEnd = moment(item.SerieEnd);
       const duration = moment
         // @ts-ignore
         .utc(Math.abs(moment.duration(endDate - startDate).asMilliseconds()))
         .format('HH:mm:ss');
-      const until = item.IsSerie ? seriesEndDate || '2099-12-31T23:59:59Z' : endDate;
+      const until = item.IsSerie ? seriesEnd || '2099-12-31T23:59:59Z' : endDate;
       let freq;
       switch (item.SerieRepeat?.toLowerCase()) {
         case 'wöchentlich':
