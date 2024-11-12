@@ -101,6 +101,7 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
 export const getData = (props: { StartDate: string; EndDate: string }) => {
   const diff = moment(props.EndDate).diff(props.StartDate, 'days');
   const count = diff * Math.min(Math.abs(Math.random() * 5), 1);
+  console.log(`${diff} days, ${count} count`);
   const data = [];
   for (let i = 0; i < count; i += 1) {
     data.push(getDataItem(props));
