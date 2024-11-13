@@ -1,993 +1,500 @@
 {
-  "fetchDateTime": "2024-11-11T15:13:39.236Z",
+  "fetchDateTime": "2024-11-13T11:07:32.410Z",
   "pxObjClass": "Pega-API-DataExploration-Data",
-  "resultCount": 42,
+  "resultCount": 29,
   "data": [
     {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-10-28T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-01-13T11:23:38.266Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-10-28T07:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-10-28T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1006",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-01-07T09:38:29.304Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-10-28T09:30:00.000Z",
-      "Subject": "KommC-425",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-10-29T15:00:00.000Z",
+      "EndTime": "2024-10-29T14:30:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "wöchentlich",
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-08T16:25:44.312Z",
+      "SerieRepeat": "Jährlich",
       "StartTime": "2024-10-29T06:00:00.000Z",
-      "Subject": "KommC-15",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 2
+      "Subject": "Urlaub",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-794",
+      "Type": "Abwesend"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
+      "EndTime": "2024-10-29T14:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": 236,
+      "UtilizedCapacity": 236,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": null,
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-10-29T09:00:00.000Z",
+      "Subject": "KommC-64",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-64",
+      "Type": "Sammel"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-10-30T08:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": 551,
+      "UtilizedCapacity": 551,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2025-01-26T03:39:05.844Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-10-30T07:00:00.000Z",
+      "Subject": "KommC-570",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-570",
+      "Type": "Sammel"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
       "EndTime": "2024-10-30T11:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-11-20T13:17:38.959Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-10-30T09:30:00.000Z",
-      "Subject": "KommC-387",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 3
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-02-09T01:43:23.120Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-10-30T10:30:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-549",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-10-31T12:30:00.000Z",
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-10-31T15:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-11-09T11:46:20.969Z",
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-11-04T11:21:28.782Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-10-31T14:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-8",
+      "Type": "Verfügbar"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
+      "EndTime": "2024-11-04T16:30:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-11-14T11:50:44.303Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-11-04T14:30:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-749",
+      "Type": "Verfügbar"
+    },
+    {
+      "Beratungsstellentyp": "Telefon",
+      "CompleteDay": false,
+      "EndTime": "2024-11-05T07:30:00.000Z",
+      "IsSerie": true,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-02-20T02:54:14.135Z",
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-05T07:00:00.000Z",
+      "Subject": "Reiner Zufall",
+      "Beratungsart": "Bewerbungsabgabe",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-302",
+      "Type": "Termin"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
+      "EndTime": "2024-11-05T09:00:00.000Z",
+      "IsSerie": true,
+      "Capacity": 20,
+      "UtilizedCapacity": 943,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2024-12-29T09:20:37.268Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-05T07:30:00.000Z",
+      "Subject": "KommC-749",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-749",
+      "Type": "Sammel"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-11-05T15:00:00.000Z",
+      "IsSerie": true,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-02-17T02:01:50.853Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-11-05T15:00:00.000Z",
+      "Subject": "Urlaub",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-277",
+      "Type": "Abwesend"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
+      "EndTime": "2024-11-07T10:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": null,
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-07T07:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-367",
+      "Type": "Verfügbar"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-11-10T14:30:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-11-16T23:22:12.278Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-10T08:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-241",
+      "Type": "Verfügbar"
+    },
+    {
+      "Beratungsstellentyp": "Außendienststelle",
+      "CompleteDay": false,
+      "EndTime": "2024-11-10T14:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-11-30T21:05:50.479Z",
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-10T11:30:00.000Z",
+      "Subject": "Reiner Zufall",
+      "Beratungsart": "Folgeberatung",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-247",
+      "Type": "Termin"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
+      "EndTime": "2024-11-10T15:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": 144,
+      "UtilizedCapacity": 219,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2025-02-25T16:10:53.372Z",
       "SerieRepeat": "Täglich",
-      "StartTime": "2024-10-31T10:30:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 4
+      "StartTime": "2024-11-10T12:00:00.000Z",
+      "Subject": "KommC-508",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-508",
+      "Type": "Sammel"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
+      "Beratungsstellentyp": "Außendienststelle",
       "CompleteDay": false,
-      "EndTime": "2024-11-02T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1007",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-02-12T15:04:55.446Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-02T06:00:00.000Z",
-      "Subject": "KommC-860",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-04T17:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1008",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-11-22T09:27:57.724Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-04T11:00:00.000Z",
-      "Subject": "KommC-430",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-05T17:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-31T05:51:16.899Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-05T16:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-07T17:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1009",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-12-14T03:39:58.982Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-07T12:00:00.000Z",
-      "Subject": "KommC-890",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-08T09:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1010",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-01-23T16:25:06.288Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-08T05:00:00.000Z",
-      "Subject": "KommC-997",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-08T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-28T23:26:57.120Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-08T09:30:00.000Z",
-      "Subject": "KommC-284",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
       "EndTime": "2024-11-11T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-17T05:15:21.710Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-11T12:00:00.000Z",
-      "Subject": "KommC-259",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 1
+      "IsSerie": true,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-01-14T16:03:42.662Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-11-11T12:30:00.000Z",
+      "Subject": "Reiner Zufall",
+      "Beratungsart": "Erstberatung",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-883",
+      "Type": "Termin"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-11T16:00:00.000Z",
+      "EndTime": "2024-11-11T14:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-01-12T18:58:18.165Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-11T15:00:00.000Z",
-      "Subject": "KommC-768",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Online"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 1
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-17T13:50:24.611Z",
+      "SerieRepeat": "Täglich",
+      "StartTime": "2024-11-11T13:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-637",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-12T06:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-01-14T06:04:54.848Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-12T05:30:00.000Z",
-      "Subject": "KommC-683",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-12T11:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1011",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-12-02T00:36:33.963Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-12T08:00:00.000Z",
-      "Subject": "KommC-674",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 2
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
       "EndTime": "2024-11-13T16:30:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-11T00:47:05.223Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-13T09:00:00.000Z",
-      "Subject": "KommC-330",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Außendienststelle"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 3
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-07T20:36:52.274Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-13T07:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-123",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-14T17:30:00.000Z",
+      "EndTime": "2024-11-14T09:30:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-11-30T11:03:39.017Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-14T16:30:00.000Z",
-      "Subject": "KommC-540",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Online"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 4
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-03-04T21:52:40.827Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-14T09:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-125",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-15T12:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1012",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-12-16T20:31:07.232Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-15T09:00:00.000Z",
-      "Subject": "KommC-463",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-16T17:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1013",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-01-02T21:48:15.452Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-16T06:30:00.000Z",
-      "Subject": "KommC-115",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-16T13:00:00.000Z",
+      "EndTime": "2024-11-17T15:30:00.000Z",
       "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-03-03T12:59:01.384Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-16T07:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 6
+      "Capacity": 111,
+      "UtilizedCapacity": 265,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2025-02-21T05:57:24.510Z",
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-17T14:30:00.000Z",
+      "Subject": "KommC-199",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-199",
+      "Type": "Sammel"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": true,
-      "EndTime": "2024-11-17T11:30:00.000Z",
+      "EndTime": "2024-11-22T13:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1014",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-12-23T15:22:22.096Z",
+      "Capacity": 481,
+      "UtilizedCapacity": 924,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2025-01-14T10:39:45.532Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-22T11:00:00.000Z",
+      "Subject": "KommC-849",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-849",
+      "Type": "Sammel"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-11-25T09:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": 697,
+      "UtilizedCapacity": 697,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": "2025-03-11T17:11:29.576Z",
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-25T08:00:00.000Z",
+      "Subject": "KommC-383",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-383",
+      "Type": "Sammel"
+    },
+    {
+      "Beratungsstellentyp": "Außendienststelle",
+      "CompleteDay": false,
+      "EndTime": "2024-11-26T15:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-11T22:27:27.928Z",
+      "SerieRepeat": "Jährlich",
+      "StartTime": "2024-11-26T12:30:00.000Z",
+      "Subject": "Reiner Zufall",
+      "Beratungsart": "Bewerbungsabgabe",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-434",
+      "Type": "Termin"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": true,
+      "EndTime": "2024-11-28T16:30:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-03-25T05:49:21.423Z",
+      "SerieRepeat": "Wöchentlich",
+      "StartTime": "2024-11-28T10:30:00.000Z",
+      "Subject": "Urlaub",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-354",
+      "Type": "Abwesend"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-11-30T13:30:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-28T09:19:17.422Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-11-30T06:30:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-150",
+      "Type": "Verfügbar"
+    },
+    {
+      "Beratungsstellentyp": null,
+      "CompleteDay": false,
+      "EndTime": "2024-12-02T15:00:00.000Z",
+      "IsSerie": false,
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-01-04T01:29:06.185Z",
       "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-17T07:00:00.000Z",
-      "Subject": "KommC-1",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 0
+      "StartTime": "2024-12-02T08:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-911",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-17T16:00:00.000Z",
+      "EndTime": "2024-12-02T15:30:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-28T08:50:21.745Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-17T08:00:00.000Z",
-      "Subject": "KommC-127",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Online"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 0
+      "Capacity": 243,
+      "UtilizedCapacity": 320,
+      "Address": "Max-Joseph-Platz 2, 80539 München",
+      "City": "München",
+      "SerieEnd": null,
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-12-02T12:00:00.000Z",
+      "Subject": "KommC-100",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-100",
+      "Type": "Sammel"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
+      "Beratungsstellentyp": "Präsenzberatung",
       "CompleteDay": true,
-      "EndTime": "2024-11-17T10:00:00.000Z",
+      "EndTime": "2024-12-03T16:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-17T08:00:00.000Z",
-      "Subject": "KommC-728",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 0
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-01-25T22:35:44.139Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-12-03T06:00:00.000Z",
+      "Subject": "Klara Fall",
+      "Beratungsart": "Folgeberatung",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-606",
+      "Type": "Termin"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-17T14:00:00.000Z",
+      "EndTime": "2024-12-06T10:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-17T12:00:00.000Z",
-      "Subject": "KommC-764",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 0
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-01-01T09:12:59.637Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-12-06T10:00:00.000Z",
+      "Subject": "Verfügbar",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-664",
+      "Type": "Verfügbar"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-18T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1015",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-01-10T07:24:05.297Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-18T12:00:00.000Z",
-      "Subject": "KommC-582",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
+      "Beratungsstellentyp": "Online",
       "CompleteDay": false,
-      "EndTime": "2024-11-20T14:30:00.000Z",
+      "EndTime": "2024-12-07T13:00:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-06T15:01:26.188Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-20T05:00:00.000Z",
-      "Subject": "KommC-152",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 3
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2025-01-20T05:13:42.429Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-12-07T10:30:00.000Z",
+      "Subject": "Reiner Zufall",
+      "Beratungsart": "Bewerbungsabgabe",
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-142",
+      "Type": "Termin"
     },
     {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
+      "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-20T11:00:00.000Z",
+      "EndTime": "2024-12-08T16:30:00.000Z",
       "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-13T06:21:17.076Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-20T09:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-20T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2024-12-01T22:32:07.064Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-20T16:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-22T15:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-22T02:04:00.064Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-22T06:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-22T11:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-01-07T22:11:23.667Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-22T07:00:00.000Z",
-      "Subject": "KommC-450",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Präsenzberatung"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-22T12:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-22T12:00:00.000Z",
-      "Subject": "KommC-362",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-24T09:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-17T03:55:07.265Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-11-24T06:00:00.000Z",
-      "Subject": "KommC-466",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-25T12:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-25T07:00:00.000Z",
-      "Subject": "KommC-274",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 1
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Telefon"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-28T14:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": null,
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-11-28T12:00:00.000Z",
-      "Subject": "KommC-327",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Telefon"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 4
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-11-29T14:30:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1016",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2024-12-30T06:53:56.668Z",
-      "SerieRepeat": "Täglich",
-      "StartTime": "2024-11-29T06:00:00.000Z",
-      "Subject": "KommC-977",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-29T09:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-01-28T04:54:48.746Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-29T08:30:00.000Z",
-      "Subject": "KommC-943",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Außendienststelle"
-          }
-        ],
-        "Beratungsart": "Folgeberatung",
-        "Contact": {
-          "FirstName": "Klara",
-          "FullName": "Klara Fall",
-          "LastName": "Fall",
-          "Salutation": "Frau"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 5
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Online"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-11-30T14:30:00.000Z",
-      "IsSerie": true,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-11T17:59:20.391Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-11-30T11:00:00.000Z",
-      "Subject": "KommC-901",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Weekday": 6
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-01T10:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1017",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": null,
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-01T08:00:00.000Z",
-      "Subject": "KommC-420",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-01T11:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-03-24T20:35:00.460Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-12-01T09:00:00.000Z",
-      "Subject": "Abwesend",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Abwesend",
-      "Weekday": 0
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": true,
-      "EndTime": "2024-12-04T16:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-03-24T07:12:29.285Z",
-      "SerieRepeat": "jährlich",
-      "StartTime": "2024-12-04T06:00:00.000Z",
-      "Subject": "KommC-206",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin",
-        "TerminTyp": [
-          {
-            "Order": 1,
-            "Typ": "Außendienststelle"
-          }
-        ],
-        "Beratungsart": "Erstberatung",
-        "Contact": {
-          "FirstName": "Reiner",
-          "FullName": "Reiner Zufall",
-          "LastName": "Zufall",
-          "Salutation": "Herr"
-        }
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Termin",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Außendienststelle"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-04T16:30:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": {
-        "pxObjClass": "Object Class",
-        "Bezeichnung": "Sammeltermin A-1018",
-        "Ort": "München",
-        "Kapazitaet": 500,
-        "GenutzteKapazitat": 412,
-        "Ortsadresse": "Max-Joseph-Platz 2, 80539 München"
-      },
-      "SerieEnd": "2025-01-09T20:39:42.749Z",
-      "SerieRepeat": "monatlich",
-      "StartTime": "2024-12-04T09:00:00.000Z",
-      "Subject": "KommC-764",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Sammel",
-      "Weekday": 3
-    },
-    {
-      "Beratungsstelle": {
-        "Typ": "Präsenzberatung"
-      },
-      "CompleteDay": false,
-      "EndTime": "2024-12-07T14:00:00.000Z",
-      "IsSerie": false,
-      "Sammeltermin": null,
-      "SerieEnd": "2025-02-04T20:18:27.305Z",
-      "SerieRepeat": "wöchentlich",
-      "StartTime": "2024-12-07T08:30:00.000Z",
-      "Subject": "KommC-352",
-      "Termin": {
-        "pxObjClass": "BW-KommC-Work-Grp1-Termin"
-      },
-      "TerminID": "BW-KOMMC-WORK-GRP1 TER-5017",
-      "Type": "Verfügbar",
-      "Weekday": 6
+      "Capacity": null,
+      "UtilizedCapacity": null,
+      "Address": null,
+      "City": null,
+      "SerieEnd": "2024-12-22T23:30:43.569Z",
+      "SerieRepeat": "Monatlich",
+      "StartTime": "2024-12-08T12:30:00.000Z",
+      "Subject": "Urlaub",
+      "Beratungsart": null,
+      "TerminID": "BW-KOMMC-WORK-GRP1 TER-864",
+      "Type": "Abwesend"
     }
   ]
 }

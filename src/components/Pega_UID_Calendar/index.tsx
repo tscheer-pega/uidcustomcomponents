@@ -88,28 +88,6 @@ export type TEvent = {
   duration?: string;
 };
 
-/*
-export interface IAdresse {
-  Raum: string;
-  Hausnummer: string;
-  Ort: string;
-  Strasse: string;
-  PLZ: string;
-  Gebaudeteil: string;
-  Bezeichnung: string;
-}
-
-export interface IBeratungsstelle {
-  Typ: EBeratungsTyp;
-  Adresse: IAdresse;
-  Webexlink: string;
-  DisplayOrder: number;
-  Beschreibung: string;
-  OrganisationseinheitID: string;
-  AddressID: string;
-}
- */
-
 export enum EDateTimeType {
   date = 'date',
   time = 'time'
@@ -122,10 +100,11 @@ export enum ETerminGoal {
 }
 
 export enum EEventType {
-  Absence = 'Abwesend',
-  Availability = 'Verfügbar',
-  Appointment = 'Termin',
-  MassEvent = 'Sammel'
+  ABSENCE = 'Abwesend',
+  AVAILABILITY = 'Verfügbar',
+  APPOINTMENT = 'Termin',
+  MASS_EVENT = 'Sammel',
+  PUBLIC_HOLIDAY = 'Feiertag'
 }
 
 export enum EBeratungsTyp {
@@ -135,51 +114,25 @@ export enum EBeratungsTyp {
   office = 'Außendienststelle'
 }
 
-export interface IBeratungsstelle {
-  Typ: EBeratungsTyp;
-}
-
-export interface ITerminTyp {
-  Order: 1;
-  Typ: 'Präsenzberatung';
-}
-
-export interface IContact {
-  FirstName: string;
-  FullName: string;
-  LastName: string;
-  Salutation: string;
-}
-
-export interface ITermin {
-  pxObjClass: string;
-  TerminTyp: Array<ITerminTyp>;
-  Beratungsart: ETerminGoal;
-  Contact: IContact;
-}
-
-export interface ISammeltermin {
-  pxObjClass: string;
-  Bezeichnung: string;
-  Ortsadresse: string;
-  Kapazitaet: number;
-  GenutzteKapazitat: number;
-}
-
 export interface IRawEvent {
-  Beratungsstelle: IBeratungsstelle;
-  CompleteDay: boolean;
-  EndTime: string;
-  IsSerie: boolean;
-  Sammeltermin: ISammeltermin | null;
-  SerieEnd: string;
-  SerieRepeat: string;
-  StartTime: string;
-  Subject: string;
-  Termin: ITermin | null;
-  TerminID: string;
-  Type: EEventType;
-  Weekday: string;
+  pyGUID?: string; // UID
+  Address?: string; // Address of Appointment
+  AuthorID?: string; // Reference ID of BuchbareRessource
+  Capacity?: string; // only Sammel
+  City?: string; // City of Appointment
+  EndTime: string; // End time of Appointment
+  OrganisationseinheitID?: string; // Reference ID of Organisationseinheit
+  StartTime: string; // Start time of Appointment YYYY-MM-DDTHH:mm:ss.uuuZ
+  TerminID?: string; // Reference ID of Appointment
+  Type: EEventType; // Appointment type
+  UtilizedCapacity?: string; // only Sammel
+  Beratungsart?: ETerminGoal; // only Termin
+  Beratungsstellentyp?: EBeratungsTyp; // only Termin
+  CompleteDay?: boolean; // Marking of full day
+  IsSerie?: boolean; // Marking of repeating
+  SerieEnd?: string; // End date of series
+  SerieRepeat?: string; // Defines interval of repeating
+  Subject: string; // Title
 }
 
 export type TDateInfo = {
@@ -188,6 +141,17 @@ export type TDateInfo = {
   start?: string;
   end?: string;
 };
+
+export const publicHolidayEvents: Array<IRawEvent> = [
+  {
+    CompleteDay: true,
+    IsSerie: false,
+    StartTime: '2024-12-31T23:00:00.000Z',
+    EndTime: '2025-01-01T22:59:59.000Z',
+    Subject: 'Neujahr',
+    Type: EEventType.PUBLIC_HOLIDAY
+  }
+];
 
 export const PegaUidCalendar = (props: TCalendarProps) => {
   const {
@@ -256,27 +220,27 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     (data || rawData).forEach((item: IRawEvent) => {
       let color: string;
       let display = 'block';
-      let title = '';
+      let title = item.Subject;
       switch (item.Type) {
-        case EEventType.Availability: {
+        case EEventType.AVAILABILITY: {
           color =
             currentViewType.indexOf('Week') > 0 ? 'transparent' : theme.base.colors.green.light;
           display = currentViewType.indexOf('Week') > 0 ? 'background' : 'block';
           title = item.Type;
           break;
         }
-        case EEventType.Appointment:
+        case EEventType.APPOINTMENT:
           color = theme.base.colors.blue.dark;
-          title = `${item.Termin?.Contact.FullName}`;
           break;
-        case EEventType.Absence:
+        case EEventType.ABSENCE:
           color = theme.base.colors.yellow.light;
-          title = item.Subject;
+          break;
+        case EEventType.PUBLIC_HOLIDAY:
+          color = theme.base.colors.purple.dark;
           break;
         default:
-        case EEventType.MassEvent:
+        case EEventType.MASS_EVENT:
           color = theme.base.colors.orange.dark;
-          title = `${item.Sammeltermin?.Bezeichnung || item.Subject}`;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -303,7 +267,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           freq = 'yearly';
       }
       const tmpEvent = {
-        id: item.TerminID,
+        id: item.TerminID || '',
         title,
         rrule: {
           freq,
@@ -313,13 +277,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         duration: item.CompleteDay ? undefined : duration,
         start: item.StartTime,
         end: item.EndTime,
-        daysOfWeek: [item.Weekday],
         display,
         color,
         allDay: item.CompleteDay,
         item
       };
-      if (item.IsSerie && !!item.SerieRepeat && !!item.Weekday) {
+      if (item.IsSerie && !!item.SerieRepeat) {
         tmpevents.push(tmpEvent);
       } else {
         tmpevents.push({
@@ -350,8 +313,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       })
       .then((response: any) => {
         if (response.data.data !== null) {
-          setRawData(response.data.data);
-          fillEvents(response.data.data);
+          setRawData([...response.data.data, ...publicHolidayEvents]);
+          fillEvents([...response.data.data, ...publicHolidayEvents]);
         }
       })
       .finally(() => setIsLoading(false));
@@ -480,18 +443,17 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     return (
       <div className={`event-content ${obj.Type}`}>
         <Text variant='h5' className='event-label'>
-          {obj.Type !== EEventType.Absence &&
-            (obj.Beratungsstelle?.Typ || obj.Termin?.TerminTyp?.Typ) && (
-              <span>{getTypeIcon(obj.Beratungsstelle?.Typ || obj.Termin?.TerminTyp?.Typ)}</span>
-            )}
+          {obj.Type !== EEventType.ABSENCE && (obj.Beratungsstellentyp || obj.Termintyp) && (
+            <span>{getTypeIcon(obj.Beratungsstellentyp || obj.Termintyp)}</span>
+          )}
           {eventLabel}
         </Text>
-        {obj.Type === EEventType.Appointment && renderBeratungsartBadge(obj.Termin.Beratungsart)}
-        {obj.Type === EEventType.MassEvent && (
+        {obj.Type === EEventType.APPOINTMENT && renderBeratungsartBadge(obj.Beratungsart)}
+        {obj.Type === EEventType.MASS_EVENT && (
           <>
             <Icon name='location-solid' role='img' aria-label='location icon' size='s' />
             <Text variant='primary' className='event-label'>
-              {obj.Sammeltermin.Ort}
+              {obj.City}
             </Text>
           </>
         )}
@@ -732,152 +694,170 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         onMouseLeave={handlePopoverMouseLeave}
         className='event-popover'
       >
-        <Card>
-          <CardHeader>
-            <Grid
-              container={{
-                alignItems: 'center',
-                cols: 'auto auto',
-                colGap: 1
-              }}
-            >
-              <span
-                className='event-indicator'
-                style={{ backgroundColor: eventInPopover.eventInfo?._def.ui.backgroundColor }}
-              ></span>
-              <Text variant='h3'>{eventInPopover.eventInfo?._def.title}</Text>
-              {(eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.Appointment ||
-                eventInPopover.eventInfo?._def.extendedProps.item.Type ===
-                  EEventType.MassEvent) && (
-                <>
-                  <div></div>
-                  <Text variant='secondary'>
-                    {eventInPopover.eventInfo?._def.extendedProps.item.TerminID}
-                  </Text>
-                </>
-              )}
-            </Grid>
-          </CardHeader>
-          <hr className='solid'></hr>
-          <CardContent>
-            <Grid
-              container={{
-                alignItems: 'center',
-                cols: 'auto auto',
-                colGap: 1,
-                rowGap: 1
-              }}
-            >
-              <Icon
-                name='calendar-empty-solid'
-                role='img'
-                aria-label='calendar icon'
-                size='s'
-                className='icon'
-              />
-              <Text variant='primary' className='event-label'>
-                {getDateTimeFromIsoString(
-                  eventInPopover.eventInfo?._def.extendedProps.item.StartTime,
-                  EDateTimeType.date,
-                  {
-                    weekday: 'long',
-                    year: 'numeric',
-                    month: 'long',
-                    day: 'numeric'
-                  }
-                )}
-              </Text>
-              <Icon
-                name='clock-solid'
-                role='img'
-                aria-label='clock icon'
-                size='s'
-                className='icon'
-              />
-              {eventInPopover.eventInfo?._def.extendedProps.item.CompleteDay ? (
+        {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.PUBLIC_HOLIDAY ? (
+          <Card>
+            <CardContent>
+              <Grid
+                container={{
+                  alignItems: 'center',
+                  cols: 'auto auto',
+                  colGap: 1,
+                  rowGap: 1
+                }}
+              >
                 <Text variant='primary' className='event-label'>
-                  Ganzer Tag
+                  Dieser Eintrag dient zu Ihrer Information. Sofern Sie vom Feiertag betroffen sind,
+                  bitten wir Sie Ihre Abwesenheit eigenständig zu buchen.
                 </Text>
-              ) : (
+              </Grid>
+            </CardContent>
+          </Card>
+        ) : (
+          <Card>
+            <CardHeader>
+              <Grid
+                container={{
+                  alignItems: 'center',
+                  cols: 'auto auto',
+                  colGap: 1
+                }}
+              >
+                <span
+                  className='event-indicator'
+                  style={{ backgroundColor: eventInPopover.eventInfo?._def.ui.backgroundColor }}
+                ></span>
+                <Text variant='h3'>{eventInPopover.eventInfo?._def.title}</Text>
+                {(eventInPopover.eventInfo?._def.extendedProps.item.Type ===
+                  EEventType.APPOINTMENT ||
+                  eventInPopover.eventInfo?._def.extendedProps.item.Type ===
+                    EEventType.MASS_EVENT) && (
+                  <>
+                    <div></div>
+                    <Text variant='secondary'>
+                      {eventInPopover.eventInfo?._def.extendedProps.item.TerminID}
+                    </Text>
+                  </>
+                )}
+              </Grid>
+            </CardHeader>
+            <hr className='solid'></hr>
+            <CardContent>
+              <Grid
+                container={{
+                  alignItems: 'center',
+                  cols: 'auto auto',
+                  colGap: 1,
+                  rowGap: 1
+                }}
+              >
+                <Icon
+                  name='calendar-empty-solid'
+                  role='img'
+                  aria-label='calendar icon'
+                  size='s'
+                  className='icon'
+                />
                 <Text variant='primary' className='event-label'>
                   {getDateTimeFromIsoString(
                     eventInPopover.eventInfo?._def.extendedProps.item.StartTime,
-                    EDateTimeType.time
-                  )}
-                  {' - '}
-                  {getDateTimeFromIsoString(
-                    eventInPopover.eventInfo?._def.extendedProps.item.EndTime,
-                    EDateTimeType.time
+                    EDateTimeType.date,
+                    {
+                      weekday: 'long',
+                      year: 'numeric',
+                      month: 'long',
+                      day: 'numeric'
+                    }
                   )}
                 </Text>
-              )}
-
-              {eventInPopover.eventInfo?._def.extendedProps.item.Type ===
-                EEventType.Appointment && (
-                <>
-                  <Icon
-                    name='wizard-solid'
-                    role='img'
-                    aria-label='Beratungsart'
-                    size='s'
-                    className='icon'
-                  />
-                  {renderBeratungsartBadge(
-                    eventInPopover.eventInfo?._def.extendedProps.item.Termin.Beratungsart
-                  )}
-                </>
-              )}
-              {eventInPopover.eventInfo?._def.extendedProps.item.Sammeltermin && (
-                <>
-                  <Icon
-                    name='location-solid'
-                    role='img'
-                    aria-label='location icon'
-                    size='s'
-                    className='icon'
-                  />
-                  <Flex container={{ direction: 'column', alignItems: 'start' }}>
-                    <Text variant='primary' className='event-label'>
-                      {eventInPopover.eventInfo._def.extendedProps.item.Sammeltermin.Ortsadresse}
-                    </Text>
-                  </Flex>
-                  <Icon name='users-solid' role='img' aria-label='group icon' size='s' />
-                  <Flex container={{ direction: 'column', alignItems: 'start' }}>
-                    <Text variant='primary' className='event-label'>
-                      {
-                        eventInPopover.eventInfo._def.extendedProps.item.Sammeltermin
-                          .GenutzteKapazitat
-                      }
-                      /{eventInPopover.eventInfo._def.extendedProps.item.Sammeltermin.Kapazitaet}{' '}
-                      Kapazität
-                    </Text>
-                  </Flex>
-                </>
-              )}
-              {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstelle?.Typ && (
-                <>
-                  {getTypeIcon(
-                    eventInPopover.eventInfo._def.extendedProps.item.Beratungsstelle?.Typ
-                  )}
+                <Icon
+                  name='clock-solid'
+                  role='img'
+                  aria-label='clock icon'
+                  size='s'
+                  className='icon'
+                />
+                {eventInPopover.eventInfo?._def.extendedProps.item.CompleteDay ? (
                   <Text variant='primary' className='event-label'>
-                    {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstelle?.Typ}
+                    Ganzer Tag
                   </Text>
-                </>
-              )}
-            </Grid>
-          </CardContent>
-          {(eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.Appointment ||
-            eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MassEvent) && (
-            <>
-              <hr className='solid'></hr>
-              <CardFooter justify='center'>
-                <Button variant='primary' compact onClick={openPreviewEventOnClick}>
-                  Open
-                </Button>
-              </CardFooter>
-            </>
-          )}
-        </Card>
+                ) : (
+                  <Text variant='primary' className='event-label'>
+                    {getDateTimeFromIsoString(
+                      eventInPopover.eventInfo?._def.extendedProps.item.StartTime,
+                      EDateTimeType.time
+                    )}
+                    {' - '}
+                    {getDateTimeFromIsoString(
+                      eventInPopover.eventInfo?._def.extendedProps.item.EndTime,
+                      EDateTimeType.time
+                    )}
+                  </Text>
+                )}
+
+                {eventInPopover.eventInfo?._def.extendedProps.item.Type ===
+                  EEventType.APPOINTMENT && (
+                  <>
+                    <Icon
+                      name='wizard-solid'
+                      role='img'
+                      aria-label='Beratungsart'
+                      size='s'
+                      className='icon'
+                    />
+                    {renderBeratungsartBadge(
+                      eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart
+                    )}
+                  </>
+                )}
+                {eventInPopover.eventInfo?._def.extendedProps.item.Type ===
+                  EEventType.MASS_EVENT && (
+                  <>
+                    <Icon
+                      name='location-solid'
+                      role='img'
+                      aria-label='location icon'
+                      size='s'
+                      className='icon'
+                    />
+                    <Flex container={{ direction: 'column', alignItems: 'start' }}>
+                      <Text variant='primary' className='event-label'>
+                        {eventInPopover.eventInfo._def.extendedProps.item.Address}
+                      </Text>
+                    </Flex>
+                    <Icon name='users-solid' role='img' aria-label='group icon' size='s' />
+                    <Flex container={{ direction: 'column', alignItems: 'start' }}>
+                      <Text variant='primary' className='event-label'>
+                        {eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity}/
+                        {eventInPopover.eventInfo._def.extendedProps.item.Capacity} Kapazität
+                      </Text>
+                    </Flex>
+                  </>
+                )}
+                {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstellentyp && (
+                  <>
+                    {getTypeIcon(
+                      eventInPopover.eventInfo._def.extendedProps.item.Beratungsstellentyp
+                    )}
+                    <Text variant='primary' className='event-label'>
+                      {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstellentyp}
+                    </Text>
+                  </>
+                )}
+              </Grid>
+            </CardContent>
+            {(eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
+              eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MASS_EVENT) && (
+              <>
+                <hr className='solid'></hr>
+                <CardFooter justify='center'>
+                  <Button variant='primary' compact onClick={openPreviewEventOnClick}>
+                    Open
+                  </Button>
+                </CardFooter>
+              </>
+            )}
+          </Card>
+        )}
       </Popover>
     </StyledCalendarWrapper>
   );

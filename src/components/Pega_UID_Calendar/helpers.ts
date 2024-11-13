@@ -6,23 +6,8 @@ const eventTypes = ['Abwesend', 'Verfügbar', 'Termin', 'Sammel'];
 const getConsultationType = () =>
   ['Präsenzberatung', 'Online', 'Außendienststelle', 'Telefon'][Math.round(Math.random() * 3)];
 const dateToday = moment().toISOString();
-const getContact = () =>
-  [
-    {
-      FirstName: 'Klara',
-      FullName: 'Klara Fall',
-      LastName: 'Fall',
-      Salutation: 'Frau'
-    },
-    {
-      FirstName: 'Reiner',
-      FullName: 'Reiner Zufall',
-      LastName: 'Zufall',
-      Salutation: 'Herr'
-    }
-  ][Math.round(Math.random())];
 const getDataItem = (props: { StartDate: string; EndDate: string }) => {
-  const eventType = eventTypes[Math.round(Math.random() * 4)];
+  const eventType = eventTypes[Math.round(Math.random() * 3)];
   const eventSourceDate = moment
     .utc(randomDate(moment(props.StartDate).toDate(), moment(props.EndDate).toDate()))
     .set('seconds', 0)
@@ -48,60 +33,55 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
       )
     )
     .toISOString();
-  const title =
-    eventTypes.indexOf(eventType) === 0 ? 'Abwesend' : `KommC-${Math.round(Math.random() * 1000)}`;
+  const id = Math.round(Math.random() * 1000);
   const consultationType = getConsultationType();
+  const capacity = Math.round(Math.random() * 1000);
+
+  let title = '';
+  switch (eventType) {
+    case 'Abwesend':
+      title = ['Urlaub', 'Arzttermin'][Math.round(Math.random())];
+      break;
+    case 'Verfügbar':
+      title = 'Verfügbar';
+      break;
+    case 'Sammel':
+      title = `KommC-${id}`;
+      break;
+    case 'Termin':
+    default:
+      title = ['Klara Fall', 'Reiner Zufall'][Math.round(Math.random())];
+  }
+
   return {
-    Beratungsstelle: {
-      Typ: consultationType
-    },
+    Beratungsstellentyp: eventType === 'Termin' ? consultationType : null,
     CompleteDay: Math.random() * 10 > 7, //
     EndTime: eventDates[1],
     IsSerie: Math.random() * 10 > 9, //
-    Sammeltermin:
-      eventTypes.indexOf(eventType) === 3
-        ? {
-            pxObjClass: 'Object Class',
-            Bezeichnung: 'Sammeltermin A-1005',
-            Ort: 'München',
-            Kapazitaet: 500,
-            GenutzteKapazitat: 412,
-            Ortsadresse: 'Max-Joseph-Platz 2, 80539 München'
-          }
-        : null,
+    Capacity: eventType === 'Sammel' ? capacity : null,
+    UtilizedCapacity:
+      eventType === 'Sammel' ? Math.max(Math.round(Math.random() * 1000), capacity) : null,
+    Address: eventType === 'Sammel' ? 'Max-Joseph-Platz 2, 80539 München' : null,
+    City: eventType === 'Sammel' ? 'München' : null,
     SerieEnd: Math.random() > 0.9 ? null : endDate,
     SerieRepeat:
       Math.random() * 10 > 9
         ? 'Täglich'
-        : ['wöchentlich', 'monatlich', 'jährlich'][Math.round(Math.random() * 2)], //
+        : ['Wöchentlich', 'Monatlich', 'Jährlich'][Math.round(Math.random() * 2)], //
     StartTime: eventDates[0],
     Subject: title,
-    Termin:
-      eventTypes.indexOf(eventType) === 2
-        ? {
-            pxObjClass: 'BW-KommC-Work-Grp1-Termin',
-            TerminTyp: [
-              {
-                Order: 1,
-                Typ: consultationType
-              }
-            ],
-            Beratungsart: Math.random() * 10 > 9 ? 'Erstberatung' : 'Folgeberatung',
-            Contact: getContact()
-          }
-        : {
-            pxObjClass: 'BW-KommC-Work-Grp1-Termin'
-          },
-    TerminID: 'BW-KOMMC-WORK-GRP1 TER-5017',
-    Type: eventType,
-    Weekday: moment(eventDates[0]).get('weekday')
+    Beratungsart:
+      eventType === 'Termin'
+        ? ['Erstberatung', 'Folgeberatung', 'Bewerbungsabgabe'][Math.round(Math.random() * 2)]
+        : null,
+    TerminID: `BW-KOMMC-WORK-GRP1 TER-${id}`,
+    Type: eventType
   };
 };
 
 export const getData = (props: { StartDate: string; EndDate: string }) => {
   const diff = moment(props.EndDate).diff(props.StartDate, 'days');
   const count = diff * Math.min(Math.abs(Math.random() * 5), 1);
-  console.log(`${diff} days, ${count} count`);
   const data = [];
   for (let i = 0; i < count; i += 1) {
     data.push(getDataItem(props));
