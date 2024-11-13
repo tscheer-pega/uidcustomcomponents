@@ -103,5 +103,14 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       padding: 0.5rem;
       box-shadow: 2px 3px 6px lightgrey;
     }
+    .public-holiday-text {
+      max-width: 300px;
+    }
+    .card-header-action-container {
+      display: flex;
+    }
+    .h-spacer {
+      width: 32px;
+    }
   `;
 });

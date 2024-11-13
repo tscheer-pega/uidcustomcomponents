@@ -75,10 +75,8 @@ const setPCore = () => {
             console.log(
               'useGenericData',
               useGenericData,
-              'Generic Data',
-              data,
-              'Example Data',
-              exampleData
+              'Data',
+              useGenericData ? data : exampleData
             );
             return resolve({
               data: useGenericData ? data : exampleData

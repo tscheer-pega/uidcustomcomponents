@@ -21,7 +21,8 @@ import {
   Flex,
   Grid,
   CardFooter,
-  registerIcon
+  registerIcon,
+  Switch
 } from '@pega/cosmos-react-core';
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
@@ -36,6 +37,7 @@ import * as UserSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/us
 import * as WebcamSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/webcam-solid.icon';
 import * as PhoneSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/phone-solid.icon';
 import * as Building2Solid from '@pega/cosmos-react-core/lib/components/Icon/icons/building-2-solid.icon';
+import PublicHolidays from './publicHolidays.json';
 
 registerIcon(
   LocationSolid,
@@ -142,16 +144,7 @@ export type TDateInfo = {
   end?: string;
 };
 
-export const publicHolidayEvents: Array<IRawEvent> = [
-  {
-    CompleteDay: true,
-    IsSerie: false,
-    StartTime: '2024-12-31T23:00:00.000Z',
-    EndTime: '2025-01-01T22:59:59.000Z',
-    Subject: 'Neujahr',
-    Type: EEventType.PUBLIC_HOLIDAY
-  }
-];
+export const publicHolidayEvents: Array<IRawEvent> = PublicHolidays as unknown as Array<IRawEvent>;
 
 export const PegaUidCalendar = (props: TCalendarProps) => {
   const {
@@ -165,6 +158,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   } = props;
 
   const [events, setEvents] = useState<Array<TEvent>>([]);
+  const [showPublicHolidays, setShowPublicHolidays] = useState(true);
   // const [workingWeek, setWorkingWeek] = useState<boolean>(false);
   const calendarRef = useRef<any | null>(null);
   const theme = useTheme();
@@ -245,12 +239,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       const startDate = moment(item.StartTime);
       const endDate = moment(item.EndTime);
-      const seriesEnd = moment(item.SerieEnd);
       const duration = moment
         // @ts-ignore
         .utc(Math.abs(moment.duration(endDate - startDate).asMilliseconds()))
         .format('HH:mm:ss');
-      const until = item.IsSerie ? seriesEnd || '2099-12-31T23:59:59Z' : endDate;
+      const until = item.IsSerie ? item.SerieEnd || '2099-12-31T23:59:59Z' : endDate;
       let freq;
       switch (item.SerieRepeat?.toLowerCase()) {
         case 'wöchentlich':
@@ -313,8 +306,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       })
       .then((response: any) => {
         if (response.data.data !== null) {
-          setRawData([...response.data.data, ...publicHolidayEvents]);
-          fillEvents([...response.data.data, ...publicHolidayEvents]);
+          setRawData([...response.data.data, ...(showPublicHolidays ? publicHolidayEvents : [])]);
+          fillEvents([...response.data.data, ...(showPublicHolidays ? publicHolidayEvents : [])]);
         }
       })
       .finally(() => setIsLoading(false));
@@ -411,8 +404,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       isMonthlyView && !obj.CompleteDay
         ? `${eventDateStr} ${eventInfo.event.title}`
         : eventInfo.event.title;
-    if (obj.Type === 'Verfügbar' && currentViewType.indexOf('Week') > 0 && !!obj.Beratungsstelle) {
-      const bTyp = obj.Beratungsstelle?.Typ || '';
+    if (
+      obj.Type === 'Verfügbar' &&
+      currentViewType.indexOf('Week') > 0 &&
+      !!obj.Beratungsstellentyp
+    ) {
+      const bTyp = obj.Beratungsstellentyp || '';
       let left;
       switch (bTyp) {
         case 'Präsenzberatung':
@@ -436,7 +433,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             left
           }}
         >
-          <span>{getTypeIcon(obj.Beratungsstelle.Typ)}</span>
+          <span>{getTypeIcon(obj.Beratungsstellentyp)}</span>
         </div>
       );
     }
@@ -594,11 +591,33 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       <Card>
         <CardHeader
           actions={
-            createClassname ? (
-              <Button variant='simple' label='Create new event' icon compact onClick={addNewEvent}>
-                <Icon name='plus' />
-              </Button>
-            ) : undefined
+            <div className='card-header-action-container'>
+              <Switch
+                className='public-holidays-switch'
+                on={showPublicHolidays}
+                onChange={() => {
+                  setShowPublicHolidays(!showPublicHolidays);
+                  fillEvents([
+                    ...(!showPublicHolidays
+                      ? rawData
+                      : rawData.filter(event => event.Type !== EEventType.PUBLIC_HOLIDAY))
+                  ]);
+                }}
+                label='Feiertage anzeigen'
+              />
+              <span className='h-spacer'>&nbsp;</span>
+              {createClassname ? (
+                <Button
+                  variant='simple'
+                  label='Create new event'
+                  icon
+                  compact
+                  onClick={addNewEvent}
+                >
+                  <Icon name='plus' />
+                </Button>
+              ) : undefined}
+            </div>
           }
         >
           <Text variant='h2'>{heading}</Text>
@@ -705,7 +724,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   rowGap: 1
                 }}
               >
-                <Text variant='primary' className='event-label'>
+                <Text variant='primary' className='public-holiday-text'>
                   Dieser Eintrag dient zu Ihrer Information. Sofern Sie vom Feiertag betroffen sind,
                   bitten wir Sie Ihre Abwesenheit eigenständig zu buchen.
                 </Text>

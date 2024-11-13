@@ -54,7 +54,8 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
   }
 
   return {
-    Beratungsstellentyp: eventType === 'Termin' ? consultationType : null,
+    Beratungsstellentyp:
+      eventType === 'Termin' || eventType === 'Verfügbar' ? consultationType : null,
     CompleteDay: Math.random() * 10 > 7, //
     EndTime: eventDates[1],
     IsSerie: Math.random() * 10 > 9, //
@@ -81,7 +82,7 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
 
 export const getData = (props: { StartDate: string; EndDate: string }) => {
   const diff = moment(props.EndDate).diff(props.StartDate, 'days');
-  const count = diff * Math.min(Math.abs(Math.random() * 5), 1);
+  const count = diff * Math.max(Math.round(Math.random() * 5), 1);
   const data = [];
   for (let i = 0; i < count; i += 1) {
     data.push(getDataItem(props));

@@ -1,0 +1,229 @@
+[
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2023-12-31T23:00:00.000Z",
+    "EndTime": "2024-01-01T22:59:59.000Z",
+    "Subject": "Neujahrstag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-01-05T23:00:00.000Z",
+    "EndTime": "2024-01-06T22:59:59.000Z",
+    "Subject": "Heilige Drei Könige",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-03-07T23:00:00.000Z",
+    "EndTime": "2024-03-08T22:59:59.000Z",
+    "Subject": "Internationaler Tag der Frauen",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-03-28T23:00:00.000Z",
+    "EndTime": "2024-03-29T22:59:59.000Z",
+    "Subject": "Karfreitag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-03-30T23:00:00.000Z",
+    "EndTime": "2024-03-31T22:59:59.000Z",
+    "Subject": "Ostersonntag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-03-31T23:00:00.000Z",
+    "EndTime": "2024-04-01T22:59:59.000Z",
+    "Subject": "Ostermontag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-04-30T23:00:00.000Z",
+    "EndTime": "2024-05-01T22:59:59.000Z",
+    "Subject": "Tag der Arbeit",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-05-08T23:00:00.000Z",
+    "EndTime": "2024-05-09T22:59:59.000Z",
+    "Subject": "Christi Himmelfahrt",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-05-18T23:00:00.000Z",
+    "EndTime": "2024-05-19T22:59:59.000Z",
+    "Subject": "Pfingstsonntag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-05-19T23:00:00.000Z",
+    "EndTime": "2024-05-20T22:59:59.000Z",
+    "Subject": "Pfingstmontag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-05-29T23:00:00.000Z",
+    "EndTime": "2024-05-30T22:59:59.000Z",
+    "Subject": "Fronleichnam",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-08-14T23:00:00.000Z",
+    "EndTime": "2024-08-15T22:59:59.000Z",
+    "Subject": "Mariä Himmelfahrt",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-09-19T23:00:00.000Z",
+    "EndTime": "2024-09-20T22:59:59.000Z",
+    "Subject": "Weltkindertag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-10-02T23:00:00.000Z",
+    "EndTime": "2024-10-03T22:59:59.000Z",
+    "Subject": "Tag der Deutschen Einheit",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-10-30T23:00:00.000Z",
+    "EndTime": "2024-10-31T22:59:59.000Z",
+    "Subject": "Reformationstag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-10-31T23:00:00.000Z",
+    "EndTime": "2024-11-01T22:59:59.000Z",
+    "Subject": "Allerheiligen",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2024-11-19T23:00:00.000Z",
+    "EndTime": "2024-11-20T22:59:59.000Z",
+    "Subject": "Buß- und Bettag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-12-24T23:00:00.000Z",
+    "EndTime": "2024-12-25T22:59:59.000Z",
+    "Subject": "1. Weihnachtsfeiertag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": true,
+    "SerieRepeat": "Jährlich",
+    "StartTime": "2024-12-25T23:00:00.000Z",
+    "EndTime": "2024-12-26T22:59:59.000Z",
+    "Subject": "2. Weihnachtsfeiertag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-04-17T23:00:00.000Z",
+    "EndTime": "2025-04-18T22:59:59.000Z",
+    "Subject": "Karfreitag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-04-19T23:00:00.000Z",
+    "EndTime": "2025-04-20T22:59:59.000Z",
+    "Subject": "Ostersonntag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-04-20T23:00:00.000Z",
+    "EndTime": "2025-04-21T22:59:59.000Z",
+    "Subject": "Ostermontag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-05-28T23:00:00.000Z",
+    "EndTime": "2025-05-29T22:59:59.000Z",
+    "Subject": "Christi Himmelfahrt",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-06-07T23:00:00.000Z",
+    "EndTime": "2025-06-08T22:59:59.000Z",
+    "Subject": "Pfingstsonntag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-06-08T23:00:00.000Z",
+    "EndTime": "2025-06-09T22:59:59.000Z",
+    "Subject": "Pfingstmontag",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-06-18T23:00:00.000Z",
+    "EndTime": "2025-06-19T22:59:59.000Z",
+    "Subject": "Fronleichnam",
+    "Type": "Feiertag"
+  },
+  {
+    "CompleteDay": true,
+    "IsSerie": false,
+    "StartTime": "2025-11-18T23:00:00.000Z",
+    "EndTime": "2025-11-19T22:59:59.000Z",
+    "Subject": "Buß- und Bettag",
+    "Type": "Feiertag"
+  }
+]

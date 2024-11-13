@@ -55,7 +55,7 @@
       "Type": "Sammel"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Telefon",
       "CompleteDay": true,
       "EndTime": "2024-10-30T11:00:00.000Z",
       "IsSerie": false,
@@ -72,7 +72,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Online",
       "CompleteDay": false,
       "EndTime": "2024-10-31T15:00:00.000Z",
       "IsSerie": false,
@@ -89,7 +89,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Online",
       "CompleteDay": true,
       "EndTime": "2024-11-04T16:30:00.000Z",
       "IsSerie": false,
@@ -117,13 +117,13 @@
       "SerieEnd": "2025-02-20T02:54:14.135Z",
       "SerieRepeat": "Jährlich",
       "StartTime": "2024-11-05T07:00:00.000Z",
-      "Subject": "Reiner Zufall",
+      "Subject": "Klara Fall",
       "Beratungsart": "Bewerbungsabgabe",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-302",
       "Type": "Termin"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Außendienststelle",
       "CompleteDay": true,
       "EndTime": "2024-11-05T09:00:00.000Z",
       "IsSerie": true,
@@ -157,7 +157,7 @@
       "Type": "Abwesend"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Präsenzberatung",
       "CompleteDay": true,
       "EndTime": "2024-11-07T10:00:00.000Z",
       "IsSerie": false,
@@ -174,7 +174,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Online",
       "CompleteDay": false,
       "EndTime": "2024-11-10T14:30:00.000Z",
       "IsSerie": false,
@@ -236,13 +236,13 @@
       "SerieEnd": "2025-01-14T16:03:42.662Z",
       "SerieRepeat": "Wöchentlich",
       "StartTime": "2024-11-11T12:30:00.000Z",
-      "Subject": "Reiner Zufall",
+      "Subject": "Klara Fall",
       "Beratungsart": "Erstberatung",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-883",
       "Type": "Termin"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Präsenzberatung",
       "CompleteDay": false,
       "EndTime": "2024-11-11T14:00:00.000Z",
       "IsSerie": false,
@@ -259,7 +259,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Außendienststelle'",
       "CompleteDay": false,
       "EndTime": "2024-11-13T16:30:00.000Z",
       "IsSerie": false,
@@ -276,7 +276,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Online",
       "CompleteDay": false,
       "EndTime": "2024-11-14T09:30:00.000Z",
       "IsSerie": false,
@@ -372,13 +372,13 @@
       "SerieEnd": "2025-03-25T05:49:21.423Z",
       "SerieRepeat": "Wöchentlich",
       "StartTime": "2024-11-28T10:30:00.000Z",
-      "Subject": "Urlaub",
+      "Subject": "Transfer",
       "Beratungsart": null,
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-354",
       "Type": "Abwesend"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Präsenzberatung",
       "CompleteDay": false,
       "EndTime": "2024-11-30T13:30:00.000Z",
       "IsSerie": false,
@@ -395,7 +395,7 @@
       "Type": "Verfügbar"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Telefon",
       "CompleteDay": false,
       "EndTime": "2024-12-02T15:00:00.000Z",
       "IsSerie": false,
@@ -446,7 +446,7 @@
       "Type": "Termin"
     },
     {
-      "Beratungsstellentyp": null,
+      "Beratungsstellentyp": "Online",
       "CompleteDay": false,
       "EndTime": "2024-12-06T10:00:00.000Z",
       "IsSerie": false,
@@ -491,7 +491,7 @@
       "SerieEnd": "2024-12-22T23:30:43.569Z",
       "SerieRepeat": "Monatlich",
       "StartTime": "2024-12-08T12:30:00.000Z",
-      "Subject": "Urlaub",
+      "Subject": "Arzttermin",
       "Beratungsart": null,
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-864",
       "Type": "Abwesend"
