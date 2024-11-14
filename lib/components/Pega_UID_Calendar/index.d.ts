@@ -46,10 +46,11 @@ export declare enum ETerminGoal {
     ApplicationSubmission = "Bewerbungsabgabe"
 }
 export declare enum EEventType {
-    Absence = "Abwesend",
-    Availability = "Verf\u00FCgbar",
-    Appointment = "Termin",
-    MassEvent = "Sammel"
+    ABSENCE = "Abwesend",
+    AVAILABILITY = "Verf\u00FCgbar",
+    APPOINTMENT = "Termin",
+    MASS_EVENT = "Sammel",
+    PUBLIC_HOLIDAY = "Feiertag"
 }
 export declare enum EBeratungsTyp {
     presence = "Pr\u00E4senzberatung",
@@ -57,46 +58,25 @@ export declare enum EBeratungsTyp {
     phone = "Telefon",
     office = "Au\u00DFendienststelle"
 }
-export interface IBeratungsstelle {
-    Typ: EBeratungsTyp;
-}
-export interface ITerminTyp {
-    Order: 1;
-    Typ: 'Präsenzberatung';
-}
-export interface IContact {
-    FirstName: string;
-    FullName: string;
-    LastName: string;
-    Salutation: string;
-}
-export interface ITermin {
-    pxObjClass: string;
-    TerminTyp: Array<ITerminTyp>;
-    Beratungsart: ETerminGoal;
-    Contact: IContact;
-}
-export interface ISammeltermin {
-    pxObjClass: string;
-    Bezeichnung: string;
-    Ortsadresse: string;
-    Kapazitaet: number;
-    GenutzteKapazitat: number;
-}
 export interface IRawEvent {
-    Beratungsstelle: IBeratungsstelle;
-    CompleteDay: boolean;
+    pyGUID?: string;
+    Address?: string;
+    AuthorID?: string;
+    Capacity?: string;
+    City?: string;
     EndTime: string;
-    IsSerie: boolean;
-    Sammeltermin: ISammeltermin | null;
-    SerieEnd: string;
-    SerieRepeat: string;
+    OrganisationseinheitID?: string;
     StartTime: string;
-    Subject: string;
-    Termin: ITermin | null;
-    TerminID: string;
+    TerminID?: string;
     Type: EEventType;
-    Weekday: string;
+    UtilizedCapacity?: string;
+    Beratungsart?: ETerminGoal;
+    Beratungsstellentyp?: EBeratungsTyp;
+    CompleteDay?: boolean;
+    IsSerie?: boolean;
+    SerieEnd?: string;
+    SerieRepeat?: string;
+    Subject: string;
 }
 export declare type TDateInfo = {
     view: {
@@ -106,6 +86,7 @@ export declare type TDateInfo = {
     start?: string;
     end?: string;
 };
+export declare const publicHolidayEvents: Array<IRawEvent>;
 export declare const PegaUidCalendar: (props: TCalendarProps) => JSX.Element;
 declare const _default: (props: TCalendarProps) => JSX.Element;
 export default _default;

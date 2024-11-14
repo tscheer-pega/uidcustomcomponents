@@ -7,46 +7,21 @@ export declare const getData: (props: {
     pxObjClass: string;
     resultCount: number;
     data: {
-        Beratungsstelle: {
-            Typ: string;
-        };
+        Beratungsstellentyp: string | null;
         CompleteDay: boolean;
         EndTime: string;
         IsSerie: boolean;
-        Sammeltermin: {
-            pxObjClass: string;
-            Bezeichnung: string;
-            Ort: string;
-            Kapazitaet: number;
-            GenutzteKapazitat: number;
-            Ortsadresse: string;
-        } | null;
+        Capacity: number | null;
+        UtilizedCapacity: number | null;
+        Address: string | null;
+        City: string | null;
         SerieEnd: string | null;
         SerieRepeat: string;
         StartTime: string;
         Subject: string;
-        Termin: {
-            pxObjClass: string;
-            TerminTyp: {
-                Order: number;
-                Typ: string;
-            }[];
-            Beratungsart: string;
-            Contact: {
-                FirstName: string;
-                FullName: string;
-                LastName: string;
-                Salutation: string;
-            };
-        } | {
-            pxObjClass: string;
-            TerminTyp?: undefined;
-            Beratungsart?: undefined;
-            Contact?: undefined;
-        };
+        Beratungsart: string | null;
         TerminID: string;
         Type: string;
-        Weekday: number;
     }[];
 };
 //# sourceMappingURL=helpers.d.ts.map

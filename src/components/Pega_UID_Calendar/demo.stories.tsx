@@ -1,7 +1,7 @@
 import type { StoryObj } from '@storybook/react';
 import PegaUidCalendar from './index';
 import { getData } from './helpers';
-import exampleData from './exampleData.json';
+import exampleData from './exampleData.stories.json';
 
 export default {
   title: 'Widgets/Calendar',

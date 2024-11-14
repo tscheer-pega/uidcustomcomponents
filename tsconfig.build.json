@@ -1,11 +1,18 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./src/**/*.js", "./src/**/*.jsx"],
+  "include": [
+    "./src/**/*.ts",
+    "./src/**/*.tsx",
+    "./src/**/*.js",
+    "./src/**/*.jsx",
+    "./src/**/*.json"
+  ],
   "exclude": [
     "./src/**/*.stories.ts",
     "./src/**/*.stories.tsx",
     "./src/**/*.stories.js",
-    "./src/**/*.stories.jsx"
+    "./src/**/*.stories.jsx",
+    "./src/**/*.stories.json"
   ],
   "compilerOptions": {
     "noEmit": false,
