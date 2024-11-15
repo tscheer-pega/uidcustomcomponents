@@ -22,7 +22,8 @@ import {
   Grid,
   CardFooter,
   registerIcon,
-  Switch
+  Switch,
+  MenuButton
 } from '@pega/cosmos-react-core';
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
@@ -65,6 +66,7 @@ export type TCalendarProps = {
   heading?: string;
   dataPage?: string;
   createClassname?: string;
+  createMassClassname?: string;
   defaultViewMode?: 'Monthly' | 'Weekly' | 'Daily';
   nowIndicator?: boolean;
   weekendIndicator?: boolean;
@@ -151,6 +153,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     heading = '',
     dataPage = '',
     createClassname = '',
+    createMassClassname = '',
     defaultViewMode = 'Monthly',
     nowIndicator = true,
     weekendIndicator = true,
@@ -365,9 +368,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       : dateTime.toLocaleTimeString(locale, { ...options, hour: '2-digit', minute: '2-digit' });
   };
 
-  const addNewEvent = () => {
-    if (createClassname) {
-      getPConnect().getActionsApi().createWork(createClassname, {
+  const addNewEvent = (className = createClassname) => {
+    if (className) {
+      getPConnect().getActionsApi().createWork(className, {
         openCaseViewAfterCreate: false
       });
     }
@@ -573,11 +576,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const openPreviewEventOnClick = () => {
     const eventInfoObj = eventInPopover.eventInfo?._def.extendedProps.item;
-    getPConnect()
-      .getActionsApi()
-      .showCasePreview(eventInfoObj.TerminID, {
-        caseClassName: eventInfoObj.Sammeltermin.pxObjClass || eventInfoObj.Termin.pxObjClass
-      });
+    getPConnect().getActionsApi().showCasePreview(eventInfoObj.TerminID);
   };
 
   const calTable = document.body.querySelector('.fc');
@@ -607,15 +606,21 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               />
               <span className='h-spacer'>&nbsp;</span>
               {createClassname ? (
-                <Button
-                  variant='simple'
-                  label='Create new event'
-                  icon
-                  compact
-                  onClick={addNewEvent}
-                >
-                  <Icon name='plus' />
-                </Button>
+                <MenuButton
+                  text=''
+                  variant='secondary'
+                  icon='plus'
+                  iconOnly
+                  showArrow={false}
+                  menu={{
+                    mode: 'action',
+                    items: [
+                      { id: createClassname, primary: 'Neuer Termin' },
+                      { id: createMassClassname, primary: 'Neuer Sammeltermin' }
+                    ],
+                    onItemClick: a => addNewEvent(a)
+                  }}
+                />
               ) : undefined}
             </div>
           }
@@ -870,7 +875,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 <hr className='solid'></hr>
                 <CardFooter justify='center'>
                   <Button variant='primary' compact onClick={openPreviewEventOnClick}>
-                    Open
+                    Öffnen
                   </Button>
                 </CardFooter>
               </>

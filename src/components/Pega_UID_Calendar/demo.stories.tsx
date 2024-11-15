@@ -138,6 +138,7 @@ export const Default: Story = {
   args: {
     heading: 'Heading',
     createClassname: 'Work-Class1',
+    createMassClassname: 'Work-Class2',
     defaultViewMode: 'Monthly',
     nowIndicator: true,
     weekendIndicator: true,
