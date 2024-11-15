@@ -227,14 +227,14 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.blue.dark;
           break;
         case EEventType.ABSENCE:
-          color = theme.base.colors.yellow.light;
+          color = theme.base.colors.orange.dark;
           break;
         case EEventType.PUBLIC_HOLIDAY:
           color = theme.base.colors.purple.dark;
           break;
         default:
         case EEventType.MASS_EVENT:
-          color = theme.base.colors.orange.dark;
+          color = theme.base.colors.yellow.light;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -708,7 +708,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         portal={false}
         arrow
         showDelay='short'
-        placement='right'
+        placement='auto'
         onMouseEnter={handlePopoverMouseEnter}
         onMouseLeave={handlePopoverMouseLeave}
         className='event-popover'

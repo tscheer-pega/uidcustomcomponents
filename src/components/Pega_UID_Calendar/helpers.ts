@@ -61,7 +61,7 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
     IsSerie: Math.random() * 10 > 9, //
     Capacity: eventType === 'Sammel' ? capacity : null,
     UtilizedCapacity:
-      eventType === 'Sammel' ? Math.max(Math.round(Math.random() * 1000), capacity) : null,
+      eventType === 'Sammel' ? Math.min(Math.round(Math.random() * 1000), capacity) : null,
     Address: eventType === 'Sammel' ? 'Max-Joseph-Platz 2, 80539 München' : null,
     City: eventType === 'Sammel' ? 'München' : null,
     SerieEnd: Math.random() > 0.9 ? null : endDate,

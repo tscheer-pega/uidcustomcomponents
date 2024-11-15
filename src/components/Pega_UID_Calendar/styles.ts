@@ -42,7 +42,7 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .event-content {
       padding: 0.25rem;
     }
-    .event-content.Abwesend,
+    .event-content.Sammel,
     .event-content.Verfügbar {
       color: #333;
     }
