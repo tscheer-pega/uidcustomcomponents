@@ -118,6 +118,23 @@ export enum EBeratungsTyp {
   office = 'Außendienststelle'
 }
 
+export interface IBeratungsstelle {
+  Typ: EBeratungsTyp;
+}
+
+export interface IAdresse {
+  Ort: string;
+  PLZ: string;
+  Strasse: string;
+  Hausnummer: string;
+}
+
+export interface IOrganisationseinheit {
+  Addresse: IAdresse;
+  Name: string; // Berlin Mitte
+  pzInsKey: string;
+}
+
 export interface IRawEvent {
   pyGUID?: string; // UID
   Address?: string; // Address of Appointment
@@ -137,6 +154,8 @@ export interface IRawEvent {
   SerieEnd?: string; // End date of series
   SerieRepeat?: string; // Defines interval of repeating
   Subject: string; // Title
+  Beratungsstelle?: IBeratungsstelle;
+  IOrganisationseinheit?: IOrganisationseinheit;
 }
 
 export type TDateInfo = {

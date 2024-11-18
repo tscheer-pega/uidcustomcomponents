@@ -11,6 +11,7 @@ export declare type TCalendarProps = {
     heading?: string;
     dataPage?: string;
     createClassname?: string;
+    createMassClassname?: string;
     defaultViewMode?: 'Monthly' | 'Weekly' | 'Daily';
     nowIndicator?: boolean;
     weekendIndicator?: boolean;
