@@ -707,6 +707,18 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     (calTable as HTMLElement).style.setProperty('opacity', isLoading ? '0.25' : '1');
   }
 
+  const menuActionItems = [];
+
+  if (interactionId) {
+    menuActionItems.push({ id: interactionId, primary: 'Neuer Beratungstermin' });
+  }
+  if (createClassname) {
+    menuActionItems.push({ id: createClassname, primary: 'Neuer Termin' });
+  }
+  if (createMassClassname) {
+    menuActionItems.push({ id: createMassClassname, primary: 'Neuer Sammeltermin' });
+  }
+
   return (
     <StyledCalendarWrapper theme={theme}>
       <GlobalStyles theme={theme} />
@@ -728,23 +740,18 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 label='Feiertage anzeigen'
               />
               <span className='h-spacer'>&nbsp;</span>
-              {createClassname ? (
-                <MenuButton
-                  text=''
-                  variant='secondary'
-                  icon='plus'
-                  iconOnly
-                  showArrow={false}
-                  menu={{
-                    mode: 'action',
-                    items: [
-                      { id: createClassname, primary: 'Neuer Termin' },
-                      { id: createMassClassname, primary: 'Neuer Sammeltermin' }
-                    ],
-                    onItemClick: a => addNewEvent(a)
-                  }}
-                />
-              ) : undefined}
+              <MenuButton
+                text=''
+                variant='secondary'
+                icon='plus'
+                iconOnly
+                showArrow={false}
+                menu={{
+                  mode: 'action',
+                  items: menuActionItems,
+                  onItemClick: a => addNewEvent(a)
+                }}
+              />
             </div>
           }
         >

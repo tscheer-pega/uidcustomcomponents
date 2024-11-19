@@ -160,6 +160,7 @@ export const Default: Story = {
     heading: 'Heading',
     createClassname: 'Work-Class1',
     createMassClassname: 'Work-Class2',
+    interactionId: 'InteractionId',
     defaultViewMode: 'Monthly',
     nowIndicator: true,
     weekendIndicator: true,
