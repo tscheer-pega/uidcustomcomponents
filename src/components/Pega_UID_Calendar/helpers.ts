@@ -58,7 +58,7 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
       eventType === 'Termin' || eventType === 'Verfügbar' ? consultationType : null,
     CompleteDay: Math.random() * 10 > 7, //
     EndTime: eventDates[1],
-    IsSerie: Math.random() * 10 > 9, //
+    IsSerie: eventType !== 'Termin' ? Math.random() * 10 > 9 : false, //
     Capacity: eventType === 'Sammel' ? capacity : null,
     UtilizedCapacity:
       eventType === 'Sammel' ? Math.min(Math.round(Math.random() * 1000), capacity) : null,

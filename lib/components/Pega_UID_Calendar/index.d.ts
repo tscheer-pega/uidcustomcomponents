@@ -59,6 +59,20 @@ export declare enum EBeratungsTyp {
     phone = "Telefon",
     office = "Au\u00DFendienststelle"
 }
+export interface IBeratungsstelle {
+    Typ: EBeratungsTyp;
+}
+export interface IAdresse {
+    Ort: string;
+    PLZ: string;
+    Strasse: string;
+    Hausnummer: string;
+}
+export interface IOrganisationseinheit {
+    Addresse: IAdresse;
+    Name: string;
+    pzInsKey: string;
+}
 export interface IRawEvent {
     pyGUID?: string;
     Address?: string;
@@ -78,6 +92,8 @@ export interface IRawEvent {
     SerieEnd?: string;
     SerieRepeat?: string;
     Subject: string;
+    Beratungsstelle?: IBeratungsstelle;
+    IOrganisationseinheit?: IOrganisationseinheit;
 }
 export declare type TDateInfo = {
     view: {

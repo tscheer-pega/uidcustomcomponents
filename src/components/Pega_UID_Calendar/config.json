@@ -23,7 +23,17 @@
     },
     {
       "name": "createClassname",
-      "label": "Create case className",
+      "label": "Create case className for Termin",
+      "format": "TEXT"
+    },
+    {
+      "name": "createMassClassname",
+      "label": "Create case className for Sammeltermine",
+      "format": "TEXT"
+    },
+    {
+      "name": "interactionId",
+      "label": "Interaction ID",
       "format": "TEXT"
     },
     {
@@ -58,7 +68,6 @@
       "format": "BOOLEAN",
       "defaultValue": true
     }
-
   ],
   "defaultConfig": {
     "heading": "Calendar",

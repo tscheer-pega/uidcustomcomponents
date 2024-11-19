@@ -142,7 +142,7 @@
     {
       "Beratungsstellentyp": null,
       "CompleteDay": false,
-      "EndTime": "2024-11-05T15:00:00.000Z",
+      "EndTime": "2024-11-05T12:00:00.000Z",
       "IsSerie": true,
       "Capacity": null,
       "UtilizedCapacity": null,
@@ -150,8 +150,8 @@
       "City": null,
       "SerieEnd": "2025-02-17T02:01:50.853Z",
       "SerieRepeat": "Wöchentlich",
-      "StartTime": "2024-11-05T15:00:00.000Z",
-      "Subject": "Urlaub",
+      "StartTime": "2024-11-05T08:00:00.000Z",
+      "Subject": "Schulung",
       "Beratungsart": null,
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-277",
       "Type": "Abwesend"
@@ -372,7 +372,7 @@
       "SerieEnd": "2025-03-25T05:49:21.423Z",
       "SerieRepeat": "Wöchentlich",
       "StartTime": "2024-11-28T10:30:00.000Z",
-      "Subject": "Abwesend",
+      "Subject": "Urlaub",
       "Beratungsart": null,
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-354",
       "Type": "Abwesend"
@@ -474,7 +474,7 @@
       "SerieEnd": "2025-01-20T05:13:42.429Z",
       "SerieRepeat": "Monatlich",
       "StartTime": "2024-12-07T10:30:00.000Z",
-      "Subject": "Reiner Zufall",
+      "Subject": "Hans Zimmer",
       "Beratungsart": "Bewerbungsabgabe",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-142",
       "Type": "Termin"

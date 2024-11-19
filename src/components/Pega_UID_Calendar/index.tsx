@@ -67,6 +67,7 @@ export type TCalendarProps = {
   dataPage?: string;
   createClassname?: string;
   createMassClassname?: string;
+  interactionId?: string;
   defaultViewMode?: 'Monthly' | 'Weekly' | 'Daily';
   nowIndicator?: boolean;
   weekendIndicator?: boolean;
