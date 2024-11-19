@@ -28,7 +28,7 @@
     },
     {
       "name": "createMassClassname",
-      "label": "Create case className for Sammeltermine",
+      "label": "Create case className for Sammel",
       "format": "TEXT"
     },
     {

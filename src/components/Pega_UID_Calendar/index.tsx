@@ -178,11 +178,15 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     dataPage = '',
     createClassname = '',
     createMassClassname = '',
+    interactionId = '',
     defaultViewMode = 'Monthly',
     nowIndicator = true,
     weekendIndicator = true,
     getPConnect
   } = props;
+
+  // eslint-disable-next-line no-console
+  console.log('PegaUidCalendar->interactionId', interactionId);
 
   const [events, setEvents] = useState<Array<TEvent>>([]);
   const [showPublicHolidays, setShowPublicHolidays] = useState(true);
@@ -270,11 +274,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 }
               })
               .then((response: any) => {
+                // eslint-disable-next-line no-console
                 console.log(response);
                 dismiss();
                 modalProps.closeInitialModal();
               })
               .catch((error: any) => {
+                // eslint-disable-next-line no-console
                 console.log(error);
                 dismiss();
                 modalProps.closeInitialModal();

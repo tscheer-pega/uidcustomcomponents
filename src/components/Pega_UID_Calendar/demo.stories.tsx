@@ -84,6 +84,27 @@ const setPCore = () => {
           }, 500)
         );
       }
+    }),
+    getRestClient: () => ({
+      invokeRestApi: (
+        action: string,
+        props: {
+          queryPayload: {
+            data_view_ID: string;
+          };
+          body: {
+            data: {
+              StartTime: string;
+              EndTime: string;
+              pyGUID: string;
+            };
+          };
+        }
+      ) => {
+        // eslint-disable-next-line no-console
+        console.log('getRestClient->invokeRestApi', action, props);
+        return new Promise(resolve => resolve({ success: true }));
+      }
     })
   };
 };
