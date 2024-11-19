@@ -5,6 +5,7 @@ import momentPlugin from '@fullcalendar/moment';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import rrulePlugin from '@fullcalendar/rrule';
+import interactionPlugin from '@fullcalendar/interaction';
 import moment from 'moment';
 import {
   withConfiguration,
@@ -18,6 +19,9 @@ import {
   useTheme,
   StatusProps,
   Popover,
+  Modal,
+  useModalContext,
+  useModalManager,
   Flex,
   Grid,
   CardFooter,
@@ -207,6 +211,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
+  const { create } = useModalManager();
+
   const getDefaultView = (): EViewType => {
     if (dateInfo?.view?.type) {
       /* If the context is persisted in session storage - then used this info as default view */
@@ -231,12 +237,79 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [currentViewType, setCurrentViewType] = useState<EViewType>(getDefaultView());
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
 
+  const ConfirmationModal = (modalProps: any) => {
+    const { dismiss } = useModalContext();
+    const confirmationModalActions = (
+      <>
+        <Button
+          onClick={() => {
+            modalProps.revert();
+            dismiss();
+          }}
+        >
+          No
+        </Button>
+        <Button
+          variant='primary'
+          onClick={() => {
+            // Handle API call to update event
+            const data = {
+              StartTime: modalProps.event.start.toISOString(),
+              EndTime: modalProps.event.end.toISOString(),
+              // publicId: modalProps.event._def.publicId,
+              pyGUID: modalProps.event._def.extendedProps.item.pyGUID
+            };
+
+            (window as any).PCore.getRestClient()
+              .invokeRestApi('updateDataObject', {
+                queryPayload: {
+                  data_view_ID: 'D_TimeslotMoveSavable'
+                },
+                body: {
+                  data
+                }
+              })
+              .then((response: any) => {
+                console.log(response);
+                dismiss();
+                modalProps.closeInitialModal();
+              })
+              .catch((error: any) => {
+                console.log(error);
+                dismiss();
+                modalProps.closeInitialModal();
+              });
+          }}
+        >
+          Yes
+        </Button>
+      </>
+    );
+
+    return (
+      <Modal
+        heading='Sie sind dabei einen bestehenden Kalendereintrag zu verschieben.'
+        actions={confirmationModalActions}
+        dismissible={false}
+        autoWidth
+        stretch
+      >
+        <Text>
+          Dies löst Folgeprozesse wie das Senden einer E-Mail an den Interessenten aus. Möchten Sie
+          fortfahren?
+        </Text>
+      </Modal>
+    );
+  };
+
   const fillEvents = (data: Array<IRawEvent> = rawData) => {
     setEvents([]);
     const tmpevents: Array<TEvent> = [];
     (data || rawData).forEach((item: IRawEvent) => {
       let color: string;
       let display = 'block';
+      let editable = false;
+      let dragScroll = false;
       let title = item.Subject;
       switch (item.Type) {
         case EEventType.AVAILABILITY: {
@@ -248,6 +321,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         }
         case EEventType.APPOINTMENT:
           color = theme.base.colors.blue.dark;
+          editable = true;
+          dragScroll = true;
           break;
         case EEventType.ABSENCE:
           color = theme.base.colors.orange.dark;
@@ -258,6 +333,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         default:
         case EEventType.MASS_EVENT:
           color = theme.base.colors.yellow.light;
+          editable = true;
+          dragScroll = true;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -295,6 +372,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         end: item.EndTime,
         display,
         color,
+        editable,
+        dragScroll,
         allDay: item.CompleteDay,
         item
       };
@@ -540,6 +619,24 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     );
   };
 
+  const handleEventDragStart = () => {
+    // Remove popover
+    setEventInPopover({
+      eventEl: null,
+      eventInfo: null,
+      inPopover: false,
+      inEl: false
+    });
+  };
+
+  const handleEventDrop = (eventDropInfo: any) => {
+    create(
+      ConfirmationModal,
+      { revert: eventDropInfo.revert, event: eventDropInfo.event, dataPage },
+      { alert: true }
+    );
+  };
+
   const handleDateChange = (objInfo: any) => {
     const calendar = objInfo.view.calendar;
     setTimeout(() => fillEvents(), 250);
@@ -673,9 +770,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               center: 'title',
               right: `MonthlyView weeklyView workingWeekView dailyView`
             }}
-            plugins={[rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin]}
+            plugins={[rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin, interactionPlugin]}
             initialView={currentViewType}
             selectable
+            droppable
             nowIndicator={nowIndicator}
             weekends={weekendIndicator}
             expandRows
@@ -690,6 +788,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             eventClick={handleEventClick}
             eventMouseEnter={handleEventMouseEnter}
             eventMouseLeave={handleEventMouseLeave}
+            eventDragStart={handleEventDragStart}
+            eventDrop={handleEventDrop}
             datesSet={handleDateChange}
             eventTextColor='#fff'
             eventTimeFormat={{
