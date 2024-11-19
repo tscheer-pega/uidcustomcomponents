@@ -476,7 +476,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const addNewEvent = (className = createClassname) => {
     if (className) {
       getPConnect().getActionsApi().createWork(className, {
-        openCaseViewAfterCreate: false
+        openCaseViewAfterCreate: true
       });
     }
   };
