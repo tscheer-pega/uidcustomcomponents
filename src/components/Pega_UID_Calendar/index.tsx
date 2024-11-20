@@ -185,9 +185,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     getPConnect
   } = props;
 
-  // eslint-disable-next-line no-console
-  console.log('PegaUidCalendar->interactionId', interactionId);
-
   const [events, setEvents] = useState<Array<TEvent>>([]);
   const [showPublicHolidays, setShowPublicHolidays] = useState(true);
   // const [workingWeek, setWorkingWeek] = useState<boolean>(false);
