@@ -251,7 +251,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             dismiss();
           }}
         >
-          No
+          Nein
         </Button>
         <Button
           variant='primary'
@@ -287,20 +287,22 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               });
           }}
         >
-          Yes
+          Ja
         </Button>
       </>
     );
 
     return (
       <Modal
-        heading='Sie sind dabei einen bestehenden Kalendereintrag zu verschieben.'
+        heading='Verschiebung eines bestehenden Kalendereintrags'
         actions={confirmationModalActions}
         dismissible={false}
         autoWidth
         stretch
       >
         <Text>
+          Sie sind dabei einen bestehenden Kalendereintrag zu verschieben.
+          <br />
           Dies löst Folgeprozesse wie das Senden einer E-Mail an den Interessenten aus. Möchten Sie
           fortfahren?
         </Text>
