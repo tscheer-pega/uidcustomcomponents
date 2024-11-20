@@ -27,7 +27,8 @@ import {
   CardFooter,
   registerIcon,
   Switch,
-  MenuButton
+  MenuButton,
+  useToaster
 } from '@pega/cosmos-react-core';
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
@@ -238,6 +239,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [currentViewType, setCurrentViewType] = useState<EViewType>(getDefaultView());
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
 
+  const toaster = useToaster();
+  const pushToaster = (message: string) => {
+    toaster.push({
+      content: message
+    });
+  };
+
   const ConfirmationModal = (modalProps: any) => {
     const { dismiss } = useModalContext();
     const confirmationModalActions = (
@@ -257,7 +265,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             const data = {
               StartTime: modalProps.event.start.toISOString(),
               EndTime: modalProps.event.end.toISOString(),
-              // publicId: modalProps.event._def.publicId,
               pyGUID: modalProps.event._def.extendedProps.item.pyGUID
             };
 
@@ -270,16 +277,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   data
                 }
               })
-              .then((response: any) => {
-                // eslint-disable-next-line no-console
-                console.log(response);
-                dismiss();
+              .then(() => {
+                pushToaster('Termin erfolgreich verschoben');
               })
-              .catch((error: any) => {
-                // eslint-disable-next-line no-console
-                console.log(error);
-                dismiss();
+              .catch(() => {
+                pushToaster('Fehler beim Verschieben des Termins');
               });
+            dismiss();
           }}
         >
           Ja
@@ -504,8 +508,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     const def = eventInfo.event._def;
     const obj = def.extendedProps.item;
     const isMonthlyView = currentViewType === EViewType.Month;
-    let eventDateStr = `${getDateTimeFromIsoString(obj.StartTime, EDateTimeType.time)}`;
-    eventDateStr += `-${getDateTimeFromIsoString(obj.EndTime, EDateTimeType.time)}`;
+    let eventDateStr = `${getDateTimeFromIsoString(eventInfo.event.startStr, EDateTimeType.time)}`;
+    eventDateStr += `-${getDateTimeFromIsoString(eventInfo.event.endStr, EDateTimeType.time)}`;
     const eventLabel =
       isMonthlyView && !obj.CompleteDay
         ? `${eventDateStr} ${eventInfo.event.title}`
@@ -913,7 +917,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 />
                 <Text variant='primary' className='event-label'>
                   {getDateTimeFromIsoString(
-                    eventInPopover.eventInfo?._def.extendedProps.item.StartTime,
+                    eventInPopover.eventInfo?.startStr,
                     EDateTimeType.date,
                     {
                       weekday: 'long',
@@ -937,14 +941,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 ) : (
                   <Text variant='primary' className='event-label'>
                     {getDateTimeFromIsoString(
-                      eventInPopover.eventInfo?._def.extendedProps.item.StartTime,
+                      eventInPopover.eventInfo?.startStr,
                       EDateTimeType.time
                     )}
                     {' - '}
-                    {getDateTimeFromIsoString(
-                      eventInPopover.eventInfo?._def.extendedProps.item.EndTime,
-                      EDateTimeType.time
-                    )}
+                    {getDateTimeFromIsoString(eventInPopover.eventInfo?.endStr, EDateTimeType.time)}
                   </Text>
                 )}
 
