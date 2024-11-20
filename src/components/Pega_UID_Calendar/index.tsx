@@ -473,10 +473,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       : dateTime.toLocaleTimeString(locale, { ...options, hour: '2-digit', minute: '2-digit' });
   };
 
-  const addNewEvent = (className = createClassname) => {
+  const addNewEvent = (className: string) => {
     if (className) {
       getPConnect().getActionsApi().createWork(className, {
-        openCaseViewAfterCreate: true
+        openCaseViewAfterCreate: true,
+        interactionId
       });
     }
   };
@@ -709,9 +710,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const menuActionItems = [];
 
-  if (interactionId) {
-    menuActionItems.push({ id: interactionId, primary: 'Neuer Beratungstermin' });
-  }
   if (createClassname) {
     menuActionItems.push({ id: createClassname, primary: 'Neuer Termin' });
   }
