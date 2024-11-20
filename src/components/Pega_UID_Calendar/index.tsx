@@ -274,13 +274,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 // eslint-disable-next-line no-console
                 console.log(response);
                 dismiss();
-                modalProps.closeInitialModal();
               })
               .catch((error: any) => {
                 // eslint-disable-next-line no-console
                 console.log(error);
                 dismiss();
-                modalProps.closeInitialModal();
               });
           }}
         >
@@ -625,7 +623,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     );
   };
 
-  const handleEventDragStart = () => {
+  const handleEventUpdateStart = () => {
     // Remove popover
     setEventInPopover({
       eventEl: null,
@@ -635,10 +633,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     });
   };
 
-  const handleEventDrop = (eventDropInfo: any) => {
+  const handleEventUpdate = (eventUpdateInfo: any) => {
     create(
       ConfirmationModal,
-      { revert: eventDropInfo.revert, event: eventDropInfo.event, dataPage },
+      { revert: eventUpdateInfo.revert, event: eventUpdateInfo.event, dataPage },
       { alert: true }
     );
   };
@@ -798,8 +796,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             eventClick={handleEventClick}
             eventMouseEnter={handleEventMouseEnter}
             eventMouseLeave={handleEventMouseLeave}
-            eventDragStart={handleEventDragStart}
-            eventDrop={handleEventDrop}
+            eventDragStart={handleEventUpdateStart}
+            eventResizeStart={handleEventUpdateStart}
+            eventDrop={handleEventUpdate}
+            eventResizeStop={handleEventUpdate}
             datesSet={handleDateChange}
             eventTextColor='#fff'
             eventTimeFormat={{
