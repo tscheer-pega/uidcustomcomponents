@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import type { CalendarApi, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
+import { CalendarApi, DateSelectArg, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
 import FullCalendar from '@fullcalendar/react';
 import momentPlugin from '@fullcalendar/moment';
 import dayGridPlugin from '@fullcalendar/daygrid';
@@ -106,7 +106,8 @@ export enum EDateTimeType {
 export enum ETerminGoal {
   FirstContact = 'Erstberatung',
   FollowUp = 'Folgeberatung',
-  ApplicationSubmission = 'Bewerbungsabgabe'
+  ApplicationSubmission = 'Bewerbungsabgabe',
+  _TMP_ = 'Temporär'
 }
 
 export enum EEventType {
@@ -304,6 +305,70 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           <br />
           Dies löst Folgeprozesse wie das Senden einer E-Mail an den Interessenten aus. Möchten Sie
           fortfahren?
+        </Text>
+      </Modal>
+    );
+  };
+
+  const CreateModal = (modalProps: any) => {
+    const { dismiss } = useModalContext();
+    const {
+      info: { start, end }
+    } = modalProps;
+    const tmpItem = {
+      id: `${Math.random()}`,
+      color: theme.base.colors.gray.dark,
+      display: 'block',
+      start: start.toISOString(),
+      end: end.toISOString(),
+      title: 'Neuer Termin',
+      editable: false,
+      item: {
+        Type: EEventType.APPOINTMENT,
+        Beratungsart: ETerminGoal._TMP_
+      }
+    };
+    const createModalActions = (
+      <>
+        <Button
+          onClick={() => {
+            dismiss();
+          }}
+        >
+          Nein
+        </Button>
+        <Button
+          variant='primary'
+          onClick={() => {
+            setEvents([...events, tmpItem]);
+            // TODO: Update API call to create new event
+            /*
+            getPConnect().getActionsApi().createWork(createClassname, {
+              openCaseViewAfterCreate: true,
+              interactionId,
+              start: start.toISOString(),
+              end: end.toISOString()
+            });
+             */
+            dismiss();
+          }}
+        >
+          Ja
+        </Button>
+      </>
+    );
+
+    return (
+      <Modal
+        heading='Neuen Termin erstellen'
+        actions={createModalActions}
+        dismissible={false}
+        autoWidth
+        stretch
+      >
+        <Text>
+          Termin am {moment(start).format('DD.MM.YYYY')} von {moment(start).format('H:mm')} Uhr bis{' '}
+          {moment(end).format('H:mm')} Uhr erstellen?
         </Text>
       </Modal>
     );
@@ -704,6 +769,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     getPConnect().getActionsApi().showCasePreview(eventInfoObj.TerminID);
   };
 
+  const handleSelect = (info: DateSelectArg) => {
+    create(CreateModal, { info, dataPage }, { alert: true });
+  };
+
   const calTable = document.body.querySelector('.fc');
   if (calTable) {
     (calTable as HTMLElement).style.setProperty('opacity', isLoading ? '0.25' : '1');
@@ -738,19 +807,23 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 }}
                 label='Feiertage anzeigen'
               />
-              <span className='h-spacer'>&nbsp;</span>
-              <MenuButton
-                text=''
-                variant='secondary'
-                icon='plus'
-                iconOnly
-                showArrow={false}
-                menu={{
-                  mode: 'action',
-                  items: menuActionItems,
-                  onItemClick: a => addNewEvent(a)
-                }}
-              />
+              {menuActionItems.length > 0 && (
+                <>
+                  <span className='h-spacer'>&nbsp;</span>
+                  <MenuButton
+                    text=''
+                    variant='secondary'
+                    icon='plus'
+                    iconOnly
+                    showArrow={false}
+                    menu={{
+                      mode: 'action',
+                      items: menuActionItems,
+                      onItemClick: a => addNewEvent(a)
+                    }}
+                  />
+                </>
+              )}
             </div>
           }
         >
@@ -805,6 +878,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             eventDrop={handleEventUpdate}
             eventResizeStop={handleEventUpdate}
             datesSet={handleDateChange}
+            select={handleSelect}
             eventTextColor='#fff'
             eventTimeFormat={{
               hour: 'numeric',
