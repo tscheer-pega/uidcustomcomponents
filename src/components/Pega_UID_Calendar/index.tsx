@@ -282,6 +282,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 pushToaster('Termin erfolgreich verschoben');
               })
               .catch(() => {
+                modalProps.revert();
                 pushToaster('Fehler beim Verschieben des Termins');
               });
             dismiss();
