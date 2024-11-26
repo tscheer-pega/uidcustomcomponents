@@ -34,7 +34,9 @@
     {
       "name": "interactionId",
       "label": "Interaction ID",
-      "format": "TEXT"
+      "format": "PROPERTY",
+      "key": "interactionId",
+      "match": "propertyRef"
     },
     {
       "name": "defaultViewMode",

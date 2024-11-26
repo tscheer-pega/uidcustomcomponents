@@ -542,9 +542,25 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const addNewEvent = (className: string) => {
     if (className) {
+      if (interactionId) {
+        getPConnect()
+          .getActionsApi()
+          .createWork(className, {
+            openCaseViewAfterCreate: true,
+            interactionId,
+            containerName: 'workarea',
+            flowType: 'pyStartCase',
+            skipBrowserSemanticUrlUpdate: true,
+            startingFields: {
+              InteractionId: interactionId,
+              InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+              cxContextType: 'Case'
+            },
+            viewType: 'form'
+          });
+      }
       getPConnect().getActionsApi().createWork(className, {
-        openCaseViewAfterCreate: true,
-        interactionId
+        openCaseViewAfterCreate: true
       });
     }
   };
