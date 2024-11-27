@@ -1,4 +1,4 @@
-import type { CalendarApi } from '@fullcalendar/core';
+import { CalendarApi } from '@fullcalendar/core';
 import './create-nonce';
 export declare type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
 export declare enum EViewType {
@@ -45,7 +45,8 @@ export declare enum EDateTimeType {
 export declare enum ETerminGoal {
     FirstContact = "Erstberatung",
     FollowUp = "Folgeberatung",
-    ApplicationSubmission = "Bewerbungsabgabe"
+    ApplicationSubmission = "Bewerbungsabgabe",
+    _TMP_ = "Tempor\u00E4r"
 }
 export declare enum EEventType {
     ABSENCE = "Abwesend",

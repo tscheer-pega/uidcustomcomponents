@@ -28,7 +28,8 @@ import {
   registerIcon,
   Switch,
   MenuButton,
-  useToaster
+  useToaster,
+  ExpandCollapse
 } from '@pega/cosmos-react-core';
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
@@ -239,6 +240,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const [currentViewType, setCurrentViewType] = useState<EViewType>(getDefaultView());
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
+  const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
 
   const toaster = useToaster();
   const pushToaster = (message: string) => {
@@ -540,30 +542,22 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       : dateTime.toLocaleTimeString(locale, { ...options, hour: '2-digit', minute: '2-digit' });
   };
 
-  const addNewEvent = (className: string) => {
-    if (className) {
-      if (interactionId) {
-        getPConnect()
-          .getActionsApi()
-          .createWork(className, {
-            openCaseViewAfterCreate: true,
-            interactionId,
-            containerName: 'workarea',
-            flowType: 'pyStartCase',
-            skipBrowserSemanticUrlUpdate: true,
-            startingFields: {
-              InteractionId: interactionId,
-              InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-              cxContextType: 'Case'
-            },
-            viewType: 'form'
-          });
-      }
-      getPConnect().getActionsApi().createWork(className, {
-        openCaseViewAfterCreate: true
+  const addNewEvent = (className: string) =>
+    getPConnect()
+      .getActionsApi()
+      .createWork(className, {
+        openCaseViewAfterCreate: true,
+        interactionId,
+        containerName: 'workarea',
+        flowType: 'pyStartCase',
+        skipBrowserSemanticUrlUpdate: true,
+        startingFields: {
+          InteractionId: interactionId,
+          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+          cxContextType: 'Case'
+        },
+        viewType: 'form'
       });
-    }
-  };
 
   const renderBeratungsartBadge = (beratungsart: string) => {
     let statusVariant: StatusProps['variant'] = 'info';
@@ -787,7 +781,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    create(CreateModal, { info, dataPage }, { alert: true });
+    const enableFeature = false;
+    if (enableFeature) {
+      create(CreateModal, { info, dataPage }, { alert: true });
+    }
   };
 
   const calTable = document.body.querySelector('.fc');
@@ -807,130 +804,146 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   return (
     <StyledCalendarWrapper theme={theme}>
       <GlobalStyles theme={theme} />
-      <Card>
-        <CardHeader
-          actions={
-            <div className='card-header-action-container'>
-              <Switch
-                className='public-holidays-switch'
-                on={showPublicHolidays}
-                onChange={() => {
-                  setShowPublicHolidays(!showPublicHolidays);
-                  fillEvents([
-                    ...(!showPublicHolidays
-                      ? rawData
-                      : rawData.filter(event => event.Type !== EEventType.PUBLIC_HOLIDAY))
-                  ]);
-                }}
-                label='Feiertage anzeigen'
-              />
-              {menuActionItems.length > 0 && (
-                <>
-                  <span className='h-spacer'>&nbsp;</span>
-                  <MenuButton
-                    text=''
-                    variant='secondary'
-                    icon='plus'
-                    iconOnly
-                    showArrow={false}
-                    menu={{
-                      mode: 'action',
-                      items: menuActionItems,
-                      onItemClick: a => addNewEvent(a)
-                    }}
-                  />
-                </>
-              )}
-            </div>
-          }
-        >
-          <Text variant='h2'>{heading}</Text>
-        </CardHeader>
-        <CardContent>
-          <FullCalendar
-            ref={calendarRef}
-            customButtons={{
-              dailyView: {
-                text: 'Tag',
-                click: event => onViewButtonClick(event, EViewType.Day)
-              },
-              weeklyView: {
-                text: 'Woche',
-                click: event => onViewButtonClick(event, EViewType.Week)
-              },
-              workingWeekView: {
-                text: 'Arbeitswoche',
-                click: event => onViewButtonClick(event, EViewType.WorkWeek)
-              },
-              MonthlyView: {
-                text: 'Monat',
-                click: event => onViewButtonClick(event, EViewType.Month)
-              }
-            }}
-            headerToolbar={{
-              left: 'prev,next today',
-              center: 'title',
-              right: `MonthlyView weeklyView workingWeekView dailyView`
-            }}
-            plugins={[rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin, interactionPlugin]}
-            initialView={currentViewType}
-            selectable
-            droppable
-            nowIndicator={nowIndicator}
-            weekends={weekendIndicator}
-            expandRows
-            allDayText='Ganztags'
-            slotMinTime='06:00:00'
-            slotMaxTime='21:00:00'
-            height={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
-            contentHeight={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
-            slotEventOverlap={false}
-            events={events}
-            eventContent={renderEventContent}
-            eventClick={handleEventClick}
-            eventMouseEnter={handleEventMouseEnter}
-            eventMouseLeave={handleEventMouseLeave}
-            eventDragStart={handleEventUpdateStart}
-            eventResizeStart={handleEventUpdateStart}
-            eventDrop={handleEventUpdate}
-            eventResizeStop={handleEventUpdate}
-            datesSet={handleDateChange}
-            select={handleSelect}
-            eventTextColor='#fff'
-            eventTimeFormat={{
-              hour: 'numeric',
-              minute: '2-digit',
-              meridiem: false
-            }}
-            eventDisplay='block'
-            slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
-            firstDay={1}
-            businessHours={{
-              // days of week. an array of zero-based day of week integers (0=Sunday)
-              daysOfWeek: [1, 2, 3, 4, 5],
-              startTime: '06:00', // a start time
-              endTime: '21:00' // an end time
-            }}
-            selectConstraint='businessHours'
-            // titleFormat={{ year: 'numeric', month: 'long', day: 'numeric' }}
-            titleFormat={
-              currentViewType === EViewType.Day
-                ? 'dddd, DD. MMMM YYYY'
-                : { year: 'numeric', month: 'long', day: 'numeric' }
+
+      <Flex container={{ direction: 'column' }}>
+        <Card style={{ flex: 1 }}>
+          <CardHeader
+            actions={
+              <div className='card-header-action-container'>
+                <Switch
+                  className='public-holidays-switch'
+                  on={showPublicHolidays}
+                  onChange={() => {
+                    setShowPublicHolidays(!showPublicHolidays);
+                    fillEvents([
+                      ...(!showPublicHolidays
+                        ? rawData
+                        : rawData.filter(event => event.Type !== EEventType.PUBLIC_HOLIDAY))
+                    ]);
+                  }}
+                  label='Feiertage anzeigen'
+                />
+                {menuActionItems.length > 0 && (
+                  <>
+                    <span className='h-spacer'>&nbsp;</span>
+                    <MenuButton
+                      text=''
+                      variant='secondary'
+                      icon='plus'
+                      iconOnly
+                      showArrow={false}
+                      menu={{
+                        mode: 'action',
+                        items: menuActionItems,
+                        onItemClick: a => addNewEvent(a)
+                      }}
+                    />
+                  </>
+                )}
+              </div>
             }
-            locale='de'
-            dayHeaderFormat={{ weekday: 'long', day: 'numeric' }}
-            buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' }}
-          />
-          {isLoading && (
-            <div className='loading-indicator'>
-              <p>
-                <span>Lade Daten, bitte warten...</span>
-              </p>
-            </div>
-          )}
-        </CardContent>
-      </Card>
+          >
+            <Text variant='h2'>{heading}</Text>
+          </CardHeader>
+          <CardContent>
+            <FullCalendar
+              ref={calendarRef}
+              customButtons={{
+                dailyView: {
+                  text: 'Tag',
+                  click: event => onViewButtonClick(event, EViewType.Day)
+                },
+                weeklyView: {
+                  text: 'Woche',
+                  click: event => onViewButtonClick(event, EViewType.Week)
+                },
+                workingWeekView: {
+                  text: 'Arbeitswoche',
+                  click: event => onViewButtonClick(event, EViewType.WorkWeek)
+                },
+                MonthlyView: {
+                  text: 'Monat',
+                  click: event => onViewButtonClick(event, EViewType.Month)
+                }
+              }}
+              headerToolbar={{
+                left: 'prev,next today',
+                center: 'title',
+                right: `MonthlyView weeklyView workingWeekView dailyView`
+              }}
+              plugins={[
+                rrulePlugin,
+                dayGridPlugin,
+                timeGridPlugin,
+                momentPlugin,
+                interactionPlugin
+              ]}
+              initialView={currentViewType}
+              selectable
+              droppable
+              nowIndicator={nowIndicator}
+              weekends={weekendIndicator}
+              expandRows
+              allDayText='Ganztags'
+              slotMinTime='06:00:00'
+              slotMaxTime='21:00:00'
+              height={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
+              contentHeight={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
+              slotEventOverlap={false}
+              events={events}
+              eventContent={renderEventContent}
+              eventClick={handleEventClick}
+              eventMouseEnter={handleEventMouseEnter}
+              eventMouseLeave={handleEventMouseLeave}
+              eventDragStart={handleEventUpdateStart}
+              eventResizeStart={handleEventUpdateStart}
+              eventDrop={handleEventUpdate}
+              eventResizeStop={handleEventUpdate}
+              datesSet={handleDateChange}
+              select={handleSelect}
+              eventTextColor='#fff'
+              eventTimeFormat={{
+                hour: 'numeric',
+                minute: '2-digit',
+                meridiem: false
+              }}
+              eventDisplay='block'
+              slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
+              firstDay={1}
+              businessHours={{
+                // days of week. an array of zero-based day of week integers (0=Sunday)
+                daysOfWeek: [1, 2, 3, 4, 5],
+                startTime: '06:00', // a start time
+                endTime: '21:00' // an end time
+              }}
+              selectConstraint='businessHours'
+              // titleFormat={{ year: 'numeric', month: 'long', day: 'numeric' }}
+              titleFormat={
+                currentViewType === EViewType.Day
+                  ? 'dddd, DD. MMMM YYYY'
+                  : { year: 'numeric', month: 'long', day: 'numeric' }
+              }
+              locale='de'
+              dayHeaderFormat={{ weekday: 'long', day: 'numeric' }}
+              buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' }}
+            />
+            {isLoading && (
+              <div className='loading-indicator'>
+                <p>
+                  <span>Lade Daten, bitte warten...</span>
+                </p>
+              </div>
+            )}
+          </CardContent>
+
+          <CardFooter>
+            <Button onClick={() => setLegendExpanded(curState => !curState)}>
+              {legendExpanded ? 'Collapse' : 'Expand'}
+            </Button>
+            <ExpandCollapse dimension='height' collapsed={!legendExpanded}></ExpandCollapse>
+          </CardFooter>
+        </Card>
+      </Flex>
 
       <Popover
         show={!!eventInPopover?.eventEl && !!eventInPopover?.eventInfo}
