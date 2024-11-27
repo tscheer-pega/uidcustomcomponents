@@ -388,9 +388,14 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       let title = item.Subject;
       switch (item.Type) {
         case EEventType.AVAILABILITY: {
-          color =
-            currentViewType.indexOf('Week') > 0 ? 'transparent' : theme.base.colors.green.light;
-          display = currentViewType.indexOf('Week') > 0 ? 'background' : 'block';
+          color = theme.base.colors.green.dark;
+          if (item.Beratungsstellentyp === 'Online' || item.Beratungsstellentyp === 'Telefon') {
+            color = theme.base.colors.green.light;
+          }
+          if (currentViewType.indexOf('Week') > 0) {
+            color = 'transparent';
+            display = 'background';
+          }
           title = item.Type;
           break;
         }
@@ -478,8 +483,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     setIsLoading(true);
     (window as any).PCore.getDataApiUtils()
       .getData(dataPage, {
-        StartDate,
-        EndDate
+        dataViewParameters: {
+          StartDate,
+          EndDate
+        }
       })
       .then((response: any) => {
         if (response.data.data !== null) {
@@ -546,7 +553,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     getPConnect()
       .getActionsApi()
       .createWork(className, {
-        openCaseViewAfterCreate: true,
+        openCaseViewAfterCreate: className === createMassClassname,
         interactionId,
         containerName: 'workarea',
         flowType: 'pyStartCase',
@@ -613,7 +620,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       return (
         <div
-          className={`event-content availability ${obj.Type}`}
+          className={`event-content availability ${obj.Type} ${obj.Beratungsstellentyp}`}
           style={{
             backgroundColor: theme.base.colors.green.light,
             left
@@ -624,7 +631,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       );
     }
     return (
-      <div className={`event-content ${obj.Type}`}>
+      <div className={`event-content ${obj.Type} ${obj.Beratungsstellentyp}`}>
         <Text variant='h5' className='event-label'>
           {obj.Type !== EEventType.ABSENCE && (obj.Beratungsstellentyp || obj.Termintyp) && (
             <span>{getTypeIcon(obj.Beratungsstellentyp || obj.Termintyp)}</span>
@@ -823,6 +830,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   }}
                   label='Feiertage anzeigen'
                 />
+                <span className='h-spacer'>&nbsp;</span>
+                <Button
+                  text=''
+                  variant='secondary'
+                  label='Reload'
+                  compact={false}
+                  onClick={() => loadEvents()}
+                >
+                  <Icon name='reset' />
+                </Button>
                 {menuActionItems.length > 0 && (
                   <>
                     <span className='h-spacer'>&nbsp;</span>
@@ -936,11 +953,109 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             )}
           </CardContent>
 
-          <CardFooter>
-            <Button onClick={() => setLegendExpanded(curState => !curState)}>
-              {legendExpanded ? 'Collapse' : 'Expand'}
-            </Button>
-            <ExpandCollapse dimension='height' collapsed={!legendExpanded}></ExpandCollapse>
+          <CardFooter className='legend'>
+            <Flex container={{ alignItems: 'center', direction: 'column' }}>
+              <Button
+                onClick={() => setLegendExpanded(curState => !curState)}
+                style={{ marginBottom: '1rem' }}
+              >
+                {legendExpanded ? 'Legende ausblenden' : 'Legende einblenden'}
+              </Button>
+              <ExpandCollapse dimension='height' collapsed={!legendExpanded}>
+                <Card>
+                  <CardContent>
+                    <Grid
+                      container={{
+                        cols: 'repeat(4, 12rem)',
+                        colGap: 1,
+                        rowGap: 1
+                      }}
+                    >
+                      <span>&nbsp;</span>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.green.light }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Verfügbarkeit (Fern)
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.green.dark }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Verfügbarkeit (Präsenz)
+                        </Text>
+                      </Flex>
+                      <span>&nbsp;</span>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.yellow.light }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Sammeltermin
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.blue.dark }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Termin
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.purple.dark }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Feiertag
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <span
+                          className='event-indicator'
+                          style={{ backgroundColor: theme.base.colors.orange.dark }}
+                        ></span>
+                        <Text variant='primary' className='legend-item'>
+                          Abwesenheit
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <Icon name='user-solid' />
+                        <Text variant='primary' className='legend-item'>
+                          Präsenzberatung
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <Icon name='webcam-solid' />
+                        <Text variant='primary' className='legend-item'>
+                          Online
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <Icon name='phone-solid' />
+                        <Text variant='primary' className='legend-item'>
+                          Telefon
+                        </Text>
+                      </Flex>
+                      <Flex container={{ alignItems: 'center' }}>
+                        <Icon name='building-2-solid' />
+                        <Text variant='primary' className='legend-item'>
+                          Außendienststelle
+                        </Text>
+                      </Flex>
+                    </Grid>
+                  </CardContent>
+                </Card>
+              </ExpandCollapse>
+            </Flex>
           </CardFooter>
         </Card>
       </Flex>

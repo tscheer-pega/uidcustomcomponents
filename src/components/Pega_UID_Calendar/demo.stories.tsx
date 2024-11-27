@@ -64,13 +64,16 @@ const setPCore = () => {
       };
     },
     getDataApiUtils: () => ({
-      getData: (dataViewName: string, props: { StartDate: string; EndDate: string }) => {
+      getData: (
+        dataViewName: string,
+        props: { dataViewParameters: { StartDate: string; EndDate: string } }
+      ) => {
         // eslint-disable-next-line no-console
         console.log('Passed properties', props);
         return new Promise(resolve =>
           setTimeout(() => {
             const useGenericData = false;
-            const data = getData(props);
+            const data = getData(props.dataViewParameters);
             // eslint-disable-next-line no-console
             console.log(
               'useGenericData',

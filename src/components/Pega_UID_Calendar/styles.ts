@@ -43,7 +43,8 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       padding: 0.25rem;
     }
     .event-content.Sammel,
-    .event-content.Verfügbar {
+    .event-content.Verfügbar.Online,
+    .event-content.Verfügbar.Telefon {
       color: #333;
     }
     .event-content.availability > span {
@@ -111,6 +112,20 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     }
     .h-spacer {
       width: 32px;
+    }
+    .legend {
+      margin: 4px auto;
+    }
+    .legend .legend-item {
+      margin-left: 4px;
+    }
+    .event-indicator {
+      height: 16px;
+      width: 16px;
+      background-color: #bbb;
+      border-radius: 2px;
+      border: 1px solid #bbb;
+      display: inline-block;
     }
   `;
 });
