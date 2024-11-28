@@ -111,7 +111,7 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       display: flex;
     }
     .h-spacer {
-      width: 32px;
+      width: 8px;
     }
     .legend {
       margin: 4px auto;
@@ -126,6 +126,12 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       border-radius: 2px;
       border: 1px solid #bbb;
       display: inline-block;
+    }
+    .date-select {
+      margin-right: 8px;
+    }
+    .date-select > div {
+      margin-right: 4px;
     }
   `;
 });
