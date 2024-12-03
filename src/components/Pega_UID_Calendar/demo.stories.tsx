@@ -2,6 +2,7 @@ import type { StoryObj } from '@storybook/react';
 import PegaUidCalendar from './index';
 import { getData } from './helpers';
 import exampleData from './exampleData.stories.json';
+import publicHolidays from './publicHolidays.stories.json';
 
 export default {
   title: 'Widgets/Calendar',
@@ -81,8 +82,9 @@ const setPCore = () => {
               'Data',
               useGenericData ? data : exampleData
             );
+            const returnData = useGenericData ? data : exampleData;
             return resolve({
-              data: useGenericData ? data : exampleData
+              data: { ...returnData, data: [...returnData.data, ...publicHolidays] }
             });
           }, 500)
         );
