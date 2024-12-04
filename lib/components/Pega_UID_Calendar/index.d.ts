@@ -18,26 +18,6 @@ export declare type TCalendarProps = {
     weekendIndicator?: boolean;
     getPConnect: any;
 };
-export declare type TEvent = {
-    id: string;
-    title: string;
-    start: string;
-    end: string;
-    item: any;
-    display: string;
-    allDay?: boolean;
-    startTime?: string;
-    endTime?: string;
-    startRecur?: string;
-    endRecur?: string;
-    daysOfWeek?: Array<string>;
-    color: string;
-    rrule?: object;
-    extendedProps?: {
-        [key: string]: any;
-    };
-    duration?: string;
-};
 export declare enum EDateTimeType {
     date = "date",
     time = "time"
@@ -105,7 +85,6 @@ export declare type TDateInfo = {
     start?: string;
     end?: string;
 };
-export declare const publicHolidayEvents: Array<IRawEvent>;
 export declare const PegaUidCalendar: (props: TCalendarProps) => JSX.Element;
 declare const _default: (props: TCalendarProps) => JSX.Element;
 export default _default;

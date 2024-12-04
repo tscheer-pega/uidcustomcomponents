@@ -115,7 +115,7 @@ export default (props: ICalendarProps) => {
         : eventInfo.event.title;
     if (
       obj.Type === 'Verfügbar' &&
-      currentViewType.indexOf('Week') > 0 &&
+      !currentViewType.includes('Month') &&
       !!obj.Beratungsstellentyp
     ) {
       const bTyp = obj.Beratungsstellentyp || '';
@@ -485,14 +485,7 @@ export default (props: ICalendarProps) => {
         endTime: '21:00' // an end time
       }}
       selectConstraint='businessHours'
-      // titleFormat={{ year: 'numeric', month: 'long', day: 'numeric' }}
-      titleFormat={
-        currentViewType === EViewType.Day
-          ? 'dddd, DD. MMMM YYYY'
-          : { year: 'numeric', month: 'long', day: 'numeric' }
-      }
       locale={deLocale}
-      dayHeaderFormat={{ weekday: 'long', day: 'numeric' }}
       buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' }}
       dateClick={onDateClick}
     />

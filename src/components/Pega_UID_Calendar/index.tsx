@@ -27,7 +27,7 @@ import Popover, { IPopoverEvent } from './_popover';
 import StyledCalendarWrapper from './styles';
 import './create-nonce';
 import GlobalStyles from './global-styles';
-import * as LocationSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/locations-solid.icon';
+import * as LocationSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/location-solid.icon';
 import * as Plus from '@pega/cosmos-react-core/lib/components/Icon/icons/plus.icon';
 import * as CalendarEmptySolid from '@pega/cosmos-react-core/lib/components/Icon/icons/calendar-empty-solid.icon';
 import * as ClockSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/clock-solid.icon';
@@ -37,6 +37,7 @@ import * as UserSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/us
 import * as WebcamSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/webcam-solid.icon';
 import * as PhoneSolid from '@pega/cosmos-react-core/lib/components/Icon/icons/phone-solid.icon';
 import * as Building2Solid from '@pega/cosmos-react-core/lib/components/Icon/icons/building-2-solid.icon';
+import * as Reset from '@pega/cosmos-react-core/lib/components/Icon/icons/reset.icon';
 import { DateTimeCallbackParameter } from '@pega/cosmos-react-core/lib/components/DateTime/DateTime.types';
 
 registerIcon(
@@ -49,7 +50,8 @@ registerIcon(
   UserSolid,
   WebcamSolid,
   PhoneSolid,
-  Building2Solid
+  Building2Solid,
+  Reset
 );
 
 export type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
@@ -228,7 +230,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           if (item.Beratungsstellentyp === 'Online' || item.Beratungsstellentyp === 'Telefon') {
             color = theme.base.colors.green.light;
           }
-          if (currentViewType.indexOf('Week') > 0) {
+          if (!currentViewType.includes('Month')) {
             color = 'transparent';
             display = 'background';
           }

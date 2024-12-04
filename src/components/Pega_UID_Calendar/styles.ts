@@ -26,7 +26,13 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc .fc-button-primary:disabled {
       opacity: 0.4;
     }
-
+    .fc-event:hover {
+      border-color: black;
+      opacity: 0.6;
+    }
+    .fc-event:hover .event-content {
+      opacity: 1;
+    }
     // Custom event styles
     .event-label {
       text-overflow: ellipsis;
