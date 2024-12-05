@@ -369,21 +369,21 @@ export default (props: ICalendarProps) => {
       case EViewType.Day:
         setCurrentViewType(EViewType.Day);
         document.getElementsByClassName('fc-dailyView-button')[0].classList.add('fc-button-active');
-        calendar.setOption('dayHeaderFormat', { weekday: 'long', Month: 'long', day: 'numeric' });
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       case EViewType.Week:
         setCurrentViewType(EViewType.Week);
         document
           .getElementsByClassName('fc-weeklyView-button')[0]
           .classList.add('fc-button-active');
-        calendar.setOption('dayHeaderFormat', { weekday: 'long', Month: 'long', day: 'numeric' });
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       case EViewType.WorkWeek:
         setCurrentViewType(EViewType.WorkWeek);
         document
           .getElementsByClassName('fc-workingWeekView-button')[0]
           .classList.add('fc-button-active');
-        calendar.setOption('dayHeaderFormat', { weekday: 'long', Month: 'long', day: 'numeric' });
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       default:
       case EViewType.Month:
@@ -453,6 +453,7 @@ export default (props: ICalendarProps) => {
       droppable
       nowIndicator={nowIndicator}
       weekends={weekendIndicator}
+      weekNumbers
       expandRows
       allDayText='Ganztags'
       slotMinTime='06:00:00'

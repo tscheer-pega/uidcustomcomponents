@@ -328,9 +328,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           }
         })
         .then((response: any) => {
-          if (response.data.data !== null) {
-            setRawData(response.data.data);
-            fillEvents(response.data.data);
+          const data = response.data.data;
+          if (data !== null) {
+            setRawData(data);
+            fillEvents(data);
           }
         })
         .finally(() => setIsLoading(false));

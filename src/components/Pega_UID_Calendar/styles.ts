@@ -33,6 +33,9 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc-timegrid-col-events .fc-event:hover .event-content {
       opacity: 1;
     }
+    .fc .fc-timegrid-axis-cushion {
+      max-width: 80px;
+    }
     // Custom event styles
     .event-label {
       text-overflow: ellipsis;
