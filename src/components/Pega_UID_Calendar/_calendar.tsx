@@ -359,7 +359,6 @@ export default (props: ICalendarProps) => {
 
   const handleDateChange = (objInfo: any) => {
     const calendar = objInfo.view.calendar;
-    setTimeout(() => fillEvents(), 250);
     if (objInfo.view.type === EViewType.Week && currentViewType === EViewType.WorkWeek) {
       calendar.setOption('weekends', false);
     } else {
@@ -396,6 +395,7 @@ export default (props: ICalendarProps) => {
         break;
     }
     localStorage.setItem('fullcalendar', JSON.stringify(objInfo));
+    fillEvents();
   };
 
   const handleSelect = (info: DateSelectArg) => {
@@ -422,6 +422,8 @@ export default (props: ICalendarProps) => {
   return (
     <FullCalendar
       ref={calendarRef}
+      height={currentViewType.includes('Month') ? 'auto' : 1600}
+      contentHeight={currentViewType.includes('Month') ? 'auto' : 1600}
       customButtons={{
         dailyView: {
           text: 'Tag',
@@ -455,8 +457,6 @@ export default (props: ICalendarProps) => {
       allDayText='Ganztags'
       slotMinTime='06:00:00'
       slotMaxTime='21:00:00'
-      height={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
-      contentHeight={currentViewType.indexOf('Week') > 0 ? 1600 : 'auto'}
       slotEventOverlap={false}
       events={events.filter(event => (showPublicHolidays ? true : event.item.Type !== 'Feiertag'))}
       eventContent={renderEventContent}

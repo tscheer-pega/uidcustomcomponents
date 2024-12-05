@@ -278,7 +278,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           freq = 'yearly';
       }
       const tmpEvent = {
-        id: item.TerminID || '',
+        id: item.TerminID || `generic-${Math.random() * 1e9}`,
         title,
         rrule: {
           freq,
@@ -546,7 +546,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 weekendIndicator={weekendIndicator}
                 nowIndicator={nowIndicator}
                 eventInPopover={eventInPopover}
-                events={events}
+                events={isLoading ? [] : events}
                 setEventInPopover={setEventInPopover}
                 setCurrentViewType={setCurrentViewType}
                 fillEvents={fillEvents}
