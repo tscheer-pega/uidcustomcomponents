@@ -72,6 +72,7 @@ export type TCalendarProps = {
   defaultViewMode?: 'Monthly' | 'Weekly' | 'Daily';
   nowIndicator?: boolean;
   weekendIndicator?: boolean;
+  showTimeline?: boolean;
   getPConnect: any;
 };
 
@@ -149,24 +150,47 @@ export type TDateInfo = {
   end?: string;
 };
 
-export const PegaUidCalendar = (props: TCalendarProps) => {
-  const {
-    heading = '',
-    dataPage = '',
-    createClassname = '',
-    createMassClassname = '',
-    interactionId = '',
-    defaultViewMode = 'Monthly',
-    nowIndicator = true,
-    weekendIndicator = true,
-    getPConnect
-  } = props;
+export const getDateTimeFromIsoString = (
+  isoString: string,
+  dateOrTime: EDateTimeType,
+  options: any = {},
+  locale: string = 'de-DE'
+) => {
+  const dateTime = new Date(isoString);
+  return dateOrTime === EDateTimeType.date
+    ? dateTime.toLocaleDateString(locale, options)
+    : dateTime.toLocaleTimeString(locale, { ...options, hour: '2-digit', minute: '2-digit' });
+};
 
-  const [events, setEvents] = useState<Array<TEvent>>([]);
-  const [showPublicHolidays, setShowPublicHolidays] = useState(true);
-  // const [workingWeek, setWorkingWeek] = useState<boolean>(false);
-  const calendarRef = useRef<any | null>(null);
-  const theme = useTheme();
+const defaultEventInPopover = {
+  eventEl: null,
+  eventInfo: null,
+  inPopover: false,
+  inEl: false
+};
+
+const getDefaultView = (dateInfo: TDateInfo, defaultViewMode: string): EViewType => {
+  if (dateInfo?.view?.type) {
+    /* If the context is persisted in session storage - then used this info as default view */
+    return dateInfo.view.type;
+  }
+  let defaultView: EViewType;
+  switch (defaultViewMode) {
+    case 'Weekly':
+      defaultView = EViewType.Week;
+      break;
+    case 'Daily':
+      defaultView = EViewType.Day;
+      break;
+    default:
+    case 'Monthly':
+      defaultView = EViewType.Month;
+      break;
+  }
+  return defaultView;
+};
+
+const getDateInfo = (): TDateInfo => {
   let dateInfo: TDateInfo = { view: { type: EViewType.Month } };
   const dateInfoStr = localStorage.getItem('fullcalendar');
   if (dateInfoStr) {
@@ -179,38 +203,76 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       dateInfo.startStr = `${middle.toISOString().substring(0, 7)}-01`;
     }
   }
+  return dateInfo;
+};
 
-  const [eventInPopover, setEventInPopover] = useState<IPopoverEvent>({
-    eventEl: null,
-    eventInfo: null,
-    inPopover: false,
-    inEl: false
-  });
+export const getTypeIcon = (appointmentType: string) => {
+  switch (appointmentType) {
+    case 'Präsenzberatung':
+      return <Icon name='user-solid' />;
+    case 'Online':
+      return <Icon name='webcam-solid' />;
+    case 'Telefon':
+      return <Icon name='phone-solid' />;
+    case 'Außendienststelle':
+    default:
+      return <Icon name='building-2-solid' />;
+  }
+};
 
+export const renderBeratungsartBadge = (beratungsart: string) => {
+  let statusVariant: StatusProps['variant'] = 'info';
+  switch (beratungsart) {
+    case ETerminGoal.ApplicationSubmission:
+      statusVariant = 'success';
+      break;
+    case ETerminGoal.FollowUp:
+      statusVariant = 'pending';
+      break;
+    default:
+    case ETerminGoal.FirstContact:
+      statusVariant = 'info';
+      break;
+  }
+  return (
+    <Status className='event-subject' variant={statusVariant}>
+      {beratungsart}
+    </Status>
+  );
+};
+
+/**
+ * Pega UID Calendar
+ * @param props {TCalendarProps}
+ * @constructor
+ */
+export const PegaUidCalendar = (props: TCalendarProps) => {
+  const {
+    heading = '',
+    dataPage = '',
+    createClassname = '',
+    createMassClassname = '',
+    interactionId = '',
+    defaultViewMode = 'Monthly',
+    nowIndicator = true,
+    weekendIndicator = true,
+    showTimeline = false,
+    getPConnect
+  } = props;
+  const actionsApi = getPConnect().getActionsApi();
+  const dataApiUtils = (window as any).PCore.getDataApiUtils();
+  // eslint-disable-next-line no-console
+  console.log(`${showTimeline ? 'Show' : 'Hide'} timeline`);
+
+  const theme = useTheme();
+  const calendarRef = useRef<any | null>(null);
+  const [events, setEvents] = useState<Array<TEvent>>([]);
+  const [showPublicHolidays, setShowPublicHolidays] = useState(true);
+  const [eventInPopover, setEventInPopover] = useState<IPopoverEvent>(defaultEventInPopover);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
-  const getDefaultView = (): EViewType => {
-    if (dateInfo?.view?.type) {
-      /* If the context is persisted in session storage - then used this info as default view */
-      return dateInfo.view.type;
-    }
-    let defaultView: EViewType;
-    switch (defaultViewMode) {
-      case 'Weekly':
-        defaultView = EViewType.Week;
-        break;
-      case 'Daily':
-        defaultView = EViewType.Day;
-        break;
-      default:
-      case 'Monthly':
-        defaultView = EViewType.Month;
-        break;
-    }
-    return defaultView;
-  };
-
-  const [currentViewType, setCurrentViewType] = useState<EViewType>(getDefaultView());
+  const [currentViewType, setCurrentViewType] = useState<EViewType>(
+    getDefaultView(getDateInfo(), defaultViewMode)
+  );
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
@@ -320,11 +382,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const loadEvents = (startDate = StartDate) => {
     if (startDate) {
       setIsLoading(true);
-      (window as any).PCore.getDataApiUtils()
+      dataApiUtils
         .getData(dataPage, {
           dataViewParameters: {
             StartDate: moment(startDate).format('YYYY-MM-DD'),
-            EndDate: moment(EndDate).format('YYYY-MM-DD')
+            EndDate: moment(EndDate).format('YYYY-MM-DD'),
+            ShowTimeline: showTimeline
           }
         })
         .then((response: any) => {
@@ -364,69 +427,20 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     }
   }, [StartDate, EndDate, lastStartDate, lastEndDate]);
 
-  const getTypeIcon = (appointmentType: string) => {
-    switch (appointmentType) {
-      case 'Präsenzberatung':
-        return <Icon name='user-solid' />;
-      case 'Online':
-        return <Icon name='webcam-solid' />;
-      case 'Telefon':
-        return <Icon name='phone-solid' />;
-      case 'Außendienststelle':
-      default:
-        return <Icon name='building-2-solid' />;
-    }
-  };
-
-  const getDateTimeFromIsoString = (
-    isoString: string,
-    dateOrTime: EDateTimeType,
-    options: any = {},
-    locale: string = 'de-DE'
-  ) => {
-    const dateTime = new Date(isoString);
-    return dateOrTime === EDateTimeType.date
-      ? dateTime.toLocaleDateString(locale, options)
-      : dateTime.toLocaleTimeString(locale, { ...options, hour: '2-digit', minute: '2-digit' });
-  };
-
   const addNewEvent = (className: string) =>
-    getPConnect()
-      .getActionsApi()
-      .createWork(className, {
-        openCaseViewAfterCreate: className === createMassClassname,
-        interactionId,
-        containerName: 'workarea',
-        flowType: 'pyStartCase',
-        skipBrowserSemanticUrlUpdate: true,
-        startingFields: {
-          InteractionId: interactionId,
-          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-          cxContextType: 'Case'
-        },
-        viewType: 'form'
-      });
-
-  const renderBeratungsartBadge = (beratungsart: string) => {
-    let statusVariant: StatusProps['variant'] = 'info';
-    switch (beratungsart) {
-      case ETerminGoal.ApplicationSubmission:
-        statusVariant = 'success';
-        break;
-      case ETerminGoal.FollowUp:
-        statusVariant = 'pending';
-        break;
-      default:
-      case ETerminGoal.FirstContact:
-        statusVariant = 'info';
-        break;
-    }
-    return (
-      <Status className='event-subject' variant={statusVariant}>
-        {beratungsart}
-      </Status>
-    );
-  };
+    actionsApi.createWork(className, {
+      openCaseViewAfterCreate: true,
+      interactionId,
+      containerName: 'workarea',
+      flowType: 'pyStartCase',
+      skipBrowserSemanticUrlUpdate: true,
+      startingFields: {
+        InteractionId: interactionId,
+        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+        cxContextType: 'Case'
+      },
+      viewType: 'form'
+    });
 
   const handlePopoverMouseEnter = () => {
     setEventInPopover({
@@ -452,15 +466,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const openPreviewEventOnClick = () => {
     const eventInfoObj = eventInPopover.eventInfo?._def.extendedProps.item;
-    getPConnect().getActionsApi().showCasePreview(eventInfoObj.TerminID);
+    actionsApi.showCasePreview(eventInfoObj.TerminID);
   };
 
   const onDateSelect = (e: DateTimeCallbackParameter) => {
     const date = e.valueAsISOString;
-    if (date) {
+    if (date && selectedStartDate !== date) {
       const calendar = calendarRef.current?.calendar;
       setSelectedStartDate(date);
       loadEvents(date);
+      setCurrentViewType(EViewType.Day);
       calendar.gotoDate(date);
     }
   };
@@ -500,6 +515,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   <DateInput
                     className='date-select'
                     mode='date'
+                    onBlur={() => {}}
                     onChange={onDateSelect}
                     showWeekNumber
                     value={selectedStartDate}
@@ -542,7 +558,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               <Calendar
                 calendarRef={calendarRef}
                 currentViewType={currentViewType}
-                getTypeIcon={getTypeIcon}
                 setEvents={setEvents}
                 weekendIndicator={weekendIndicator}
                 nowIndicator={nowIndicator}
@@ -553,7 +568,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 fillEvents={fillEvents}
                 loadEvents={loadEvents}
                 dataPage={dataPage}
-                getDateTimeFromIsoString={getDateTimeFromIsoString}
                 renderBeratungsartBadge={renderBeratungsartBadge}
                 setSelectedStartDate={setSelectedStartDate}
                 showPublicHolidays={showPublicHolidays}
@@ -579,11 +593,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         <Popover
           eventInPopover={eventInPopover}
           renderBeratungsartBadge={renderBeratungsartBadge}
-          getDateTimeFromIsoString={getDateTimeFromIsoString}
           handlePopoverMouseEnter={handlePopoverMouseEnter}
           handlePopoverMouseLeave={handlePopoverMouseLeave}
           openPreviewEventOnClick={openPreviewEventOnClick}
-          getTypeIcon={getTypeIcon}
         />
       </StyledCalendarWrapper>
     </Configuration>

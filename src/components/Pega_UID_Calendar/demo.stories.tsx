@@ -169,6 +169,7 @@ export const Default: Story = {
     defaultViewMode: 'Monthly',
     nowIndicator: true,
     weekendIndicator: true,
+    showTimeline: false,
     dataPage: ''
   }
 };

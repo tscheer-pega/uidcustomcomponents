@@ -6,6 +6,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction';
+import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import deLocale from '@fullcalendar/core/locales/de';
 import { DateSelectArg, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
 import {
@@ -17,7 +18,15 @@ import {
   useModalManager,
   useToaster
 } from '@pega/cosmos-react-core';
-import { EDateTimeType, EEventType, ETerminGoal, EViewType, TEventImpl } from './index';
+import {
+  EDateTimeType,
+  EEventType,
+  ETerminGoal,
+  EViewType,
+  TEventImpl,
+  getTypeIcon,
+  getDateTimeFromIsoString
+} from './index';
 
 export type TEvent = {
   id: string;
@@ -43,8 +52,6 @@ export interface ICalendarProps {
   weekendIndicator: boolean;
   calendarRef: any;
   showPublicHolidays: boolean;
-  getDateTimeFromIsoString: (dateString: string, type: EDateTimeType) => string;
-  getTypeIcon: (type: string) => JSX.Element;
   renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
   theme: any;
   dataPage: string;
@@ -77,8 +84,6 @@ export default (props: ICalendarProps) => {
     weekendIndicator,
     calendarRef,
     showPublicHolidays,
-    getDateTimeFromIsoString,
-    getTypeIcon,
     renderBeratungsartBadge,
     theme,
     dataPage,
@@ -424,6 +429,7 @@ export default (props: ICalendarProps) => {
       ref={calendarRef}
       height={currentViewType.includes('Month') ? 'auto' : 1600}
       contentHeight={currentViewType.includes('Month') ? 'auto' : 1600}
+      schedulerLicenseKey='0873473011-fcs-1733922476'
       customButtons={{
         dailyView: {
           text: 'Tag',
@@ -447,7 +453,14 @@ export default (props: ICalendarProps) => {
         center: 'title',
         right: `MonthlyView weeklyView workingWeekView dailyView`
       }}
-      plugins={[rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin, interactionPlugin]}
+      plugins={[
+        rrulePlugin,
+        dayGridPlugin,
+        timeGridPlugin,
+        momentPlugin,
+        interactionPlugin,
+        resourceTimelinePlugin
+      ]}
       initialView={currentViewType}
       selectable
       droppable
@@ -459,7 +472,9 @@ export default (props: ICalendarProps) => {
       slotMinTime='06:00:00'
       slotMaxTime='21:00:00'
       slotEventOverlap={false}
-      events={events.filter(event => (showPublicHolidays ? true : event.item.Type !== 'Feiertag'))}
+      events={events.filter(event =>
+        showPublicHolidays ? true : event.item.Type !== EEventType.PUBLIC_HOLIDAY
+      )}
       eventContent={renderEventContent}
       eventClick={handleEventClick}
       eventMouseEnter={handleEventMouseEnter}

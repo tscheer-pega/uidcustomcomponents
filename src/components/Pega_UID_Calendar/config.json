@@ -69,6 +69,12 @@
       "label": "Show week-ends",
       "format": "BOOLEAN",
       "defaultValue": true
+    },
+    {
+      "name": "showTimeline",
+      "label": "Show as Timeline",
+      "format": "BOOLEAN",
+      "defaultValue": false
     }
   ],
   "defaultConfig": {

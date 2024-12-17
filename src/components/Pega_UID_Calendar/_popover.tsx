@@ -11,7 +11,13 @@ import {
   Popover,
   Text
 } from '@pega/cosmos-react-core';
-import { EDateTimeType, EEventType, TEventImpl } from './index';
+import {
+  EDateTimeType,
+  EEventType,
+  TEventImpl,
+  getDateTimeFromIsoString,
+  getTypeIcon
+} from './index';
 
 export interface IPopoverEvent {
   eventEl: HTMLDivElement | null;
@@ -24,14 +30,8 @@ export interface IPopoverProps {
   eventInPopover: IPopoverEvent;
   handlePopoverMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
   handlePopoverMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
-  getDateTimeFromIsoString: (
-    isoString: string,
-    type: EDateTimeType,
-    options?: Intl.DateTimeFormatOptions
-  ) => string;
   renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
   openPreviewEventOnClick: () => void;
-  getTypeIcon: (type: string) => JSX.Element;
 }
 
 export default (props: IPopoverProps) => {
@@ -39,10 +39,8 @@ export default (props: IPopoverProps) => {
     eventInPopover,
     handlePopoverMouseEnter,
     handlePopoverMouseLeave,
-    getDateTimeFromIsoString,
     renderBeratungsartBadge,
-    openPreviewEventOnClick,
-    getTypeIcon
+    openPreviewEventOnClick
   } = props;
 
   return (

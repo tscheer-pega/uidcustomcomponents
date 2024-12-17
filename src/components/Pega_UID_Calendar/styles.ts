@@ -8,6 +8,9 @@ import { type themeDefinition } from '@pega/cosmos-react-core';
 
 export default styled.div(({ theme }: { theme: typeof themeDefinition }): any => {
   return css`
+    button:focus {
+      box-shadow: none !important;
+    }
     .fc-event-main {
       cursor: pointer;
     }
@@ -76,6 +79,9 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     }
     .event-content .event-label + svg {
       margin: 0 4px 0.25rem 0;
+    }
+    .fc-timegrid-col-bg .event-content {
+      border: 1px solid #333;
     }
 
     .event-popover .event-subject {

@@ -52,6 +52,7 @@
     "@fullcalendar/moment": "^6.1.15",
     "@fullcalendar/react": "^6.1.15",
     "@fullcalendar/resource": "^6.1.15",
+    "@fullcalendar/resource-timeline": "^6.1.15",
     "@fullcalendar/rrule": "^6.1.15",
     "@fullcalendar/timegrid": "^6.1.15",
     "@pega/cosmos-react-core": "^4.2.4",
