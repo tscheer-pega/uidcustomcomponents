@@ -80,12 +80,16 @@ const getDataItem = (props: { StartDate: string; EndDate: string }) => {
   };
 };
 
-export const getData = (props: { StartDate: string; EndDate: string }) => {
+export const getData = (props: { StartDate: string; EndDate: string; ShowTimeline: boolean }) => {
   const diff = moment(props.EndDate).diff(props.StartDate, 'days');
   const count = diff * Math.max(Math.round(Math.random() * 5), 1);
-  const data = [];
-  for (let i = 0; i < count; i += 1) {
-    data.push(getDataItem(props));
+  let data = [];
+  if (props.ShowTimeline) {
+    data = [];
+  } else {
+    for (let i = 0; i < count; i += 1) {
+      data.push(getDataItem(props));
+    }
   }
   return {
     fetchDateTime: dateToday,

@@ -8,7 +8,8 @@ import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import deLocale from '@fullcalendar/core/locales/de';
-import { DateSelectArg, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
+import { DateSelectArg, DateSpanApi, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
+import { EventImpl } from '@fullcalendar/core/internal';
 import {
   Button,
   Icon,
@@ -23,9 +24,9 @@ import {
   EEventType,
   ETerminGoal,
   EViewType,
-  TEventImpl,
+  getDateTimeFromIsoString,
   getTypeIcon,
-  getDateTimeFromIsoString
+  TEventImpl
 } from './index';
 
 export type TEvent = {
@@ -45,9 +46,11 @@ export type TEvent = {
   rrule?: object;
   extendedProps?: { [key: string]: any };
   duration?: string;
+  resourceId?: string;
 };
 
 export interface ICalendarProps {
+  showTimeline: boolean;
   nowIndicator: boolean;
   weekendIndicator: boolean;
   calendarRef: any;
@@ -80,6 +83,7 @@ export interface ICalendarProps {
 
 export default (props: ICalendarProps) => {
   const {
+    showTimeline,
     nowIndicator,
     weekendIndicator,
     calendarRef,
@@ -159,7 +163,10 @@ export default (props: ICalendarProps) => {
           )}
           {eventLabel}
         </Text>
-        {obj.Type === EEventType.APPOINTMENT && renderBeratungsartBadge(obj.Beratungsart)}
+        {(obj.Type === EEventType.APPOINTMENT ||
+          obj.Type === EEventType.CANCELLED ||
+          obj.Type === EEventType.REVOKED) &&
+          renderBeratungsartBadge(obj.Beratungsart)}
         {obj.Type === EEventType.MASS_EVENT && (
           <>
             <Icon name='location-solid' role='img' aria-label='location icon' size='s' />
@@ -187,7 +194,9 @@ export default (props: ICalendarProps) => {
       <>
         <Button
           onClick={() => {
-            modalProps.revert();
+            if (modalProps.revert) {
+              modalProps.revert();
+            }
             dismiss();
           }}
         >
@@ -373,21 +382,37 @@ export default (props: ICalendarProps) => {
     switch (currentViewType) {
       case EViewType.Day:
         setCurrentViewType(EViewType.Day);
-        document.getElementsByClassName('fc-dailyView-button')[0].classList.add('fc-button-active');
+        document
+          .getElementsByClassName('fc-dailyView-button')[0]
+          ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       case EViewType.Week:
         setCurrentViewType(EViewType.Week);
         document
           .getElementsByClassName('fc-weeklyView-button')[0]
-          .classList.add('fc-button-active');
+          ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       case EViewType.WorkWeek:
         setCurrentViewType(EViewType.WorkWeek);
         document
           .getElementsByClassName('fc-workingWeekView-button')[0]
-          .classList.add('fc-button-active');
+          ?.classList.add('fc-button-active');
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
+        break;
+      case EViewType.ResourceTimelineDay:
+        setCurrentViewType(EViewType.ResourceTimelineDay);
+        document
+          .getElementsByClassName('fc-resourceTimelineDay-button')[0]
+          ?.classList.add('fc-button-active');
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
+        break;
+      case EViewType.ResourceTimelineWeek:
+        setCurrentViewType(EViewType.ResourceTimelineWeek);
+        document
+          .getElementsByClassName('fc-resourceTimelineWeek-button')[0]
+          ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
       default:
@@ -395,7 +420,7 @@ export default (props: ICalendarProps) => {
         setCurrentViewType(EViewType.Month);
         document
           .getElementsByClassName('fc-MonthlyView-button')[0]
-          .classList.add('fc-button-active');
+          ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long' });
         break;
     }
@@ -423,13 +448,21 @@ export default (props: ICalendarProps) => {
   };
 
   const handleEventClick = () => {};
+  const handleEventAllow = (span: DateSpanApi, movingEvent: EventImpl | null) => {
+    return (
+      !showTimeline ||
+      (!!span.resource?._resource.parentId &&
+        movingEvent?._def.extendedProps.item.Type === 'Termin')
+    );
+  };
 
   return (
     <FullCalendar
       ref={calendarRef}
-      height={currentViewType.includes('Month') ? 'auto' : 1600}
-      contentHeight={currentViewType.includes('Month') ? 'auto' : 1600}
+      height={currentViewType.includes('Month') || showTimeline ? 'auto' : 1600}
+      contentHeight={currentViewType.includes('Month') || showTimeline ? 'auto' : 1600}
       schedulerLicenseKey='0873473011-fcs-1733922476'
+      slotMinWidth={showTimeline ? 96 : 0}
       customButtons={{
         dailyView: {
           text: 'Tag',
@@ -446,12 +479,22 @@ export default (props: ICalendarProps) => {
         MonthlyView: {
           text: 'Monat',
           click: () => onViewButtonClick(EViewType.Month)
+        },
+        resourceTimelineDay: {
+          text: 'Tag',
+          click: () => onViewButtonClick(EViewType.ResourceTimelineDay)
+        },
+        resourceTimelineWeek: {
+          text: 'Woche',
+          click: () => onViewButtonClick(EViewType.ResourceTimelineWeek)
         }
       }}
       headerToolbar={{
         left: 'prev,next today',
         center: 'title',
-        right: `MonthlyView weeklyView workingWeekView dailyView`
+        right: showTimeline
+          ? 'resourceTimelineDay resourceTimelineWeek'
+          : 'MonthlyView weeklyView workingWeekView dailyView'
       }}
       plugins={[
         rrulePlugin,
@@ -475,6 +518,28 @@ export default (props: ICalendarProps) => {
       events={events.filter(event =>
         showPublicHolidays ? true : event.item.Type !== EEventType.PUBLIC_HOLIDAY
       )}
+      resourcesInitiallyExpanded
+      resourceAreaHeaderContent='Ressourcen'
+      resourceAreaWidth='250px'
+      resources={[
+        {
+          id: '0',
+          title: 'Karlsruhe',
+          children: [
+            { id: 'A', title: 'Cordt Rott' },
+            { id: 'B', title: 'Tobias Scheer' }
+          ]
+        },
+        {
+          id: '1',
+          title: 'München',
+          children: [
+            { id: 'C', title: 'Christopher Rohde' },
+            { id: 'D', title: 'Elzbieta Jastrzebska' }
+          ]
+        }
+      ]}
+      eventAllow={handleEventAllow}
       eventContent={renderEventContent}
       eventClick={handleEventClick}
       eventMouseEnter={handleEventMouseEnter}
@@ -482,17 +547,11 @@ export default (props: ICalendarProps) => {
       eventDragStart={handleEventUpdateStart}
       eventResizeStart={handleEventUpdateStart}
       eventDrop={handleEventUpdate}
-      eventResizeStop={handleEventUpdate}
+      eventResize={handleEventUpdate}
+      eventResourceEditable
       datesSet={handleDateChange}
       select={handleSelect}
       eventTextColor='#fff'
-      eventTimeFormat={{
-        hour: 'numeric',
-        minute: '2-digit',
-        meridiem: false
-      }}
-      eventDisplay='block'
-      slotLabelFormat={{ hour: '2-digit', minute: '2-digit', hour12: false }}
       firstDay={1}
       businessHours={{
         // days of week. an array of zero-based day of week integers (0=Sunday)

@@ -2,23 +2,23 @@ import { useEffect, useRef, useState } from 'react';
 import { CalendarApi } from '@fullcalendar/core';
 import moment from 'moment';
 import {
-  withConfiguration,
-  Icon,
-  Text,
-  Status,
-  Card,
-  CardHeader,
-  CardContent,
   Button,
-  useTheme,
-  StatusProps,
-  Flex,
+  Card,
+  CardContent,
   CardFooter,
-  registerIcon,
-  Switch,
-  MenuButton,
+  CardHeader,
+  Configuration,
   DateInput,
-  Configuration
+  Flex,
+  Icon,
+  MenuButton,
+  registerIcon,
+  Status,
+  StatusProps,
+  Switch,
+  Text,
+  useTheme,
+  withConfiguration
 } from '@pega/cosmos-react-core';
 import Legend from './_legend';
 import Calendar, { TEvent } from './_calendar';
@@ -60,7 +60,9 @@ export enum EViewType {
   Day = 'timeGridDay',
   Week = 'timeGridWeek',
   WorkWeek = 'workingWeek',
-  Month = 'dayGridMonth'
+  Month = 'dayGridMonth',
+  ResourceTimelineDay = 'resourceTimelineDay',
+  ResourceTimelineWeek = 'resourceTimelineWeek'
 }
 
 export type TCalendarProps = {
@@ -93,7 +95,9 @@ export enum EEventType {
   AVAILABILITY = 'Verfügbar',
   APPOINTMENT = 'Termin',
   MASS_EVENT = 'Sammel',
-  PUBLIC_HOLIDAY = 'Feiertag'
+  PUBLIC_HOLIDAY = 'Feiertag',
+  CANCELLED = 'Storniert',
+  REVOKED = 'Abgesagt'
 }
 
 export enum EBeratungsTyp {
@@ -141,6 +145,7 @@ export interface IRawEvent {
   Subject: string; // Title
   Beratungsstelle?: IBeratungsstelle;
   IOrganisationseinheit?: IOrganisationseinheit;
+  ResourceId?: string;
 }
 
 export type TDateInfo = {
@@ -169,7 +174,11 @@ const defaultEventInPopover = {
   inEl: false
 };
 
-const getDefaultView = (dateInfo: TDateInfo, defaultViewMode: string): EViewType => {
+const getDefaultView = (
+  dateInfo: TDateInfo,
+  showTimeline: boolean,
+  defaultViewMode: string
+): EViewType => {
   if (dateInfo?.view?.type) {
     /* If the context is persisted in session storage - then used this info as default view */
     return dateInfo.view.type;
@@ -177,14 +186,14 @@ const getDefaultView = (dateInfo: TDateInfo, defaultViewMode: string): EViewType
   let defaultView: EViewType;
   switch (defaultViewMode) {
     case 'Weekly':
-      defaultView = EViewType.Week;
+      defaultView = showTimeline ? EViewType.ResourceTimelineWeek : EViewType.Week;
       break;
     case 'Daily':
-      defaultView = EViewType.Day;
+      defaultView = showTimeline ? EViewType.ResourceTimelineDay : EViewType.Day;
       break;
     default:
     case 'Monthly':
-      defaultView = EViewType.Month;
+      defaultView = showTimeline ? EViewType.ResourceTimelineWeek : EViewType.Month;
       break;
   }
   return defaultView;
@@ -261,8 +270,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   } = props;
   const actionsApi = getPConnect().getActionsApi();
   const dataApiUtils = (window as any).PCore.getDataApiUtils();
-  // eslint-disable-next-line no-console
-  console.log(`${showTimeline ? 'Show' : 'Hide'} timeline`);
 
   const theme = useTheme();
   const calendarRef = useRef<any | null>(null);
@@ -271,7 +278,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [eventInPopover, setEventInPopover] = useState<IPopoverEvent>(defaultEventInPopover);
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [currentViewType, setCurrentViewType] = useState<EViewType>(
-    getDefaultView(getDateInfo(), defaultViewMode)
+    getDefaultView(getDateInfo(), showTimeline, defaultViewMode)
   );
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
@@ -289,16 +296,28 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       switch (item.Type) {
         case EEventType.AVAILABILITY: {
           color = theme.base.colors.green.dark;
-          if (item.Beratungsstellentyp === 'Online' || item.Beratungsstellentyp === 'Telefon') {
+          if (
+            item.Beratungsstellentyp === 'Online' ||
+            item.Beratungsstellentyp === 'Telefon' ||
+            showTimeline
+          ) {
             color = theme.base.colors.green.light;
           }
-          if (!currentViewType.includes('Month')) {
-            color = 'transparent';
+          if (!currentViewType.includes('Month') || showTimeline) {
             display = 'background';
+            if (!showTimeline) {
+              color = 'transparent';
+            }
           }
-          title = item.Type;
+          title = showTimeline ? '' : item.Type;
           break;
         }
+        case EEventType.CANCELLED:
+          color = theme.base.colors.yellow.dark;
+          break;
+        case EEventType.REVOKED:
+          color = theme.base.colors.blue.light;
+          break;
         case EEventType.APPOINTMENT:
           color = theme.base.colors.blue.dark;
           editable = true;
@@ -341,6 +360,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       const tmpEvent = {
         id: item.TerminID || `generic-${Math.random() * 1e9}`,
+        resourceId: item.ResourceId || `generic-${Math.random() * 1e9}`,
         title,
         rrule: {
           freq,
@@ -494,6 +514,35 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     menuActionItems.push({ id: createMassClassname, primary: 'Neuer Sammeltermin' });
   }
 
+  // Add an event listener to the document to listen for the expand/collapse of the timeline categories
+  if (showTimeline) {
+    document.addEventListener('readystatechange', () => {
+      if (document.readyState === 'complete') {
+        // good luck!
+        /*
+        setTimeout(() => {
+          expanders = document.querySelectorAll(
+            '.fc-datagrid-expander:not(.fc-datagrid-expander-placeholder)'
+          );
+          expanders.forEach(
+            expander =>
+              (expander.children[0].onclick = e => {
+                console.log(e);
+                debugger;
+                // using the fullcalendar dispatcher to toggle
+                calendarRef.current.getApi().currentDataManager.dispatch({
+                  type: 'SET_RESOURCE_ENTITY_EXPANDED',
+                  id: '0',
+                  isExpanded: true
+                });
+              })
+          );
+        }, 1000);
+         */
+      }
+    });
+  }
+
   return (
     <Configuration locale='de-DE'>
       <StyledCalendarWrapper theme={theme}>
@@ -556,6 +605,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             </CardHeader>
             <CardContent>
               <Calendar
+                showTimeline={showTimeline}
                 calendarRef={calendarRef}
                 currentViewType={currentViewType}
                 setEvents={setEvents}
@@ -586,6 +636,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             <Legend
               legendExpanded={legendExpanded}
               setLegendExpanded={setLegendExpanded}
+              showTimeline={showTimeline}
               theme={theme}
             />
           </CardFooter>

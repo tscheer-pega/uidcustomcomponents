@@ -67,7 +67,7 @@ const setPCore = () => {
     getDataApiUtils: () => ({
       getData: (
         dataViewName: string,
-        props: { dataViewParameters: { StartDate: string; EndDate: string } }
+        props: { dataViewParameters: { StartDate: string; EndDate: string; ShowTimeline: boolean } }
       ) => {
         // eslint-disable-next-line no-console
         console.log('Passed properties', props);
@@ -80,9 +80,13 @@ const setPCore = () => {
               'useGenericData',
               useGenericData,
               'Data',
-              useGenericData ? data : exampleData
+              useGenericData
+                ? data
+                : exampleData[`${props.dataViewParameters.ShowTimeline ? 'timeline' : 'calendar'}`]
             );
-            const returnData = useGenericData ? data : exampleData;
+            const returnData = useGenericData
+              ? data
+              : exampleData[`${props.dataViewParameters.ShowTimeline ? 'timeline' : 'calendar'}`];
             return resolve({
               data: { ...returnData, data: [...returnData.data, ...publicHolidays] }
             });
@@ -169,7 +173,7 @@ export const Default: Story = {
     defaultViewMode: 'Monthly',
     nowIndicator: true,
     weekendIndicator: true,
-    showTimeline: false,
+    showTimeline: true,
     dataPage: ''
   }
 };
