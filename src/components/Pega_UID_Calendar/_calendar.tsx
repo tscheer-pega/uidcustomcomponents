@@ -49,6 +49,12 @@ export type TEvent = {
   resourceId?: string;
 };
 
+export type TResource = {
+  id: string;
+  title: string;
+  children?: Array<TResource>;
+};
+
 export interface ICalendarProps {
   showTimeline: boolean;
   nowIndicator: boolean;
@@ -62,6 +68,7 @@ export interface ICalendarProps {
   setSelectedStartDate: (date: string) => void;
   loadEvents: (date: string) => void;
   events: Array<TEvent>;
+  resources: Array<TResource>;
   setEvents: React.Dispatch<React.SetStateAction<Array<TEvent>>>;
   currentViewType: EViewType;
   setCurrentViewType: React.Dispatch<React.SetStateAction<EViewType>>;
@@ -96,6 +103,7 @@ export default (props: ICalendarProps) => {
     loadEvents,
     events,
     setEvents,
+    resources,
     currentViewType,
     setCurrentViewType,
     eventInPopover,
@@ -493,7 +501,7 @@ export default (props: ICalendarProps) => {
         left: 'prev,next today',
         center: 'title',
         right: showTimeline
-          ? 'resourceTimelineDay resourceTimelineWeek'
+          ? 'resourceTimelineDay' // 'resourceTimelineDay resourceTimelineWeek'
           : 'MonthlyView weeklyView workingWeekView dailyView'
       }}
       plugins={[
@@ -521,24 +529,7 @@ export default (props: ICalendarProps) => {
       resourcesInitiallyExpanded
       resourceAreaHeaderContent='Ressourcen'
       resourceAreaWidth='250px'
-      resources={[
-        {
-          id: '0',
-          title: 'Karlsruhe',
-          children: [
-            { id: 'A', title: 'Cordt Rott' },
-            { id: 'B', title: 'Tobias Scheer' }
-          ]
-        },
-        {
-          id: '1',
-          title: 'München',
-          children: [
-            { id: 'C', title: 'Christopher Rohde' },
-            { id: 'D', title: 'Elzbieta Jastrzebska' }
-          ]
-        }
-      ]}
+      resources={resources}
       eventAllow={handleEventAllow}
       eventContent={renderEventContent}
       eventClick={handleEventClick}

@@ -2,6 +2,7 @@ export declare const randomDate: (start: Date, end: Date) => Date;
 export declare const getData: (props: {
     StartDate: string;
     EndDate: string;
+    ShowTimeline: boolean;
 }) => {
     fetchDateTime: string;
     pxObjClass: string;

@@ -149,7 +149,7 @@
         "UtilizedCapacity": null,
         "Address": null,
         "City": null,
-        "SerieEnd": "2025-02-18T02:01:50.853Z",
+        "SerieEnd": "2025-02-19T02:01:50.853Z",
         "SerieRepeat": "Wöchentlich",
         "StartTime": "2024-11-05T08:00:00.000Z",
         "Subject": "Schulung",
@@ -472,7 +472,7 @@
         "UtilizedCapacity": null,
         "Address": null,
         "City": null,
-        "SerieEnd": "2024-12-18T13:50:24.611Z",
+        "SerieEnd": "2024-12-19T13:50:24.611Z",
         "SerieRepeat": "Täglich",
         "StartTime": "2024-11-11T13:00:00.000Z",
         "Subject": "Verfügbar",
@@ -517,7 +517,7 @@
       {
         "Beratungsstellentyp": null,
         "CompleteDay": false,
-        "EndTime": "2024-11-18T15:30:00.000Z",
+        "EndTime": "2024-11-19T15:30:00.000Z",
         "IsSerie": true,
         "Capacity": 111,
         "UtilizedCapacity": 265,
@@ -525,7 +525,7 @@
         "City": "München",
         "SerieEnd": "2025-02-21T05:57:24.510Z",
         "SerieRepeat": "Jährlich",
-        "StartTime": "2024-11-18T14:30:00.000Z",
+        "StartTime": "2024-11-19T14:30:00.000Z",
         "Subject": "KommC-199",
         "Beratungsart": null,
         "TerminID": "BW-KOMMC-WORK-GRP1 TER-199",
@@ -708,15 +708,15 @@
       {
         "ResourceId": "A",
         "Subject": "event",
-        "StartTime": "2024-12-18T09:00:00+01:00",
-        "EndTime": "2024-12-18T18:30:00+01:00",
+        "StartTime": "2024-12-19T09:00:00+01:00",
+        "EndTime": "2024-12-19T18:30:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "A",
         "Subject": "Karla Kolumna",
-        "StartTime": "2024-12-18T09:00:00+01:00",
-        "EndTime": "2024-12-18T10:30:00+01:00",
+        "StartTime": "2024-12-19T09:00:00+01:00",
+        "EndTime": "2024-12-19T10:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Telefon"
@@ -724,8 +724,8 @@
       {
         "ResourceId": "A",
         "Subject": "Benjamin Blümchen",
-        "StartTime": "2024-12-18T10:30:00+01:00",
-        "EndTime": "2024-12-18T12:00:00+01:00",
+        "StartTime": "2024-12-19T10:30:00+01:00",
+        "EndTime": "2024-12-19T12:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Online"
@@ -733,8 +733,8 @@
       {
         "ResourceId": "A",
         "Subject": "Dr. Theodor Tierlieb",
-        "StartTime": "2024-12-18T12:30:00+01:00",
-        "EndTime": "2024-12-18T14:30:00+01:00",
+        "StartTime": "2024-12-19T12:30:00+01:00",
+        "EndTime": "2024-12-19T14:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Bewerbungsabgabe",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -742,8 +742,8 @@
       {
         "ResourceId": "A",
         "Subject": "Erwin Erzähler",
-        "StartTime": "2024-12-18T14:30:00+01:00",
-        "EndTime": "2024-12-18T16:00:00+01:00",
+        "StartTime": "2024-12-19T14:30:00+01:00",
+        "EndTime": "2024-12-19T16:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Online"
@@ -751,8 +751,8 @@
       {
         "ResourceId": "A",
         "Subject": "Stella Stellini",
-        "StartTime": "2024-12-18T17:00:00+01:00",
-        "EndTime": "2024-12-18T18:30:00+01:00",
+        "StartTime": "2024-12-19T17:00:00+01:00",
+        "EndTime": "2024-12-19T18:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Telefon"
@@ -760,8 +760,8 @@
       {
         "ResourceId": "B",
         "Subject": "Klara Fall",
-        "StartTime": "2024-12-18T08:30:00+01:00",
-        "EndTime": "2024-12-18T09:30:00+01:00",
+        "StartTime": "2024-12-19T08:30:00+01:00",
+        "EndTime": "2024-12-19T09:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -769,8 +769,8 @@
       {
         "ResourceId": "B",
         "Subject": "Birgit Bieber",
-        "StartTime": "2024-12-18T12:30:00+01:00",
-        "EndTime": "2024-12-18T14:00:00+01:00",
+        "StartTime": "2024-12-19T12:30:00+01:00",
+        "EndTime": "2024-12-19T14:00:00+01:00",
         "Type": "Storniert",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -778,8 +778,8 @@
       {
         "ResourceId": "B",
         "Subject": "Reiner Zufall",
-        "StartTime": "2024-12-18T11:00:00+01:00",
-        "EndTime": "2024-12-18T12:30:00+01:00",
+        "StartTime": "2024-12-19T11:00:00+01:00",
+        "EndTime": "2024-12-19T12:30:00+01:00",
         "Type": "Abgesagt",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -787,8 +787,8 @@
       {
         "ResourceId": "B",
         "Subject": "Harry Wijnvoord",
-        "StartTime": "2024-12-18T14:00:00+01:00",
-        "EndTime": "2024-12-18T15:30:00+01:00",
+        "StartTime": "2024-12-19T14:00:00+01:00",
+        "EndTime": "2024-12-19T15:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -796,50 +796,50 @@
       {
         "ResourceId": "B",
         "Subject": "event 4",
-        "StartTime": "2024-12-18T07:30:00+01:00",
-        "EndTime": "2024-12-18T09:30:00+01:00",
+        "StartTime": "2024-12-19T07:30:00+01:00",
+        "EndTime": "2024-12-19T09:30:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "B",
         "Subject": "event 5",
-        "StartTime": "2024-12-18T09:30:00+01:00",
-        "EndTime": "2024-12-18T11:00:00+01:00",
+        "StartTime": "2024-12-19T09:30:00+01:00",
+        "EndTime": "2024-12-19T11:00:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "B",
         "Subject": "event 5",
-        "StartTime": "2024-12-18T12:30:00+01:00",
-        "EndTime": "2024-12-18T15:00:00+01:00",
+        "StartTime": "2024-12-19T12:30:00+01:00",
+        "EndTime": "2024-12-19T15:00:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "B",
         "Subject": "event 5",
-        "StartTime": "2024-12-18T14:00:00+01:00",
-        "EndTime": "2024-12-18T18:00:00+01:00",
+        "StartTime": "2024-12-19T14:00:00+01:00",
+        "EndTime": "2024-12-19T18:00:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "C",
         "Subject": "event 3",
-        "StartTime": "2024-12-18T08:00:00+01:00",
-        "EndTime": "2024-12-18T12:00:00+01:00",
+        "StartTime": "2024-12-19T08:00:00+01:00",
+        "EndTime": "2024-12-19T12:00:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "C",
         "Subject": "event 3",
-        "StartTime": "2024-12-18T13:00:00+01:00",
-        "EndTime": "2024-12-18T18:00:00+01:00",
+        "StartTime": "2024-12-19T13:00:00+01:00",
+        "EndTime": "2024-12-19T18:00:00+01:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "C",
         "Subject": "Joker",
-        "StartTime": "2024-12-18T08:30:00+01:00",
-        "EndTime": "2024-12-18T09:00:00+01:00",
+        "StartTime": "2024-12-19T08:30:00+01:00",
+        "EndTime": "2024-12-19T09:00:00+01:00",
         "Type": "Storniert",
         "Beratungsart": "Bewerbungsabgabe",
         "Beratungsstellentyp": "Online"
@@ -847,8 +847,8 @@
       {
         "ResourceId": "C",
         "Subject": "Bruce Wayne",
-        "StartTime": "2024-12-18T09:30:00+01:00",
-        "EndTime": "2024-12-18T10:00:00+01:00",
+        "StartTime": "2024-12-19T09:30:00+01:00",
+        "EndTime": "2024-12-19T10:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Online"
@@ -856,8 +856,8 @@
       {
         "ResourceId": "C",
         "Subject": "Alfred Pennyworth",
-        "StartTime": "2024-12-18T10:00:00+01:00",
-        "EndTime": "2024-12-18T10:30:00+01:00",
+        "StartTime": "2024-12-19T10:00:00+01:00",
+        "EndTime": "2024-12-19T10:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Online"
@@ -865,8 +865,8 @@
       {
         "ResourceId": "C",
         "Subject": "Lucius Fox",
-        "StartTime": "2024-12-18T10:30:00+01:00",
-        "EndTime": "2024-12-18T11:30:00+01:00",
+        "StartTime": "2024-12-19T10:30:00+01:00",
+        "EndTime": "2024-12-19T11:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Online"
@@ -874,8 +874,8 @@
       {
         "ResourceId": "C",
         "Subject": "James Gordon",
-        "StartTime": "2024-12-18T11:30:00+01:00",
-        "EndTime": "2024-12-18T12:00:00+01:00",
+        "StartTime": "2024-12-19T11:30:00+01:00",
+        "EndTime": "2024-12-19T12:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Bewerbungsabgabe",
         "Beratungsstellentyp": "Online"
@@ -883,8 +883,8 @@
       {
         "ResourceId": "C",
         "Subject": "Scarecrow",
-        "StartTime": "2024-12-18T12:30:00+01:00",
-        "EndTime": "2024-12-18T13:00:00+01:00",
+        "StartTime": "2024-12-19T12:30:00+01:00",
+        "EndTime": "2024-12-19T13:00:00+01:00",
         "Type": "Abgesagt",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -892,8 +892,8 @@
       {
         "ResourceId": "C",
         "Subject": "Rachel Dawes",
-        "StartTime": "2024-12-18T13:30:00+01:00",
-        "EndTime": "2024-12-18T14:00:00+01:00",
+        "StartTime": "2024-12-19T13:30:00+01:00",
+        "EndTime": "2024-12-19T14:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Bewerbungsabgabe",
         "Beratungsstellentyp": "Telefon"
@@ -901,8 +901,8 @@
       {
         "ResourceId": "C",
         "Subject": "Harvey Dent",
-        "StartTime": "2024-12-18T14:30:00+01:00",
-        "EndTime": "2024-12-18T16:30:00+01:00",
+        "StartTime": "2024-12-19T14:30:00+01:00",
+        "EndTime": "2024-12-19T16:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -910,8 +910,8 @@
       {
         "ResourceId": "C",
         "Subject": "Jonathan Crane",
-        "StartTime": "2024-12-18T17:00:00+01:00",
-        "EndTime": "2024-12-18T17:30:00+01:00",
+        "StartTime": "2024-12-19T17:00:00+01:00",
+        "EndTime": "2024-12-19T17:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Bewerbungsabgabe",
         "Beratungsstellentyp": "Telefon"
@@ -919,15 +919,15 @@
       {
         "ResourceId": "D",
         "Subject": "event 2",
-        "StartTime": "2024-12-18T09:00:00+00:00",
-        "EndTime": "2024-12-18T14:00:00+00:00",
+        "StartTime": "2024-12-19T09:00:00+00:00",
+        "EndTime": "2024-12-19T14:00:00+00:00",
         "Type": "Verfügbar"
       },
       {
         "ResourceId": "D",
         "Subject": "Thanos",
-        "StartTime": "2024-12-18T09:30:00+01:00",
-        "EndTime": "2024-12-18T10:00:00+01:00",
+        "StartTime": "2024-12-19T09:30:00+01:00",
+        "EndTime": "2024-12-19T10:00:00+01:00",
         "Type": "Abgesagt",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Präsenzberatung"
@@ -935,8 +935,8 @@
       {
         "ResourceId": "D",
         "Subject": "Gamora",
-        "StartTime": "2024-12-18T10:00:00+01:00",
-        "EndTime": "2024-12-18T10:30:00+01:00",
+        "StartTime": "2024-12-19T10:00:00+01:00",
+        "EndTime": "2024-12-19T10:30:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Beweberungsabgabe",
         "Beratungsstellentyp": "Online"
@@ -944,8 +944,8 @@
       {
         "ResourceId": "D",
         "Subject": "Peter Quill",
-        "StartTime": "2024-12-18T11:00:00+01:00",
-        "EndTime": "2024-12-18T12:00:00+01:00",
+        "StartTime": "2024-12-19T11:00:00+01:00",
+        "EndTime": "2024-12-19T12:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Telefon"
@@ -953,8 +953,8 @@
       {
         "ResourceId": "D",
         "Subject": "Groot",
-        "StartTime": "2024-12-18T12:30:00+01:00",
-        "EndTime": "2024-12-18T13:00:00+01:00",
+        "StartTime": "2024-12-19T12:30:00+01:00",
+        "EndTime": "2024-12-19T13:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Online"
@@ -962,8 +962,8 @@
       {
         "ResourceId": "D",
         "Subject": "Nebula",
-        "StartTime": "2024-12-18T13:00:00+01:00",
-        "EndTime": "2024-12-18T14:00:00+01:00",
+        "StartTime": "2024-12-19T13:00:00+01:00",
+        "EndTime": "2024-12-19T14:00:00+01:00",
         "Type": "Storniert",
         "Beratungsart": "Erstberatung",
         "Beratungsstellentyp": "Telefon"
@@ -971,11 +971,29 @@
       {
         "ResourceId": "D",
         "Subject": "Drax",
-        "StartTime": "2024-12-18T14:30:00+01:00",
-        "EndTime": "2024-12-18T15:00:00+01:00",
+        "StartTime": "2024-12-19T14:30:00+01:00",
+        "EndTime": "2024-12-19T15:00:00+01:00",
         "Type": "Termin",
         "Beratungsart": "Folgeberatung",
         "Beratungsstellentyp": "Präsenzberatung"
+      }
+    ],
+    "resources": [
+      {
+        "id": "0",
+        "title": "Karlsruhe",
+        "children": [
+          { "id": "A", "title": "Cordt Rott" },
+          { "id": "B", "title": "Tobias Scheer" }
+        ]
+      },
+      {
+        "id": "1",
+        "title": "München",
+        "children": [
+          { "id": "C", "title": "Christopher Rohde" },
+          { "id": "D", "title": "Elzbieta Jastrzebska" }
+        ]
       }
     ]
   }

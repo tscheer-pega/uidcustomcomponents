@@ -281,6 +281,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     getDefaultView(getDateInfo(), showTimeline, defaultViewMode)
   );
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
+  const [resources, setResources] = useState([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
 
@@ -411,10 +412,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           }
         })
         .then((response: any) => {
-          const data = response.data.data;
-          if (data !== null) {
-            setRawData(data);
-            fillEvents(data);
+          const data = response.data;
+          if (data.data !== null) {
+            if (showTimeline && data.resources) {
+              setResources(data.resources);
+            }
+            setRawData(data.data);
+            fillEvents(data.data);
           }
         })
         .finally(() => setIsLoading(false));
@@ -613,6 +617,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 nowIndicator={nowIndicator}
                 eventInPopover={eventInPopover}
                 events={isLoading ? [] : events}
+                resources={isLoading ? [] : resources}
                 setEventInPopover={setEventInPopover}
                 setCurrentViewType={setCurrentViewType}
                 fillEvents={fillEvents}
