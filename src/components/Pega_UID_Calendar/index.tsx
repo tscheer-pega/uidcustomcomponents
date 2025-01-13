@@ -56,13 +56,18 @@ registerIcon(
 
 export type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
 
-export enum EViewType {
+
+export enum ECalendarViewType {
   Day = 'timeGridDay',
   Week = 'timeGridWeek',
   WorkWeek = 'workingWeek',
-  Month = 'dayGridMonth',
-  ResourceTimelineDay = 'resourceTimelineDay',
-  ResourceTimelineWeek = 'resourceTimelineWeek'
+  Month = 'dayGridMonth'
+}
+
+export enum ETimelineViewType {
+  Day = 'resourceTimelineDay',
+  Week = 'resourceTimelineWeek',
+  WorkWeek = 'resourceTimelineWorkWeek'
 }
 
 export type TCalendarProps = {
@@ -149,7 +154,7 @@ export interface IRawEvent {
 }
 
 export type TDateInfo = {
-  view: { type: EViewType };
+  view: { type: ECalendarViewType | ETimelineViewType };
   startStr?: string;
   start?: string;
   end?: string;
@@ -178,33 +183,39 @@ const getDefaultView = (
   dateInfo: TDateInfo,
   showTimeline: boolean,
   defaultViewMode: string
-): EViewType => {
-  if (dateInfo?.view?.type) {
+): ECalendarViewType | ETimelineViewType => {
+  if (
+    dateInfo?.view?.type &&
+    ((showTimeline &&
+      Object.values(ETimelineViewType).includes(dateInfo.view.type as ETimelineViewType)) ||
+      (!showTimeline &&
+        Object.values(ECalendarViewType).includes(dateInfo.view.type as ECalendarViewType)))
+  ) {
     /* If the context is persisted in session storage - then used this info as default view */
     return dateInfo.view.type;
   }
-  let defaultView: EViewType;
+  let defaultView: ETimelineViewType | ECalendarViewType;
   switch (defaultViewMode) {
     case 'Weekly':
-      defaultView = showTimeline ? EViewType.ResourceTimelineWeek : EViewType.Week;
+      defaultView = showTimeline ? ETimelineViewType.Week : ECalendarViewType.Week;
       break;
     case 'Daily':
-      defaultView = showTimeline ? EViewType.ResourceTimelineDay : EViewType.Day;
+      defaultView = showTimeline ? ETimelineViewType.Day : ECalendarViewType.Day;
       break;
     default:
     case 'Monthly':
-      defaultView = showTimeline ? EViewType.ResourceTimelineWeek : EViewType.Month;
+      defaultView = showTimeline ? ETimelineViewType.WorkWeek : ECalendarViewType.Month;
       break;
   }
   return defaultView;
 };
 
 const getDateInfo = (): TDateInfo => {
-  let dateInfo: TDateInfo = { view: { type: EViewType.Month } };
+  let dateInfo: TDateInfo = { view: { type: ECalendarViewType.Month } };
   const dateInfoStr = localStorage.getItem('fullcalendar');
   if (dateInfoStr) {
     dateInfo = JSON.parse(dateInfoStr);
-    if (dateInfo.view.type === EViewType.Month && dateInfo.end && dateInfo.start) {
+    if (dateInfo.view.type === ECalendarViewType.Month && dateInfo.end && dateInfo.start) {
       /* If showing Month - find the date in the middle to get the Month */
       const endDate = new Date(dateInfo.end).valueOf();
       const startDate = new Date(dateInfo.start).valueOf();
@@ -277,7 +288,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [showPublicHolidays, setShowPublicHolidays] = useState(true);
   const [eventInPopover, setEventInPopover] = useState<IPopoverEvent>(defaultEventInPopover);
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [currentViewType, setCurrentViewType] = useState<EViewType>(
+  const [currentViewType, setCurrentViewType] = useState<ECalendarViewType | ETimelineViewType>(
     getDefaultView(getDateInfo(), showTimeline, defaultViewMode)
   );
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
@@ -499,7 +510,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       const calendar = calendarRef.current?.calendar;
       setSelectedStartDate(date);
       loadEvents(date);
-      setCurrentViewType(EViewType.Day);
+      setCurrentViewType(ECalendarViewType.Day);
       calendar.gotoDate(date);
     }
   };

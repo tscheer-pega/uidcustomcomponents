@@ -23,7 +23,8 @@ import {
   EDateTimeType,
   EEventType,
   ETerminGoal,
-  EViewType,
+  ECalendarViewType,
+  ETimelineViewType,
   getDateTimeFromIsoString,
   getTypeIcon,
   TEventImpl
@@ -70,8 +71,8 @@ export interface ICalendarProps {
   events: Array<TEvent>;
   resources: Array<TResource>;
   setEvents: React.Dispatch<React.SetStateAction<Array<TEvent>>>;
-  currentViewType: EViewType;
-  setCurrentViewType: React.Dispatch<React.SetStateAction<EViewType>>;
+  currentViewType: ECalendarViewType | ETimelineViewType;
+  setCurrentViewType: React.Dispatch<React.SetStateAction<ECalendarViewType | ETimelineViewType>>;
   eventInPopover: {
     eventEl: HTMLDivElement | null;
     eventInfo: TEventImpl | null;
@@ -110,11 +111,21 @@ export default (props: ICalendarProps) => {
     setEventInPopover
   } = props;
 
-  const onViewButtonClick = (viewType: EViewType) => {
+  const onViewButtonClick = (viewType: ECalendarViewType | ETimelineViewType) => {
     if (calendarRef) {
       const cal: any = calendarRef.current;
       const calendarAPI = cal.getApi();
-      const view = viewType === EViewType.WorkWeek ? EViewType.Week : viewType;
+      let view;
+      switch (viewType) {
+        case ECalendarViewType.WorkWeek:
+          view = ECalendarViewType.Week;
+          break;
+        case ETimelineViewType.WorkWeek:
+          view = ETimelineViewType.Week;
+          break;
+        default:
+          view = viewType;
+      }
       setCurrentViewType(viewType);
       calendarAPI.changeView(view);
     }
@@ -123,7 +134,7 @@ export default (props: ICalendarProps) => {
   const renderEventContent = (eventInfo: EventContentArg) => {
     const def = eventInfo.event._def;
     const obj = def.extendedProps.item;
-    const isMonthlyView = currentViewType === EViewType.Month;
+    const isMonthlyView = currentViewType === ECalendarViewType.Month;
     let eventDateStr = `${getDateTimeFromIsoString(eventInfo.event.startStr, EDateTimeType.time)}`;
     eventDateStr += `-${getDateTimeFromIsoString(eventInfo.event.endStr, EDateTimeType.time)}`;
     const eventLabel =
@@ -381,51 +392,65 @@ export default (props: ICalendarProps) => {
 
   const handleDateChange = (objInfo: any) => {
     const calendar = objInfo.view.calendar;
-    if (objInfo.view.type === EViewType.Week && currentViewType === EViewType.WorkWeek) {
+    if (
+      (objInfo.view.type === ECalendarViewType.Week &&
+        currentViewType === ECalendarViewType.WorkWeek) ||
+      (objInfo.view.type === ETimelineViewType.Week &&
+        currentViewType === ETimelineViewType.WorkWeek)
+    ) {
       calendar.setOption('weekends', false);
     } else {
       calendar.setOption('weekends', weekendIndicator);
     }
-    document.querySelector('.fc-button-active')?.classList.remove('fc-button-active');
+    document
+      .querySelectorAll('.fc-button-active')
+      .forEach(el => el.classList.remove('fc-button-active'));
     switch (currentViewType) {
-      case EViewType.Day:
-        setCurrentViewType(EViewType.Day);
+      case ECalendarViewType.Day:
+        setCurrentViewType(ECalendarViewType.Day);
         document
           .getElementsByClassName('fc-dailyView-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
-      case EViewType.Week:
-        setCurrentViewType(EViewType.Week);
+      case ECalendarViewType.Week:
+        setCurrentViewType(ECalendarViewType.Week);
         document
           .getElementsByClassName('fc-weeklyView-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
-      case EViewType.WorkWeek:
-        setCurrentViewType(EViewType.WorkWeek);
+      case ECalendarViewType.WorkWeek:
+        setCurrentViewType(ECalendarViewType.WorkWeek);
         document
           .getElementsByClassName('fc-workingWeekView-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
-      case EViewType.ResourceTimelineDay:
-        setCurrentViewType(EViewType.ResourceTimelineDay);
+      case ETimelineViewType.Day:
+        setCurrentViewType(ETimelineViewType.Day);
         document
           .getElementsByClassName('fc-resourceTimelineDay-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
-      case EViewType.ResourceTimelineWeek:
-        setCurrentViewType(EViewType.ResourceTimelineWeek);
+      case ETimelineViewType.Week:
+        setCurrentViewType(ETimelineViewType.Week);
         document
           .getElementsByClassName('fc-resourceTimelineWeek-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
+      case ETimelineViewType.WorkWeek:
+        setCurrentViewType(ETimelineViewType.WorkWeek);
+        document
+          .getElementsByClassName('fc-resourceTimelineWorkingWeek-button')[0]
+          ?.classList.add('fc-button-active');
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
+        break;
       default:
-      case EViewType.Month:
-        setCurrentViewType(EViewType.Month);
+      case ECalendarViewType.Month:
+        setCurrentViewType(ECalendarViewType.Month);
         document
           .getElementsByClassName('fc-MonthlyView-button')[0]
           ?.classList.add('fc-button-active');
@@ -446,9 +471,9 @@ export default (props: ICalendarProps) => {
 
   const onDateClick = (info: { dateStr: string }) => {
     const date = info.dateStr;
-    if (date && currentViewType !== EViewType.Day) {
+    if (date && currentViewType !== ECalendarViewType.Day) {
       const calendar = calendarRef.current?.calendar;
-      onViewButtonClick(EViewType.Day);
+      onViewButtonClick(ECalendarViewType.Day);
       setSelectedStartDate(date);
       loadEvents(date);
       calendar.gotoDate(date);
@@ -474,34 +499,38 @@ export default (props: ICalendarProps) => {
       customButtons={{
         dailyView: {
           text: 'Tag',
-          click: () => onViewButtonClick(EViewType.Day)
+          click: () => onViewButtonClick(ECalendarViewType.Day)
         },
         weeklyView: {
           text: 'Woche',
-          click: () => onViewButtonClick(EViewType.Week)
+          click: () => onViewButtonClick(ECalendarViewType.Week)
         },
         workingWeekView: {
           text: 'Arbeitswoche',
-          click: () => onViewButtonClick(EViewType.WorkWeek)
+          click: () => onViewButtonClick(ECalendarViewType.WorkWeek)
         },
         MonthlyView: {
           text: 'Monat',
-          click: () => onViewButtonClick(EViewType.Month)
+          click: () => onViewButtonClick(ECalendarViewType.Month)
         },
         resourceTimelineDay: {
           text: 'Tag',
-          click: () => onViewButtonClick(EViewType.ResourceTimelineDay)
+          click: () => onViewButtonClick(ETimelineViewType.Day)
         },
         resourceTimelineWeek: {
           text: 'Woche',
-          click: () => onViewButtonClick(EViewType.ResourceTimelineWeek)
+          click: () => onViewButtonClick(ETimelineViewType.Week)
+        },
+        resourceTimelineWorkingWeek: {
+          text: 'Arbeitswoche',
+          click: () => onViewButtonClick(ETimelineViewType.WorkWeek)
         }
       }}
       headerToolbar={{
         left: 'prev,next today',
         center: 'title',
         right: showTimeline
-          ? 'resourceTimelineDay' // 'resourceTimelineDay resourceTimelineWeek'
+          ? 'resourceTimelineDay resourceTimelineWeek resourceTimelineWorkingWeek'
           : 'MonthlyView weeklyView workingWeekView dailyView'
       }}
       plugins={[

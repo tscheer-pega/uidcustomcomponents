@@ -1,11 +1,64 @@
-import type { StoryObj } from '@storybook/react';
+import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import PegaUidCalendar from './index';
 import { getData } from './helpers';
 import exampleData from './exampleData.stories.json';
 import publicHolidays from './publicHolidays.stories.json';
 
+const defaultProps = {
+  getPConnect: () => {
+    return {
+      getActionsApi: () => {
+        return {
+          openWorkByHandle: () => {
+            /* nothing */
+          },
+          createWork: (className: string) => {
+            // eslint-disable-next-line no-alert
+            alert(`Create case type with className:${className}`);
+          },
+          updateFieldValue: () => {
+            /* nothing */
+          },
+          triggerFieldChange: () => {
+            /* nothing */
+          },
+          showCasePreview: (eventId: string, options: { caseClassName: string }) => {
+            const { caseClassName } = options;
+            // eslint-disable-next-line no-alert
+            alert(`Open Case (caseClassName: ${caseClassName}, eventId: ${eventId})`);
+          }
+        };
+      },
+      ignoreSuggestion: () => {
+        /* nothing */
+      },
+      acceptSuggestion: () => {
+        /* nothing */
+      },
+      setInheritedProps: () => {
+        /* nothing */
+      },
+      resolveConfigProps: () => {
+        /* nothing */
+      }
+    };
+  }
+};
+
 export default {
   title: 'Widgets/Calendar',
+  args: {
+    heading: 'Heading',
+    createClassname: 'Work-Class1',
+    createMassClassname: 'Work-Class2',
+    interactionId: 'InteractionId',
+    defaultViewMode: 'Monthly',
+    nowIndicator: true,
+    weekendIndicator: true,
+    showTimeline: false,
+    dataPage: '',
+    getPConnect: defaultProps.getPConnect
+  },
   argTypes: {
     dataPage: {
       table: {
@@ -19,7 +72,7 @@ export default {
     }
   },
   component: PegaUidCalendar
-};
+} as ComponentMeta<typeof PegaUidCalendar>;
 
 const setPCore = () => {
   (window as any).PCore = {
@@ -118,62 +171,17 @@ const setPCore = () => {
   };
 };
 
-type Story = StoryObj<typeof PegaUidCalendar>;
-export const Default: Story = {
-  render: args => {
-    setPCore();
-    const props = {
-      ...args,
-      getPConnect: () => {
-        return {
-          getActionsApi: () => {
-            return {
-              openWorkByHandle: () => {
-                /* nothing */
-              },
-              createWork: (className: string) => {
-                // eslint-disable-next-line no-alert
-                alert(`Create case type with className:${className}`);
-              },
-              updateFieldValue: () => {
-                /* nothing */
-              },
-              triggerFieldChange: () => {
-                /* nothing */
-              },
-              showCasePreview: (eventId: string, options: { caseClassName: string }) => {
-                const { caseClassName } = options;
-                // eslint-disable-next-line no-alert
-                alert(`Open Case (caseClassName: ${caseClassName}, eventId: ${eventId})`);
-              }
-            };
-          },
-          ignoreSuggestion: () => {
-            /* nothing */
-          },
-          acceptSuggestion: () => {
-            /* nothing */
-          },
-          setInheritedProps: () => {
-            /* nothing */
-          },
-          resolveConfigProps: () => {
-            /* nothing */
-          }
-        };
-      }
-    };
-    return <PegaUidCalendar {...props} />;
-  },
-  args: {
-    heading: 'Heading',
-    createClassname: 'Work-Class1',
-    createMassClassname: 'Work-Class2',
-    interactionId: 'InteractionId',
-    defaultViewMode: 'Monthly',
-    nowIndicator: true,
-    weekendIndicator: true,
-    showTimeline: true,
-    dataPage: ''
-  }
+const Template: ComponentStory<typeof PegaUidCalendar> = args => {
+  setPCore();
+  return <PegaUidCalendar {...args} />;
+};
+
+export const baseCalendar = Template.bind({});
+baseCalendar.args = { ...Template.args, defaultViewMode: 'Monthly' };
+
+export const timelineCalendar = Template.bind({});
+timelineCalendar.args = {
+  ...Template.args,
+  showTimeline: true,
+  defaultViewMode: 'Daily'
 };

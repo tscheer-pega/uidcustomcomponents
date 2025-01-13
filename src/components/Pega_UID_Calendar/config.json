@@ -39,10 +39,17 @@
       "match": "propertyRef"
     },
     {
+      "name": "showTimeline",
+      "label": "Display as Timeline",
+      "format": "BOOLEAN",
+      "defaultValue": false
+    },
+    {
       "name": "defaultViewMode",
       "label": "Default view",
       "format": "SELECT",
       "defaultValue": "Monthly",
+      "visibility": "$this.showTimeline = false",
       "source": [
         {
           "key": "Daily",
@@ -59,6 +66,23 @@
       ]
     },
     {
+      "name": "defaultViewMode",
+      "label": "Default view",
+      "format": "SELECT",
+      "defaultValue": "Daily",
+      "visibility": "$this.showTimeline = true",
+      "source": [
+        {
+          "key": "Daily",
+          "value": "Daily"
+        },
+        {
+          "key": "Weekly",
+          "value": "Weekly"
+        }
+      ]
+    },
+    {
       "name": "nowIndicator",
       "label": "Show current day",
       "format": "BOOLEAN",
@@ -69,12 +93,6 @@
       "label": "Show week-ends",
       "format": "BOOLEAN",
       "defaultValue": true
-    },
-    {
-      "name": "showTimeline",
-      "label": "Show as Timeline",
-      "format": "BOOLEAN",
-      "defaultValue": false
     }
   ],
   "defaultConfig": {
