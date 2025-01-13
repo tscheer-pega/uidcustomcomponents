@@ -48,6 +48,10 @@ export type TEvent = {
   extendedProps?: { [key: string]: any };
   duration?: string;
   resourceId?: string;
+  groupId?: string;
+  constraint?: string;
+  editable?: boolean;
+  dragScroll?: boolean;
 };
 
 export type TResource = {
@@ -390,6 +394,12 @@ export default (props: ICalendarProps) => {
     );
   };
 
+  const handleEventOverlap = (stillEvent: any) =>
+    !(
+      stillEvent._def.extendedProps.item.Type === 'Termin' ||
+      stillEvent._def.extendedProps.item.Type === 'Sammel'
+    );
+
   const handleDateChange = (objInfo: any) => {
     const calendar = objInfo.view.calendar;
     if (
@@ -551,7 +561,6 @@ export default (props: ICalendarProps) => {
       allDayText='Ganztags'
       slotMinTime='06:00:00'
       slotMaxTime='21:00:00'
-      slotEventOverlap={false}
       events={events.filter(event =>
         showPublicHolidays ? true : event.item.Type !== EEventType.PUBLIC_HOLIDAY
       )}
@@ -569,6 +578,8 @@ export default (props: ICalendarProps) => {
       eventDrop={handleEventUpdate}
       eventResize={handleEventUpdate}
       eventResourceEditable
+      slotEventOverlap={false}
+      eventOverlap={handleEventOverlap}
       datesSet={handleDateChange}
       select={handleSelect}
       eventTextColor='#fff'

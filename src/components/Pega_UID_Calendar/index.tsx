@@ -56,7 +56,6 @@ registerIcon(
 
 export type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
 
-
 export enum ECalendarViewType {
   Day = 'timeGridDay',
   Week = 'timeGridWeek',
@@ -301,6 +300,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     const tmpevents: Array<TEvent> = [];
     (data || rawData).forEach((item: IRawEvent) => {
       let color: string;
+      let groupId: string | undefined;
+      let constraint: string | undefined;
       let display = 'block';
       let editable = false;
       let dragScroll = false;
@@ -322,6 +323,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             }
           }
           title = showTimeline ? '' : item.Type;
+          groupId = EEventType.AVAILABILITY;
           break;
         }
         case EEventType.CANCELLED:
@@ -334,6 +336,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.blue.dark;
           editable = true;
           dragScroll = true;
+          constraint = EEventType.AVAILABILITY;
           break;
         case EEventType.ABSENCE:
           color = theme.base.colors.orange.dark;
@@ -346,6 +349,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.yellow.light;
           editable = true;
           dragScroll = true;
+          constraint = EEventType.AVAILABILITY;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -370,7 +374,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         default:
           freq = 'yearly';
       }
-      const tmpEvent = {
+      const tmpEvent: TEvent = {
         id: item.TerminID || `generic-${Math.random() * 1e9}`,
         resourceId: item.ResourceId || `generic-${Math.random() * 1e9}`,
         title,
@@ -389,6 +393,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         allDay: item.CompleteDay,
         item
       };
+      if (constraint) {
+        tmpEvent.constraint = constraint;
+      }
+      if (groupId) {
+        tmpEvent.groupId = groupId;
+      }
       if (item.IsSerie && !!item.SerieRepeat) {
         tmpevents.push(tmpEvent);
       } else {
