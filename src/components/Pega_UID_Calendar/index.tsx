@@ -72,6 +72,7 @@ export enum ETimelineViewType {
 export type TCalendarProps = {
   heading?: string;
   dataPage?: string;
+  dataPageResources?: string;
   createClassname?: string;
   createMassClassname?: string;
   interactionId?: string;
@@ -158,6 +159,26 @@ export type TDateInfo = {
   start?: string;
   end?: string;
 };
+
+export interface IRawResource {
+  pyGUID: string;
+  Name: string;
+  BeraterList?: Array<{
+    pyUserIdentifier: string;
+    pyUserName: string;
+  }>;
+}
+
+export interface IBerater {
+  id: string;
+  title: string;
+}
+
+export interface IResource {
+  id: string;
+  title: string;
+  children?: Array<IBerater>;
+}
 
 export const getDateTimeFromIsoString = (
   isoString: string,
@@ -269,6 +290,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const {
     heading = '',
     dataPage = '',
+    dataPageResources = '',
     createClassname = '',
     createMassClassname = '',
     interactionId = '',
@@ -291,7 +313,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     getDefaultView(getDateInfo(), showTimeline, defaultViewMode)
   );
   const [rawData, setRawData] = useState<Array<IRawEvent>>([]);
-  const [resources, setResources] = useState([]);
+  const [resources, setResources] = useState<Array<IResource>>([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
 
@@ -421,23 +443,86 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   let lastStartDate = '';
   let lastEndDate = '';
 
+  const mapResources = (rawResources: Array<IRawResource>): Array<IResource> => {
+    return rawResources.map(rawResource => {
+      const children = [] as Array<IBerater>;
+      rawResource.BeraterList?.forEach(berater => {
+        children.push({
+          id: berater.pyUserIdentifier,
+          title: berater.pyUserName
+        });
+      });
+      return {
+        id: rawResource.pyGUID,
+        title: rawResource.Name,
+        children
+      };
+    });
+  };
+
   const loadEvents = (startDate = StartDate) => {
-    if (startDate) {
+    const enableFeature = true;
+    if (showTimeline && startDate && enableFeature) {
       setIsLoading(true);
       dataApiUtils
-        .getData(dataPage, {
+        .getData(dataPageResources, {
           dataViewParameters: {
             StartDate: moment(startDate).format('YYYY-MM-DD'),
             EndDate: moment(EndDate).format('YYYY-MM-DD'),
             ShowTimeline: showTimeline
           }
         })
+        .then(async (response: any) => {
+          const resourceResponse = response.data;
+          const rawResource = resourceResponse.data as Array<IRawResource>;
+          const promises = [] as Array<Promise<any>>;
+          if (rawResource) {
+            setResources(mapResources(rawResource));
+            rawResource.forEach(singleOrganisation => {
+              singleOrganisation.BeraterList?.forEach(singleAgent => {
+                promises.push(
+                  new Promise(resolve => {
+                    dataApiUtils
+                      .getData(dataPage, {
+                        dataViewParameters: {
+                          StartDate: moment(startDate).format('YYYY-MM-DD'),
+                          EndDate: moment(EndDate).format('YYYY-MM-DD'),
+                          // Organisationseinheit ID (Agency ID)
+                          OrgID: singleOrganisation.pyGUID,
+                          // Berater ID (Consultant ID)
+                          BeraterID: singleAgent.pyUserIdentifier
+                        }
+                      })
+                      .then((resp: any) => {
+                        const eventData = resp.data;
+                        if (eventData.data !== null) {
+                          resolve(eventData.data);
+                        }
+                      });
+                  })
+                );
+              });
+            });
+          }
+          const [resolvedEvents] = await Promise.all(promises);
+          setRawData(resolvedEvents);
+          fillEvents(resolvedEvents);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    } else if (startDate) {
+      setIsLoading(true);
+      dataApiUtils
+        .getData(dataPage, {
+          dataViewParameters: {
+            StartDate: moment(startDate).format('YYYY-MM-DD'),
+            EndDate: moment(EndDate).format('YYYY-MM-DD')
+          }
+        })
         .then((response: any) => {
           const data = response.data;
           if (data.data !== null) {
-            if (showTimeline && data.resources) {
-              setResources(data.resources);
-            }
             setRawData(data.data);
             fillEvents(data.data);
           }

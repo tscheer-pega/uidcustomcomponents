@@ -2,17 +2,21 @@ import { CalendarApi } from '@fullcalendar/core';
 import './create-nonce';
 
 export declare type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
-export declare enum EViewType {
+export declare enum ECalendarViewType {
   Day = 'timeGridDay',
   Week = 'timeGridWeek',
   WorkWeek = 'workingWeek',
-  Month = 'dayGridMonth',
-  ResourceTimelineDay = 'resourceTimelineDay',
-  ResourceTimelineWeek = 'resourceTimelineWeek'
+  Month = 'dayGridMonth'
+}
+export declare enum ETimelineViewType {
+  Day = 'resourceTimelineDay',
+  Week = 'resourceTimelineWeek',
+  WorkWeek = 'resourceTimelineWorkWeek'
 }
 export declare type TCalendarProps = {
   heading?: string;
   dataPage?: string;
+  dataPageResources?: string;
   createClassname?: string;
   createMassClassname?: string;
   interactionId?: string;
@@ -86,12 +90,29 @@ export interface IRawEvent {
 }
 export declare type TDateInfo = {
   view: {
-    type: EViewType;
+    type: ECalendarViewType | ETimelineViewType;
   };
   startStr?: string;
   start?: string;
   end?: string;
 };
+export interface IRawResource {
+  pyGUID: string;
+  Name: string;
+  BeraterList?: Array<{
+    pyUserIdentifier: string;
+    pyUserName: string;
+  }>;
+}
+export interface IBerater {
+  id: string;
+  title: string;
+}
+export interface IResource {
+  id: string;
+  title: string;
+  children?: Array<IBerater>;
+}
 export declare const getDateTimeFromIsoString: (
   isoString: string,
   dateOrTime: EDateTimeType,

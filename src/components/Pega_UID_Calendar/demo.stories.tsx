@@ -57,10 +57,16 @@ export default {
     weekendIndicator: true,
     showTimeline: false,
     dataPage: '',
+    dataPageResources: '',
     getPConnect: defaultProps.getPConnect
   },
   argTypes: {
     dataPage: {
+      table: {
+        disable: true
+      }
+    },
+    dataPageResources: {
       table: {
         disable: true
       }
@@ -141,7 +147,13 @@ const setPCore = () => {
               ? data
               : exampleData[`${props.dataViewParameters.ShowTimeline ? 'timeline' : 'calendar'}`];
             return resolve({
-              data: { ...returnData, data: [...returnData.data, ...publicHolidays] }
+              data: {
+                ...returnData,
+                data: [
+                  ...returnData.data,
+                  ...(props.dataViewParameters.ShowTimeline ? [] : publicHolidays)
+                ]
+              }
             });
           }, 500)
         );
@@ -183,5 +195,7 @@ export const timelineCalendar = Template.bind({});
 timelineCalendar.args = {
   ...Template.args,
   showTimeline: true,
+  dataPage: 'D_TimeSlotListForOrg',
+  dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
   defaultViewMode: 'Daily'
 };

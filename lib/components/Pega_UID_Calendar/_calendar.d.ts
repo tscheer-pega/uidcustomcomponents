@@ -1,5 +1,5 @@
 import React, { JSX } from 'react';
-import { EViewType, TEventImpl } from './index';
+import { ECalendarViewType, ETimelineViewType, TEventImpl } from './index';
 
 export declare type TEvent = {
   id: string;
@@ -21,6 +21,10 @@ export declare type TEvent = {
   };
   duration?: string;
   resourceId?: string;
+  groupId?: string;
+  constraint?: string;
+  editable?: boolean;
+  dragScroll?: boolean;
 };
 export declare type TResource = {
   id: string;
@@ -42,8 +46,8 @@ export interface ICalendarProps {
   events: Array<TEvent>;
   resources: Array<TResource>;
   setEvents: React.Dispatch<React.SetStateAction<Array<TEvent>>>;
-  currentViewType: EViewType;
-  setCurrentViewType: React.Dispatch<React.SetStateAction<EViewType>>;
+  currentViewType: ECalendarViewType | ETimelineViewType;
+  setCurrentViewType: React.Dispatch<React.SetStateAction<ECalendarViewType | ETimelineViewType>>;
   eventInPopover: {
     eventEl: HTMLDivElement | null;
     eventInfo: TEventImpl | null;

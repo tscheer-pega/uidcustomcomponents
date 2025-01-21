@@ -13,12 +13,18 @@
   "properties": [
     {
       "name": "heading",
-      "label": "Heading",
+      "label": "Seitentitel",
       "format": "TEXT"
     },
     {
       "name": "dataPage",
-      "label": "Data Page name",
+      "label": "Data Page Name für Events",
+      "format": "TEXT"
+    },
+    {
+      "name": "dataPageResources",
+      "label": "Data Page Name für Organisationseinheiten",
+      "visibility": "$this.showTimeline = true",
       "format": "TEXT"
     },
     {
