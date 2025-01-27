@@ -1,0 +1,36 @@
+{
+  "fetchDateTime": "2025-01-15T09:21:25.694Z",
+  "pxObjClass": "Pega-API-DataExploration-Data",
+  "resultCount": 2,
+  "data": [
+    {
+      "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+      "Name": "Berlin Mitte",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Berlin_Mitte",
+      "BeraterList": [
+        {
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de",
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID"
+        }
+      ]
+    },
+    {
+      "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c41",
+      "Name": "Brandenburg",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Brandenburg"
+    },
+    {
+      "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef886",
+      "Name": "München",
+      "Region": "Bayern SÜD (BY SÜD)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Muenchen"
+    }
+  ],
+  "hasMoreResults": false
+}

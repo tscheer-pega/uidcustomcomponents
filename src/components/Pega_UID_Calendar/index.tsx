@@ -12,7 +12,9 @@ import {
   Flex,
   Icon,
   MenuButton,
+  Option,
   registerIcon,
+  Select,
   Status,
   StatusProps,
   Switch,
@@ -162,6 +164,8 @@ export type TDateInfo = {
 
 export interface IRawResource {
   pyGUID: string;
+  AddressId: string;
+  Region: string;
   Name: string;
   BeraterList?: Array<{
     pyUserIdentifier: string;
@@ -177,6 +181,7 @@ export interface IBerater {
 export interface IResource {
   id: string;
   title: string;
+  region: string;
   children?: Array<IBerater>;
 }
 
@@ -316,6 +321,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [resources, setResources] = useState<Array<IResource>>([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
+  const [agencyFilter, setAgencyFilter] = useState<string>();
+  const [regionFilter, setRegionFilter] = useState<string>();
 
   const fillEvents = (data: Array<IRawEvent> = rawData) => {
     setEvents([]);
@@ -455,6 +462,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       return {
         id: rawResource.pyGUID,
         title: rawResource.Name,
+        region: rawResource.Region,
         children
       };
     });
@@ -713,7 +721,31 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             >
               <Text variant='h2'>{heading}</Text>
             </CardHeader>
-            <CardContent>
+            <CardContent className='card-content'>
+              {showTimeline && (
+                <div className='filters'>
+                  <Select
+                    className='filter'
+                    label='Region'
+                    value={regionFilter}
+                    onChange={e => setRegionFilter(e.target.value)}
+                  >
+                    {['', ...new Set(resources.map(({ region }) => region))].map(region => (
+                      <Option key={region}>{region}</Option>
+                    ))}
+                  </Select>
+                  <Select
+                    className='filter'
+                    label='Karriereberatungsbüro'
+                    value={agencyFilter}
+                    onChange={e => setAgencyFilter(e.target.value)}
+                  >
+                    {['', ...new Set(resources.map(({ title }) => title))].map(title => (
+                      <Option key={title}>{title}</Option>
+                    ))}
+                  </Select>
+                </div>
+              )}
               <Calendar
                 showTimeline={showTimeline}
                 calendarRef={calendarRef}
@@ -723,7 +755,15 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 nowIndicator={nowIndicator}
                 eventInPopover={eventInPopover}
                 events={isLoading ? [] : events}
-                resources={isLoading ? [] : resources}
+                resources={
+                  isLoading
+                    ? []
+                    : resources.filter(
+                        ({ region, title }) =>
+                          (!regionFilter || region === regionFilter) &&
+                          (!agencyFilter || title === agencyFilter)
+                      )
+                }
                 setEventInPopover={setEventInPopover}
                 setCurrentViewType={setCurrentViewType}
                 fillEvents={fillEvents}

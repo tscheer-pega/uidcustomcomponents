@@ -1,7 +1,8 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import PegaUidCalendar from './index';
-import { getData } from './helpers';
 import exampleData from './exampleData.stories.json';
+import exampleTimelineResources from './exampleTimelineResources.stories.json';
+import exampleTimelineData from './exampleTimelineData.stories.json';
 import publicHolidays from './publicHolidays.stories.json';
 
 const defaultProps = {
@@ -132,27 +133,28 @@ const setPCore = () => {
         console.log('Passed properties', props);
         return new Promise(resolve =>
           setTimeout(() => {
-            const useGenericData = false;
-            const data = getData(props.dataViewParameters);
-            // eslint-disable-next-line no-console
-            console.log(
-              'useGenericData',
-              useGenericData,
-              'Data',
-              useGenericData
-                ? data
-                : exampleData[`${props.dataViewParameters.ShowTimeline ? 'timeline' : 'calendar'}`]
-            );
-            const returnData = useGenericData
-              ? data
-              : exampleData[`${props.dataViewParameters.ShowTimeline ? 'timeline' : 'calendar'}`];
+            let returnData;
+
+            switch (dataViewName) {
+              // Timeline: Resources
+              case 'D_OrganisationeinheitListForCurrentOperator': {
+                returnData = exampleTimelineResources;
+                break;
+              }
+              case 'D_TimeSlotListForOrg': {
+                returnData = exampleTimelineData;
+                break;
+              }
+              // Timeline: Data
+              // Usual Calendar
+              case '':
+              default: {
+                returnData = { ...exampleData, data: [...exampleData.data, ...publicHolidays] };
+              }
+            }
             return resolve({
               data: {
-                ...returnData,
-                data: [
-                  ...returnData.data,
-                  ...(props.dataViewParameters.ShowTimeline ? [] : publicHolidays)
-                ]
+                ...returnData
               }
             });
           }, 500)

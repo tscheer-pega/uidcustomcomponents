@@ -148,5 +148,11 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .date-select > div {
       margin-right: 4px;
     }
+    .card-content .filters {
+      margin-bottom: 1rem;
+    }
+    .card-content .filters .filter {
+      max-width: 480px;
+    }
   `;
 });
