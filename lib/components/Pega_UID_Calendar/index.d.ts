@@ -98,6 +98,8 @@ export declare type TDateInfo = {
 };
 export interface IRawResource {
   pyGUID: string;
+  AddressId: string;
+  Region: string;
   Name: string;
   BeraterList?: Array<{
     pyUserIdentifier: string;
@@ -111,6 +113,7 @@ export interface IBerater {
 export interface IResource {
   id: string;
   title: string;
+  region: string;
   children?: Array<IBerater>;
 }
 export declare const getDateTimeFromIsoString: (

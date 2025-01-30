@@ -16,25 +16,58 @@
           "pxObjClass": "Data-Admin-Operator-ID"
         },
         {
-          "pyUserIdentifier": "John.Doe.ext@bwi.de",
-          "pyUserName": "John Doe",
+          "pyUserIdentifier": "Christopher.Rohde.ext@bwi.de",
+          "pyUserName": "Christopher Rohde",
           "pxObjClass": "Data-Admin-Operator-ID"
         }
       ]
     },
     {
       "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c41",
-      "Name": "Brandenburg",
+      "Name": "Potsdam",
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Brandenburg"
+      "pyGUID": "Brandenburg",
+      "BeraterList": [
+        {
+          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de",
+          "pyUserName": "Anna Szarawara",
+          "pxObjClass": "Data-Admin-Operator-ID"
+        }
+      ]
     },
     {
       "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef886",
       "Name": "München",
       "Region": "Bayern SÜD (BY SÜD)",
       "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Muenchen"
+      "pyGUID": "Muenchen",
+      "BeraterList": [
+        {
+          "pyUserIdentifier": "Elzabieta.Jastrzebska.ext@bwi.de",
+          "pyUserName": "Elzabieta Jastrzebska",
+          "pxObjClass": "Data-Admin-Operator-ID"
+        },
+        {
+          "pyUserIdentifier": "Francine.Ong.ext@bwi.de",
+          "pyUserName": "Francine Ong",
+          "pxObjClass": "Data-Admin-Operator-ID"
+        }
+      ]
+    },
+    {
+      "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef887",
+      "Name": "Karlsruhe",
+      "Region": "Baden-Württemberg NORD (BW NORD)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Karlsruhe",
+      "BeraterList": [
+        {
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de",
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID"
+        }
+      ]
     }
   ],
   "hasMoreResults": false
