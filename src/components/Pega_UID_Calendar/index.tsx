@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { CalendarApi } from '@fullcalendar/core';
 import moment from 'moment';
 import {
@@ -20,7 +20,11 @@ import {
   Switch,
   Text,
   useTheme,
-  withConfiguration
+  withConfiguration,
+  ComboBox,
+  menuHelpers,
+  MenuItemProps,
+  MenuProps
 } from '@pega/cosmos-react-core';
 import Legend from './_legend';
 import Calendar, { TEvent } from './_calendar';
@@ -324,6 +328,39 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [agencyFilter, setAgencyFilter] = useState<string>();
   const [regionFilter, setRegionFilter] = useState<string>();
 
+  /** Combo box */
+  const [comboBoxItems, setComboBoxItems] = useState<MenuProps['items']>([]);
+  const [comboBoxFilterValue, setComboBoxFilterValue] = useState('');
+  const selectedComboBoxItems = useMemo(() => {
+    return menuHelpers
+      .getSelected(comboBoxItems)
+      .map(item => ({ text: item.primary, id: item.id }));
+  }, [comboBoxItems]);
+
+  const getFilterRegex = (inputValue: string) => {
+    return new RegExp(`^${inputValue.replace(/[.*+\-?^${}()|[\]\\]/g, '\\$&')}`, 'i');
+  };
+  const filterRegex = useMemo(() => getFilterRegex(comboBoxFilterValue), [comboBoxFilterValue]);
+
+  const itemsToRender = useMemo(() => {
+    const newItems = comboBoxFilterValue
+      ? menuHelpers.flatten(comboBoxItems).filter(({ primary }: MenuItemProps) => {
+          return filterRegex.test(primary);
+        })
+      : comboBoxItems;
+
+    return menuHelpers.mapTree(newItems, item => ({
+      ...item,
+      selected: !!item.selected
+    }));
+  }, [comboBoxFilterValue, comboBoxItems]);
+
+  const toggleItem = (id: string) => {
+    setComboBoxItems(cur => menuHelpers.toggleSelected(cur, id, 'multi-select'));
+  };
+
+  /** End combo box */
+
   const fillEvents = (data: Array<IRawEvent> = rawData) => {
     setEvents([]);
     const tmpevents: Array<TEvent> = [];
@@ -485,7 +522,29 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           const rawResource = resourceResponse.data as Array<IRawResource>;
           const promises = [] as Array<Promise<any>>;
           if (rawResource) {
-            setResources(mapResources(rawResource));
+            const res = mapResources(rawResource);
+            setResources(res);
+
+            const comboData = res.map(resource => {
+              const items = resource.children?.map(berater => {
+                return {
+                  id: berater.id,
+                  primary: berater.title,
+                  secondary: [resource.region]
+                };
+              });
+              const comboItem: MenuItemProps = {
+                id: resource.id,
+                primary: resource.title,
+                secondary: [resource.region]
+              };
+              if (items?.length) {
+                comboItem.items = items;
+              }
+              return comboItem;
+            });
+            setComboBoxItems(comboData);
+
             rawResource.forEach(singleOrganisation => {
               singleOrganisation.BeraterList?.forEach(singleAgent => {
                 promises.push(
@@ -661,6 +720,52 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     });
   }
 
+  const filterResources = (res: Array<IResource>) => {
+    return (
+      res
+        // Filtering the offices
+        .filter(
+          ({ region, title, id, children }) =>
+            (!regionFilter || region === regionFilter) &&
+            (!agencyFilter || title === agencyFilter) &&
+            (!selectedComboBoxItems.length ||
+              selectedComboBoxItems.some(
+                item =>
+                  // office is ticked
+                  item.id === id ||
+                  (children?.length &&
+                    children.some(
+                      child =>
+                        // an agent is ticked
+                        item.id === child.id
+                    ))
+              ))
+        )
+        // Filtering the agents
+        .map(resource => {
+          if (resource.children && resource.children.length) {
+            return {
+              ...resource,
+              children: resource.children.filter(
+                child =>
+                  !selectedComboBoxItems.length ||
+                  selectedComboBoxItems.some(
+                    item =>
+                      // office is ticked
+                      item.id === resource.id
+                  ) ||
+                  selectedComboBoxItems.some(
+                    item =>
+                      // agent is ticked
+                      item.id === child.id
+                  )
+              )
+            };
+          } else return resource;
+        })
+    );
+  };
+
   return (
     <Configuration locale='de-DE'>
       <StyledCalendarWrapper theme={theme}>
@@ -734,6 +839,28 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       <Option key={region}>{region}</Option>
                     ))}
                   </Select>
+                  <ComboBox
+                    label='Filter'
+                    mode='multi-select'
+                    selected={{
+                      items: selectedComboBoxItems,
+                      onRemove: toggleItem
+                    }}
+                    value={comboBoxFilterValue}
+                    onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                      setComboBoxFilterValue(e.target.value);
+                    }}
+                    onBlur={() => {
+                      setComboBoxFilterValue('');
+                    }}
+                    menu={{
+                      items: itemsToRender,
+                      onItemClick: toggleItem,
+                      accent: filterRegex,
+                      emptyText: 'No items',
+                      scrollAt: 6
+                    }}
+                  />
                   <Select
                     className='filter'
                     label='Karriereberatungsbüro'
@@ -755,15 +882,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 nowIndicator={nowIndicator}
                 eventInPopover={eventInPopover}
                 events={isLoading ? [] : events}
-                resources={
-                  isLoading
-                    ? []
-                    : resources.filter(
-                        ({ region, title }) =>
-                          (!regionFilter || region === regionFilter) &&
-                          (!agencyFilter || title === agencyFilter)
-                      )
-                }
+                resources={isLoading ? [] : filterResources(resources)}
                 setEventInPopover={setEventInPopover}
                 setCurrentViewType={setCurrentViewType}
                 fillEvents={fillEvents}

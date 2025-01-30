@@ -125,6 +125,7 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .card-header-action-container {
       display: flex;
     }
+
     .h-spacer {
       width: 8px;
     }
@@ -150,9 +151,7 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     }
     .card-content .filters {
       margin-bottom: 1rem;
-    }
-    .card-content .filters .filter {
-      max-width: 480px;
+      max-width: 50%;
     }
   `;
 });

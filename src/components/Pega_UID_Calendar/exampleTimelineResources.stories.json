@@ -14,6 +14,11 @@
           "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de",
           "pyUserName": "Andrzej Fudala",
           "pxObjClass": "Data-Admin-Operator-ID"
+        },
+        {
+          "pyUserIdentifier": "John.Doe.ext@bwi.de",
+          "pyUserName": "John Doe",
+          "pxObjClass": "Data-Admin-Operator-ID"
         }
       ]
     },
