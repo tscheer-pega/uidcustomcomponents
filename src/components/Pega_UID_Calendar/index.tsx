@@ -325,7 +325,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [resources, setResources] = useState<Array<IResource>>([]);
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
-  const [agencyFilter, setAgencyFilter] = useState<string>();
   const [regionFilter, setRegionFilter] = useState<string>();
 
   /** Combo box */
@@ -727,7 +726,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         .filter(
           ({ region, title, id, children }) =>
             (!regionFilter || region === regionFilter) &&
-            (!agencyFilter || title === agencyFilter) &&
             (!selectedComboBoxItems.length ||
               selectedComboBoxItems.some(
                 item =>
@@ -861,16 +859,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       scrollAt: 6
                     }}
                   />
-                  <Select
-                    className='filter'
-                    label='Karriereberatungsbüro'
-                    value={agencyFilter}
-                    onChange={e => setAgencyFilter(e.target.value)}
-                  >
-                    {['', ...new Set(resources.map(({ title }) => title))].map(title => (
-                      <Option key={title}>{title}</Option>
-                    ))}
-                  </Select>
                 </div>
               )}
               <Calendar
