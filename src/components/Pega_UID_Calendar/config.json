@@ -51,6 +51,12 @@
       "defaultValue": false
     },
     {
+      "name": "readOnlyAccess",
+      "label": "Nur Lesezugriff",
+      "format": "BOOLEAN",
+      "defaultValue": false
+    },
+    {
       "name": "defaultViewMode",
       "label": "Default view",
       "format": "SELECT",

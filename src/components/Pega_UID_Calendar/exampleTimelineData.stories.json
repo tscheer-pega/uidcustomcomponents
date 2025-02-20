@@ -6,15 +6,15 @@
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "event",
-      "StartTime": "2025-01-30T09:00:00+01:00",
-      "EndTime": "2025-01-30T18:30:00+01:00",
+      "StartTime": "2025-02-20T09:00:00+01:00",
+      "EndTime": "2025-02-20T18:30:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "Karla Kolumna",
-      "StartTime": "2025-01-30T09:00:00+01:00",
-      "EndTime": "2025-01-30T10:30:00+01:00",
+      "StartTime": "2025-02-20T09:00:00+01:00",
+      "EndTime": "2025-02-20T10:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Telefon"
@@ -22,8 +22,8 @@
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "Benjamin Blümchen",
-      "StartTime": "2025-01-30T10:30:00+01:00",
-      "EndTime": "2025-01-30T12:00:00+01:00",
+      "StartTime": "2025-02-20T10:30:00+01:00",
+      "EndTime": "2025-02-20T12:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Online"
@@ -31,8 +31,8 @@
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "Dr. Theodor Tierlieb",
-      "StartTime": "2025-01-30T12:30:00+01:00",
-      "EndTime": "2025-01-30T14:30:00+01:00",
+      "StartTime": "2025-02-20T12:30:00+01:00",
+      "EndTime": "2025-02-20T14:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Bewerbungsabgabe",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -40,8 +40,8 @@
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "Erwin Erzähler",
-      "StartTime": "2025-01-30T14:30:00+01:00",
-      "EndTime": "2025-01-30T16:00:00+01:00",
+      "StartTime": "2025-02-20T14:30:00+01:00",
+      "EndTime": "2025-02-20T16:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Online"
@@ -49,8 +49,8 @@
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
       "Subject": "Stella Stellini",
-      "StartTime": "2025-01-30T17:00:00+01:00",
-      "EndTime": "2025-01-30T18:30:00+01:00",
+      "StartTime": "2025-02-20T17:00:00+01:00",
+      "EndTime": "2025-02-20T18:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Telefon"
@@ -58,8 +58,8 @@
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "Klara Fall",
-      "StartTime": "2025-01-30T08:30:00+01:00",
-      "EndTime": "2025-01-30T09:30:00+01:00",
+      "StartTime": "2025-02-20T08:30:00+01:00",
+      "EndTime": "2025-02-20T09:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -67,8 +67,8 @@
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "Birgit Bieber",
-      "StartTime": "2025-01-30T12:30:00+01:00",
-      "EndTime": "2025-01-30T14:00:00+01:00",
+      "StartTime": "2025-02-20T12:30:00+01:00",
+      "EndTime": "2025-02-20T14:00:00+01:00",
       "Type": "Storniert",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -76,8 +76,8 @@
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "Reiner Zufall",
-      "StartTime": "2025-01-30T11:00:00+01:00",
-      "EndTime": "2025-01-30T12:30:00+01:00",
+      "StartTime": "2025-02-20T11:00:00+01:00",
+      "EndTime": "2025-02-20T12:30:00+01:00",
       "Type": "Abgesagt",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -85,8 +85,8 @@
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "Harry Wijnvoord",
-      "StartTime": "2025-01-30T14:00:00+01:00",
-      "EndTime": "2025-01-30T15:30:00+01:00",
+      "StartTime": "2025-02-20T14:00:00+01:00",
+      "EndTime": "2025-02-20T15:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -94,50 +94,43 @@
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "event 4",
-      "StartTime": "2025-01-30T07:30:00+01:00",
-      "EndTime": "2025-01-30T09:30:00+01:00",
+      "StartTime": "2025-02-20T07:30:00+01:00",
+      "EndTime": "2025-02-20T11:00:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "event 5",
-      "StartTime": "2025-01-30T09:30:00+01:00",
-      "EndTime": "2025-01-30T11:00:00+01:00",
+      "StartTime": "2025-02-20T12:30:00+01:00",
+      "EndTime": "2025-02-20T15:00:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
       "Subject": "event 5",
-      "StartTime": "2025-01-30T12:30:00+01:00",
-      "EndTime": "2025-01-30T15:00:00+01:00",
-      "Type": "Verfügbar"
-    },
-    {
-      "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
-      "Subject": "event 5",
-      "StartTime": "2025-01-30T14:00:00+01:00",
-      "EndTime": "2025-01-30T18:00:00+01:00",
+      "StartTime": "2025-02-20T14:00:00+01:00",
+      "EndTime": "2025-02-20T18:00:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "event 3",
-      "StartTime": "2025-01-30T08:00:00+01:00",
-      "EndTime": "2025-01-30T12:00:00+01:00",
+      "StartTime": "2025-02-20T08:00:00+01:00",
+      "EndTime": "2025-02-20T12:00:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "event 3",
-      "StartTime": "2025-01-30T13:00:00+01:00",
-      "EndTime": "2025-01-30T18:00:00+01:00",
+      "StartTime": "2025-02-20T13:00:00+01:00",
+      "EndTime": "2025-02-20T18:00:00+01:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Joker",
-      "StartTime": "2025-01-30T08:30:00+01:00",
-      "EndTime": "2025-01-30T09:00:00+01:00",
+      "StartTime": "2025-02-20T08:30:00+01:00",
+      "EndTime": "2025-02-20T09:00:00+01:00",
       "Type": "Storniert",
       "Beratungsart": "Bewerbungsabgabe",
       "Beratungsstellentyp": "Online"
@@ -145,8 +138,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Bruce Wayne",
-      "StartTime": "2025-01-30T09:30:00+01:00",
-      "EndTime": "2025-01-30T10:00:00+01:00",
+      "StartTime": "2025-02-20T09:30:00+01:00",
+      "EndTime": "2025-02-20T10:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Online"
@@ -154,8 +147,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Alfred Pennyworth",
-      "StartTime": "2025-01-30T10:00:00+01:00",
-      "EndTime": "2025-01-30T10:30:00+01:00",
+      "StartTime": "2025-02-20T10:00:00+01:00",
+      "EndTime": "2025-02-20T10:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Online"
@@ -163,8 +156,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Lucius Fox",
-      "StartTime": "2025-01-30T10:30:00+01:00",
-      "EndTime": "2025-01-30T11:30:00+01:00",
+      "StartTime": "2025-02-20T10:30:00+01:00",
+      "EndTime": "2025-02-20T11:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Online"
@@ -172,8 +165,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "James Gordon",
-      "StartTime": "2025-01-30T11:30:00+01:00",
-      "EndTime": "2025-01-30T12:00:00+01:00",
+      "StartTime": "2025-02-20T11:30:00+01:00",
+      "EndTime": "2025-02-20T12:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Bewerbungsabgabe",
       "Beratungsstellentyp": "Online"
@@ -181,8 +174,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Scarecrow",
-      "StartTime": "2025-01-30T12:30:00+01:00",
-      "EndTime": "2025-01-30T13:00:00+01:00",
+      "StartTime": "2025-02-20T12:30:00+01:00",
+      "EndTime": "2025-02-20T13:00:00+01:00",
       "Type": "Abgesagt",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -190,8 +183,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Rachel Dawes",
-      "StartTime": "2025-01-30T13:30:00+01:00",
-      "EndTime": "2025-01-30T14:00:00+01:00",
+      "StartTime": "2025-02-20T13:30:00+01:00",
+      "EndTime": "2025-02-20T14:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Bewerbungsabgabe",
       "Beratungsstellentyp": "Telefon"
@@ -199,8 +192,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Harvey Dent",
-      "StartTime": "2025-01-30T14:30:00+01:00",
-      "EndTime": "2025-01-30T16:30:00+01:00",
+      "StartTime": "2025-02-20T14:30:00+01:00",
+      "EndTime": "2025-02-20T16:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -208,8 +201,8 @@
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
       "Subject": "Jonathan Crane",
-      "StartTime": "2025-01-30T17:00:00+01:00",
-      "EndTime": "2025-01-30T17:30:00+01:00",
+      "StartTime": "2025-02-20T17:00:00+01:00",
+      "EndTime": "2025-02-20T17:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Bewerbungsabgabe",
       "Beratungsstellentyp": "Telefon"
@@ -217,15 +210,15 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "event 2",
-      "StartTime": "2025-01-30T09:00:00+00:00",
-      "EndTime": "2025-01-30T14:00:00+00:00",
+      "StartTime": "2025-02-20T09:00:00+00:00",
+      "EndTime": "2025-02-20T14:00:00+00:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Thanos",
-      "StartTime": "2025-01-30T09:30:00+01:00",
-      "EndTime": "2025-01-30T10:00:00+01:00",
+      "StartTime": "2025-02-20T09:30:00+01:00",
+      "EndTime": "2025-02-20T10:00:00+01:00",
       "Type": "Abgesagt",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -233,8 +226,8 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Gamora",
-      "StartTime": "2025-01-30T10:00:00+01:00",
-      "EndTime": "2025-01-30T10:30:00+01:00",
+      "StartTime": "2025-02-20T10:00:00+01:00",
+      "EndTime": "2025-02-20T10:30:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Beweberungsabgabe",
       "Beratungsstellentyp": "Online"
@@ -242,8 +235,8 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Peter Quill",
-      "StartTime": "2025-01-30T11:00:00+01:00",
-      "EndTime": "2025-01-30T12:00:00+01:00",
+      "StartTime": "2025-02-20T11:00:00+01:00",
+      "EndTime": "2025-02-20T12:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Telefon"
@@ -251,8 +244,8 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Groot",
-      "StartTime": "2025-01-30T12:30:00+01:00",
-      "EndTime": "2025-01-30T13:00:00+01:00",
+      "StartTime": "2025-02-20T12:30:00+01:00",
+      "EndTime": "2025-02-20T13:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Online"
@@ -260,8 +253,8 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Nebula",
-      "StartTime": "2025-01-30T13:00:00+01:00",
-      "EndTime": "2025-01-30T14:00:00+01:00",
+      "StartTime": "2025-02-20T13:00:00+01:00",
+      "EndTime": "2025-02-20T14:00:00+01:00",
       "Type": "Storniert",
       "Beratungsart": "Erstberatung",
       "Beratungsstellentyp": "Telefon"
@@ -269,8 +262,8 @@
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
       "Subject": "Drax",
-      "StartTime": "2025-01-30T14:30:00+01:00",
-      "EndTime": "2025-01-30T15:00:00+01:00",
+      "StartTime": "2025-02-20T14:30:00+01:00",
+      "EndTime": "2025-02-20T15:00:00+01:00",
       "Type": "Termin",
       "Beratungsart": "Folgeberatung",
       "Beratungsstellentyp": "Präsenzberatung"
@@ -278,22 +271,22 @@
     {
       "ResourceId": "Anna.Szarawara.ext@bwi.de",
       "Subject": "event 4",
-      "StartTime": "2025-01-30T07:30:00+00:00",
-      "EndTime": "2025-01-30T15:30:00+00:00",
+      "StartTime": "2025-02-20T07:30:00+00:00",
+      "EndTime": "2025-02-20T15:30:00+00:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Francine.Ong.ext@bwi.de",
       "Subject": "event 1",
-      "StartTime": "2025-01-30T06:00:00+00:00",
-      "EndTime": "2025-01-30T10:00:00+00:00",
+      "StartTime": "2025-02-20T06:00:00+00:00",
+      "EndTime": "2025-02-20T10:00:00+00:00",
       "Type": "Verfügbar"
     },
     {
       "ResourceId": "Francine.Ong.ext@bwi.de",
       "Subject": "event 2",
-      "StartTime": "2025-01-30T14:00:00+00:00",
-      "EndTime": "2025-01-30T18:00:00+00:00",
+      "StartTime": "2025-02-20T14:00:00+00:00",
+      "EndTime": "2025-02-20T18:00:00+00:00",
       "Type": "Verfügbar"
     }
   ]

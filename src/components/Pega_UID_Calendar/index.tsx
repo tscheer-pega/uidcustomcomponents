@@ -7,11 +7,15 @@ import {
   CardContent,
   CardFooter,
   CardHeader,
+  ComboBox,
   Configuration,
   DateInput,
   Flex,
   Icon,
   MenuButton,
+  menuHelpers,
+  MenuItemProps,
+  MenuProps,
   Option,
   registerIcon,
   Select,
@@ -20,11 +24,7 @@ import {
   Switch,
   Text,
   useTheme,
-  withConfiguration,
-  ComboBox,
-  menuHelpers,
-  MenuItemProps,
-  MenuProps
+  withConfiguration
 } from '@pega/cosmos-react-core';
 import Legend from './_legend';
 import Calendar, { TEvent } from './_calendar';
@@ -86,6 +86,7 @@ export type TCalendarProps = {
   nowIndicator?: boolean;
   weekendIndicator?: boolean;
   showTimeline?: boolean;
+  readOnlyAccess?: boolean;
   getPConnect: any;
 };
 
@@ -307,6 +308,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     nowIndicator = true,
     weekendIndicator = true,
     showTimeline = false,
+    readOnlyAccess = false,
     getPConnect
   } = props;
   const actionsApi = getPConnect().getActionsApi();
@@ -563,6 +565,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                         const eventData = resp.data;
                         if (eventData.data !== null) {
                           resolve(eventData.data);
+                        } else {
+                          // If no data is returned - resolve with an empty array
+                          resolve([]);
                         }
                       });
                   })
@@ -724,7 +729,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       res
         // Filtering the offices
         .filter(
-          ({ region, title, id, children }) =>
+          ({ region, id, children }) =>
             (!regionFilter || region === regionFilter) &&
             (!selectedComboBoxItems.length ||
               selectedComboBoxItems.some(
@@ -838,7 +843,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                     ))}
                   </Select>
                   <ComboBox
-                    label='Filter'
+                    label='Organisationseinheit / Berater'
                     mode='multi-select'
                     selected={{
                       items: selectedComboBoxItems,
@@ -863,6 +868,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               )}
               <Calendar
                 showTimeline={showTimeline}
+                readOnlyAccess={readOnlyAccess}
                 calendarRef={calendarRef}
                 currentViewType={currentViewType}
                 setEvents={setEvents}

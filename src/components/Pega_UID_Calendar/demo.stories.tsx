@@ -197,6 +197,7 @@ export const timelineCalendar = Template.bind({});
 timelineCalendar.args = {
   ...Template.args,
   showTimeline: true,
+  readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
   defaultViewMode: 'Daily'

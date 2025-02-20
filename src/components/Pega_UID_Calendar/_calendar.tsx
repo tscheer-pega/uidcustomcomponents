@@ -20,10 +20,10 @@ import {
   useToaster
 } from '@pega/cosmos-react-core';
 import {
+  ECalendarViewType,
   EDateTimeType,
   EEventType,
   ETerminGoal,
-  ECalendarViewType,
   ETimelineViewType,
   getDateTimeFromIsoString,
   getTypeIcon,
@@ -62,6 +62,7 @@ export type TResource = {
 
 export interface ICalendarProps {
   showTimeline: boolean;
+  readOnlyAccess: boolean;
   nowIndicator: boolean;
   weekendIndicator: boolean;
   calendarRef: any;
@@ -96,6 +97,7 @@ export interface ICalendarProps {
 export default (props: ICalendarProps) => {
   const {
     showTimeline,
+    readOnlyAccess,
     nowIndicator,
     weekendIndicator,
     calendarRef,
@@ -259,9 +261,35 @@ export default (props: ICalendarProps) => {
       </>
     );
 
+    if (readOnlyAccess) {
+      return (
+        <Modal
+          heading='Verschieben eines bestehenden Kalendereintrags'
+          actions={
+            <Button
+              variant='primary'
+              onClick={() => {
+                if (modalProps.revert) {
+                  modalProps.revert();
+                }
+                dismiss();
+              }}
+            >
+              Okay
+            </Button>
+          }
+          dismissible={false}
+          autoWidth
+          stretch
+        >
+          <Text>Sie haben keine Berechtigung, diesen Termin zu verschieben.</Text>
+        </Modal>
+      );
+    }
+
     return (
       <Modal
-        heading='Verschiebung eines bestehenden Kalendereintrags'
+        heading='Verschieben eines bestehenden Kalendereintrags'
         actions={confirmationModalActions}
         dismissible={false}
         autoWidth
@@ -481,7 +509,7 @@ export default (props: ICalendarProps) => {
 
   const onDateClick = (info: { dateStr: string }) => {
     const date = info.dateStr;
-    if (date && currentViewType !== ECalendarViewType.Day) {
+    if (date && currentViewType !== ECalendarViewType.Day && !showTimeline) {
       const calendar = calendarRef.current?.calendar;
       onViewButtonClick(ECalendarViewType.Day);
       setSelectedStartDate(date);
@@ -568,7 +596,7 @@ export default (props: ICalendarProps) => {
       resourceAreaHeaderContent='Ressourcen'
       resourceAreaWidth='250px'
       resources={resources}
-      eventAllow={handleEventAllow}
+      eventAllow={readOnlyAccess ? () => false : handleEventAllow}
       eventContent={renderEventContent}
       eventClick={handleEventClick}
       eventMouseEnter={handleEventMouseEnter}
