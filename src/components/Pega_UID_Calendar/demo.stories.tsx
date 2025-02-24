@@ -13,9 +13,9 @@ const defaultProps = {
           openWorkByHandle: () => {
             /* nothing */
           },
-          createWork: (className: string) => {
+          createWork: (className: string, params: object) => {
             // eslint-disable-next-line no-alert
-            alert(`Create case type with className:${className}`);
+            alert(`Create case type with className: ${className} (${JSON.stringify(params)})`);
           },
           updateFieldValue: () => {
             /* nothing */

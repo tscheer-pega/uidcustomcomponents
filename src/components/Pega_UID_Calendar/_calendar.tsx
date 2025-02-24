@@ -61,6 +61,7 @@ export type TResource = {
 };
 
 export interface ICalendarProps {
+  createEvent: (start: string, end: string) => void;
   showTimeline: boolean;
   readOnlyAccess: boolean;
   nowIndicator: boolean;
@@ -96,6 +97,7 @@ export interface ICalendarProps {
 
 export default (props: ICalendarProps) => {
   const {
+    createEvent,
     showTimeline,
     readOnlyAccess,
     nowIndicator,
@@ -336,15 +338,7 @@ export default (props: ICalendarProps) => {
           variant='primary'
           onClick={() => {
             setEvents([...events, tmpItem]);
-            // TODO: Update API call to create new event
-            /*
-            getPConnect().getActionsApi().createWork(createClassname, {
-              openCaseViewAfterCreate: true,
-              interactionId,
-              start: start.toISOString(),
-              end: end.toISOString()
-            });
-             */
+            createEvent(start.toISOString(), end.toISOString());
             dismiss();
           }}
         >
@@ -500,8 +494,7 @@ export default (props: ICalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    // TODO: Clarify functionality and enable when ready
-    const enableFeature = false;
+    const enableFeature = !showTimeline;
     if (enableFeature) {
       create(CreateModal, { info, dataPage }, { alert: true });
     }

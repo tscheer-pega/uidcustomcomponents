@@ -643,6 +643,23 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       viewType: 'form'
     });
 
+  const createEvent = (start: string, end: string) =>
+    actionsApi.createWork(createClassname, {
+      openCaseViewAfterCreate: true,
+      interactionId,
+      containerName: 'workarea',
+      flowType: 'pyStartCase',
+      skipBrowserSemanticUrlUpdate: true,
+      startingFields: {
+        InteractionId: interactionId,
+        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+        cxContextType: 'Case',
+        start,
+        end
+      },
+      viewType: 'form'
+    });
+
   const handlePopoverMouseEnter = () => {
     setEventInPopover({
       eventEl: eventInPopover.eventEl,
@@ -693,35 +710,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   }
   if (createMassClassname) {
     menuActionItems.push({ id: createMassClassname, primary: 'Neuer Sammeltermin' });
-  }
-
-  // Add an event listener to the document to listen for the expand/collapse of the timeline categories
-  if (showTimeline) {
-    document.addEventListener('readystatechange', () => {
-      if (document.readyState === 'complete') {
-        // good luck!
-        /*
-        setTimeout(() => {
-          expanders = document.querySelectorAll(
-            '.fc-datagrid-expander:not(.fc-datagrid-expander-placeholder)'
-          );
-          expanders.forEach(
-            expander =>
-              (expander.children[0].onclick = e => {
-                console.log(e);
-                debugger;
-                // using the fullcalendar dispatcher to toggle
-                calendarRef.current.getApi().currentDataManager.dispatch({
-                  type: 'SET_RESOURCE_ENTITY_EXPANDED',
-                  id: '0',
-                  isExpanded: true
-                });
-              })
-          );
-        }, 1000);
-         */
-      }
-    });
   }
 
   const filterResources = (res: Array<IResource>) => {
@@ -843,7 +831,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                     ))}
                   </Select>
                   <ComboBox
-                    label='Organisationseinheit / Berater'
+                    label='Karriereberatungsbüro > Berater'
                     mode='multi-select'
                     selected={{
                       items: selectedComboBoxItems,
@@ -867,6 +855,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               )}
               <Calendar
+                createEvent={createEvent}
                 showTimeline={showTimeline}
                 readOnlyAccess={readOnlyAccess}
                 calendarRef={calendarRef}
