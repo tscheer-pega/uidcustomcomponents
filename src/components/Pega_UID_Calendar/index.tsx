@@ -795,7 +795,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   >
                     <Icon name='reset' />
                   </Button>
-                  {menuActionItems.length > 0 && (
+                  {menuActionItems.length > 0 && !readOnlyAccess && (
                     <>
                       <span className='h-spacer'>&nbsp;</span>
                       <MenuButton

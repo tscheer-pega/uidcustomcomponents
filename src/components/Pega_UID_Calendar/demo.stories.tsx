@@ -191,7 +191,12 @@ const Template: ComponentStory<typeof PegaUidCalendar> = args => {
 };
 
 export const baseCalendar = Template.bind({});
-baseCalendar.args = { ...Template.args, defaultViewMode: 'Monthly' };
+baseCalendar.args = {
+  ...Template.args,
+  showTimeline: false,
+  readOnlyAccess: false,
+  defaultViewMode: 'Monthly'
+};
 
 export const timelineCalendar = Template.bind({});
 timelineCalendar.args = {
