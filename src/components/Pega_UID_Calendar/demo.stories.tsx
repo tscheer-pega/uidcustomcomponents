@@ -127,7 +127,15 @@ const setPCore = () => {
     getDataApiUtils: () => ({
       getData: (
         dataViewName: string,
-        props: { dataViewParameters: { StartDate: string; EndDate: string; ShowTimeline: boolean } }
+        props: {
+          dataViewParameters: {
+            StartDate: string;
+            EndDate: string;
+            ShowTimeline: boolean;
+            BeraterID: string;
+            OrgID: string;
+          };
+        }
       ) => {
         // eslint-disable-next-line no-console
         console.log('Passed properties', props);
@@ -151,6 +159,20 @@ const setPCore = () => {
               default: {
                 returnData = { ...exampleData, data: [...exampleData.data, ...publicHolidays] };
               }
+            }
+            if (
+              dataViewName === 'D_TimeSlotListForOrg' &&
+              (props.dataViewParameters.BeraterID !== 'Tobias.Scheer.ext@bwi.de' ||
+                props.dataViewParameters.OrgID !== 'Karlsruhe')
+            ) {
+              return resolve({
+                data: {
+                  fetchDateTime: '2025-02-24T13:42:16.433Z',
+                  pxObjClass: 'Pega-API-DataExploration-Data',
+                  resultCount: 0,
+                  data: null
+                }
+              });
             }
             return resolve({
               data: {

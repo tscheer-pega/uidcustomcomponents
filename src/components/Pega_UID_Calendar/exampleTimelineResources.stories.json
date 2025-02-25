@@ -27,7 +27,7 @@
       "Name": "Potsdam",
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Brandenburg",
+      "pyGUID": "Potsdam",
       "BeraterList": [
         {
           "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de",

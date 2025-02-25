@@ -494,7 +494,7 @@ export default (props: ICalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    const enableFeature = !showTimeline;
+    const enableFeature = true;
     if (enableFeature) {
       create(CreateModal, { info, dataPage }, { alert: true });
     }

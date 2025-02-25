@@ -333,9 +333,14 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [comboBoxItems, setComboBoxItems] = useState<MenuProps['items']>([]);
   const [comboBoxFilterValue, setComboBoxFilterValue] = useState('');
   const selectedComboBoxItems = useMemo(() => {
-    return menuHelpers
-      .getSelected(comboBoxItems)
-      .map(item => ({ text: item.primary, id: item.id }));
+    return menuHelpers.getSelected(comboBoxItems).map(item => ({
+      text: item.id.includes('___')
+        ? `${item.primary} (${
+            item.secondary && item.secondary.length > 0 ? item.secondary[1] : ''
+          })`
+        : item.primary,
+      id: item.id
+    }));
   }, [comboBoxItems]);
 
   const getFilterRegex = (inputValue: string) => {
@@ -443,7 +448,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       const tmpEvent: TEvent = {
         id: item.TerminID || `generic-${Math.random() * 1e9}`,
-        resourceId: item.ResourceId || `generic-${Math.random() * 1e9}`,
+        resourceId: item.ResourceId
+          ? `${item.OrganisationseinheitID}___${item.ResourceId}`
+          : `generic-${Math.random() * 1e9}`,
         title,
         rrule: {
           freq,
@@ -493,10 +500,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       const children = [] as Array<IBerater>;
       rawResource.BeraterList?.forEach(berater => {
         children.push({
-          id: berater.pyUserIdentifier,
+          id: `${rawResource.pyGUID}___${berater.pyUserIdentifier}`,
           title: berater.pyUserName
         });
       });
+
       return {
         id: rawResource.pyGUID,
         title: rawResource.Name,
@@ -531,7 +539,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 return {
                   id: berater.id,
                   primary: berater.title,
-                  secondary: [resource.region]
+                  secondary: [resource.region, resource.title]
                 };
               });
               const comboItem: MenuItemProps = {
@@ -564,10 +572,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       .then((resp: any) => {
                         const eventData = resp.data;
                         if (eventData.data !== null) {
-                          resolve(eventData.data);
+                          resolve({ data: eventData.data, OrgID: singleOrganisation.pyGUID });
                         } else {
                           // If no data is returned - resolve with an empty array
-                          resolve([]);
+                          resolve({ data: [], OrgID: singleOrganisation.pyGUID });
                         }
                       });
                   })
@@ -575,9 +583,18 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               });
             });
           }
-          const [resolvedEvents] = await Promise.all(promises);
-          setRawData(resolvedEvents);
-          fillEvents(resolvedEvents);
+          const resolvedEvents = await Promise.all(promises);
+          const fillOrgIDs = resolvedEvents.map(resolvedEventItem => {
+            const { data = [], OrgID = '' } = resolvedEventItem;
+            return data.map((item: IRawEvent) => ({
+              ...item,
+              OrganisationseinheitID: item.OrganisationseinheitID || OrgID
+            }));
+          });
+          const resolvedEventsFlat = fillOrgIDs.flat();
+
+          setRawData(resolvedEventsFlat);
+          fillEvents(resolvedEventsFlat);
         })
         .finally(() => {
           setIsLoading(false);
@@ -773,6 +790,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       setShowPublicHolidays(!showPublicHolidays);
                     }}
                     label='Feiertage anzeigen'
+                    disabled={isLoading}
                   />
                   <span className='h-spacer'>&nbsp;</span>
                   <DateInput
@@ -804,6 +822,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                         icon='plus'
                         iconOnly
                         showArrow={false}
+                        disabled={isLoading}
                         menu={{
                           mode: 'action',
                           items: menuActionItems,
@@ -824,6 +843,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                     className='filter'
                     label='Region'
                     value={regionFilter}
+                    disabled={isLoading}
                     onChange={e => setRegionFilter(e.target.value)}
                   >
                     {['', ...new Set(resources.map(({ region }) => region))].map(region => (
@@ -838,6 +858,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       onRemove: toggleItem
                     }}
                     value={comboBoxFilterValue}
+                    disabled={isLoading}
                     onChange={(e: ChangeEvent<HTMLInputElement>) => {
                       setComboBoxFilterValue(e.target.value);
                     }}

@@ -32,6 +32,7 @@ export declare type TResource = {
   children?: Array<TResource>;
 };
 export interface ICalendarProps {
+  createEvent: (start: string, end: string) => void;
   showTimeline: boolean;
   readOnlyAccess: boolean;
   nowIndicator: boolean;

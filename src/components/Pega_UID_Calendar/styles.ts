@@ -11,6 +11,9 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     button:focus {
       box-shadow: none !important;
     }
+    .fc {
+      min-height: 20rem;
+    }
     .fc-event-main {
       cursor: pointer;
     }
@@ -105,7 +108,7 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .loading-indicator {
       flex: 1;
       display: flex;
-      position: absolute;
+      position: relative;
       height: 100%;
       width: 100%;
     }
