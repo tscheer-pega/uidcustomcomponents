@@ -377,7 +377,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       let display = 'block';
       let editable = false;
       let dragScroll = false;
-      let title = item.Subject;
+      let title = item.Subject || item.Type;
       switch (item.Type) {
         case EEventType.AVAILABILITY: {
           color = theme.base.colors.green.dark;

@@ -151,7 +151,7 @@
       "SerieEnd": "2025-10-19T02:01:50.853Z",
       "SerieRepeat": "Wöchentlich",
       "StartTime": "2025-02-05T08:00:00.000Z",
-      "Subject": "Schulung",
+      "Subject": null,
       "Beratungsart": null,
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-277",
       "Type": "Abwesend"
