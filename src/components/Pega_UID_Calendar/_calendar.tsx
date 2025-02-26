@@ -8,7 +8,13 @@ import momentPlugin from '@fullcalendar/moment';
 import interactionPlugin from '@fullcalendar/interaction';
 import resourceTimelinePlugin from '@fullcalendar/resource-timeline';
 import deLocale from '@fullcalendar/core/locales/de';
-import { DateSelectArg, DateSpanApi, EventContentArg, EventHoveringArg } from '@fullcalendar/core';
+import {
+  CalendarOptions,
+  DateSelectArg,
+  DateSpanApi,
+  EventContentArg,
+  EventHoveringArg
+} from '@fullcalendar/core';
 import { EventImpl } from '@fullcalendar/core/internal';
 import {
   Button,
@@ -61,7 +67,11 @@ export type TResource = {
 };
 
 export interface ICalendarProps {
-  createEvent: (start: string, end: string) => void;
+  createEvent: (
+    start: string,
+    end: string,
+    resourceInfo?: [OrgID: string, ResourceId: string]
+  ) => void;
   showTimeline: boolean;
   readOnlyAccess: boolean;
   nowIndicator: boolean;
@@ -310,8 +320,26 @@ export default (props: ICalendarProps) => {
   const CreateModal = (modalProps: any) => {
     const { dismiss } = useModalContext();
     const {
-      info: { start, end }
+      info: { start, end, resource: { _context = { dateSelection: {} }, _resource = {} } = {} }
     } = modalProps;
+    const {
+      dateSelection: { resourceId = '' },
+      resourceStore = []
+    } = _context;
+    const { parentId = '', title = '' } = _resource;
+    const resourceParentTitle = resourceStore[parentId]?.title || '';
+    const [orgId, resourceMail] = resourceId.split('___') || ['', ''];
+
+    const startDate = moment(start).format('DD.MM.YYYY');
+    const startTime = moment(start).format('H:mm');
+    const endTime = moment(end).format('H:mm');
+
+    let modalText = `Termin am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
+
+    if (showTimeline) {
+      modalText = `Termin für ${title} (${resourceParentTitle}) am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
+    }
+
     const tmpItem = {
       id: `${Math.random()}`,
       color: theme.base.colors.gray.dark,
@@ -320,11 +348,13 @@ export default (props: ICalendarProps) => {
       end: end.toISOString(),
       title: 'Neuer Termin',
       editable: false,
+      resourceId: showTimeline ? resourceId : null,
       item: {
         Type: EEventType.APPOINTMENT,
         Beratungsart: ETerminGoal._TMP_
       }
     };
+
     const createModalActions = (
       <>
         <Button
@@ -338,7 +368,7 @@ export default (props: ICalendarProps) => {
           variant='primary'
           onClick={() => {
             setEvents([...events, tmpItem]);
-            createEvent(start.toISOString(), end.toISOString());
+            createEvent(start.toISOString(), end.toISOString(), [orgId, resourceMail]);
             dismiss();
           }}
         >
@@ -349,16 +379,13 @@ export default (props: ICalendarProps) => {
 
     return (
       <Modal
-        heading='Neuen Termin erstellen'
+        heading='Neuer Termin'
         actions={createModalActions}
         dismissible={false}
         autoWidth
         stretch
       >
-        <Text>
-          Termin am {moment(start).format('DD.MM.YYYY')} von {moment(start).format('H:mm')} Uhr bis{' '}
-          {moment(end).format('H:mm')} Uhr erstellen?
-        </Text>
+        <Text>{modalText}</Text>
       </Modal>
     );
   };
@@ -494,7 +521,7 @@ export default (props: ICalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    const enableFeature = true;
+    const enableFeature = !readOnlyAccess;
     if (enableFeature) {
       create(CreateModal, { info, dataPage }, { alert: true });
     }
@@ -520,101 +547,120 @@ export default (props: ICalendarProps) => {
     );
   };
 
+  const height = currentViewType.includes('Month') || showTimeline ? 'auto' : 1600;
+
+  const customButtons = {
+    dailyView: {
+      text: 'Tag',
+      click: () => onViewButtonClick(ECalendarViewType.Day)
+    },
+    weeklyView: {
+      text: 'Woche',
+      click: () => onViewButtonClick(ECalendarViewType.Week)
+    },
+    workingWeekView: {
+      text: 'Arbeitswoche',
+      click: () => onViewButtonClick(ECalendarViewType.WorkWeek)
+    },
+    MonthlyView: {
+      text: 'Monat',
+      click: () => onViewButtonClick(ECalendarViewType.Month)
+    },
+    resourceTimelineDay: {
+      text: 'Tag',
+      click: () => onViewButtonClick(ETimelineViewType.Day)
+    },
+    resourceTimelineWeek: {
+      text: 'Woche',
+      click: () => onViewButtonClick(ETimelineViewType.Week)
+    },
+    resourceTimelineWorkingWeek: {
+      text: 'Arbeitswoche',
+      click: () => onViewButtonClick(ETimelineViewType.WorkWeek)
+    }
+  };
+  const headerToolbar = {
+    left: 'prev,next today',
+    center: 'title',
+    right: showTimeline
+      ? 'resourceTimelineDay resourceTimelineWeek resourceTimelineWorkingWeek'
+      : 'MonthlyView weeklyView workingWeekView dailyView'
+  };
+  const filteredEvents = events.filter(event =>
+    showPublicHolidays ? true : event.item.Type !== EEventType.PUBLIC_HOLIDAY
+  );
+  const businessHours = {
+    // days of week. an array of zero-based day of week integers (0=Sunday)
+    daysOfWeek: [1, 2, 3, 4, 5],
+    startTime: '06:00', // a start time
+    endTime: '21:00' // an end time
+  };
+
+  const buttonText = { today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' };
+
+  const plugins = [rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin];
+  const componentProps = {} as CalendarOptions;
+  let slotMinWidth = 0;
+  let snapDuration = null;
+
+  if (!readOnlyAccess) {
+    plugins.push(interactionPlugin);
+    componentProps['eventDrop'] = handleEventUpdate;
+    componentProps['eventResize'] = handleEventUpdate;
+    componentProps['dateClick'] = onDateClick;
+    componentProps['eventResizeStart'] = handleEventUpdateStart;
+    componentProps['eventDragStart'] = handleEventUpdateStart;
+  }
+
+  if (showTimeline) {
+    plugins.push(resourceTimelinePlugin);
+    componentProps['eventResourceEditable'] = !readOnlyAccess;
+    componentProps['schedulerLicenseKey'] = '0873473011-fcs-1733922476';
+    componentProps['resourcesInitiallyExpanded'] = true;
+    componentProps['resourceAreaHeaderContent'] = 'Ressourcen';
+    componentProps['resourceAreaWidth'] = '250px';
+    componentProps['resources'] = resources;
+    slotMinWidth = 256;
+    snapDuration = '00:30:00';
+  }
+
   return (
     <FullCalendar
       ref={calendarRef}
-      height={currentViewType.includes('Month') || showTimeline ? 'auto' : 1600}
-      contentHeight={currentViewType.includes('Month') || showTimeline ? 'auto' : 1600}
-      schedulerLicenseKey='0873473011-fcs-1733922476'
-      slotMinWidth={showTimeline ? 96 : 0}
-      customButtons={{
-        dailyView: {
-          text: 'Tag',
-          click: () => onViewButtonClick(ECalendarViewType.Day)
-        },
-        weeklyView: {
-          text: 'Woche',
-          click: () => onViewButtonClick(ECalendarViewType.Week)
-        },
-        workingWeekView: {
-          text: 'Arbeitswoche',
-          click: () => onViewButtonClick(ECalendarViewType.WorkWeek)
-        },
-        MonthlyView: {
-          text: 'Monat',
-          click: () => onViewButtonClick(ECalendarViewType.Month)
-        },
-        resourceTimelineDay: {
-          text: 'Tag',
-          click: () => onViewButtonClick(ETimelineViewType.Day)
-        },
-        resourceTimelineWeek: {
-          text: 'Woche',
-          click: () => onViewButtonClick(ETimelineViewType.Week)
-        },
-        resourceTimelineWorkingWeek: {
-          text: 'Arbeitswoche',
-          click: () => onViewButtonClick(ETimelineViewType.WorkWeek)
-        }
-      }}
-      headerToolbar={{
-        left: 'prev,next today',
-        center: 'title',
-        right: showTimeline
-          ? 'resourceTimelineDay resourceTimelineWeek resourceTimelineWorkingWeek'
-          : 'MonthlyView weeklyView workingWeekView dailyView'
-      }}
-      plugins={[
-        rrulePlugin,
-        dayGridPlugin,
-        timeGridPlugin,
-        momentPlugin,
-        interactionPlugin,
-        resourceTimelinePlugin
-      ]}
+      height={height}
+      contentHeight={height}
+      slotMinWidth={slotMinWidth}
+      customButtons={customButtons}
+      headerToolbar={headerToolbar}
+      plugins={plugins}
       initialView={currentViewType}
-      selectable
-      droppable
+      selectable={!readOnlyAccess}
+      droppable={!readOnlyAccess}
       nowIndicator={nowIndicator}
       weekends={weekendIndicator}
       weekNumbers
       expandRows
+      snapDuration={snapDuration}
       allDayText='Ganztags'
       slotMinTime='06:00:00'
       slotMaxTime='21:00:00'
-      events={events.filter(event =>
-        showPublicHolidays ? true : event.item.Type !== EEventType.PUBLIC_HOLIDAY
-      )}
-      resourcesInitiallyExpanded
-      resourceAreaHeaderContent='Ressourcen'
-      resourceAreaWidth='250px'
-      resources={resources}
+      events={filteredEvents}
       eventAllow={readOnlyAccess ? () => false : handleEventAllow}
       eventContent={renderEventContent}
       eventClick={handleEventClick}
       eventMouseEnter={handleEventMouseEnter}
       eventMouseLeave={handleEventMouseLeave}
-      eventDragStart={handleEventUpdateStart}
-      eventResizeStart={handleEventUpdateStart}
-      eventDrop={handleEventUpdate}
-      eventResize={handleEventUpdate}
-      eventResourceEditable
       slotEventOverlap={false}
       eventOverlap={handleEventOverlap}
       datesSet={handleDateChange}
       select={handleSelect}
       eventTextColor='#fff'
       firstDay={1}
-      businessHours={{
-        // days of week. an array of zero-based day of week integers (0=Sunday)
-        daysOfWeek: [1, 2, 3, 4, 5],
-        startTime: '06:00', // a start time
-        endTime: '21:00' // an end time
-      }}
-      selectConstraint='businessHours'
+      businessHours={businessHours}
+      selectConstraint={showTimeline ? 'Verfügbar' : 'businessHours'}
       locale={deLocale}
-      buttonText={{ today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' }}
-      dateClick={onDateClick}
+      buttonText={buttonText}
+      {...componentProps}
     />
   );
 };

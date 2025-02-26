@@ -660,7 +660,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       viewType: 'form'
     });
 
-  const createEvent = (start: string, end: string) =>
+  const createEvent = (
+    start: string,
+    end: string,
+    resourceInfo: [OrgID: string, ResourceId: string] = ['', '']
+  ) =>
     actionsApi.createWork(createClassname, {
       openCaseViewAfterCreate: true,
       interactionId,
@@ -672,7 +676,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
         cxContextType: 'Case',
         start,
-        end
+        end,
+        orgId: resourceInfo[0] || null,
+        resourceId: resourceInfo[1] || null
       },
       viewType: 'form'
     });

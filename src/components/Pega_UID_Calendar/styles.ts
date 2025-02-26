@@ -42,6 +42,12 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc .fc-timegrid-axis-cushion {
       max-width: 80px;
     }
+    .fc-datagrid-cell-frame {
+      min-height: 70px !important;
+    }
+    .fc-timeline-lane-frame {
+      min-height: 70px !important;
+    }
     // Custom event styles
     .event-label {
       text-overflow: ellipsis;

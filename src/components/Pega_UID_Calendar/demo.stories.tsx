@@ -227,5 +227,5 @@ timelineCalendar.args = {
   readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
-  defaultViewMode: 'Daily'
+  defaultViewMode: 'Weekly'
 };
