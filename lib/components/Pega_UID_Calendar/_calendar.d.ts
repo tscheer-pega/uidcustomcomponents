@@ -37,6 +37,7 @@ export interface ICalendarProps {
     end: string,
     resourceInfo?: [OrgID: string, ResourceId: string]
   ) => void;
+  isInteraction: boolean;
   showTimeline: boolean;
   readOnlyAccess: boolean;
   nowIndicator: boolean;

@@ -72,6 +72,7 @@ export interface ICalendarProps {
     end: string,
     resourceInfo?: [OrgID: string, ResourceId: string]
   ) => void;
+  isInteraction: boolean;
   showTimeline: boolean;
   readOnlyAccess: boolean;
   nowIndicator: boolean;
@@ -108,6 +109,7 @@ export interface ICalendarProps {
 export default (props: ICalendarProps) => {
   const {
     createEvent,
+    isInteraction,
     showTimeline,
     readOnlyAccess,
     nowIndicator,
@@ -167,18 +169,19 @@ export default (props: ICalendarProps) => {
       const bTyp = obj.Beratungsstellentyp || '';
       let left;
       switch (bTyp) {
-        case 'Präsenzberatung':
-          left = '75%';
+        case 'Präsenzberatung': {
+          left = showTimeline ? '48px' : '75%';
           break;
+        }
         case 'Online':
-          left = '50%';
+          left = showTimeline ? '32px' : '50%';
           break;
         case 'Telefon':
-          left = '25%';
+          left = showTimeline ? '16px' : '25%';
           break;
         case 'Außendienststelle':
         default:
-          left = '0%';
+          left = showTimeline ? '0px' : '0%';
       }
       return (
         <div
@@ -521,7 +524,7 @@ export default (props: ICalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    const enableFeature = !readOnlyAccess;
+    const enableFeature = !readOnlyAccess && isInteraction;
     if (enableFeature) {
       create(CreateModal, { info, dataPage }, { alert: true });
     }
@@ -600,6 +603,8 @@ export default (props: ICalendarProps) => {
 
   const plugins = [rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin];
   const componentProps = {} as CalendarOptions;
+  const selectConstraint = showTimeline ? 'Verfügbar' : 'businessHours';
+
   let slotMinWidth = 0;
   let snapDuration = null;
 
@@ -657,7 +662,7 @@ export default (props: ICalendarProps) => {
       eventTextColor='#fff'
       firstDay={1}
       businessHours={businessHours}
-      selectConstraint={showTimeline ? 'Verfügbar' : 'businessHours'}
+      selectConstraint={isInteraction ? selectConstraint : '_NA_'}
       locale={deLocale}
       buttonText={buttonText}
       {...componentProps}

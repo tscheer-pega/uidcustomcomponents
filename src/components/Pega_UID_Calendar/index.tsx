@@ -883,6 +883,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               )}
               <Calendar
                 createEvent={createEvent}
+                isInteraction={!!interactionId}
                 showTimeline={showTimeline}
                 readOnlyAccess={readOnlyAccess}
                 calendarRef={calendarRef}

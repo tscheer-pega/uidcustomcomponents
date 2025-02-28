@@ -92,6 +92,18 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc-timegrid-col-bg .event-content {
       border: 1px solid #333;
     }
+    .fc-timeline-bg-harness .fc-event .event-content {
+      margin-bottom: 1px;
+      bottom: 0px;
+      height: 16px;
+      position: absolute;
+    }
+    .fc-timeline-bg-harness .fc-event .event-content > span {
+      margin: 0;
+    }
+    .fc-timeline-bg-harness .fc-event .event-content > span > svg {
+      display: block;
+    }
 
     .event-popover .event-subject {
       width: max-content;

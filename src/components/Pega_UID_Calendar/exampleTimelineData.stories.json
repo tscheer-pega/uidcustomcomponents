@@ -9,7 +9,8 @@
       "StartTime": "2025-02-24T09:00:00+01:00",
       "EndTime": "2025-02-24T18:30:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Berlin_Mitte"
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "Beratungsstellentyp": "Online"
     },
     {
       "ResourceId": "Andrzej.Fudala.ext@bwi.de",
@@ -107,7 +108,8 @@
       "StartTime": "2025-02-24T07:30:00+01:00",
       "EndTime": "2025-02-24T11:00:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Muenchen"
+      "OrganisationseinheitID": "Muenchen",
+      "Beratungsstellentyp": "Außendienststelle"
     },
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
@@ -115,7 +117,8 @@
       "StartTime": "2025-02-24T12:30:00+01:00",
       "EndTime": "2025-02-24T15:00:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Muenchen"
+      "OrganisationseinheitID": "Muenchen",
+      "Beratungsstellentyp": "Präsenzberatung"
     },
     {
       "ResourceId": "Elzabieta.Jastrzebska.ext@bwi.de",
@@ -123,7 +126,8 @@
       "StartTime": "2025-02-24T14:00:00+01:00",
       "EndTime": "2025-02-24T18:00:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Muenchen"
+      "OrganisationseinheitID": "Muenchen",
+      "Beratungsstellentyp": "Telefon"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
@@ -131,7 +135,8 @@
       "StartTime": "2025-02-24T08:00:00+01:00",
       "EndTime": "2025-02-24T12:00:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Karlsruhe"
+      "OrganisationseinheitID": "Karlsruhe",
+      "Beratungsstellentyp": "Online"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
@@ -139,7 +144,8 @@
       "StartTime": "2025-02-24T13:00:00+01:00",
       "EndTime": "2025-02-24T18:00:00+01:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Karlsruhe"
+      "OrganisationseinheitID": "Karlsruhe",
+      "Beratungsstellentyp": "Außendienststelle"
     },
     {
       "ResourceId": "Tobias.Scheer.ext@bwi.de",
@@ -237,7 +243,8 @@
       "StartTime": "2025-02-24T09:00:00+00:00",
       "EndTime": "2025-02-24T14:00:00+00:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Berlin_Mitte"
+      "OrganisationseinheitID": "Berlin_Mitte",
+      "Beratungsstellentyp": "Außendienststelle"
     },
     {
       "ResourceId": "Christopher.Rohde.ext@bwi.de",
@@ -305,7 +312,8 @@
       "StartTime": "2025-02-24T07:30:00+00:00",
       "EndTime": "2025-02-24T15:30:00+00:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Potsdam"
+      "OrganisationseinheitID": "Potsdam",
+      "Beratungsstellentyp": "Präsenzberatung"
     },
     {
       "ResourceId": "Francine.Ong.ext@bwi.de",
@@ -313,7 +321,8 @@
       "StartTime": "2025-02-24T06:00:00+00:00",
       "EndTime": "2025-02-24T10:00:00+00:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Muenchen"
+      "OrganisationseinheitID": "Muenchen",
+      "Beratungsstellentyp": "Telefon"
     },
     {
       "ResourceId": "Francine.Ong.ext@bwi.de",
@@ -321,7 +330,8 @@
       "StartTime": "2025-02-24T14:00:00+00:00",
       "EndTime": "2025-02-24T18:00:00+00:00",
       "Type": "Verfügbar",
-      "OrganisationseinheitID": "Muenchen"
+      "OrganisationseinheitID": "Muenchen",
+      "Beratungsstellentyp": "Online"
     }
   ]
 }

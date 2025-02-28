@@ -16,6 +16,8 @@ const defaultProps = {
           createWork: (className: string, params: object) => {
             // eslint-disable-next-line no-alert
             alert(`Create case type with className: ${className} (${JSON.stringify(params)})`);
+            // eslint-disable-next-line no-console
+            console.log(className, params);
           },
           updateFieldValue: () => {
             /* nothing */
@@ -27,6 +29,8 @@ const defaultProps = {
             const { caseClassName } = options;
             // eslint-disable-next-line no-alert
             alert(`Open Case (caseClassName: ${caseClassName}, eventId: ${eventId})`);
+            // eslint-disable-next-line no-console
+            console.log(eventId, options);
           }
         };
       },
@@ -52,7 +56,6 @@ export default {
     heading: 'Heading',
     createClassname: 'Work-Class1',
     createMassClassname: 'Work-Class2',
-    interactionId: 'InteractionId',
     defaultViewMode: 'Monthly',
     nowIndicator: true,
     weekendIndicator: true,
@@ -215,6 +218,7 @@ const Template: ComponentStory<typeof PegaUidCalendar> = args => {
 export const baseCalendar = Template.bind({});
 baseCalendar.args = {
   ...Template.args,
+  interactionId: 'InteractionId',
   showTimeline: false,
   readOnlyAccess: false,
   defaultViewMode: 'Monthly'
@@ -223,6 +227,7 @@ baseCalendar.args = {
 export const timelineCalendar = Template.bind({});
 timelineCalendar.args = {
   ...Template.args,
+  interactionId: '',
   showTimeline: true,
   readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
