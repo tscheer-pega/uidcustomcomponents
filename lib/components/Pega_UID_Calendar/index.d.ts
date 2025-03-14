@@ -26,6 +26,10 @@ export declare type TCalendarProps = {
   showTimeline?: boolean;
   readOnlyAccess?: boolean;
   getPConnect: any;
+  beraterInfo?: {
+    parentId: string;
+    resourceId: string;
+  };
 };
 export declare enum EDateTimeType {
   date = 'date',

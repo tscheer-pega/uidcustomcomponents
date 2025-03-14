@@ -98,11 +98,28 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       height: 16px;
       position: absolute;
     }
+    .fc-datagrid-cell-frame {
+      display: flex;
+    }
+    .fc-datagrid-cell-frame .fc-datagrid-cell-cushion {
+      margin: auto 0;
+    }
     .fc-timeline-bg-harness .fc-event .event-content > span {
       margin: 0;
     }
     .fc-timeline-bg-harness .fc-event .event-content > span > svg {
       display: block;
+    }
+    .fc-resource:not(.enable-drilldown) .fc-datagrid-cell-main {
+      font-weight: bold;
+    }
+    .fc-resource.enable-drilldown .fc-datagrid-cell-main {
+      color: black;
+      cursor: pointer;
+      text-decoration: underline;
+    }
+    .fc-resource.enable-drilldown .fc-datagrid-cell-main:hover {
+      color: ${theme.base.palette['brand-primary']};
     }
 
     .event-popover .event-subject {

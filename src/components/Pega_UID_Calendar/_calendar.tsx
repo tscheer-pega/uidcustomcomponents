@@ -104,6 +104,11 @@ export interface ICalendarProps {
       inEl: boolean;
     }>
   >;
+  setModalInfo: (modalInfo: {
+    open: boolean;
+    title: string;
+    content: { parentId: string; resourceId: string };
+  }) => void;
 }
 
 export default (props: ICalendarProps) => {
@@ -128,7 +133,8 @@ export default (props: ICalendarProps) => {
     currentViewType,
     setCurrentViewType,
     eventInPopover,
-    setEventInPopover
+    setEventInPopover,
+    setModalInfo
   } = props;
 
   const onViewButtonClick = (viewType: ECalendarViewType | ETimelineViewType) => {
@@ -598,6 +604,28 @@ export default (props: ICalendarProps) => {
     startTime: '06:00', // a start time
     endTime: '21:00' // an end time
   };
+  const resourceLabelDidMount = (arg: any) => {
+    const parentId = arg.resource.getParent()?.id || '';
+    const [, resourceId] = arg.resource.id.split('___');
+    const resourceEl = arg.el;
+    if (parentId) {
+      const title: HTMLSpanElement | null = resourceEl.querySelector('.fc-datagrid-cell-main');
+      resourceEl.classList.add('enable-drilldown');
+      resourceEl.title = 'Klicken Sie, um den Kalender für diesen Berater zu öffnen';
+      if (title) {
+        title.onclick = () => {
+          setModalInfo({
+            open: true,
+            title: title.innerText,
+            content: {
+              parentId,
+              resourceId
+            }
+          });
+        };
+      }
+    }
+  };
 
   const buttonText = { today: 'Heute', month: 'Monat', week: 'Woche', day: 'Tag' };
 
@@ -625,6 +653,8 @@ export default (props: ICalendarProps) => {
     componentProps['resourceAreaHeaderContent'] = 'Ressourcen';
     componentProps['resourceAreaWidth'] = '250px';
     componentProps['resources'] = resources;
+    componentProps['resourceLabelDidMount'] = resourceLabelDidMount;
+    componentProps['allDaySlot'] = true;
     slotMinWidth = 256;
     snapDuration = '00:30:00';
   }

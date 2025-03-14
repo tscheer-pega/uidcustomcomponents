@@ -69,6 +69,14 @@ export interface ICalendarProps {
       inEl: boolean;
     }>
   >;
+  setModalInfo: (modalInfo: {
+    open: boolean;
+    title: string;
+    content: {
+      parentId: string;
+      resourceId: string;
+    };
+  }) => void;
 }
 declare const _default: (props: ICalendarProps) => globalThis.JSX.Element;
 export default _default;

@@ -16,6 +16,7 @@ import {
   menuHelpers,
   MenuItemProps,
   MenuProps,
+  Modal,
   Option,
   registerIcon,
   Select,
@@ -88,6 +89,7 @@ export type TCalendarProps = {
   showTimeline?: boolean;
   readOnlyAccess?: boolean;
   getPConnect: any;
+  beraterInfo?: { parentId: string; resourceId: string };
 };
 
 export enum EDateTimeType {
@@ -291,6 +293,18 @@ export const renderBeratungsartBadge = (beratungsart: string) => {
   );
 };
 
+interface IModalInfo {
+  open: boolean;
+  title: string;
+  content: { parentId: string; resourceId: string };
+}
+
+const modalInfoDefault = {
+  open: false,
+  title: '',
+  content: { parentId: '', resourceId: '' }
+};
+
 /**
  * Pega UID Calendar
  * @param props {TCalendarProps}
@@ -309,6 +323,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     weekendIndicator = true,
     showTimeline = false,
     readOnlyAccess = false,
+    beraterInfo = '',
     getPConnect
   } = props;
   const actionsApi = getPConnect().getActionsApi();
@@ -328,6 +343,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [legendExpanded, setLegendExpanded] = useState<boolean>(false);
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
   const [regionFilter, setRegionFilter] = useState<string>();
+  const [modalInfo, setModalInfo] = useState<IModalInfo>({ ...modalInfoDefault });
 
   /** Combo box */
   const [comboBoxItems, setComboBoxItems] = useState<MenuProps['items']>([]);
@@ -572,10 +588,18 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       .then((resp: any) => {
                         const eventData = resp.data;
                         if (eventData.data !== null) {
-                          resolve({ data: eventData.data, OrgID: singleOrganisation.pyGUID });
+                          resolve({
+                            data: eventData.data,
+                            OrgID: singleOrganisation.pyGUID,
+                            BeraterID: singleAgent.pyUserIdentifier
+                          });
                         } else {
                           // If no data is returned - resolve with an empty array
-                          resolve({ data: [], OrgID: singleOrganisation.pyGUID });
+                          resolve({
+                            data: [],
+                            OrgID: singleOrganisation.pyGUID,
+                            BeraterID: singleAgent.pyUserIdentifier
+                          });
                         }
                       });
                   })
@@ -585,9 +609,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           }
           const resolvedEvents = await Promise.all(promises);
           const fillOrgIDs = resolvedEvents.map(resolvedEventItem => {
-            const { data = [], OrgID = '' } = resolvedEventItem;
+            const { data = [], OrgID = '', BeraterID = '' } = resolvedEventItem;
             return data.map((item: IRawEvent) => ({
               ...item,
+              ResourceId: item.ResourceId || BeraterID,
               OrganisationseinheitID: item.OrganisationseinheitID || OrgID
             }));
           });
@@ -601,12 +626,26 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         });
     } else if (startDate) {
       setIsLoading(true);
+
+      const dataViewParameters: {
+        StartDate: string;
+        EndDate: string;
+        BeraterID?: string;
+        OrgID?: string;
+      } = {
+        StartDate: moment(startDate).format('YYYY-MM-DD'),
+        EndDate: moment(EndDate).format('YYYY-MM-DD')
+      };
+
+      if (beraterInfo) {
+        const { parentId, resourceId } = beraterInfo;
+        dataViewParameters['BeraterID'] = resourceId;
+        dataViewParameters['OrgID'] = parentId;
+      }
+
       dataApiUtils
         .getData(dataPage, {
-          dataViewParameters: {
-            StartDate: moment(startDate).format('YYYY-MM-DD'),
-            EndDate: moment(EndDate).format('YYYY-MM-DD')
-          }
+          dataViewParameters
         })
         .then((response: any) => {
           const data = response.data;
@@ -902,6 +941,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 renderBeratungsartBadge={renderBeratungsartBadge}
                 setSelectedStartDate={setSelectedStartDate}
                 showPublicHolidays={showPublicHolidays}
+                setModalInfo={setModalInfo}
                 theme={theme}
               />
               {isLoading && (
@@ -929,6 +969,23 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           handlePopoverMouseLeave={handlePopoverMouseLeave}
           openPreviewEventOnClick={openPreviewEventOnClick}
         />
+        {modalInfo.open && (
+          <Modal
+            heading={modalInfo.title}
+            onRequestDismiss={() => setModalInfo({ ...modalInfoDefault })}
+            stretch
+          >
+            <PegaUidCalendar
+              {...{
+                ...props,
+                showTimeline: false,
+                defaultViewMode: 'Monthly',
+                beraterInfo: modalInfo.content,
+                readOnlyAccess: true
+              }}
+            />
+          </Modal>
+        )}
       </StyledCalendarWrapper>
     </Configuration>
   );

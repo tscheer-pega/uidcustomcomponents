@@ -141,7 +141,7 @@ const setPCore = () => {
         }
       ) => {
         // eslint-disable-next-line no-console
-        console.log('Passed properties', props);
+        console.log('Passed properties', dataViewName, props);
         return new Promise(resolve =>
           setTimeout(() => {
             let returnData;
@@ -227,7 +227,7 @@ baseCalendar.args = {
 export const timelineCalendar = Template.bind({});
 timelineCalendar.args = {
   ...Template.args,
-  interactionId: '',
+  interactionId: 'InteractionId',
   showTimeline: true,
   readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
