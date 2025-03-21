@@ -141,16 +141,9 @@ export default (props: ICalendarProps) => {
     if (calendarRef) {
       const cal: any = calendarRef.current;
       const calendarAPI = cal.getApi();
-      let view;
-      switch (viewType) {
-        case ECalendarViewType.WorkWeek:
-          view = ECalendarViewType.Week;
-          break;
-        case ETimelineViewType.WorkWeek:
-          view = ETimelineViewType.Week;
-          break;
-        default:
-          view = viewType;
+      let view = viewType;
+      if (viewType === ECalendarViewType.WorkWeek) {
+        view = ECalendarViewType.Week;
       }
       setCurrentViewType(viewType);
       calendarAPI.changeView(view);
@@ -463,8 +456,7 @@ export default (props: ICalendarProps) => {
     if (
       (objInfo.view.type === ECalendarViewType.Week &&
         currentViewType === ECalendarViewType.WorkWeek) ||
-      (objInfo.view.type === ETimelineViewType.Week &&
-        currentViewType === ETimelineViewType.WorkWeek)
+      objInfo.view.type === ETimelineViewType.Week
     ) {
       calendar.setOption('weekends', false);
     } else {
@@ -506,13 +498,6 @@ export default (props: ICalendarProps) => {
         setCurrentViewType(ETimelineViewType.Week);
         document
           .getElementsByClassName('fc-resourceTimelineWeek-button')[0]
-          ?.classList.add('fc-button-active');
-        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
-        break;
-      case ETimelineViewType.WorkWeek:
-        setCurrentViewType(ETimelineViewType.WorkWeek);
-        document
-          .getElementsByClassName('fc-resourceTimelineWorkingWeek-button')[0]
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
@@ -582,17 +567,13 @@ export default (props: ICalendarProps) => {
     resourceTimelineWeek: {
       text: 'Woche',
       click: () => onViewButtonClick(ETimelineViewType.Week)
-    },
-    resourceTimelineWorkingWeek: {
-      text: 'Arbeitswoche',
-      click: () => onViewButtonClick(ETimelineViewType.WorkWeek)
     }
   };
   const headerToolbar = {
     left: 'prev,next today',
     center: 'title',
     right: showTimeline
-      ? 'resourceTimelineDay resourceTimelineWeek resourceTimelineWorkingWeek'
+      ? 'resourceTimelineDay resourceTimelineWeek'
       : 'MonthlyView weeklyView workingWeekView dailyView'
   };
   const filteredEvents = events.filter(event =>

@@ -1,4 +1,4 @@
-declare function PegaUidCatalog(props: any): JSX.Element;
+declare function PegaUidCatalog(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidCatalog {
     namespace defaultProps {
         const useConfigurableLayout: boolean;
@@ -11,5 +11,5 @@ declare namespace PegaUidCatalog {
     }
 }
 export default PegaUidCatalog;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

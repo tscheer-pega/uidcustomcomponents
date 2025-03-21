@@ -1,4 +1,4 @@
-declare function PegaUidTwoColumnForm(props: any): JSX.Element;
+declare function PegaUidTwoColumnForm(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidTwoColumnForm {
     namespace defaultProps {
         const children: never[];
@@ -9,5 +9,5 @@ declare namespace PegaUidTwoColumnForm {
     }
 }
 export default PegaUidTwoColumnForm;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

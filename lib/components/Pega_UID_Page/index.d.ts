@@ -1,4 +1,4 @@
-declare function PegaUidPage(props: any): JSX.Element;
+declare function PegaUidPage(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidPage {
     namespace defaultProps {
         const useConfigurableLayout: boolean;
@@ -11,5 +11,5 @@ declare namespace PegaUidPage {
     }
 }
 export default PegaUidPage;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

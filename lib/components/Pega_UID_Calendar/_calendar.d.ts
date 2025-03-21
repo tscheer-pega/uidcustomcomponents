@@ -78,6 +78,6 @@ export interface ICalendarProps {
     };
   }) => void;
 }
-declare const _default: (props: ICalendarProps) => globalThis.JSX.Element;
+declare const _default: (props: ICalendarProps) => import('react/jsx-runtime').JSX.Element;
 export default _default;
 //# sourceMappingURL=_calendar.d.ts.map

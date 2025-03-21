@@ -1,4 +1,4 @@
-declare function PegaUidPageWidget(props: any): JSX.Element;
+declare function PegaUidPageWidget(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidPageWidget {
     namespace defaultProps {
         const header: string;
@@ -21,5 +21,5 @@ declare namespace PegaUidPageWidget {
     }
 }
 export default PegaUidPageWidget;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

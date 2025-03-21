@@ -1,4 +1,4 @@
-declare function PegaUidAdvancedForm(props: any): JSX.Element;
+declare function PegaUidAdvancedForm(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidAdvancedForm {
     namespace defaultProps {
         const displayStatus: boolean;
@@ -54,5 +54,5 @@ declare namespace PegaUidAdvancedForm {
     }
 }
 export default PegaUidAdvancedForm;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

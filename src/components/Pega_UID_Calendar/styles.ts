@@ -191,5 +191,14 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       margin-bottom: 1rem;
       max-width: 50%;
     }
+    .version-info {
+      font-size: 7px;
+      position: fixed;
+      right: 1rem;
+      bottom: 1rem;
+      padding: 0;
+      margin: 0;
+      opacity: 0.25;
+    }
   `;
 });

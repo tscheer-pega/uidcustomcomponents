@@ -1,4 +1,4 @@
-declare function PegaUidTwoColumnDetails(props: any): JSX.Element;
+declare function PegaUidTwoColumnDetails(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidTwoColumnDetails {
     namespace defaultProps {
         const label: undefined;
@@ -16,5 +16,5 @@ declare namespace PegaUidTwoColumnDetails {
     }
 }
 export default PegaUidTwoColumnDetails;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map

@@ -7,6 +7,6 @@ export interface ILegendProps {
   showTimeline: boolean;
   theme: DefaultTheme;
 }
-declare const _default: (props: ILegendProps) => JSX.Element;
+declare const _default: (props: ILegendProps) => import('react/jsx-runtime').JSX.Element;
 export default _default;
 //# sourceMappingURL=_legend.d.ts.map

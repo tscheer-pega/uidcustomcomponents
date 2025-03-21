@@ -1,4 +1,4 @@
-declare function PegaUidForm(props: any): JSX.Element;
+declare function PegaUidForm(props: any): import("react/jsx-runtime").JSX.Element;
 declare namespace PegaUidForm {
     namespace defaultProps {
         const NumCols: number;
@@ -12,5 +12,5 @@ declare namespace PegaUidForm {
     }
 }
 export default PegaUidForm;
-import PropTypes from "prop-types";
+import PropTypes from 'prop-types';
 //# sourceMappingURL=index.d.ts.map
