@@ -1,5 +1,5 @@
 export default Operator;
-declare function Operator(props: any): import('react/jsx-runtime').JSX.Element;
+declare function Operator(props: any): JSX.Element;
 declare namespace Operator {
   namespace propTypes {
     const name: PropTypes.Requireable<string>;

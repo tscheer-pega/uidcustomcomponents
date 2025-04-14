@@ -33,6 +33,7 @@ import {
   ETimelineViewType,
   getDateTimeFromIsoString,
   getTypeIcon,
+  IRawEvent,
   TEventImpl
 } from './index';
 
@@ -58,6 +59,11 @@ export type TEvent = {
   constraint?: string;
   editable?: boolean;
   dragScroll?: boolean;
+  _def?: {
+    extendedProps: {
+      item: IRawEvent;
+    };
+  };
 };
 
 export type TResource = {
@@ -70,6 +76,7 @@ export interface ICalendarProps {
   createEvent: (
     start: string,
     end: string,
+    eventType: EEventType,
     resourceInfo?: [OrgID: string, ResourceId: string]
   ) => void;
   isInteraction: boolean;
@@ -114,7 +121,6 @@ export interface ICalendarProps {
 export default (props: ICalendarProps) => {
   const {
     createEvent,
-    isInteraction,
     showTimeline,
     readOnlyAccess,
     nowIndicator,
@@ -322,7 +328,8 @@ export default (props: ICalendarProps) => {
   const CreateModal = (modalProps: any) => {
     const { dismiss } = useModalContext();
     const {
-      info: { start, end, resource: { _context = { dateSelection: {} }, _resource = {} } = {} }
+      info: { start, end, resource: { _context = { dateSelection: {} }, _resource = {} } = {} },
+      overlappingEventTypes
     } = modalProps;
     const {
       dateSelection: { resourceId = '' },
@@ -335,11 +342,12 @@ export default (props: ICalendarProps) => {
     const startDate = moment(start).format('DD.MM.YYYY');
     const startTime = moment(start).format('H:mm');
     const endTime = moment(end).format('H:mm');
+    const subject = 'Neuer Eintrag';
 
-    let modalText = `Termin am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
+    let modalText = `Welche Art Eintrag möchten Sie am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
 
     if (showTimeline) {
-      modalText = `Termin für ${title} (${resourceParentTitle}) am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
+      modalText = `Welche Art Eintrag möchten Sie für ${title} (${resourceParentTitle}) am ${startDate} von ${startTime} Uhr bis ${endTime} Uhr erstellen?`;
     }
 
     const tmpItem = {
@@ -348,45 +356,163 @@ export default (props: ICalendarProps) => {
       display: 'block',
       start: start.toISOString(),
       end: end.toISOString(),
-      title: 'Neuer Termin',
+      title: subject,
       editable: false,
-      resourceId: showTimeline ? resourceId : null,
+      draggable: false,
+      dragScroll: true,
+      resourceId: showTimeline ? resourceId : `generic-${Math.random() * 1e9}`,
       item: {
         Type: EEventType.APPOINTMENT,
-        Beratungsart: ETerminGoal._TMP_
+        Beratungsart: ETerminGoal._TMP_,
+        ResourceId: resourceId,
+        Subject: subject,
+        StartTine: start.toISOString(),
+        EndTime: end.toISOString(),
+        OrganisationseinheitID: resourceStore[parentId]?.id
       }
     };
 
+    const showAppointmentOption =
+      (overlappingEventTypes.length === 1 &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
+      (overlappingEventTypes.length === 2 &&
+        overlappingEventTypes.includes(EEventType.CANCELLED) &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY));
+
+    const showMassEventOption =
+      overlappingEventTypes.length === 1 && overlappingEventTypes.includes(EEventType.AVAILABILITY);
+
+    const showAvailabilityOption = overlappingEventTypes.length === 0;
+
+    const showAbscenceOption =
+      (overlappingEventTypes.length === 1 &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
+      (overlappingEventTypes.length === 2 &&
+        overlappingEventTypes.includes(EEventType.CANCELLED) &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY));
+
+    if (
+      !showAppointmentOption &&
+      !showMassEventOption &&
+      !showAvailabilityOption &&
+      !showAbscenceOption
+    ) {
+      modalText = `Sie können hier keinen Eintrag erstellen.`;
+    }
+
+    // TODO: Teamkalender: Auch wenn keine Anwesenheit UND Abwesenheit vorhanden ist, kann ein Termin erstellt werden. (da Dienstzeit, nicht Beratungszeit)
+
     const createModalActions = (
-      <>
+      <div style={{ display: 'flex', gap: '0.25rem' }}>
+        {showAppointmentOption && (
+          <Button
+            variant='primary'
+            onClick={() => {
+              setEvents([
+                ...events,
+                {
+                  ...tmpItem,
+                  title: 'Neuer Termin',
+                  item: { ...tmpItem.item, Subject: 'Neuer Termin' }
+                }
+              ]);
+              createEvent(start.toISOString(), end.toISOString(), EEventType.APPOINTMENT, [
+                orgId,
+                resourceMail
+              ]);
+              dismiss();
+            }}
+          >
+            Beratungstermin
+          </Button>
+        )}
+        {showMassEventOption && (
+          <Button
+            variant='primary'
+            onClick={() => {
+              setEvents([
+                ...events,
+                {
+                  ...tmpItem,
+                  title: 'Neuer Sammeltermin',
+                  item: {
+                    ...tmpItem.item,
+                    Subject: 'Neuer Sammeltermin'
+                  }
+                }
+              ]);
+              createEvent(start.toISOString(), end.toISOString(), EEventType.MASS_EVENT, [
+                orgId,
+                resourceMail
+              ]);
+              dismiss();
+            }}
+          >
+            Sammeltermin
+          </Button>
+        )}
+        {showAvailabilityOption && (
+          <Button
+            variant='primary'
+            onClick={() => {
+              setEvents([
+                ...events,
+                {
+                  ...tmpItem,
+                  title: 'Neue Verfügbarkeit',
+                  item: {
+                    ...tmpItem.item,
+                    Subject: 'Neue Verfügbarkeit'
+                  }
+                }
+              ]);
+              createEvent(start.toISOString(), end.toISOString(), EEventType.AVAILABILITY, [
+                orgId,
+                resourceMail
+              ]);
+              dismiss();
+            }}
+          >
+            Verfügbarkeit
+          </Button>
+        )}
+        {showAbscenceOption && (
+          <Button
+            variant='primary'
+            onClick={() => {
+              setEvents([
+                ...events,
+                {
+                  ...tmpItem,
+                  title: 'Neue Abwesenheit',
+                  item: {
+                    ...tmpItem.item,
+                    Subject: 'Neue Abwesenheit'
+                  }
+                }
+              ]);
+              createEvent(start.toISOString(), end.toISOString(), EEventType.ABSENCE, [
+                orgId,
+                resourceMail
+              ]);
+              dismiss();
+            }}
+          >
+            Abwesenheit
+          </Button>
+        )}
         <Button
           onClick={() => {
             dismiss();
           }}
         >
-          Nein
+          Abbrechen
         </Button>
-        <Button
-          variant='primary'
-          onClick={() => {
-            setEvents([...events, tmpItem]);
-            createEvent(start.toISOString(), end.toISOString(), [orgId, resourceMail]);
-            dismiss();
-          }}
-        >
-          Ja
-        </Button>
-      </>
+      </div>
     );
 
     return (
-      <Modal
-        heading='Neuer Termin'
-        actions={createModalActions}
-        dismissible={false}
-        autoWidth
-        stretch
-      >
+      <Modal heading='Neuer Eintrag' actions={createModalActions} dismissible autoWidth stretch>
         <Text>{modalText}</Text>
       </Modal>
     );
@@ -514,10 +640,40 @@ export default (props: ICalendarProps) => {
     fillEvents();
   };
 
+  const getOverlappingEvents = (compareEvents: Array<TEvent>, event: TEvent) => {
+    const start = moment(event.start);
+    const end = moment(event.end);
+    return compareEvents.filter(e => {
+      const eStart = moment(e.start);
+      const eEnd = moment(e.end);
+      return (
+        (eStart.isBefore(end) && eEnd.isAfter(start)) || (eStart.isSame(start) && eEnd.isSame(end))
+      );
+    });
+  };
+
+  const getOverlappingEventTypes = (compareEvents: Array<TEvent>, event: TEvent) => {
+    return getOverlappingEvents(compareEvents, event).map(
+      ({
+        _def: {
+          // @ts-ignore
+          extendedProps: {
+            item: { Type }
+          }
+        }
+      }) => Type
+    );
+  };
+
   const handleSelect = (info: DateSelectArg) => {
-    const enableFeature = !readOnlyAccess && isInteraction;
-    if (enableFeature) {
-      create(CreateModal, { info, dataPage }, { alert: true });
+    if (!readOnlyAccess && info.resource?.getChildren().length === 0) {
+      const overlappingEventTypes = getOverlappingEventTypes(
+        (info.resource?.getEvents() || []) as unknown as Array<TEvent>,
+        { ...info, jsEvent: null, resource: null, view: null } as unknown as TEvent
+      );
+      create(CreateModal, { info, dataPage, overlappingEventTypes }, { alert: true });
+    } else {
+      info.view.calendar.unselect();
     }
   };
 
@@ -535,9 +691,10 @@ export default (props: ICalendarProps) => {
   const handleEventClick = () => {};
   const handleEventAllow = (span: DateSpanApi, movingEvent: EventImpl | null) => {
     return (
-      !showTimeline ||
-      (!!span.resource?._resource.parentId &&
-        movingEvent?._def.extendedProps.item.Type === 'Termin')
+      (!showTimeline ||
+        (!!span.resource?._resource.parentId &&
+          movingEvent?._def.extendedProps.item.Type === 'Termin')) &&
+      movingEvent?._def.extendedProps.item.Beratungsart !== ETerminGoal._TMP_
     );
   };
 
@@ -612,7 +769,8 @@ export default (props: ICalendarProps) => {
 
   const plugins = [rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin];
   const componentProps = {} as CalendarOptions;
-  const selectConstraint = showTimeline ? 'Verfügbar' : 'businessHours';
+  // const selectConstraint = showTimeline ? 'Verfügbar' : 'businessHours';
+  // selectConstraint={isInteraction ? selectConstraint : '_NA_'}
 
   let slotMinWidth = 0;
   let snapDuration = null;
@@ -673,7 +831,6 @@ export default (props: ICalendarProps) => {
       eventTextColor='#fff'
       firstDay={1}
       businessHours={businessHours}
-      selectConstraint={isInteraction ? selectConstraint : '_NA_'}
       locale={deLocale}
       buttonText={buttonText}
       {...componentProps}

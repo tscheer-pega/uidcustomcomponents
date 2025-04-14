@@ -2,7 +2,7 @@ export function formatExists(formatterVal: any): boolean;
 export function textFormatter(formatter: any, value: any): any;
 export function setDefaultValue(dropdownOptions: any, pConnect: any, propName: any): void;
 export default PegaUidPicklist;
-declare function PegaUidPicklist(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidPicklist(props: any): JSX.Element;
 declare namespace PegaUidPicklist {
   namespace defaultProps {
     const value: string;

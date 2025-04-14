@@ -1,4 +1,4 @@
-declare function PegaUidPageCaseWidget(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidPageCaseWidget(props: any): JSX.Element;
 declare namespace PegaUidPageCaseWidget {
     namespace defaultProps {
         const label: string;

@@ -1,5 +1,5 @@
 export default Avatar;
-declare function Avatar(props: any): import("react/jsx-runtime").JSX.Element | null;
+declare function Avatar(props: any): JSX.Element | null;
 declare namespace Avatar {
   namespace propTypes {
     const metaObj: PropTypes.Requireable<{

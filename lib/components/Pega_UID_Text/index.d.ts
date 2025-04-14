@@ -1,5 +1,5 @@
 export default PegaUidText;
-declare function PegaUidText(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidText(props: any): JSX.Element;
 declare namespace PegaUidText {
   namespace defaultProps {
     const value: string;

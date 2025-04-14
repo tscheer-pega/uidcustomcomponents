@@ -1,5 +1,5 @@
 export default PegaUidDecimal;
-declare function PegaUidDecimal(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidDecimal(props: any): JSX.Element;
 declare namespace PegaUidDecimal {
   namespace defaultProps {
     const value: string;

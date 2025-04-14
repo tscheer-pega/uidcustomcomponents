@@ -1,5 +1,5 @@
 export default PegaUidPercentage;
-declare function PegaUidPercentage(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidPercentage(props: any): JSX.Element;
 declare namespace PegaUidPercentage {
   namespace defaultProps {
     const value: string;

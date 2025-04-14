@@ -121,14 +121,14 @@ export interface IResource {
     children?: Array<IBerater>;
 }
 export declare const getDateTimeFromIsoString: (isoString: string, dateOrTime: EDateTimeType, options?: any, locale?: string) => string;
-export declare const getTypeIcon: (appointmentType: string) => import("react/jsx-runtime").JSX.Element;
-export declare const renderBeratungsartBadge: (beratungsart: string) => import("react/jsx-runtime").JSX.Element;
+export declare const getTypeIcon: (appointmentType: string) => JSX.Element;
+export declare const renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
 /**
  * Pega UID Calendar
  * @param props {TCalendarProps}
  * @constructor
  */
-export declare const PegaUidCalendar: (props: TCalendarProps) => import("react/jsx-runtime").JSX.Element;
+export declare const PegaUidCalendar: (props: TCalendarProps) => JSX.Element;
 declare const _default: (props: TCalendarProps) => JSX.Element;
 export default _default;
 //# sourceMappingURL=index.d.ts.map

@@ -1,5 +1,5 @@
 export default PegaUidMemberCard;
-declare function PegaUidMemberCard(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidMemberCard(props: any): JSX.Element;
 declare namespace PegaUidMemberCard {
   const defaultProps: {};
   namespace propTypes {

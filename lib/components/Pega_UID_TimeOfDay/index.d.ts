@@ -1,5 +1,5 @@
 export default PegaUidTimeOfDay;
-declare function PegaUidTimeOfDay(props: any): import('react/jsx-runtime').JSX.Element;
+declare function PegaUidTimeOfDay(props: any): JSX.Element;
 declare namespace PegaUidTimeOfDay {
   namespace defaultProps {
     const value: undefined;

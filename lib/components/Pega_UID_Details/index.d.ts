@@ -1,19 +1,19 @@
-declare function PegaUidDetails(props: any): import('react/jsx-runtime').JSX.Element;
+declare function PegaUidDetails(props: any): JSX.Element;
 declare namespace PegaUidDetails {
-  namespace defaultProps {
-    const label: undefined;
-    const showLabel: boolean;
-    const showHighlightedData: boolean;
-  }
-  namespace propTypes {
-    const showLabel_1: PropTypes.Requireable<boolean>;
-    export { showLabel_1 as showLabel };
-    const label_1: PropTypes.Requireable<string>;
-    export { label_1 as label };
-    export const getPConnect: PropTypes.Validator<(...args: any[]) => any>;
-    const showHighlightedData_1: PropTypes.Requireable<boolean>;
-    export { showHighlightedData_1 as showHighlightedData };
-  }
+    namespace defaultProps {
+        const label: undefined;
+        const showLabel: boolean;
+        const showHighlightedData: boolean;
+    }
+    namespace propTypes {
+        const showLabel_1: PropTypes.Requireable<boolean>;
+        export { showLabel_1 as showLabel };
+        const label_1: PropTypes.Requireable<string>;
+        export { label_1 as label };
+        export const getPConnect: PropTypes.Validator<(...args: any[]) => any>;
+        const showHighlightedData_1: PropTypes.Requireable<boolean>;
+        export { showHighlightedData_1 as showHighlightedData };
+    }
 }
 export default PegaUidDetails;
 import PropTypes from 'prop-types';

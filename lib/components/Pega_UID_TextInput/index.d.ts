@@ -1,7 +1,7 @@
 export function formatExists(formatterVal: any): boolean;
 export function textFormatter(formatter: any, value: any): any;
 export default PegaUidTextInput;
-declare function PegaUidTextInput(props: any): import('react/jsx-runtime').JSX.Element;
+declare function PegaUidTextInput(props: any): JSX.Element;
 declare namespace PegaUidTextInput {
   namespace defaultProps {
     const value: string;

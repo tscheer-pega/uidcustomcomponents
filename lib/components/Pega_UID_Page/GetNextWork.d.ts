@@ -1,2 +1,2 @@
-export default function GetNextWork(props: any): import("react/jsx-runtime").JSX.Element;
+export default function GetNextWork(props: any): JSX.Element;
 //# sourceMappingURL=GetNextWork.d.ts.map

@@ -1,5 +1,5 @@
 export default PegaUidBoolean;
-declare function PegaUidBoolean(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidBoolean(props: any): JSX.Element;
 declare namespace PegaUidBoolean {
   namespace defaultProps {
     const validatemessage: string;

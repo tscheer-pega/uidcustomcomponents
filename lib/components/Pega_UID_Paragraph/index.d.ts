@@ -1,7 +1,7 @@
 export function formatExists(formatterVal: any): boolean;
 export function textFormatter(formatter: any, value: any): any;
 export default PegaUidParagraph;
-declare function PegaUidParagraph(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidParagraph(props: any): JSX.Element;
 declare namespace PegaUidParagraph {
   namespace defaultProps {
     const value: string;

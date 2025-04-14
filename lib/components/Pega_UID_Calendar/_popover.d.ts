@@ -14,6 +14,6 @@ export interface IPopoverProps {
   renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
   openPreviewEventOnClick: () => void;
 }
-declare const _default: (props: IPopoverProps) => import('react/jsx-runtime').JSX.Element;
+declare const _default: (props: IPopoverProps) => globalThis.JSX.Element;
 export default _default;
 //# sourceMappingURL=_popover.d.ts.map

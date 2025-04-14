@@ -1,5 +1,5 @@
 export default PegaUidDateTime;
-declare function PegaUidDateTime(props: any): import('react/jsx-runtime').JSX.Element;
+declare function PegaUidDateTime(props: any): JSX.Element;
 declare namespace PegaUidDateTime {
   namespace defaultProps {
     const value: undefined;

@@ -1,5 +1,5 @@
 export default PegaUidCurrency;
-declare function PegaUidCurrency(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidCurrency(props: any): JSX.Element;
 declare namespace PegaUidCurrency {
   namespace defaultProps {
     const value: number;

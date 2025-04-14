@@ -1,3 +1,4 @@
+/// <reference types="react" />
 import PropTypes from 'prop-types';
 
 declare const PegaUidStatusBadge: {
@@ -9,7 +10,7 @@ declare const PegaUidStatusBadge: {
     variant: any;
     variantField: any;
     value: any;
-  }): import('react/jsx-runtime').JSX.Element;
+  }): JSX.Element;
   defaultProps: {
     labelType: string;
     labelText: string;

@@ -1,5 +1,5 @@
 export default PegaUidInteger;
-declare function PegaUidInteger(props: any): import("react/jsx-runtime").JSX.Element;
+declare function PegaUidInteger(props: any): JSX.Element;
 declare namespace PegaUidInteger {
   namespace defaultProps {
     const value: string;
