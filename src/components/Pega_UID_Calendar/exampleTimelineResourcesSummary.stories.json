@@ -1,0 +1,216 @@
+{
+  "fetchDateTime": "2025-01-15T09:21:25.694Z",
+  "pxObjClass": "Pega-API-DataExploration-Data",
+  "resultCount": 2,
+  "data": [
+    {
+      "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+      "Name": "Berlin Mitte",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Berlin_Mitte",
+      "Summary": [
+        {
+          "Day": "20250331",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250401",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250402",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250403",
+          "Sammel": "3",
+          "Termin": "12"
+        },
+        {
+          "Day": "20250404",
+          "Sammel": "0",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250407",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250408",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250409",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250410",
+          "Sammel": "5",
+          "Termin": "6"
+        },
+        {
+          "Day": "20250411",
+          "Sammel": "1",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250417",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250422",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250423",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250424",
+          "Sammel": "6",
+          "Termin": "8"
+        },
+        {
+          "Day": "20250425",
+          "Sammel": "1",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250428",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250429",
+          "Sammel": "1",
+          "Termin": "7"
+        },
+        {
+          "Day": "20250430",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250501",
+          "Sammel": "0",
+          "Termin": "0"
+        },
+        {
+          "Day": "20250502",
+          "Sammel": "1",
+          "Termin": "1"
+        }
+      ]
+    },
+    {
+      "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef886",
+      "Name": "München",
+      "Region": "Bayern SÜD (BY SÜD)",
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "pyGUID": "Muenchen",
+      "Summary": [
+        {
+          "Day": "20250402",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250403",
+          "Sammel": "7",
+          "Termin": "0"
+        },
+        {
+          "Day": "20250404",
+          "Sammel": "3",
+          "Termin": "10"
+        },
+        {
+          "Day": "20250407",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250408",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250409",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250410",
+          "Sammel": "0",
+          "Termin": "0"
+        },
+        {
+          "Day": "20250411",
+          "Sammel": "1",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250414",
+          "Sammel": "3",
+          "Termin": "5"
+        },
+        {
+          "Day": "20250415",
+          "Sammel": "11",
+          "Termin": "17"
+        },
+        {
+          "Day": "20250416",
+          "Sammel": "7",
+          "Termin": "2"
+        },
+        {
+          "Day": "20250417",
+          "Sammel": "0",
+          "Termin": "0"
+        },
+        {
+          "Day": "20250425",
+          "Sammel": "1",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250428",
+          "Sammel": "2",
+          "Termin": "1"
+        },
+        {
+          "Day": "20250429",
+          "Sammel": "2",
+          "Termin": "3"
+        },
+        {
+          "Day": "20250430",
+          "Sammel": "0",
+          "Termin": "10"
+        },
+        {
+          "Day": "20250501",
+          "Sammel": "0",
+          "Termin": "0"
+        },
+        {
+          "Day": "20250502",
+          "Sammel": "0",
+          "Termin": "2"
+        }
+      ]
+    }
+  ],
+  "hasMoreResults": false
+}

@@ -15,7 +15,7 @@ import {
   EventContentArg,
   EventHoveringArg
 } from '@fullcalendar/core';
-import { EventImpl } from '@fullcalendar/core/internal';
+import { EventImpl, VerboseFormattingArg } from '@fullcalendar/core/internal';
 import {
   Button,
   Icon,
@@ -79,6 +79,7 @@ export interface ICalendarProps {
     eventType: EEventType,
     resourceInfo?: [OrgID: string, ResourceId: string]
   ) => void;
+  isSummary: boolean;
   isInteraction: boolean;
   showTimeline: boolean;
   readOnlyAccess: boolean;
@@ -121,6 +122,7 @@ export interface ICalendarProps {
 export default (props: ICalendarProps) => {
   const {
     createEvent,
+    isSummary,
     showTimeline,
     readOnlyAccess,
     nowIndicator,
@@ -166,6 +168,18 @@ export default (props: ICalendarProps) => {
       isMonthlyView && !obj.CompleteDay
         ? `${eventDateStr} ${eventInfo.event.title}`
         : eventInfo.event.title;
+    if (obj.summary) {
+      return (
+        <div className={`event-content ${obj.Type} ${obj.Beratungsstellentyp}`}>
+          <Text variant='primary' className='event-label'>
+            {obj.Type !== EEventType.ABSENCE && (obj.Beratungsstellentyp || obj.Termintyp) && (
+              <span>{getTypeIcon(obj.Beratungsstellentyp || obj.Termintyp)}</span>
+            )}
+            {eventLabel}
+          </Text>
+        </div>
+      );
+    }
     if (
       obj.Type === 'Verfügbar' &&
       !currentViewType.includes('Month') &&
@@ -380,7 +394,11 @@ export default (props: ICalendarProps) => {
         overlappingEventTypes.includes(EEventType.AVAILABILITY));
 
     const showMassEventOption =
-      overlappingEventTypes.length === 1 && overlappingEventTypes.includes(EEventType.AVAILABILITY);
+      (overlappingEventTypes.length === 1 &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
+      (overlappingEventTypes.length === 2 &&
+        overlappingEventTypes.includes(EEventType.CANCELLED) &&
+        overlappingEventTypes.includes(EEventType.AVAILABILITY));
 
     const showAvailabilityOption = overlappingEventTypes.length === 0;
 
@@ -627,6 +645,20 @@ export default (props: ICalendarProps) => {
           ?.classList.add('fc-button-active');
         calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
         break;
+      case ETimelineViewType.Month: {
+        setCurrentViewType(ETimelineViewType.Month);
+        document
+          .getElementsByClassName('fc-resourceTimelineMonth-button')[0]
+          ?.classList.add('fc-button-active');
+        calendar.setOption('dayHeaderFormat', { weekday: 'long', month: 'long', day: 'numeric' });
+        calendar.setOption('slotLabelFormat', [
+          (date: VerboseFormattingArg) => {
+            return `KW ${moment(date.date.marker).week()}`;
+          },
+          { weekday: 'long', month: 'long', day: 'numeric' }
+        ]);
+        break;
+      }
       default:
       case ECalendarViewType.Month:
         setCurrentViewType(ECalendarViewType.Month);
@@ -724,13 +756,17 @@ export default (props: ICalendarProps) => {
     resourceTimelineWeek: {
       text: 'Woche',
       click: () => onViewButtonClick(ETimelineViewType.Week)
+    },
+    resourceTimelineMonth: {
+      text: 'Tagessummen', // Tage
+      click: () => onViewButtonClick(ETimelineViewType.Month)
     }
   };
   const headerToolbar = {
     left: 'prev,next today',
     center: 'title',
     right: showTimeline
-      ? 'resourceTimelineDay resourceTimelineWeek'
+      ? `${isSummary ? 'resourceTimelineMonth' : 'resourceTimelineDay resourceTimelineWeek'}`
       : 'MonthlyView weeklyView workingWeekView dailyView'
   };
   const filteredEvents = events.filter(event =>

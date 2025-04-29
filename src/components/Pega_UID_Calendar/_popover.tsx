@@ -14,9 +14,9 @@ import {
 import {
   EDateTimeType,
   EEventType,
-  TEventImpl,
   getDateTimeFromIsoString,
-  getTypeIcon
+  getTypeIcon,
+  TEventImpl
 } from './index';
 
 export interface IPopoverEvent {
@@ -144,44 +144,47 @@ export default (props: IPopoverProps) => {
                 </Text>
               )}
 
-              {eventInPopover.eventInfo?._def.extendedProps.item.Type ===
-                EEventType.APPOINTMENT && (
-                <>
-                  <Icon
-                    name='wizard-solid'
-                    role='img'
-                    aria-label='Beratungsart'
-                    size='s'
-                    className='icon'
-                  />
-                  {renderBeratungsartBadge(
-                    eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart
-                  )}
-                </>
-              )}
-              {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MASS_EVENT && (
-                <>
-                  <Icon
-                    name='location-solid'
-                    role='img'
-                    aria-label='location icon'
-                    size='s'
-                    className='icon'
-                  />
-                  <Flex container={{ direction: 'column', alignItems: 'start' }}>
-                    <Text variant='primary' className='event-label'>
-                      {eventInPopover.eventInfo._def.extendedProps.item.Address}
-                    </Text>
-                  </Flex>
-                  <Icon name='users-solid' role='img' aria-label='group icon' size='s' />
-                  <Flex container={{ direction: 'column', alignItems: 'start' }}>
-                    <Text variant='primary' className='event-label'>
-                      {eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity}/
-                      {eventInPopover.eventInfo._def.extendedProps.item.Capacity} Kapazität
-                    </Text>
-                  </Flex>
-                </>
-              )}
+              {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.APPOINTMENT &&
+                eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart && (
+                  <>
+                    <Icon
+                      name='wizard-solid'
+                      role='img'
+                      aria-label='Beratungsart'
+                      size='s'
+                      className='icon'
+                    />
+                    {renderBeratungsartBadge(
+                      eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart
+                    )}
+                  </>
+                )}
+              {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MASS_EVENT &&
+                eventInPopover.eventInfo._def.extendedProps.item.Address &&
+                eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity &&
+                eventInPopover.eventInfo._def.extendedProps.item.Capacity && (
+                  <>
+                    <Icon
+                      name='location-solid'
+                      role='img'
+                      aria-label='location icon'
+                      size='s'
+                      className='icon'
+                    />
+                    <Flex container={{ direction: 'column', alignItems: 'start' }}>
+                      <Text variant='primary' className='event-label'>
+                        {eventInPopover.eventInfo._def.extendedProps.item.Address}
+                      </Text>
+                    </Flex>
+                    <Icon name='users-solid' role='img' aria-label='group icon' size='s' />
+                    <Flex container={{ direction: 'column', alignItems: 'start' }}>
+                      <Text variant='primary' className='event-label'>
+                        {eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity}/
+                        {eventInPopover.eventInfo._def.extendedProps.item.Capacity} Kapazität
+                      </Text>
+                    </Flex>
+                  </>
+                )}
               {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstellentyp && (
                 <>
                   {getTypeIcon(

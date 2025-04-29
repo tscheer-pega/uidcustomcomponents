@@ -72,7 +72,8 @@ export enum ECalendarViewType {
 
 export enum ETimelineViewType {
   Day = 'resourceTimelineDay',
-  Week = 'resourceTimelineWeek'
+  Week = 'resourceTimelineWeek',
+  Month = 'resourceTimelineMonth'
 }
 
 export type TCalendarProps = {
@@ -110,7 +111,8 @@ export enum EEventType {
   MASS_EVENT = 'Sammel',
   PUBLIC_HOLIDAY = 'Feiertag',
   CANCELLED = 'Storniert',
-  REVOKED = 'Abgesagt'
+  REVOKED = 'Abgesagt',
+  SUMMARY = 'Zusammenfassung'
 }
 
 export enum EBeratungsTyp {
@@ -159,6 +161,7 @@ export interface IRawEvent {
   Beratungsstelle?: IBeratungsstelle;
   IOrganisationseinheit?: IOrganisationseinheit;
   ResourceId?: string;
+  summary?: boolean; // only Summary
 }
 
 export type TDateInfo = {
@@ -173,6 +176,11 @@ export interface IRawResource {
   AddressId: string;
   Region: string;
   Name: string;
+  Summary?: Array<{
+    Day: string;
+    Sammel: string;
+    Termin: string;
+  }>;
   BeraterList?: Array<{
     pyUserIdentifier: string;
     pyUserName: string;
@@ -235,7 +243,7 @@ const getDefaultView = (
       break;
     default:
     case 'Monthly':
-      defaultView = showTimeline ? ETimelineViewType.Week : ECalendarViewType.Month;
+      defaultView = showTimeline ? ETimelineViewType.Month : ECalendarViewType.Month;
       break;
   }
   return defaultView;
@@ -343,6 +351,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [selectedStartDate, setSelectedStartDate] = useState<string>(moment().toISOString());
   const [regionFilter, setRegionFilter] = useState<string>();
   const [modalInfo, setModalInfo] = useState<IModalInfo>({ ...modalInfoDefault });
+  const [isSummary, setIsSummary] = useState<boolean>(false);
 
   /** Combo box */
   const [comboBoxItems, setComboBoxItems] = useState<MenuProps['items']>([]);
@@ -420,6 +429,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.blue.light;
           break;
         case EEventType.APPOINTMENT:
+        case EEventType.SUMMARY:
           color = theme.base.colors.blue.dark;
           editable = true;
           dragScroll = true;
@@ -463,9 +473,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
       const tmpEvent: TEvent = {
         id: item.TerminID || `generic-${Math.random() * 1e9}`,
-        resourceId: item.ResourceId
-          ? `${item.OrganisationseinheitID}___${item.ResourceId}`
-          : `generic-${Math.random() * 1e9}`,
+        resourceId:
+          item.ResourceId && item.OrganisationseinheitID
+            ? `${item.OrganisationseinheitID}___${item.ResourceId}`
+            : item.ResourceId || `generic-${Math.random() * 1e9}`,
         title,
         rrule: {
           freq,
@@ -531,6 +542,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const loadEvents = (startDate = StartDate) => {
     if (showTimeline && startDate) {
+      let summary = false;
       setIsLoading(true);
       dataApiUtils
         .getData(dataPageResources, {
@@ -544,6 +556,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           const resourceResponse = response.data;
           const rawResource = resourceResponse.data as Array<IRawResource>;
           const promises = [] as Array<Promise<any>>;
+          const summaryResources = [] as Array<IRawEvent>;
           if (rawResource) {
             const res = mapResources(rawResource);
             setResources(res);
@@ -569,55 +582,99 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             setComboBoxItems(comboData);
 
             rawResource.forEach(singleOrganisation => {
-              singleOrganisation.BeraterList?.forEach(singleAgent => {
-                promises.push(
-                  new Promise(resolve => {
-                    dataApiUtils
-                      .getData(dataPage, {
-                        dataViewParameters: {
-                          StartDate: moment(startDate).format('YYYY-MM-DD'),
-                          EndDate: moment(EndDate).format('YYYY-MM-DD'),
-                          // Organisationseinheit ID (Agency ID)
-                          OrgID: singleOrganisation.pyGUID,
-                          // Berater ID (Consultant ID)
-                          BeraterID: singleAgent.pyUserIdentifier
-                        }
-                      })
-                      .then((resp: any) => {
-                        const eventData = resp.data;
-                        if (eventData.data !== null) {
-                          resolve({
-                            data: eventData.data,
+              if (!singleOrganisation.Summary) {
+                singleOrganisation.BeraterList?.forEach(singleAgent => {
+                  promises.push(
+                    new Promise(resolve => {
+                      dataApiUtils
+                        .getData(dataPage, {
+                          dataViewParameters: {
+                            StartDate: moment(startDate).format('YYYY-MM-DD'),
+                            EndDate: moment(EndDate).format('YYYY-MM-DD'),
+                            // Organisationseinheit ID (Agency ID)
                             OrgID: singleOrganisation.pyGUID,
+                            // Berater ID (Consultant ID)
                             BeraterID: singleAgent.pyUserIdentifier
-                          });
-                        } else {
-                          // If no data is returned - resolve with an empty array
-                          resolve({
-                            data: [],
-                            OrgID: singleOrganisation.pyGUID,
-                            BeraterID: singleAgent.pyUserIdentifier
-                          });
-                        }
-                      });
-                  })
-                );
-              });
+                          }
+                        })
+                        .then((resp: any) => {
+                          const eventData = resp.data;
+                          if (eventData.data !== null) {
+                            resolve({
+                              data: eventData.data,
+                              OrgID: singleOrganisation.pyGUID,
+                              BeraterID: singleAgent.pyUserIdentifier
+                            });
+                          } else {
+                            // If no data is returned - resolve with an empty array
+                            resolve({
+                              data: [],
+                              OrgID: singleOrganisation.pyGUID,
+                              BeraterID: singleAgent.pyUserIdentifier
+                            });
+                          }
+                        });
+                    })
+                  );
+                });
+              } else {
+                summary = true;
+                singleOrganisation.Summary.forEach(singleSummary => {
+                  const { Day, Sammel, Termin } = singleSummary;
+                  const startTime = moment(Day, 'YYYYMMDD').format();
+                  const endTime = moment(Day, 'YYYYMMDD').format();
+                  if (parseInt(Sammel, 10) > 0) {
+                    summaryResources.push({
+                      CompleteDay: true,
+                      EndTime: endTime,
+                      IsSerie: false,
+                      SerieEnd: endTime,
+                      SerieRepeat: 'Jährlich',
+                      StartTime: startTime,
+                      Subject: `Sammeltermine: ${Sammel}`,
+                      Type: EEventType.MASS_EVENT,
+                      ResourceId: singleOrganisation.pyGUID,
+                      summary: true
+                    });
+                  }
+                  if (parseInt(Termin, 10) > 0) {
+                    summaryResources.push({
+                      CompleteDay: true,
+                      EndTime: endTime,
+                      IsSerie: false,
+                      SerieEnd: endTime,
+                      SerieRepeat: 'Jährlich',
+                      StartTime: startTime,
+                      Subject: `Beratungstermine: ${Termin}`,
+                      Type: EEventType.APPOINTMENT,
+                      ResourceId: singleOrganisation.pyGUID,
+                      summary: true
+                    });
+                  }
+                });
+              }
             });
           }
-          const resolvedEvents = await Promise.all(promises);
-          const fillOrgIDs = resolvedEvents.map(resolvedEventItem => {
-            const { data = [], OrgID = '', BeraterID = '' } = resolvedEventItem;
-            return data.map((item: IRawEvent) => ({
-              ...item,
-              ResourceId: item.ResourceId || BeraterID,
-              OrganisationseinheitID: item.OrganisationseinheitID || OrgID
-            }));
-          });
-          const resolvedEventsFlat = fillOrgIDs.flat();
+          if (!summary) {
+            const resolvedEvents = await Promise.all(promises);
+            const fillOrgIDs = resolvedEvents.map(resolvedEventItem => {
+              const { data = [], OrgID = '', BeraterID = '' } = resolvedEventItem;
+              return data.map((item: IRawEvent) => ({
+                ...item,
+                ResourceId: item.ResourceId || BeraterID,
+                OrganisationseinheitID: item.OrganisationseinheitID || OrgID
+              }));
+            });
+            const resolvedEventsFlat = fillOrgIDs.flat();
 
-          setRawData(resolvedEventsFlat);
-          fillEvents(resolvedEventsFlat);
+            setRawData(resolvedEventsFlat);
+            fillEvents(resolvedEventsFlat);
+          } else {
+            const summaryEventsFlat = summaryResources.flat();
+            setRawData(summaryEventsFlat);
+            fillEvents(summaryEventsFlat);
+          }
+          setIsSummary(summary);
         })
         .finally(() => {
           setIsLoading(false);
@@ -960,6 +1017,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 showPublicHolidays={showPublicHolidays}
                 setModalInfo={setModalInfo}
                 theme={theme}
+                isSummary={isSummary}
               />
               {isLoading && (
                 <div className='loading-indicator'>
@@ -970,14 +1028,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               )}
             </CardContent>
           </Card>
-          <CardFooter className='legend'>
-            <Legend
-              legendExpanded={legendExpanded}
-              setLegendExpanded={setLegendExpanded}
-              showTimeline={showTimeline}
-              theme={theme}
-            />
-          </CardFooter>
+          {!isSummary && (
+            <CardFooter className='legend'>
+              <Legend
+                legendExpanded={legendExpanded}
+                setLegendExpanded={setLegendExpanded}
+                showTimeline={showTimeline}
+                theme={theme}
+              />
+            </CardFooter>
+          )}
         </Flex>
         <Popover
           eventInPopover={eventInPopover}

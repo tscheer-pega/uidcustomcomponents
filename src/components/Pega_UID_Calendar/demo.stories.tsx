@@ -2,6 +2,7 @@ import type { ComponentMeta, ComponentStory } from '@storybook/react';
 import PegaUidCalendar from './index';
 import exampleData from './exampleData.stories.json';
 import exampleTimelineResources from './exampleTimelineResources.stories.json';
+import exampleTimelineResourcesSummary from './exampleTimelineResourcesSummary.stories.json';
 import exampleTimelineData from './exampleTimelineData.stories.json';
 import publicHolidays from './publicHolidays.stories.json';
 
@@ -30,7 +31,7 @@ const defaultProps = {
             // eslint-disable-next-line no-alert
             alert(`Open Case (caseClassName: ${caseClassName}, eventId: ${eventId})`);
             // eslint-disable-next-line no-console
-            console.log(eventId, options);
+            console.log(eventId, caseClassName, options);
           }
         };
       },
@@ -84,7 +85,7 @@ export default {
   component: PegaUidCalendar
 } as ComponentMeta<typeof PegaUidCalendar>;
 
-const setPCore = () => {
+const setPCore = (isSummary = false) => {
   (window as any).PCore = {
     getComponentsRegistry: () => {
       return {
@@ -149,7 +150,7 @@ const setPCore = () => {
             switch (dataViewName) {
               // Timeline: Resources
               case 'D_OrganisationeinheitListForCurrentOperator': {
-                returnData = exampleTimelineResources;
+                returnData = isSummary ? exampleTimelineResourcesSummary : exampleTimelineResources;
                 break;
               }
               case 'D_TimeSlotListForOrg': {
@@ -211,12 +212,12 @@ const setPCore = () => {
 };
 
 const Template: ComponentStory<typeof PegaUidCalendar> = args => {
-  setPCore();
+  setPCore(args.showTimeline && args.defaultViewMode === 'Monthly');
   return <PegaUidCalendar {...args} />;
 };
 
-export const baseCalendar = Template.bind({});
-baseCalendar.args = {
+export const base = Template.bind({});
+base.args = {
   ...Template.args,
   interactionId: 'InteractionId',
   showTimeline: false,
@@ -224,8 +225,8 @@ baseCalendar.args = {
   defaultViewMode: 'Monthly'
 };
 
-export const timelineCalendar = Template.bind({});
-timelineCalendar.args = {
+export const timeline = Template.bind({});
+timeline.args = {
   ...Template.args,
   interactionId: 'InteractionId',
   showTimeline: true,
@@ -233,4 +234,15 @@ timelineCalendar.args = {
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
   defaultViewMode: 'Weekly'
+};
+
+export const timelineSummary = Template.bind({});
+timelineSummary.args = {
+  ...Template.args,
+  interactionId: 'InteractionId',
+  showTimeline: true,
+  readOnlyAccess: true,
+  dataPage: 'D_TimeSlotListForOrg',
+  dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
+  defaultViewMode: 'Monthly'
 };
