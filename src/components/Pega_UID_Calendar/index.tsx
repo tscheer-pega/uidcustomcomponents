@@ -760,13 +760,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     eventType: EEventType,
     resourceInfo: [OrgID: string, ResourceId: string] = ['', '']
   ) => {
-    let workClassName = '';
+    let workClassName = 'createClassname';
+    let type = '';
     switch (eventType) {
       case EEventType.AVAILABILITY:
-        workClassName = 'availability'; // createAvailabilityClassname;
+        type = 'availability';
+        workClassName = 'D_AvailabilitySavable';
         break;
       case EEventType.ABSENCE:
-        workClassName = 'abscence'; // createAbscenceClassname;
+        type = 'abscence';
+        workClassName = 'D_AbsenceSavable';
         break;
       case EEventType.MASS_EVENT:
         workClassName = createMassClassname;
@@ -777,23 +780,34 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         break;
       }
     }
-    actionsApi.createWork(workClassName, {
-      openCaseViewAfterCreate: true,
-      interactionId,
-      containerName: 'workarea',
-      flowType: 'pyStartCase',
-      skipBrowserSemanticUrlUpdate: true,
-      startingFields: {
-        InteractionId: interactionId,
-        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-        cxContextType: 'Case',
-        start,
-        end,
-        orgId: resourceInfo[0] || null,
-        resourceId: resourceInfo[1] || null
-      },
-      viewType: 'form'
-    });
+    if (type) {
+      dataApiUtils.getData(workClassName, {
+        dataViewParameters: {
+          Start: start,
+          End: end,
+          OrgID: resourceInfo[0] || null,
+          ResourceId: resourceInfo[1] || null
+        }
+      });
+    } else {
+      actionsApi.createWork(workClassName, {
+        openCaseViewAfterCreate: true,
+        interactionId,
+        containerName: 'workarea',
+        flowType: 'pyStartCase',
+        skipBrowserSemanticUrlUpdate: true,
+        startingFields: {
+          InteractionId: interactionId,
+          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+          cxContextType: 'Case',
+          start,
+          end,
+          orgId: resourceInfo[0] || null,
+          resourceId: resourceInfo[1] || null
+        },
+        viewType: 'form'
+      });
+    }
   };
 
   const handlePopoverMouseEnter = () => {

@@ -387,27 +387,21 @@ export default (props: ICalendarProps) => {
     };
 
     const showAppointmentOption =
-      (overlappingEventTypes.length === 1 &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
-      (overlappingEventTypes.length === 2 &&
-        overlappingEventTypes.includes(EEventType.CANCELLED) &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY));
+      overlappingEventTypes.length === 2 &&
+      overlappingEventTypes.includes(EEventType.CANCELLED) &&
+      overlappingEventTypes.includes(EEventType.AVAILABILITY);
 
     const showMassEventOption =
-      (overlappingEventTypes.length === 1 &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
-      (overlappingEventTypes.length === 2 &&
-        overlappingEventTypes.includes(EEventType.CANCELLED) &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY));
+      overlappingEventTypes.length === 2 &&
+      overlappingEventTypes.includes(EEventType.CANCELLED) &&
+      overlappingEventTypes.includes(EEventType.AVAILABILITY);
 
     const showAvailabilityOption = overlappingEventTypes.length === 0;
 
     const showAbscenceOption =
-      (overlappingEventTypes.length === 1 &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY)) ||
-      (overlappingEventTypes.length === 2 &&
-        overlappingEventTypes.includes(EEventType.CANCELLED) &&
-        overlappingEventTypes.includes(EEventType.AVAILABILITY));
+      overlappingEventTypes.length === 2 &&
+      overlappingEventTypes.includes(EEventType.CANCELLED) &&
+      overlappingEventTypes.includes(EEventType.AVAILABILITY);
 
     if (
       !showAppointmentOption &&
