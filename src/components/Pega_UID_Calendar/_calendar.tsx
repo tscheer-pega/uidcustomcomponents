@@ -77,7 +77,8 @@ export interface ICalendarProps {
     start: string,
     end: string,
     eventType: EEventType,
-    resourceInfo?: [OrgID: string, ResourceId: string]
+    resourceInfo?: [OrgID: string, ResourceId: string],
+    consultationType?: string
   ) => void;
   isSummary: boolean;
   isInteraction: boolean;
@@ -204,13 +205,13 @@ export default (props: ICalendarProps) => {
       }
       return (
         <div
-          className={`event-content availability ${obj.Type} ${obj.Beratungsstellentyp}`}
+          className={`event-content availability ${obj.Type} ${bTyp}`}
           style={{
             backgroundColor: theme.base.colors.green.light,
             left
           }}
         >
-          <span>{getTypeIcon(obj.Beratungsstellentyp)}</span>
+          <span>{getTypeIcon(bTyp)}</span>
         </div>
       );
     }
@@ -387,21 +388,20 @@ export default (props: ICalendarProps) => {
     };
 
     const showAppointmentOption =
-      overlappingEventTypes.length === 2 &&
-      overlappingEventTypes.includes(EEventType.CANCELLED) &&
-      overlappingEventTypes.includes(EEventType.AVAILABILITY);
+      !overlappingEventTypes.includes(EEventType.REVOKED) &&
+      !overlappingEventTypes.includes(EEventType.ABSENCE) &&
+      !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
+      !overlappingEventTypes.includes(EEventType.MASS_EVENT);
 
     const showMassEventOption =
-      overlappingEventTypes.length === 2 &&
-      overlappingEventTypes.includes(EEventType.CANCELLED) &&
-      overlappingEventTypes.includes(EEventType.AVAILABILITY);
+      !overlappingEventTypes.includes(EEventType.REVOKED) &&
+      !overlappingEventTypes.includes(EEventType.ABSENCE) &&
+      !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
+      !overlappingEventTypes.includes(EEventType.MASS_EVENT);
 
     const showAvailabilityOption = overlappingEventTypes.length === 0;
 
-    const showAbscenceOption =
-      overlappingEventTypes.length === 2 &&
-      overlappingEventTypes.includes(EEventType.CANCELLED) &&
-      overlappingEventTypes.includes(EEventType.AVAILABILITY);
+    const showAbscenceOption = overlappingEventTypes.length === 0;
 
     if (
       !showAppointmentOption &&
@@ -415,7 +415,7 @@ export default (props: ICalendarProps) => {
     // TODO: Teamkalender: Auch wenn keine Anwesenheit UND Abwesenheit vorhanden ist, kann ein Termin erstellt werden. (da Dienstzeit, nicht Beratungszeit)
 
     const createModalActions = (
-      <div style={{ display: 'flex', gap: '0.25rem' }}>
+      <div style={{ display: 'flex', gap: '0.25rem', flex: 1 }}>
         {showAppointmentOption && (
           <Button
             variant='primary'
@@ -464,29 +464,87 @@ export default (props: ICalendarProps) => {
           </Button>
         )}
         {showAvailabilityOption && (
-          <Button
-            variant='primary'
-            onClick={() => {
-              setEvents([
-                ...events,
-                {
-                  ...tmpItem,
-                  title: 'Neue Verfügbarkeit',
-                  item: {
-                    ...tmpItem.item,
-                    Subject: 'Neue Verfügbarkeit'
+          <>
+            <Button
+              variant='primary'
+              onClick={() => {
+                setEvents([
+                  ...events,
+                  {
+                    ...tmpItem,
+                    title: 'Neue Verfügbarkeit (Präsenzberatung)',
+                    item: {
+                      ...tmpItem.item,
+                      Subject: 'Neue Verfügbarkeit (Präsenzberatung)'
+                    }
                   }
-                }
-              ]);
-              createEvent(start.toISOString(), end.toISOString(), EEventType.AVAILABILITY, [
-                orgId,
-                resourceMail
-              ]);
-              dismiss();
-            }}
-          >
-            Verfügbarkeit
-          </Button>
+                ]);
+                createEvent(
+                  start.toISOString(),
+                  end.toISOString(),
+                  EEventType.AVAILABILITY,
+                  [orgId, resourceMail],
+                  'Präsenzberatung'
+                );
+                dismiss();
+              }}
+            >
+              {getTypeIcon('Präsenzberatung')}&nbsp;Verfügbarkeit
+            </Button>
+            <Button
+              variant='primary'
+              onClick={() => {
+                setEvents([
+                  ...events,
+                  {
+                    ...tmpItem,
+                    title: 'Neue Verfügbarkeit (Telefon)',
+                    item: {
+                      ...tmpItem.item,
+                      Subject: 'Neue Verfügbarkeit (Telefon)'
+                    }
+                  }
+                ]);
+                createEvent(
+                  start.toISOString(),
+                  end.toISOString(),
+                  EEventType.AVAILABILITY,
+                  [orgId, resourceMail],
+                  'Telefon'
+                );
+                dismiss();
+              }}
+            >
+              {getTypeIcon('Telefon')}&nbsp;Verfügbarkeit
+            </Button>
+            <Button
+              variant='primary'
+              onClick={() => {
+                setEvents([
+                  ...events,
+                  {
+                    ...tmpItem,
+                    title: 'Neue Verfügbarkeit (Online)',
+                    item: {
+                      ...tmpItem.item,
+                      Subject: 'Neue Verfügbarkeit (Online)'
+                    }
+                  }
+                ]);
+                createEvent(
+                  start.toISOString(),
+                  end.toISOString(),
+                  EEventType.AVAILABILITY,
+                  [orgId, resourceMail],
+                  'Online'
+                );
+                dismiss();
+              }}
+            >
+              {getTypeIcon('Online')}&nbsp;Verfügbarkeit
+            </Button>
+            <br />
+          </>
         )}
         {showAbscenceOption && (
           <Button
@@ -513,6 +571,7 @@ export default (props: ICalendarProps) => {
             Abwesenheit
           </Button>
         )}
+        <span style={{ display: 'flex', flex: '1' }}>&nbsp;</span>
         <Button
           onClick={() => {
             dismiss();
@@ -524,7 +583,14 @@ export default (props: ICalendarProps) => {
     );
 
     return (
-      <Modal heading='Neuer Eintrag' actions={createModalActions} dismissible autoWidth stretch>
+      <Modal
+        heading='Neuer Eintrag'
+        style={{ maxWidth: 'fit-content' }}
+        actions={createModalActions}
+        dismissible
+        autoWidth
+        stretch
+      >
         <Text>{modalText}</Text>
       </Modal>
     );

@@ -200,5 +200,8 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
       margin: 0;
       opacity: 0.25;
     }
+    .create-modal {
+      width: 960px;
+    }
   `;
 });

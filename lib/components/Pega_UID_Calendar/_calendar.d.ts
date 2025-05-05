@@ -41,7 +41,8 @@ export interface ICalendarProps {
     start: string,
     end: string,
     eventType: EEventType,
-    resourceInfo?: [OrgID: string, ResourceId: string]
+    resourceInfo?: [OrgID: string, ResourceId: string],
+    consultationType?: string
   ) => void;
   isSummary: boolean;
   isInteraction: boolean;

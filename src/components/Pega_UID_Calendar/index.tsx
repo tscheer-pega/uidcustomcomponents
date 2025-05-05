@@ -758,18 +758,19 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     start: string,
     end: string,
     eventType: EEventType,
-    resourceInfo: [OrgID: string, ResourceId: string] = ['', '']
+    resourceInfo: [OrgID: string, ResourceId: string] = ['', ''],
+    consultationType: string = ''
   ) => {
     let workClassName = 'createClassname';
     let type = '';
     switch (eventType) {
       case EEventType.AVAILABILITY:
         type = 'availability';
-        workClassName = 'D_AvailabilitySavable';
+        workClassName = 'D_AvailabilityCalSavable';
         break;
       case EEventType.ABSENCE:
         type = 'abscence';
-        workClassName = 'D_AbsenceSavable';
+        workClassName = 'D_AbsenceCalSavable';
         break;
       case EEventType.MASS_EVENT:
         workClassName = createMassClassname;
@@ -786,7 +787,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           Start: start,
           End: end,
           OrgID: resourceInfo[0] || null,
-          ResourceId: resourceInfo[1] || null
+          ResourceId: resourceInfo[1] || null,
+          Type: consultationType
         }
       });
     } else {
