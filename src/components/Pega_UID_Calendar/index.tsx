@@ -377,13 +377,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       ? menuHelpers.flatten(comboBoxItems).filter(({ primary }: MenuItemProps) => {
           return filterRegex.test(primary);
         })
-      : comboBoxItems;
+      : // @ts-ignore
+        comboBoxItems.filter(({ secondary }) =>
+          regionFilter ? secondary.includes(regionFilter) : true
+        );
 
     return menuHelpers.mapTree(newItems, item => ({
       ...item,
       selected: !!item.selected
     }));
-  }, [comboBoxFilterValue, comboBoxItems]);
+  }, [comboBoxFilterValue, comboBoxItems, regionFilter]);
 
   const toggleItem = (id: string) => {
     setComboBoxItems(cur => menuHelpers.toggleSelected(cur, id, 'multi-select'));

@@ -19,6 +19,11 @@
           "pyUserIdentifier": "Christopher.Rohde.ext@bwi.de",
           "pyUserName": "Christopher Rohde",
           "pxObjClass": "Data-Admin-Operator-ID"
+        },
+        {
+          "pyUserIdentifier": "Elzabieta.Jastrzebska.ext@bwi.de",
+          "pyUserName": "Elzabieta Jastrzebska",
+          "pxObjClass": "Data-Admin-Operator-ID"
         }
       ]
     },
