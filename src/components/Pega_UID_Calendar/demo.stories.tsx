@@ -1,5 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import PegaUidCalendar from './index';
+import PegaUidCalendar, { ERoles } from './index';
 import exampleData from './exampleData.stories.json';
 import exampleTimelineResources from './exampleTimelineResources.stories.json';
 import exampleTimelineResourcesSummary from './exampleTimelineResourcesSummary.stories.json';
@@ -216,13 +216,14 @@ const Template: ComponentStory<typeof PegaUidCalendar> = args => {
   return <PegaUidCalendar {...args} />;
 };
 
-export const base = Template.bind({});
-base.args = {
+export const defaultCalendar = Template.bind({});
+defaultCalendar.args = {
   ...Template.args,
   interactionId: 'InteractionId',
   showTimeline: false,
   readOnlyAccess: false,
-  defaultViewMode: 'Monthly'
+  defaultViewMode: 'Monthly',
+  role: ERoles.ADVISOR
 };
 
 export const timeline = Template.bind({});
@@ -233,7 +234,8 @@ timeline.args = {
   readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
-  defaultViewMode: 'Weekly'
+  defaultViewMode: 'Weekly',
+  role: ERoles.AGENT
 };
 
 export const timelineSummary = Template.bind({});
@@ -244,5 +246,6 @@ timelineSummary.args = {
   readOnlyAccess: true,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
-  defaultViewMode: 'Monthly'
+  defaultViewMode: 'Monthly',
+  role: ERoles.ADVISOR
 };

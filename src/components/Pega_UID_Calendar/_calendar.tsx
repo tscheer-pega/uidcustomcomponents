@@ -29,6 +29,7 @@ import {
   ECalendarViewType,
   EDateTimeType,
   EEventType,
+  ERoles,
   ETerminGoal,
   ETimelineViewType,
   getDateTimeFromIsoString,
@@ -118,6 +119,7 @@ export interface ICalendarProps {
     title: string;
     content: { parentId: string; resourceId: string };
   }) => void;
+  role: ERoles;
 }
 
 export default (props: ICalendarProps) => {
@@ -143,7 +145,8 @@ export default (props: ICalendarProps) => {
     setCurrentViewType,
     eventInPopover,
     setEventInPopover,
-    setModalInfo
+    setModalInfo,
+    role
   } = props;
 
   const onViewButtonClick = (viewType: ECalendarViewType | ETimelineViewType) => {
@@ -397,11 +400,12 @@ export default (props: ICalendarProps) => {
       !overlappingEventTypes.includes(EEventType.REVOKED) &&
       !overlappingEventTypes.includes(EEventType.ABSENCE) &&
       !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
-      !overlappingEventTypes.includes(EEventType.MASS_EVENT);
+      !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
+      role !== ERoles.AGENT;
 
-    const showAvailabilityOption = overlappingEventTypes.length === 0;
+    const showAvailabilityOption = overlappingEventTypes.length === 0 && role !== ERoles.AGENT;
 
-    const showAbscenceOption = overlappingEventTypes.length === 0;
+    const showAbscenceOption = overlappingEventTypes.length === 0 && role !== ERoles.AGENT;
 
     if (
       !showAppointmentOption &&

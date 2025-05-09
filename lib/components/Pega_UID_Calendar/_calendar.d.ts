@@ -1,5 +1,12 @@
 import React, { JSX } from 'react';
-import { ECalendarViewType, EEventType, ETimelineViewType, IRawEvent, TEventImpl } from './index';
+import {
+  ECalendarViewType,
+  EEventType,
+  ERoles,
+  ETimelineViewType,
+  IRawEvent,
+  TEventImpl
+} from './index';
 
 export declare type TEvent = {
   id: string;
@@ -32,59 +39,52 @@ export declare type TEvent = {
   };
 };
 export declare type TResource = {
-  id: string;
-  title: string;
-  children?: Array<TResource>;
+    id: string;
+    title: string;
+    children?: Array<TResource>;
 };
 export interface ICalendarProps {
-  createEvent: (
-    start: string,
-    end: string,
-    eventType: EEventType,
-    resourceInfo?: [OrgID: string, ResourceId: string],
-    consultationType?: string
-  ) => void;
-  isSummary: boolean;
-  isInteraction: boolean;
-  showTimeline: boolean;
-  readOnlyAccess: boolean;
-  nowIndicator: boolean;
-  weekendIndicator: boolean;
-  calendarRef: any;
-  showPublicHolidays: boolean;
-  renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
-  theme: any;
-  dataPage: string;
-  fillEvents: () => void;
-  setSelectedStartDate: (date: string) => void;
-  loadEvents: (date: string) => void;
-  events: Array<TEvent>;
-  resources: Array<TResource>;
-  setEvents: React.Dispatch<React.SetStateAction<Array<TEvent>>>;
-  currentViewType: ECalendarViewType | ETimelineViewType;
-  setCurrentViewType: React.Dispatch<React.SetStateAction<ECalendarViewType | ETimelineViewType>>;
-  eventInPopover: {
-    eventEl: HTMLDivElement | null;
-    eventInfo: TEventImpl | null;
-    inPopover: boolean;
-    inEl: boolean;
-  };
-  setEventInPopover: React.Dispatch<
-    React.SetStateAction<{
-      eventEl: HTMLDivElement | null;
-      eventInfo: TEventImpl | null;
-      inPopover: boolean;
-      inEl: boolean;
-    }>
-  >;
-  setModalInfo: (modalInfo: {
-    open: boolean;
-    title: string;
-    content: {
-      parentId: string;
-      resourceId: string;
+    createEvent: (start: string, end: string, eventType: EEventType, resourceInfo?: [OrgID: string, ResourceId: string], consultationType?: string) => void;
+    isSummary: boolean;
+    isInteraction: boolean;
+    showTimeline: boolean;
+    readOnlyAccess: boolean;
+    nowIndicator: boolean;
+    weekendIndicator: boolean;
+    calendarRef: any;
+    showPublicHolidays: boolean;
+    renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
+    theme: any;
+    dataPage: string;
+    fillEvents: () => void;
+    setSelectedStartDate: (date: string) => void;
+    loadEvents: (date: string) => void;
+    events: Array<TEvent>;
+    resources: Array<TResource>;
+    setEvents: React.Dispatch<React.SetStateAction<Array<TEvent>>>;
+    currentViewType: ECalendarViewType | ETimelineViewType;
+    setCurrentViewType: React.Dispatch<React.SetStateAction<ECalendarViewType | ETimelineViewType>>;
+    eventInPopover: {
+        eventEl: HTMLDivElement | null;
+        eventInfo: TEventImpl | null;
+        inPopover: boolean;
+        inEl: boolean;
     };
-  }) => void;
+    setEventInPopover: React.Dispatch<React.SetStateAction<{
+        eventEl: HTMLDivElement | null;
+        eventInfo: TEventImpl | null;
+        inPopover: boolean;
+        inEl: boolean;
+    }>>;
+    setModalInfo: (modalInfo: {
+        open: boolean;
+        title: string;
+        content: {
+            parentId: string;
+            resourceId: string;
+        };
+    }) => void;
+    role: ERoles;
 }
 declare const _default: (props: ICalendarProps) => globalThis.JSX.Element;
 export default _default;

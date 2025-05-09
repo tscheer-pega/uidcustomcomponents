@@ -13,6 +13,10 @@ export declare enum ETimelineViewType {
   Week = 'resourceTimelineWeek',
   Month = 'resourceTimelineMonth'
 }
+export declare enum ERoles {
+  ADVISOR = 'KommC_Karriereberater',
+  AGENT = 'KommC_Agent'
+}
 export declare type TCalendarProps = {
   heading?: string;
   dataPage?: string;
@@ -30,6 +34,7 @@ export declare type TCalendarProps = {
     parentId: string;
     resourceId: string;
   };
+  role?: ERoles;
 };
 export declare enum EDateTimeType {
   date = 'date',

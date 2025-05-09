@@ -23,18 +23,23 @@
     },
     {
       "name": "dataPageResources",
-      "label": "Data Page Name für Organisationseinheiten",
+      "label": "DataPageName für Organisationseinheiten",
       "visibility": "$this.showTimeline = true",
       "format": "TEXT"
     },
     {
       "name": "createClassname",
-      "label": "Create case className for Termin",
+      "label": "ClassName für Termin",
       "format": "TEXT"
     },
     {
       "name": "createMassClassname",
-      "label": "Create case className for Sammel",
+      "label": "ClassName für Sammeltermin",
+      "format": "TEXT"
+    },
+    {
+      "name": "role",
+      "label": "Rolle",
       "format": "TEXT"
     },
     {
@@ -46,7 +51,7 @@
     },
     {
       "name": "showTimeline",
-      "label": "Display as Timeline",
+      "label": "Als Timeline anzeigen",
       "format": "BOOLEAN",
       "defaultValue": false
     },
@@ -58,38 +63,38 @@
     },
     {
       "name": "defaultViewMode",
-      "label": "Default view",
+      "label": "Ansichtsmodus",
       "format": "SELECT",
       "defaultValue": "Monthly",
       "visibility": "$this.showTimeline = false",
       "source": [
         {
-          "key": "Daily",
+          "key": "Täglich",
           "value": "Daily"
         },
         {
-          "key": "Weekly",
+          "key": "Wöchentlich",
           "value": "Weekly"
         },
         {
-          "key": "Monthly",
+          "key": "Monatlich",
           "value": "Monthly"
         }
       ]
     },
     {
       "name": "defaultViewMode",
-      "label": "Default view",
+      "label": "Ansichtsmodus",
       "format": "SELECT",
       "defaultValue": "Daily",
       "visibility": "$this.showTimeline = true",
       "source": [
         {
-          "key": "Daily",
+          "key": "Täglich",
           "value": "Daily"
         },
         {
-          "key": "Weekly",
+          "key": "Wöchentlich",
           "value": "Weekly"
         }
       ]

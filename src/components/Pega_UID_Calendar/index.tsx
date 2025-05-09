@@ -76,6 +76,11 @@ export enum ETimelineViewType {
   Month = 'resourceTimelineMonth'
 }
 
+export enum ERoles {
+  ADVISOR = 'KommC_Karriereberater',
+  AGENT = 'KommC_Agent'
+}
+
 export type TCalendarProps = {
   heading?: string;
   dataPage?: string;
@@ -90,6 +95,7 @@ export type TCalendarProps = {
   readOnlyAccess?: boolean;
   getPConnect: any;
   beraterInfo?: { parentId: string; resourceId: string };
+  role?: ERoles;
 };
 
 export enum EDateTimeType {
@@ -331,6 +337,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     showTimeline = false,
     readOnlyAccess = false,
     beraterInfo = '',
+    role = ERoles.ADVISOR,
     getPConnect
   } = props;
   const actionsApi = getPConnect().getActionsApi();
@@ -458,7 +465,13 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         // @ts-ignore
         .utc(Math.abs(moment.duration(endDate - startDate).asMilliseconds()))
         .format('HH:mm:ss');
-      const until = item.IsSerie ? item.SerieEnd || '2099-12-31T23:59:59Z' : endDate;
+      let until = `${endDate}`;
+      if (item.IsSerie) {
+        until =
+          item.SerieEnd && item?.SerieEnd?.length < 12
+            ? `${item.SerieEnd}T${item.EndTime.split('T')[1]}`
+            : '2099-12-31T23:59:59Z';
+      }
       let freq;
       switch (item.SerieRepeat?.toLowerCase()) {
         case 'wöchentlich':
@@ -972,7 +985,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2'>{heading}</Text>
+              <Text variant='h2' title='Version 2025-05-09_1'>
+                {heading}
+              </Text>
             </CardHeader>
             <CardContent className='card-content'>
               {showTimeline && (
@@ -1037,6 +1052,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 setModalInfo={setModalInfo}
                 theme={theme}
                 isSummary={isSummary}
+                role={role}
               />
               {isLoading && (
                 <div className='loading-indicator'>
@@ -1082,7 +1098,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             />
           </Modal>
         )}
-        <span className='version-info'>v20250410-1</span>
       </StyledCalendarWrapper>
     </Configuration>
   );
