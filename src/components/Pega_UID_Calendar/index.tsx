@@ -104,10 +104,9 @@ export type TCalendarProps = {
           containerName?: string;
           flowType?: string;
           skipBrowserSemanticUrlUpdate?: boolean;
-          startingFields?: Record<string, any>;
           viewType?: string;
           caseTypeID?: string;
-          content?: {
+          startingFields?: {
             cxContextType?: string;
             InteractionId?: string;
             InteractionKey?: string;
@@ -208,16 +207,18 @@ export type TDateInfo = {
   end?: string;
 };
 
+export interface ISummary {
+  Day: string;
+  Sammel: string;
+  Termin: string;
+}
+
 export interface IRawResource {
   pyGUID: string;
   AddressId: string;
   Region: string;
   Name: string;
-  Summary?: Array<{
-    Day: string;
-    Sammel: string;
-    Termin: string;
-  }>;
+  Summary?: Array<ISummary>;
   BeraterList?: Array<{
     pyUserIdentifier: string;
     pyUserName: string;
@@ -227,6 +228,7 @@ export interface IRawResource {
 export interface IBerater {
   id: string;
   title: string;
+  pyUserIdentifier: string;
 }
 
 export interface IResource {
@@ -234,6 +236,7 @@ export interface IResource {
   title: string;
   region: string;
   children?: Array<IBerater>;
+  Summary?: Array<ISummary>;
 }
 
 export const getDateTimeFromIsoString = (
@@ -571,6 +574,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       const children = [] as Array<IBerater>;
       rawResource.BeraterList?.forEach(berater => {
         children.push({
+          pyUserIdentifier: berater.pyUserIdentifier,
           id: `${rawResource.pyGUID}___${berater.pyUserIdentifier}`,
           title: berater.pyUserName
         });
@@ -606,25 +610,27 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
             const res = mapResources(rawResource);
             setResources(res);
 
-            const comboData = res.map(resource => {
-              const items = resource.children?.map(berater => {
-                return {
-                  id: berater.id,
-                  primary: berater.title,
-                  secondary: [resource.region, resource.title]
+            if (resources.length === 0) {
+              const comboData = res.map(resource => {
+                const items = resource.children?.map(berater => {
+                  return {
+                    id: berater.id,
+                    primary: berater.title,
+                    secondary: [resource.region, resource.title]
+                  };
+                });
+                const comboItem: MenuItemProps = {
+                  id: resource.id,
+                  primary: resource.title,
+                  secondary: [resource.region]
                 };
+                if (items?.length) {
+                  comboItem.items = items;
+                }
+                return comboItem;
               });
-              const comboItem: MenuItemProps = {
-                id: resource.id,
-                primary: resource.title,
-                secondary: [resource.region]
-              };
-              if (items?.length) {
-                comboItem.items = items;
-              }
-              return comboItem;
-            });
-            setComboBoxItems(comboData);
+              setComboBoxItems(comboData);
+            }
 
             rawResource.forEach(singleOrganisation => {
               if (!singleOrganisation.Summary) {
@@ -787,17 +793,17 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const addNewEvent = (className: string) =>
     actionsApi
       .createWork(className, {
+        containerName: 'workarea',
+        skipBrowserSemanticUrlUpdate: true,
+        viewType: 'form',
         openCaseViewAfterCreate: true,
         interactionId,
-        containerName: 'workarea',
         flowType: 'pyStartCase',
-        skipBrowserSemanticUrlUpdate: true,
         startingFields: {
           InteractionId: interactionId,
           InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
           cxContextType: 'Case'
-        },
-        viewType: 'form'
+        }
       })
       .then(() => {
         loadEvents();
@@ -831,40 +837,56 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
     }
     if (type) {
-      dataApiUtils.getData(workClassName, {
-        dataViewParameters: {
-          Start: start,
-          End: end,
-          OrgID: resourceInfo[0] || null,
-          ResourceId: resourceInfo[1] || null,
-          Type: consultationType
-        }
-      });
-      setIsLoading(true);
-      setTimeout(() => {
-        setIsLoading(false);
-        loadEvents();
-      }, 2500);
+      dataApiUtils
+        .getData(workClassName, {
+          dataViewParameters: {
+            Start: start,
+            End: end,
+            OrgID: resourceInfo[0] || null,
+            ResourceId: resourceInfo[1] || null,
+            Type: consultationType
+          }
+        })
+        .catch((e: Error) => {
+          // eslint-disable-next-line no-console
+          console.error('Error creating work:', e);
+        })
+        .finally(() => {
+          setIsLoading(false);
+          setTimeout(() => {
+            setIsLoading(false);
+            loadEvents();
+          }, 2500);
+        });
     } else {
       setIsLoading(true);
+      const startingFields: Record<string, any> = {
+        cxContextType: 'Case',
+        InteractionId: interactionId,
+        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+        CalStartTime: start,
+        CalEndTime: end,
+        CalOrganisationseinheitID: resourceInfo[0] || '',
+        CalAuthorID: resourceInfo[1] || '',
+        FromCalendar: true
+      };
+      const request: Record<string, any> = { startingFields };
+      if (eventType === EEventType.APPOINTMENT) {
+        request.containerName = 'workarea';
+        request.skipBrowserSemanticUrlUpdate = true;
+        request.viewType = 'form';
+      }
       actionsApi
-        .createWork(workClassName, {
-          caseTypeID: `BW-KommC-Work-Grp1-${eventType}`,
-          content: {
-            cxContextType: 'Case',
-            InteractionId: interactionId,
-            InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-            CalStartTime: start,
-            CalEndTime: end,
-            CalOrganisationseinheitID: resourceInfo[0] || '',
-            CalAuthorID: resourceInfo[1] || '',
-            FromCalendar: true
-          },
-          processID: 'pyStartCase'
-        })
+        .createWork(workClassName, request)
         .then(() => {
-          setIsLoading(false);
           loadEvents();
+        })
+        .catch(e => {
+          // eslint-disable-next-line no-console
+          console.error('Error creating work:', e);
+        })
+        .finally(() => {
+          setIsLoading(false);
         });
     }
   };
@@ -1026,7 +1048,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='Version 2025-05-09_3'>
+              <Text variant='h2' title='Version 2025-05-12_3'>
                 {heading}
               </Text>
             </CardHeader>
