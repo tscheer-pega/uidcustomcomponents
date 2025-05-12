@@ -121,6 +121,9 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc-resource.enable-drilldown .fc-datagrid-cell-main:hover {
       color: ${theme.base.palette['brand-primary']};
     }
+    .fc-resource.current-user .fc-datagrid-cell-main {
+      background-color: ${theme.base.colors.yellow.light};
+    }
 
     .event-popover .event-subject {
       width: max-content;

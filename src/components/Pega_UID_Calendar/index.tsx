@@ -77,8 +77,9 @@ export enum ETimelineViewType {
 }
 
 export enum ERoles {
-  ADVISOR = 'KommC_Karriereberater',
-  AGENT = 'KommC_Agent'
+  ADVISOR = 'KommC:Karriereberater',
+  AGENT = 'KommC:Agent',
+  ADMIN = 'KommC:AppAdmin'
 }
 
 export type TCalendarProps = {
@@ -93,9 +94,39 @@ export type TCalendarProps = {
   weekendIndicator?: boolean;
   showTimeline?: boolean;
   readOnlyAccess?: boolean;
-  getPConnect: any;
+  getPConnect: () => {
+    getActionsApi: () => {
+      createWork: (
+        className: string,
+        params: {
+          openCaseViewAfterCreate?: boolean;
+          interactionId?: string;
+          containerName?: string;
+          flowType?: string;
+          skipBrowserSemanticUrlUpdate?: boolean;
+          startingFields?: Record<string, any>;
+          viewType?: string;
+          caseTypeID?: string;
+          content?: {
+            cxContextType?: string;
+            InteractionId?: string;
+            InteractionKey?: string;
+            CalStartTime?: string;
+            CalEndTime?: string;
+            CalOrganisationseinheitID?: string;
+            CalAuthorID?: string;
+            FromCalendar?: boolean;
+          };
+          processID?: string;
+        }
+      ) => Promise<{
+        errorDetails?: Array<{ message: string }>;
+        data?: { caseInfo: { ID: string } };
+      }>;
+      showCasePreview: (caseId: string) => void;
+    };
+  };
   beraterInfo?: { parentId: string; resourceId: string };
-  role?: ERoles;
 };
 
 export enum EDateTimeType {
@@ -337,11 +368,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     showTimeline = false,
     readOnlyAccess = false,
     beraterInfo = '',
-    role = ERoles.ADVISOR,
     getPConnect
   } = props;
   const actionsApi = getPConnect().getActionsApi();
   const dataApiUtils = (window as any).PCore.getDataApiUtils();
+  const role = (window as any).PCore.getEnvironmentInfo().getAccessGroup() || '';
 
   const theme = useTheme();
   const calendarRef = useRef<any | null>(null);
@@ -443,7 +474,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.blue.dark;
           editable = true;
           dragScroll = true;
-          constraint = EEventType.AVAILABILITY;
           break;
         case EEventType.ABSENCE:
           color = theme.base.colors.orange.dark;
@@ -456,7 +486,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           color = theme.base.colors.yellow.light;
           editable = true;
           dragScroll = true;
-          constraint = EEventType.AVAILABILITY;
           break;
       }
       const startDate = moment(item.StartTime);
@@ -756,19 +785,23 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   }, [StartDate, EndDate, lastStartDate, lastEndDate]);
 
   const addNewEvent = (className: string) =>
-    actionsApi.createWork(className, {
-      openCaseViewAfterCreate: true,
-      interactionId,
-      containerName: 'workarea',
-      flowType: 'pyStartCase',
-      skipBrowserSemanticUrlUpdate: true,
-      startingFields: {
-        InteractionId: interactionId,
-        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-        cxContextType: 'Case'
-      },
-      viewType: 'form'
-    });
+    actionsApi
+      .createWork(className, {
+        openCaseViewAfterCreate: true,
+        interactionId,
+        containerName: 'workarea',
+        flowType: 'pyStartCase',
+        skipBrowserSemanticUrlUpdate: true,
+        startingFields: {
+          InteractionId: interactionId,
+          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+          cxContextType: 'Case'
+        },
+        viewType: 'form'
+      })
+      .then(() => {
+        loadEvents();
+      });
 
   const createEvent = (
     start: string,
@@ -807,24 +840,32 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           Type: consultationType
         }
       });
+      setIsLoading(true);
+      setTimeout(() => {
+        setIsLoading(false);
+        loadEvents();
+      }, 2500);
     } else {
-      actionsApi.createWork(workClassName, {
-        openCaseViewAfterCreate: true,
-        interactionId,
-        containerName: 'workarea',
-        flowType: 'pyStartCase',
-        skipBrowserSemanticUrlUpdate: true,
-        startingFields: {
-          InteractionId: interactionId,
-          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-          cxContextType: 'Case',
-          start,
-          end,
-          orgId: resourceInfo[0] || null,
-          resourceId: resourceInfo[1] || null
-        },
-        viewType: 'form'
-      });
+      setIsLoading(true);
+      actionsApi
+        .createWork(workClassName, {
+          caseTypeID: `BW-KommC-Work-Grp1-${eventType}`,
+          content: {
+            cxContextType: 'Case',
+            InteractionId: interactionId,
+            InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
+            CalStartTime: start,
+            CalEndTime: end,
+            CalOrganisationseinheitID: resourceInfo[0] || '',
+            CalAuthorID: resourceInfo[1] || '',
+            FromCalendar: true
+          },
+          processID: 'pyStartCase'
+        })
+        .then(() => {
+          setIsLoading(false);
+          loadEvents();
+        });
     }
   };
 
@@ -873,10 +914,10 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
   const menuActionItems = [];
 
-  if (createClassname) {
+  if (createClassname && interactionId && !readOnlyAccess) {
     menuActionItems.push({ id: createClassname, primary: 'Neuer Termin' });
   }
-  if (createMassClassname) {
+  if (createMassClassname && !interactionId && !readOnlyAccess) {
     menuActionItems.push({ id: createMassClassname, primary: 'Neuer Sammeltermin' });
   }
 
@@ -985,7 +1026,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='Version 2025-05-09_1'>
+              <Text variant='h2' title='Version 2025-05-09_3'>
                 {heading}
               </Text>
             </CardHeader>

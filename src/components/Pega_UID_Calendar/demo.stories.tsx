@@ -1,5 +1,5 @@
 import type { ComponentMeta, ComponentStory } from '@storybook/react';
-import PegaUidCalendar, { ERoles } from './index';
+import PegaUidCalendar from './index';
 import exampleData from './exampleData.stories.json';
 import exampleTimelineResources from './exampleTimelineResources.stories.json';
 import exampleTimelineResourcesSummary from './exampleTimelineResourcesSummary.stories.json';
@@ -14,12 +14,17 @@ const defaultProps = {
           openWorkByHandle: () => {
             /* nothing */
           },
-          createWork: (className: string, params: object) => {
-            // eslint-disable-next-line no-alert
-            alert(`Create case type with className: ${className} (${JSON.stringify(params)})`);
-            // eslint-disable-next-line no-console
-            console.log(className, params);
-          },
+          createWork: (className: string, params: object) =>
+            new Promise(resolve => {
+              // eslint-disable-next-line no-alert
+              alert(`Create case type with className: ${className} (${JSON.stringify(params)})`);
+              // eslint-disable-next-line no-console
+              console.log(className, params);
+              resolve({
+                errorDetails: [{ message: 'TEST' }],
+                data: { caseInfo: { ID: '1234567890' } }
+              });
+            }),
           updateFieldValue: () => {
             /* nothing */
           },
@@ -83,7 +88,7 @@ export default {
     }
   },
   component: PegaUidCalendar
-} as ComponentMeta<typeof PegaUidCalendar>;
+} as unknown as ComponentMeta<typeof PegaUidCalendar>;
 
 const setPCore = (isSummary = false) => {
   (window as any).PCore = {
@@ -94,7 +99,9 @@ const setPCore = (isSummary = false) => {
     },
     getEnvironmentInfo: () => {
       return {
-        getTimeZone: () => 'local'
+        getTimeZone: () => 'local',
+        getAccessGroup: () => 'KommC:AppAdmin',
+        getOperatorIdentifier: () => 'Tobias.Scheer.ext@bwi.de'
       };
     },
     getEvents: () => {
@@ -222,20 +229,18 @@ defaultCalendar.args = {
   interactionId: 'InteractionId',
   showTimeline: false,
   readOnlyAccess: false,
-  defaultViewMode: 'Monthly',
-  role: ERoles.ADVISOR
+  defaultViewMode: 'Monthly'
 };
 
 export const timeline = Template.bind({});
 timeline.args = {
   ...Template.args,
-  interactionId: 'InteractionId',
+  // interactionId: 'InteractionId',
   showTimeline: true,
   readOnlyAccess: false,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
-  defaultViewMode: 'Weekly',
-  role: ERoles.AGENT
+  defaultViewMode: 'Weekly'
 };
 
 export const timelineSummary = Template.bind({});
@@ -246,6 +251,5 @@ timelineSummary.args = {
   readOnlyAccess: true,
   dataPage: 'D_TimeSlotListForOrg',
   dataPageResources: 'D_OrganisationeinheitListForCurrentOperator',
-  defaultViewMode: 'Monthly',
-  role: ERoles.ADVISOR
+  defaultViewMode: 'Monthly'
 };

@@ -26,6 +26,7 @@ import {
   useToaster
 } from '@pega/cosmos-react-core';
 import {
+  EBeratungsTyp,
   ECalendarViewType,
   EDateTimeType,
   EEventType,
@@ -126,6 +127,7 @@ export default (props: ICalendarProps) => {
   const {
     createEvent,
     isSummary,
+    isInteraction,
     showTimeline,
     readOnlyAccess,
     nowIndicator,
@@ -148,6 +150,7 @@ export default (props: ICalendarProps) => {
     setModalInfo,
     role
   } = props;
+  const userId = (window as any).PCore.getEnvironmentInfo().getOperatorIdentifier() || '';
 
   const onViewButtonClick = (viewType: ECalendarViewType | ETimelineViewType) => {
     if (calendarRef) {
@@ -185,24 +188,24 @@ export default (props: ICalendarProps) => {
       );
     }
     if (
-      obj.Type === 'Verfügbar' &&
+      obj.Type === EEventType.AVAILABILITY &&
       !currentViewType.includes('Month') &&
       !!obj.Beratungsstellentyp
     ) {
       const bTyp = obj.Beratungsstellentyp || '';
       let left;
       switch (bTyp) {
-        case 'Präsenzberatung': {
+        case EBeratungsTyp.presence: {
           left = showTimeline ? '48px' : '75%';
           break;
         }
-        case 'Online':
+        case EBeratungsTyp.online:
           left = showTimeline ? '32px' : '50%';
           break;
-        case 'Telefon':
+        case EBeratungsTyp.phone:
           left = showTimeline ? '16px' : '25%';
           break;
-        case 'Außendienststelle':
+        case EBeratungsTyp.office:
         default:
           left = showTimeline ? '0px' : '0%';
       }
@@ -394,18 +397,28 @@ export default (props: ICalendarProps) => {
       !overlappingEventTypes.includes(EEventType.REVOKED) &&
       !overlappingEventTypes.includes(EEventType.ABSENCE) &&
       !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
-      !overlappingEventTypes.includes(EEventType.MASS_EVENT);
+      !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
+      isInteraction;
 
     const showMassEventOption =
       !overlappingEventTypes.includes(EEventType.REVOKED) &&
       !overlappingEventTypes.includes(EEventType.ABSENCE) &&
       !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
       !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
-      role !== ERoles.AGENT;
+      role !== ERoles.AGENT &&
+      !isInteraction;
 
-    const showAvailabilityOption = overlappingEventTypes.length === 0 && role !== ERoles.AGENT;
+    const showAvailabilityOption =
+      !overlappingEventTypes.includes(EEventType.AVAILABILITY) &&
+      role !== ERoles.AGENT &&
+      !isInteraction;
 
-    const showAbscenceOption = overlappingEventTypes.length === 0 && role !== ERoles.AGENT;
+    const showAbscenceOption =
+      !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
+      !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
+      !overlappingEventTypes.includes(EEventType.ABSENCE) &&
+      role !== ERoles.AGENT &&
+      !isInteraction;
 
     if (
       !showAppointmentOption &&
@@ -849,6 +862,9 @@ export default (props: ICalendarProps) => {
     if (parentId) {
       const title: HTMLSpanElement | null = resourceEl.querySelector('.fc-datagrid-cell-main');
       resourceEl.classList.add('enable-drilldown');
+      if (resourceId === userId) {
+        resourceEl.classList.add('current-user');
+      }
       resourceEl.title = 'Klicken Sie, um den Kalender für diesen Berater zu öffnen';
       if (title) {
         title.onclick = () => {

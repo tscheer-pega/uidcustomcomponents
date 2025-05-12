@@ -38,11 +38,6 @@
       "format": "TEXT"
     },
     {
-      "name": "role",
-      "label": "Rolle",
-      "format": "TEXT"
-    },
-    {
       "name": "interactionId",
       "label": "Interaction ID",
       "format": "PROPERTY",

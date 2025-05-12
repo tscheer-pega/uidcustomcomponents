@@ -14,8 +14,9 @@ export declare enum ETimelineViewType {
   Month = 'resourceTimelineMonth'
 }
 export declare enum ERoles {
-  ADVISOR = 'KommC_Karriereberater',
-  AGENT = 'KommC_Agent'
+  ADVISOR = 'KommC:Karriereberater',
+  AGENT = 'KommC:Agent',
+  ADMIN = 'KommC:AppAdmin'
 }
 export declare type TCalendarProps = {
   heading?: string;
@@ -29,12 +30,48 @@ export declare type TCalendarProps = {
   weekendIndicator?: boolean;
   showTimeline?: boolean;
   readOnlyAccess?: boolean;
-  getPConnect: any;
+  getPConnect: () => {
+    getActionsApi: () => {
+      createWork: (
+        className: string,
+        params: {
+          openCaseViewAfterCreate?: boolean;
+          interactionId?: string;
+          containerName?: string;
+          flowType?: string;
+          skipBrowserSemanticUrlUpdate?: boolean;
+          startingFields?: Record<string, any>;
+          viewType?: string;
+          caseTypeID?: string;
+          content?: {
+            cxContextType?: string;
+            InteractionId?: string;
+            InteractionKey?: string;
+            CalStartTime?: string;
+            CalEndTime?: string;
+            CalOrganisationseinheitID?: string;
+            CalAuthorID?: string;
+            FromCalendar?: boolean;
+          };
+          processID?: string;
+        }
+      ) => Promise<{
+        errorDetails?: Array<{
+          message: string;
+        }>;
+        data?: {
+          caseInfo: {
+            ID: string;
+          };
+        };
+      }>;
+      showCasePreview: (caseId: string) => void;
+    };
+  };
   beraterInfo?: {
     parentId: string;
     resourceId: string;
   };
-  role?: ERoles;
 };
 export declare enum EDateTimeType {
   date = 'date',
