@@ -604,6 +604,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         .then(async (response: any) => {
           const resourceResponse = response.data;
           const rawResource = resourceResponse.data as Array<IRawResource>;
+          rawResource.sort(({ Region: a }, { Region: b }) => (a > b ? 1 : -1));
           const promises = [] as Array<Promise<any>>;
           const summaryResources = [] as Array<IRawEvent>;
           if (rawResource) {
@@ -919,12 +920,17 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   };
 
   const onDateSelect = (e: DateTimeCallbackParameter) => {
-    const date = e.valueAsISOString;
+    let date = e.valueAsISOString;
+    let viewType = showTimeline ? ETimelineViewType.Day : ECalendarViewType.Day;
+    if (isSummary) {
+      date = moment.utc(date).startOf('month').toISOString();
+      viewType = ETimelineViewType.Month;
+    }
     if (date && selectedStartDate !== date) {
       const calendar = calendarRef.current?.calendar;
       setSelectedStartDate(date);
       loadEvents(date);
-      setCurrentViewType(ECalendarViewType.Day);
+      setCurrentViewType(viewType);
       calendar.gotoDate(date);
     }
   };
@@ -1048,7 +1054,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='Version 2025-05-12_3'>
+              <Text variant='h2' title='2025-05-13.2'>
                 {heading}
               </Text>
             </CardHeader>
@@ -1102,8 +1108,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 weekendIndicator={weekendIndicator}
                 nowIndicator={nowIndicator}
                 eventInPopover={eventInPopover}
-                events={isLoading ? [] : events}
-                resources={isLoading ? [] : filterResources(resources)}
+                events={events}
+                resources={filterResources(resources)}
                 setEventInPopover={setEventInPopover}
                 setCurrentViewType={setCurrentViewType}
                 fillEvents={fillEvents}
@@ -1120,7 +1126,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               {isLoading && (
                 <div className='loading-indicator'>
                   <p>
-                    <span>Lade Daten, bitte warten...</span>
+                    <span>
+                      <span className='loader'></span>&nbsp;Lade Daten, bitte warten
+                    </span>
                   </p>
                 </div>
               )}

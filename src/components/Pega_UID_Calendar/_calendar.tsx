@@ -429,10 +429,16 @@ export default (props: ICalendarProps) => {
       modalText = `Sie können hier keinen Eintrag erstellen.`;
     }
 
-    // TODO: Teamkalender: Auch wenn keine Anwesenheit UND Abwesenheit vorhanden ist, kann ein Termin erstellt werden. (da Dienstzeit, nicht Beratungszeit)
-
     const createModalActions = (
       <div style={{ display: 'flex', gap: '0.25rem', flex: 1 }}>
+        <Button
+          onClick={() => {
+            dismiss();
+          }}
+        >
+          Abbrechen
+        </Button>
+        <span style={{ display: 'flex', flex: '1' }}>&nbsp;</span>
         {showAppointmentOption && (
           <Button
             variant='primary'
@@ -588,14 +594,6 @@ export default (props: ICalendarProps) => {
             Abwesenheit
           </Button>
         )}
-        <span style={{ display: 'flex', flex: '1' }}>&nbsp;</span>
-        <Button
-          onClick={() => {
-            dismiss();
-          }}
-        >
-          Abbrechen
-        </Button>
       </div>
     );
 
@@ -675,9 +673,8 @@ export default (props: ICalendarProps) => {
   const handleDateChange = (objInfo: any) => {
     const calendar = objInfo.view.calendar;
     if (
-      (objInfo.view.type === ECalendarViewType.Week &&
-        currentViewType === ECalendarViewType.WorkWeek) ||
-      objInfo.view.type === ETimelineViewType.Week
+      objInfo.view.type === ECalendarViewType.Week &&
+      currentViewType === ECalendarViewType.WorkWeek
     ) {
       calendar.setOption('weekends', false);
     } else {

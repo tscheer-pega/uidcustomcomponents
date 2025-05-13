@@ -190,7 +190,7 @@ const setPCore = (isSummary = false) => {
                 ...returnData
               }
             });
-          }, 500)
+          }, 1000)
         );
       }
     }),

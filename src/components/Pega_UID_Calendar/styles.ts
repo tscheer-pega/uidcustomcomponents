@@ -146,19 +146,35 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .loading-indicator {
       flex: 1;
       display: flex;
-      position: relative;
+      position: absolute;
       height: 100%;
-      width: 100%;
+      width: calc(100% - 2rem);
+      z-index: 12;
     }
     .loading-indicator > p {
       margin: 16rem auto;
     }
     .loading-indicator > p > span {
+      align-items: center;
+      display: flex;
       background-color: white;
       border: 1px solid lightgrey;
       border-radius: 0.5rem;
       padding: 0.5rem;
       box-shadow: 2px 3px 6px lightgrey;
+    }
+    .loader {
+      width: 15px;
+      aspect-ratio: 1;
+      --_g: no-repeat radial-gradient(farthest-side, ${theme.base.palette.pending} 94%, #0000);
+      background: var(--_g) 0 0, var(--_g) 100% 0, var(--_g) 100% 100%, var(--_g) 0 100%;
+      background-size: 40% 40%;
+      animation: l38 0.5s infinite;
+    }
+    @keyframes l38 {
+      100% {
+        background-position: 100% 0, 100% 100%, 0 100%, 0 0;
+      }
     }
     .public-holiday-text {
       max-width: 300px;
