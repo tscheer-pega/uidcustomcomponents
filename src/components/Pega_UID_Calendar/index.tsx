@@ -86,8 +86,6 @@ export type TCalendarProps = {
   heading?: string;
   dataPage?: string;
   dataPageResources?: string;
-  createClassname?: string;
-  createMassClassname?: string;
   interactionId?: string;
   defaultViewMode?: 'Monthly' | 'Weekly' | 'Daily';
   nowIndicator?: boolean;
@@ -362,8 +360,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     heading = '',
     dataPage = '',
     dataPageResources = '',
-    createClassname = '',
-    createMassClassname = '',
     interactionId = '',
     defaultViewMode = 'Monthly',
     nowIndicator = true,
@@ -373,6 +369,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     beraterInfo = '',
     getPConnect
   } = props;
+  const createClassname = 'Bw-KommC-Work-Grp1-Termin';
+  const createMassClassname = 'Bw-KommC-Work-Grp1-Sammeltermin';
   const actionsApi = getPConnect().getActionsApi();
   const dataApiUtils = (window as any).PCore.getDataApiUtils();
   const role = (window as any).PCore.getEnvironmentInfo().getAccessGroup() || '';
@@ -791,24 +789,40 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     }
   }, [StartDate, EndDate, lastStartDate, lastEndDate]);
 
-  const addNewEvent = (className: string) =>
+  const addNewEvent = (className: string) => {
+    setIsLoading(true);
+
+    const options: Record<string, any> = {
+      containerName: 'workarea',
+      skipBrowserSemanticUrlUpdate: true,
+      viewType: 'form',
+      openCaseViewAfterCreate: true,
+      flowType: 'pyStartCase',
+      startingFields: {
+        cxContextType: 'Case'
+      },
+      processID: 'pyStartCase'
+    };
+
+    if (className === createClassname) {
+      options.interactionId = interactionId;
+      options.startingFields.InteractionId = interactionId;
+      options.startingFields.InteractionKey = `BW-KOMMC-WORK-GRP2 ${interactionId}`;
+    }
+
     actionsApi
-      .createWork(className, {
-        containerName: 'workarea',
-        skipBrowserSemanticUrlUpdate: true,
-        viewType: 'form',
-        openCaseViewAfterCreate: true,
-        interactionId,
-        flowType: 'pyStartCase',
-        startingFields: {
-          InteractionId: interactionId,
-          InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-          cxContextType: 'Case'
-        }
-      })
+      .createWork(className, options)
       .then(() => {
         loadEvents();
+      })
+      .catch(e => {
+        // eslint-disable-next-line no-console
+        console.error('Error creating work:', e);
+      })
+      .finally(() => {
+        setIsLoading(false);
       });
+  };
 
   const createEvent = (
     start: string,
@@ -861,24 +875,26 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         });
     } else {
       setIsLoading(true);
-      const startingFields: Record<string, any> = {
-        cxContextType: 'Case',
-        InteractionId: interactionId,
-        InteractionKey: `BW-KOMMC-WORK-GRP2 ${interactionId}`,
-        CalStartTime: start,
-        CalEndTime: end,
-        CalOrganisationseinheitID: resourceInfo[0] || '',
-        CalAuthorID: resourceInfo[1] || '',
-        FromCalendar: true
+      const options: Record<string, any> = {
+        startingFields: {
+          cxContextType: 'Case',
+          CalStartTime: start,
+          CalEndTime: end,
+          CalOrganisationseinheitID: resourceInfo[0] || '',
+          CalAuthorID: resourceInfo[1] || '',
+          FromCalendar: true
+        },
+        processID: 'pyStartCase'
       };
-      const request: Record<string, any> = { startingFields };
       if (eventType === EEventType.APPOINTMENT) {
-        request.containerName = 'workarea';
-        request.skipBrowserSemanticUrlUpdate = true;
-        request.viewType = 'form';
+        options.containerName = 'workarea';
+        options.skipBrowserSemanticUrlUpdate = true;
+        options.viewType = 'form';
+        options.startingFields.InteractionId = interactionId;
+        options.startingFields.InteractionKey = `BW-KOMMC-WORK-GRP2 ${interactionId}`;
       }
       actionsApi
-        .createWork(workClassName, request)
+        .createWork(workClassName, options)
         .then(() => {
           loadEvents();
         })
@@ -1054,7 +1070,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-13.2'>
+              <Text variant='h2' title='2025-05-20'>
                 {heading}
               </Text>
             </CardHeader>

@@ -28,16 +28,6 @@
       "format": "TEXT"
     },
     {
-      "name": "createClassname",
-      "label": "ClassName für Termin",
-      "format": "TEXT"
-    },
-    {
-      "name": "createMassClassname",
-      "label": "ClassName für Sammeltermin",
-      "format": "TEXT"
-    },
-    {
       "name": "interactionId",
       "label": "Interaction ID",
       "format": "PROPERTY",

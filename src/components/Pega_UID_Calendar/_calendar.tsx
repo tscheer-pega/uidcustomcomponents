@@ -772,7 +772,10 @@ export default (props: ICalendarProps) => {
   };
 
   const handleSelect = (info: DateSelectArg) => {
-    if (!readOnlyAccess && info.resource?.getChildren().length === 0) {
+    if (
+      !readOnlyAccess &&
+      (!showTimeline || (showTimeline && info.resource?.getChildren().length === 0))
+    ) {
       const overlappingEventTypes = getOverlappingEventTypes(
         (info.resource?.getEvents() || []) as unknown as Array<TEvent>,
         { ...info, jsEvent: null, resource: null, view: null } as unknown as TEvent
