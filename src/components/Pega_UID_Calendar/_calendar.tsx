@@ -411,14 +411,16 @@ export default (props: ICalendarProps) => {
     const showAvailabilityOption =
       !overlappingEventTypes.includes(EEventType.AVAILABILITY) &&
       role !== ERoles.AGENT &&
-      !isInteraction;
+      !isInteraction &&
+      showTimeline;
 
     const showAbscenceOption =
       !overlappingEventTypes.includes(EEventType.APPOINTMENT) &&
       !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
       !overlappingEventTypes.includes(EEventType.ABSENCE) &&
       role !== ERoles.AGENT &&
-      !isInteraction;
+      !isInteraction &&
+      showTimeline;
 
     if (
       !showAppointmentOption &&
@@ -906,12 +908,12 @@ export default (props: ICalendarProps) => {
     componentProps['schedulerLicenseKey'] = '0873473011-fcs-1733922476';
     componentProps['resourcesInitiallyExpanded'] = true;
     componentProps['resourceAreaHeaderContent'] = 'Ressourcen';
-    componentProps['resourceAreaWidth'] = '250px';
+    componentProps['resourceAreaWidth'] = '256px';
     componentProps['resources'] = resources;
     componentProps['resourceLabelDidMount'] = resourceLabelDidMount;
     componentProps['allDaySlot'] = true;
-    slotMinWidth = 256;
-    snapDuration = '00:30:00';
+    slotMinWidth = 256; // 128
+    snapDuration = '00:30:00'; // 00:30:00
   }
 
   return (

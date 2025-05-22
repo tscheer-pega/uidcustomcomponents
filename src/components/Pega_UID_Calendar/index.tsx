@@ -25,6 +25,7 @@ import {
   Switch,
   Text,
   useTheme,
+  useToaster,
   withConfiguration
 } from '@pega/cosmos-react-core';
 import Legend from './_legend';
@@ -344,6 +345,16 @@ interface IModalInfo {
   content: { parentId: string; resourceId: string };
 }
 
+interface IPegaError {
+  message: string;
+  response?: {
+    data?: {
+      errorDetails?: Array<{ localizedValue: string }>;
+      message?: string;
+    };
+  };
+}
+
 const modalInfoDefault = {
   open: false,
   title: '',
@@ -391,6 +402,11 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   const [regionFilter, setRegionFilter] = useState<string>();
   const [modalInfo, setModalInfo] = useState<IModalInfo>({ ...modalInfoDefault });
   const [isSummary, setIsSummary] = useState<boolean>(false);
+
+  const toaster = useToaster();
+  const pushToaster = (message: string) => {
+    toaster.push({ content: message });
+  };
 
   /** Combo box */
   const [comboBoxItems, setComboBoxItems] = useState<MenuProps['items']>([]);
@@ -789,6 +805,16 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     }
   }, [StartDate, EndDate, lastStartDate, lastEndDate]);
 
+  const errorHandler = (e: IPegaError) => {
+    // eslint-disable-next-line no-console
+    console.error('Error creating work:', e);
+    pushToaster(
+      e.response?.data?.errorDetails
+        ?.map((err: { localizedValue: string }) => err.localizedValue)
+        .join(', ') || e.message
+    );
+  };
+
   const addNewEvent = (className: string) => {
     setIsLoading(true);
 
@@ -815,10 +841,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       .then(() => {
         loadEvents();
       })
-      .catch(e => {
-        // eslint-disable-next-line no-console
-        console.error('Error creating work:', e);
-      })
+      .catch(errorHandler)
       .finally(() => {
         setIsLoading(false);
       });
@@ -852,27 +875,31 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       }
     }
     if (type) {
-      dataApiUtils
-        .getData(workClassName, {
-          dataViewParameters: {
-            Start: start,
-            End: end,
-            OrgID: resourceInfo[0] || null,
-            ResourceId: resourceInfo[1] || null,
-            Type: consultationType
-          }
-        })
-        .catch((e: Error) => {
-          // eslint-disable-next-line no-console
-          console.error('Error creating work:', e);
-        })
-        .finally(() => {
-          setIsLoading(false);
-          setTimeout(() => {
+      try {
+        dataApiUtils
+          .getData(workClassName, {
+            dataViewParameters: {
+              Start: start,
+              End: end,
+              OrgID: resourceInfo[0] || null,
+              ResourceId: resourceInfo[1] || null,
+              Type: consultationType
+            }
+          })
+          .catch(errorHandler)
+          .finally(() => {
             setIsLoading(false);
-            loadEvents();
-          }, 2500);
-        });
+            setTimeout(() => {
+              setIsLoading(false);
+              loadEvents();
+            }, 2500);
+          });
+      } catch (exception) {
+        // eslint-disable-next-line no-console
+        console.error(exception);
+        setIsLoading(false);
+        loadEvents();
+      }
     } else {
       setIsLoading(true);
       const options: Record<string, any> = {
@@ -898,10 +925,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         .then(() => {
           loadEvents();
         })
-        .catch(e => {
-          // eslint-disable-next-line no-console
-          console.error('Error creating work:', e);
-        })
+        .catch(errorHandler)
         .finally(() => {
           setIsLoading(false);
         });
@@ -1070,7 +1094,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-20'>
+              <Text variant='h2' title='2025-05-22_2'>
                 {heading}
               </Text>
             </CardHeader>
