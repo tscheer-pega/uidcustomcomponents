@@ -62,6 +62,7 @@ export declare type TCalendarProps = {
           };
         };
       }>;
+      openWorkByHandle: (pzInsKey: string, className: string) => Promise<any>;
       showCasePreview: (caseId: string) => void;
     };
   };
@@ -178,6 +179,17 @@ export declare const getDateTimeFromIsoString: (
 ) => string;
 export declare const getTypeIcon: (appointmentType: string) => JSX.Element;
 export declare const renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
+export interface IPegaError {
+  message: string;
+  response?: {
+    data?: {
+      errorDetails?: Array<{
+        localizedValue: string;
+      }>;
+      message?: string;
+    };
+  };
+}
 /**
  * Pega UID Calendar
  * @param props {TCalendarProps}

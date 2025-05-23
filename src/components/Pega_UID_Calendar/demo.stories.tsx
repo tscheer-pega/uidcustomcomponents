@@ -11,9 +11,6 @@ const defaultProps = {
     return {
       getActionsApi: () => {
         return {
-          openWorkByHandle: () => {
-            /* nothing */
-          },
           createWork: (className: string, params: object) =>
             new Promise(resolve => {
               // eslint-disable-next-line no-alert
@@ -24,6 +21,14 @@ const defaultProps = {
                 errorDetails: [{ message: 'TEST' }],
                 data: { caseInfo: { ID: '1234567890' } }
               });
+            }),
+          openWorkByHandle: (pzInsKey: string, className: string) =>
+            new Promise(resolve => {
+              // eslint-disable-next-line no-alert
+              alert(`Open case: ${pzInsKey} (${className})`);
+              // eslint-disable-next-line no-console
+              console.log(pzInsKey, className);
+              resolve({ success: true });
             }),
           updateFieldValue: () => {
             /* nothing */

@@ -15,6 +15,7 @@ export interface ILegendProps {
   legendExpanded: boolean;
   setLegendExpanded: React.Dispatch<React.SetStateAction<boolean>>;
   showTimeline: boolean;
+  isMonth: boolean;
   theme: DefaultTheme;
 }
 
@@ -89,6 +90,7 @@ const TimelineLegend = (props: ITimelineLegendProps) => (
 interface ICalendarLegendProps {
   theme: DefaultTheme;
   legendExpanded: boolean;
+  isMonth: boolean;
 }
 
 const CalendarLegend = (props: ICalendarLegendProps) => (
@@ -102,26 +104,40 @@ const CalendarLegend = (props: ICalendarLegendProps) => (
             rowGap: 1
           }}
         >
-          <span>&nbsp;</span>
-          <Flex container={{ alignItems: 'center' }}>
-            <span
-              className='event-indicator'
-              style={{ backgroundColor: props.theme.base.colors.green.light }}
-            ></span>
-            <Text variant='primary' className='legend-item'>
-              Verfügbarkeit (Fern)
-            </Text>
-          </Flex>
-          <Flex container={{ alignItems: 'center' }}>
-            <span
-              className='event-indicator'
-              style={{ backgroundColor: props.theme.base.colors.green.dark }}
-            ></span>
-            <Text variant='primary' className='legend-item'>
-              Verfügbarkeit (Präsenz)
-            </Text>
-          </Flex>
-          <span>&nbsp;</span>
+          {props.isMonth ? (
+            <>
+              <span>&nbsp;</span>
+              <Flex container={{ alignItems: 'center' }}>
+                <span
+                  className='event-indicator'
+                  style={{ backgroundColor: props.theme.base.colors.green.light }}
+                ></span>
+                <Text variant='primary' className='legend-item'>
+                  Verfügbarkeit (Fern)
+                </Text>
+              </Flex>
+              <Flex container={{ alignItems: 'center' }}>
+                <span
+                  className='event-indicator'
+                  style={{ backgroundColor: props.theme.base.colors.green.dark }}
+                ></span>
+                <Text variant='primary' className='legend-item'>
+                  Verfügbarkeit (Präsenz)
+                </Text>
+              </Flex>
+              <span>&nbsp;</span>
+            </>
+          ) : (
+            <Flex container={{ alignItems: 'center' }}>
+              <span
+                className='event-indicator'
+                style={{ backgroundColor: props.theme.base.colors.green.light }}
+              ></span>
+              <Text variant='primary' className='legend-item'>
+                Verfügbarkeit
+              </Text>
+            </Flex>
+          )}
           <Flex container={{ alignItems: 'center' }}>
             <span
               className='event-indicator'
@@ -203,7 +219,7 @@ export default (props: ILegendProps) => {
       {showTimeline ? (
         <TimelineLegend theme={theme} legendExpanded={legendExpanded} />
       ) : (
-        <CalendarLegend theme={theme} legendExpanded={legendExpanded} />
+        <CalendarLegend theme={theme} legendExpanded={legendExpanded} isMonth={props.isMonth} />
       )}
     </Flex>
   );

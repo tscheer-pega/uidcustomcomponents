@@ -316,6 +316,15 @@
       "Beratungsstellentyp": "Präsenzberatung"
     },
     {
+      "ResourceId": "Anna.Szarawara.ext@bwi.de",
+      "Subject": "event 4",
+      "StartTime": "2025-05-19T09:30:00+00:00",
+      "EndTime": "2025-05-19T11:30:00+00:00",
+      "Type": "Sammel",
+      "OrganisationseinheitID": "Potsdam",
+      "Beratungsstellentyp": "Präsenzberatung"
+    },
+    {
       "ResourceId": "Francine.Ong.ext@bwi.de",
       "Subject": "event 1",
       "StartTime": "2025-05-19T06:00:00+00:00",

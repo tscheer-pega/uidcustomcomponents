@@ -121,6 +121,7 @@ export type TCalendarProps = {
         errorDetails?: Array<{ message: string }>;
         data?: { caseInfo: { ID: string } };
       }>;
+      openWorkByHandle: (pzInsKey: string, className: string) => Promise<any>;
       showCasePreview: (caseId: string) => void;
     };
   };
@@ -345,7 +346,7 @@ interface IModalInfo {
   content: { parentId: string; resourceId: string };
 }
 
-interface IPegaError {
+export interface IPegaError {
   message: string;
   response?: {
     data?: {
@@ -478,6 +479,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           }
           title = showTimeline ? '' : item.Type;
           groupId = EEventType.AVAILABILITY;
+          if (role === ERoles.AGENT) {
+            constraint = EEventType.AVAILABILITY;
+          }
           break;
         }
         case EEventType.CANCELLED:
@@ -955,8 +959,14 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
   };
 
   const openPreviewEventOnClick = () => {
-    const eventInfoObj = eventInPopover.eventInfo?._def.extendedProps.item;
-    actionsApi.showCasePreview(eventInfoObj.TerminID);
+    const { TerminID, Type } = eventInPopover.eventInfo?._def.extendedProps.item;
+    // actionsApi.showCasePreview(TerminID);
+    actionsApi
+      .openWorkByHandle(
+        TerminID,
+        `Bw-KommC-Work-Grp1-${Type === 'Termin' ? 'Termin' : 'Sammeltermin'}`
+      )
+      .then();
   };
 
   const onDateSelect = (e: DateTimeCallbackParameter) => {
@@ -1073,7 +1083,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                   >
                     <Icon name='reset' />
                   </Button>
-                  {menuActionItems.length > 0 && !readOnlyAccess && (
+                  {menuActionItems.length > 0 && !readOnlyAccess && role !== ERoles.AGENT && (
                     <>
                       <span className='h-spacer'>&nbsp;</span>
                       <MenuButton
@@ -1094,7 +1104,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-22_2'>
+              <Text variant='h2' title='2025-05-23_2'>
                 {heading}
               </Text>
             </CardHeader>
@@ -1180,6 +1190,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 legendExpanded={legendExpanded}
                 setLegendExpanded={setLegendExpanded}
                 showTimeline={showTimeline}
+                isMonth={
+                  calendarRef?.current?.calendar?.currentData?.viewApi.type === 'dayGridMonth'
+                }
                 theme={theme}
               />
             </CardFooter>

@@ -35,6 +35,7 @@ import {
   ETimelineViewType,
   getDateTimeFromIsoString,
   getTypeIcon,
+  IPegaError,
   IRawEvent,
   TEventImpl
 } from './index';
@@ -254,6 +255,16 @@ export default (props: ICalendarProps) => {
     });
   };
 
+  const errorHandler = (e: IPegaError) => {
+    // eslint-disable-next-line no-console
+    console.error('Error creating work:', e);
+    pushToaster(
+      e.response?.data?.errorDetails
+        ?.map((err: { localizedValue: string }) => err.localizedValue)
+        .join(', ') || e.message
+    );
+  };
+
   const ConfirmationModal = (modalProps: any) => {
     const { dismiss } = useModalContext();
     const confirmationModalActions = (
@@ -290,7 +301,8 @@ export default (props: ICalendarProps) => {
               .then(() => {
                 pushToaster('Termin erfolgreich verschoben');
               })
-              .catch(() => {
+              .catch((e: IPegaError) => {
+                errorHandler(e);
                 modalProps.revert();
                 pushToaster('Fehler beim Verschieben des Termins');
               });
@@ -419,8 +431,7 @@ export default (props: ICalendarProps) => {
       !overlappingEventTypes.includes(EEventType.MASS_EVENT) &&
       !overlappingEventTypes.includes(EEventType.ABSENCE) &&
       role !== ERoles.AGENT &&
-      !isInteraction &&
-      showTimeline;
+      !isInteraction;
 
     if (
       !showAppointmentOption &&
@@ -776,7 +787,9 @@ export default (props: ICalendarProps) => {
   const handleSelect = (info: DateSelectArg) => {
     if (
       !readOnlyAccess &&
-      (!showTimeline || (showTimeline && info.resource?.getChildren().length === 0))
+      (!showTimeline || (showTimeline && info.resource?.getChildren().length === 0)) &&
+      role !== ERoles.AGENT &&
+      currentViewType !== ECalendarViewType.Month
     ) {
       const overlappingEventTypes = getOverlappingEventTypes(
         (info.resource?.getEvents() || []) as unknown as Array<TEvent>,
@@ -804,7 +817,8 @@ export default (props: ICalendarProps) => {
     return (
       (!showTimeline ||
         (!!span.resource?._resource.parentId &&
-          movingEvent?._def.extendedProps.item.Type === 'Termin')) &&
+          (movingEvent?._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
+            movingEvent?._def.extendedProps.item.Type === EEventType.MASS_EVENT))) &&
       movingEvent?._def.extendedProps.item.Beratungsart !== ETerminGoal._TMP_
     );
   };
