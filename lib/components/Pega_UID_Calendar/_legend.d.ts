@@ -4,7 +4,6 @@ import { DefaultTheme } from 'styled-components';
 export interface ILegendProps {
   legendExpanded: boolean;
   setLegendExpanded: React.Dispatch<React.SetStateAction<boolean>>;
-  showTimeline: boolean;
   isMonth: boolean;
   theme: DefaultTheme;
 }

@@ -1104,7 +1104,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-23_2'>
+              <Text variant='h2' title='2025-05-23_3'>
                 {heading}
               </Text>
             </CardHeader>
@@ -1189,7 +1189,6 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               <Legend
                 legendExpanded={legendExpanded}
                 setLegendExpanded={setLegendExpanded}
-                showTimeline={showTimeline}
                 isMonth={
                   calendarRef?.current?.calendar?.currentData?.viewApi.type === 'dayGridMonth'
                 }
