@@ -43,6 +43,8 @@ export default (props: IPopoverProps) => {
     openPreviewEventOnClick
   } = props;
 
+  const type = eventInPopover.eventInfo?._def.extendedProps.item.Type || '';
+
   return (
     <Popover
       show={!!eventInPopover?.eventEl && !!eventInPopover?.eventInfo}
@@ -55,7 +57,7 @@ export default (props: IPopoverProps) => {
       onMouseLeave={handlePopoverMouseLeave}
       className='event-popover'
     >
-      {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.PUBLIC_HOLIDAY ? (
+      {type === EEventType.PUBLIC_HOLIDAY ? (
         <Card>
           <CardContent>
             <Grid
@@ -88,9 +90,10 @@ export default (props: IPopoverProps) => {
                 style={{ backgroundColor: eventInPopover.eventInfo?._def.ui.backgroundColor }}
               ></span>
               <Text variant='h3'>{eventInPopover.eventInfo?._def.title}</Text>
-              {(eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
-                eventInPopover.eventInfo?._def.extendedProps.item.Type ===
-                  EEventType.MASS_EVENT) && (
+              {(type === EEventType.APPOINTMENT ||
+                type === EEventType.MASS_EVENT ||
+                type === EEventType.REVOKED ||
+                type === EEventType.CANCELLED) && (
                 <>
                   <div></div>
                   <Text variant='secondary'>
@@ -144,7 +147,9 @@ export default (props: IPopoverProps) => {
                 </Text>
               )}
 
-              {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.APPOINTMENT &&
+              {(type === EEventType.APPOINTMENT ||
+                type === EEventType.REVOKED ||
+                type === EEventType.CANCELLED) &&
                 eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart && (
                   <>
                     <Icon
@@ -159,10 +164,10 @@ export default (props: IPopoverProps) => {
                     )}
                   </>
                 )}
-              {eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MASS_EVENT &&
-                eventInPopover.eventInfo._def.extendedProps.item.Address &&
-                eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity &&
-                eventInPopover.eventInfo._def.extendedProps.item.Capacity && (
+              {type === EEventType.MASS_EVENT &&
+                eventInPopover.eventInfo?._def.extendedProps.item.Address &&
+                eventInPopover.eventInfo?._def.extendedProps.item.UtilizedCapacity &&
+                eventInPopover.eventInfo?._def.extendedProps.item.Capacity && (
                   <>
                     <Icon
                       name='location-solid'
@@ -195,10 +200,18 @@ export default (props: IPopoverProps) => {
                   </Text>
                 </>
               )}
+              {(type === EEventType.REVOKED || type === EEventType.CANCELLED) && (
+                <>
+                  {renderBeratungsartBadge(type)}
+                  <span>&nbsp;</span>
+                </>
+              )}
             </Grid>
           </CardContent>
-          {(eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
-            eventInPopover.eventInfo?._def.extendedProps.item.Type === EEventType.MASS_EVENT) && (
+          {(type === EEventType.APPOINTMENT ||
+            type === EEventType.MASS_EVENT ||
+            type === EEventType.REVOKED ||
+            type === EEventType.CANCELLED) && (
             <>
               <hr className='solid'></hr>
               <CardFooter justify='center'>

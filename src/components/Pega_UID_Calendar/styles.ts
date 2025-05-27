@@ -62,11 +62,20 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     }
     .event-content {
       padding: 0.25rem;
+      border-left: 0 solid transparent;
     }
     .event-content.Sammel,
     .event-content.Verfügbar.Online,
     .event-content.Verfügbar.Telefon {
       color: #333;
+    }
+    .event-content.Storniert {
+      border-left-color: ${theme.base.colors.yellow.dark};
+      border-left-width: 5px;
+    }
+    .event-content.Abgesagt {
+      border-left-color: ${theme.base.colors.blue.light};
+      border-left-width: 5px;
     }
     .event-content.availability > span {
       display: block;
@@ -143,6 +152,26 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .event-popover .icon {
       fill: ${theme.base.colors.gray.dark};
     }
+    .legend {
+      align-items: flex-start;
+      bottom: 0;
+      left: calc(50% - 96px);
+      margin: 0 auto;
+      opacity: 0.25;
+      position: fixed;
+      z-index: 10;
+    }
+    .legend.expanded {
+      align-items: center;
+      left: calc(50% - 372px);
+      opacity: 0.7;
+    }
+    .legend:hover {
+      opacity: 1;
+    }
+    .legend .legend-item {
+      margin-left: 4px;
+    }
     .loading-indicator {
       flex: 1;
       display: flex;
@@ -185,12 +214,6 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
 
     .h-spacer {
       width: 8px;
-    }
-    .legend {
-      margin: 4px auto;
-    }
-    .legend .legend-item {
-      margin-left: 4px;
     }
     .event-indicator {
       height: 16px;

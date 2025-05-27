@@ -679,8 +679,9 @@ export default (props: ICalendarProps) => {
 
   const handleEventOverlap = (stillEvent: any) =>
     !(
-      stillEvent._def.extendedProps.item.Type === 'Termin' ||
-      stillEvent._def.extendedProps.item.Type === 'Sammel'
+      stillEvent._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
+      stillEvent._def.extendedProps.item.Type === EEventType.MASS_EVENT ||
+      stillEvent._def.extendedProps.item.Type === EEventType.REVOKED
     );
 
   const handleDateChange = (objInfo: any) => {
@@ -814,11 +815,11 @@ export default (props: ICalendarProps) => {
 
   const handleEventClick = () => {};
   const handleEventAllow = (span: DateSpanApi, movingEvent: EventImpl | null) => {
+    const type = movingEvent?._def.extendedProps.item.Type || '';
     return (
       (!showTimeline ||
         (!!span.resource?._resource.parentId &&
-          (movingEvent?._def.extendedProps.item.Type === EEventType.APPOINTMENT ||
-            movingEvent?._def.extendedProps.item.Type === EEventType.MASS_EVENT))) &&
+          (type === EEventType.APPOINTMENT || type === EEventType.MASS_EVENT))) &&
       movingEvent?._def.extendedProps.item.Beratungsart !== ETerminGoal._TMP_
     );
   };

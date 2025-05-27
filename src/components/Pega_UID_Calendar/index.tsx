@@ -5,7 +5,6 @@ import {
   Button,
   Card,
   CardContent,
-  CardFooter,
   CardHeader,
   ComboBox,
   Configuration,
@@ -381,8 +380,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
     beraterInfo = '',
     getPConnect
   } = props;
-  const createClassname = 'Bw-KommC-Work-Grp1-Termin';
-  const createMassClassname = 'Bw-KommC-Work-Grp1-Sammeltermin';
+  const createClassname = 'BW-KommC-Work-Grp1-Termin';
+  const createMassClassname = 'BW-KommC-Work-Grp1-Sammeltermin';
   const actionsApi = getPConnect().getActionsApi();
   const dataApiUtils = (window as any).PCore.getDataApiUtils();
   const role = (window as any).PCore.getEnvironmentInfo().getAccessGroup() || '';
@@ -479,22 +478,24 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
           }
           title = showTimeline ? '' : item.Type;
           groupId = EEventType.AVAILABILITY;
-          if (role === ERoles.AGENT) {
-            constraint = EEventType.AVAILABILITY;
-          }
           break;
         }
         case EEventType.CANCELLED:
-          color = theme.base.colors.yellow.dark;
-          break;
+        // color = theme.base.colors.yellow.dark;
+        // break;
+        // eslint-disable-next-line no-fallthrough
         case EEventType.REVOKED:
-          color = theme.base.colors.blue.light;
-          break;
+        // color = theme.base.colors.blue.light;
+        // break;
+        // eslint-disable-next-line no-fallthrough
         case EEventType.APPOINTMENT:
         case EEventType.SUMMARY:
           color = theme.base.colors.blue.dark;
           editable = true;
           dragScroll = true;
+          if (role === ERoles.AGENT) {
+            constraint = EEventType.AVAILABILITY;
+          }
           break;
         case EEventType.ABSENCE:
           color = theme.base.colors.orange.dark;
@@ -1104,7 +1105,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-23_3'>
+              <Text variant='h2' title='2025-05-27'>
                 {heading}
               </Text>
             </CardHeader>
@@ -1184,19 +1185,15 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               )}
             </CardContent>
           </Card>
-          {!isSummary && (
-            <CardFooter className='legend'>
-              <Legend
-                legendExpanded={legendExpanded}
-                setLegendExpanded={setLegendExpanded}
-                isMonth={
-                  calendarRef?.current?.calendar?.currentData?.viewApi.type === 'dayGridMonth'
-                }
-                theme={theme}
-              />
-            </CardFooter>
-          )}
         </Flex>
+        {!isSummary && (
+          <Legend
+            legendExpanded={legendExpanded}
+            setLegendExpanded={setLegendExpanded}
+            isMonth={calendarRef?.current?.calendar?.currentData?.viewApi.type === 'dayGridMonth'}
+            theme={theme}
+          />
+        )}
         <Popover
           eventInPopover={eventInPopover}
           renderBeratungsartBadge={renderBeratungsartBadge}

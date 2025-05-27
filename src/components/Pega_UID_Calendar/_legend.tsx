@@ -25,12 +25,12 @@ interface ICalendarLegendProps {
 }
 
 const CalendarLegend = (props: ICalendarLegendProps) => (
-  <ExpandCollapse dimension='height' collapsed={!props.legendExpanded}>
+  <ExpandCollapse dimension='height' collapsed={!props.legendExpanded} transitionSpeed='fast'>
     <Card>
       <CardContent>
         <Grid
           container={{
-            cols: 'repeat(4, 11rem)',
+            cols: `repeat(${props.isMonth ? '4' : '5'}, ${props.isMonth ? '11' : '8.5'}rem)`,
             colGap: 1,
             rowGap: 1
           }}
@@ -139,9 +139,12 @@ export default (props: ILegendProps) => {
   const { legendExpanded, setLegendExpanded, theme } = props;
 
   return (
-    <Flex container={{ alignItems: 'center', direction: 'column' }}>
+    <Flex
+      container={{ alignItems: 'center', direction: 'column' }}
+      className={`legend ${legendExpanded ? ' expanded' : ''}`}
+    >
       <Button
-        style={{ width: '12rem', marginBottom: '1rem' }}
+        style={{ width: '12rem', marginBottom: '0.5rem' }}
         variant={legendExpanded ? 'primary' : 'secondary'}
         onClick={() => setLegendExpanded((curState: boolean) => !curState)}
       >
