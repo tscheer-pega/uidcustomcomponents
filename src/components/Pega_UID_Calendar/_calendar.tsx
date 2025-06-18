@@ -902,8 +902,6 @@ export default (props: ICalendarProps) => {
 
   const plugins = [rrulePlugin, dayGridPlugin, timeGridPlugin, momentPlugin];
   const componentProps = {} as CalendarOptions;
-  // const selectConstraint = showTimeline ? 'Verfügbar' : 'businessHours';
-  // selectConstraint={isInteraction ? selectConstraint : '_NA_'}
 
   let slotMinWidth = 0;
   let snapDuration = null;
@@ -926,9 +924,10 @@ export default (props: ICalendarProps) => {
     componentProps['resourceAreaWidth'] = '256px';
     componentProps['resources'] = resources;
     componentProps['resourceLabelDidMount'] = resourceLabelDidMount;
+    componentProps['resourceOrder'] = 'title';
     componentProps['allDaySlot'] = true;
-    slotMinWidth = 256; // 128
-    snapDuration = '00:30:00'; // 00:30:00
+    slotMinWidth = 128;
+    snapDuration = '00:15:00';
   }
 
   return (

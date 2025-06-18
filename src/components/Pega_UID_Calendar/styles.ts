@@ -125,10 +125,15 @@ export default styled.div(({ theme }: { theme: typeof themeDefinition }): any =>
     .fc-resource.enable-drilldown .fc-datagrid-cell-main {
       color: black;
       cursor: pointer;
-      text-decoration: underline;
+      display: inline-flex;
+      flex-direction: column;
+    }
+    .fc-resource.enable-drilldown .fc-datagrid-cell-main .resource-ad {
+      font-weight: bold;
     }
     .fc-resource.enable-drilldown .fc-datagrid-cell-main:hover {
       color: ${theme.base.palette['brand-primary']};
+      text-decoration: underline;
     }
     .fc-resource.current-user .fc-datagrid-cell-main {
       background-color: ${theme.base.colors.yellow.light};

@@ -8,11 +8,11 @@ export interface IPopoverEvent {
   inEl: boolean;
 }
 export interface IPopoverProps {
-    eventInPopover: IPopoverEvent;
-    handlePopoverMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
-    handlePopoverMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
-    renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
-    openPreviewEventOnClick: () => void;
+  eventInPopover: IPopoverEvent;
+  handlePopoverMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
+  handlePopoverMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
+  renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
+  openPreviewEventOnClick: () => void;
 }
 declare const _default: (props: IPopoverProps) => globalThis.JSX.Element;
 export default _default;

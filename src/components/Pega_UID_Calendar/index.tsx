@@ -154,11 +154,7 @@ export enum EBeratungsTyp {
   presence = 'Präsenzberatung',
   online = 'Online',
   phone = 'Telefon',
-  office = 'Außendienststelle'
-}
-
-export interface IBeratungsstelle {
-  Typ: EBeratungsTyp;
+  office = 'Außenstelle'
 }
 
 export interface IAdresse {
@@ -182,6 +178,7 @@ export interface IRawEvent {
   City?: string; // City of Appointment
   EndTime: string; // End time of Appointment
   OrganisationseinheitID?: string; // Reference ID of Organisationseinheit
+  BeratungsstelleID?: string; // Reference ID of Beratungsstelle
   StartTime: string; // Start time of Appointment YYYY-MM-DDTHH:mm:ss.uuuZ
   TerminID?: string; // Reference ID of Appointment
   Type: EEventType; // Appointment type
@@ -193,7 +190,6 @@ export interface IRawEvent {
   SerieEnd?: string; // End date of series
   SerieRepeat?: string; // Defines interval of repeating
   Subject: string; // Title
-  Beratungsstelle?: IBeratungsstelle;
   IOrganisationseinheit?: IOrganisationseinheit;
   ResourceId?: string;
   summary?: boolean; // only Summary
@@ -538,12 +534,20 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         default:
           freq = 'yearly';
       }
+      let resourceId =
+        item.ResourceId && item.OrganisationseinheitID
+          ? `${item.OrganisationseinheitID}___${item.ResourceId}`
+          : item.ResourceId || `generic-${Math.random() * 1e9}`;
+      if (
+        item.Beratungsstellentyp === EBeratungsTyp.office &&
+        item.ResourceId &&
+        item.BeratungsstelleID
+      ) {
+        resourceId = `${item.BeratungsstelleID}___${item.ResourceId}`;
+      }
       const tmpEvent: TEvent = {
         id: item.TerminID || `generic-${Math.random() * 1e9}`,
-        resourceId:
-          item.ResourceId && item.OrganisationseinheitID
-            ? `${item.OrganisationseinheitID}___${item.ResourceId}`
-            : item.ResourceId || `generic-${Math.random() * 1e9}`,
+        resourceId,
         title,
         rrule: {
           freq,
@@ -622,12 +626,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         })
         .then(async (response: any) => {
           const resourceResponse = response.data;
-          const rawResource = resourceResponse.data as Array<IRawResource>;
-          rawResource.sort(({ Region: a }, { Region: b }) => (a > b ? 1 : -1));
+          const rawResources = resourceResponse.data as Array<IRawResource>;
+          rawResources.sort(({ Region: a }, { Region: b }) => (a > b ? 1 : -1));
           const promises = [] as Array<Promise<any>>;
           const summaryResources = [] as Array<IRawEvent>;
-          if (rawResource) {
-            const res = mapResources(rawResource);
+          if (rawResources) {
+            const res = mapResources(rawResources);
             setResources(res);
 
             if (resources.length === 0) {
@@ -649,10 +653,12 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 }
                 return comboItem;
               });
-              setComboBoxItems(comboData);
+              setComboBoxItems(
+                comboData.sort(({ primary: a }, { primary: b }) => (a > b ? 1 : -1))
+              );
             }
 
-            rawResource.forEach(singleOrganisation => {
+            rawResources.forEach(singleOrganisation => {
               if (!singleOrganisation.Summary) {
                 singleOrganisation.BeraterList?.forEach(singleAgent => {
                   promises.push(
@@ -1105,7 +1111,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-05-27'>
+              <Text variant='h2' title='2025-06-17_2'>
                 {heading}
               </Text>
             </CardHeader>

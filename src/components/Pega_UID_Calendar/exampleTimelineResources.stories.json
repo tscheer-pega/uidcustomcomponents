@@ -1,76 +1,248 @@
 {
-  "fetchDateTime": "2025-01-15T09:21:25.694Z",
+  "fetchDateTime": "2025-06-17T08:02:07.362Z",
   "pxObjClass": "Pega-API-DataExploration-Data",
-  "resultCount": 2,
+  "resultCount": 11,
   "data": [
     {
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pyGUID": "Berlin_Mitte",
       "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
       "Name": "Berlin Mitte",
-      "Region": "Berlin / Brandenburg (BE/BB)",
-      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Berlin_Mitte",
       "BeraterList": [
         {
-          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de",
           "pyUserName": "Andrzej Fudala",
-          "pxObjClass": "Data-Admin-Operator-ID"
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
         },
         {
-          "pyUserIdentifier": "Christopher.Rohde.ext@bwi.de",
-          "pyUserName": "Christopher Rohde",
-          "pxObjClass": "Data-Admin-Operator-ID"
-        },
-        {
-          "pyUserIdentifier": "Elzabieta.Jastrzebska.ext@bwi.de",
-          "pyUserName": "Elzabieta Jastrzebska",
-          "pxObjClass": "Data-Admin-Operator-ID"
-        }
-      ]
-    },
-    {
-      "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c41",
-      "Name": "Potsdam",
-      "Region": "Berlin / Brandenburg (BE/BB)",
-      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Potsdam",
-      "BeraterList": [
-        {
-          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de",
           "pyUserName": "Anna Szarawara",
-          "pxObjClass": "Data-Admin-Operator-ID"
-        }
-      ]
-    },
-    {
-      "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef886",
-      "Name": "München",
-      "Region": "Bayern SÜD (BY SÜD)",
-      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Muenchen",
-      "BeraterList": [
-        {
-          "pyUserIdentifier": "Elzabieta.Jastrzebska.ext@bwi.de",
-          "pyUserName": "Elzabieta Jastrzebska",
-          "pxObjClass": "Data-Admin-Operator-ID"
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de"
         },
         {
-          "pyUserIdentifier": "Francine.Ong.ext@bwi.de",
-          "pyUserName": "Francine Ong",
-          "pxObjClass": "Data-Admin-Operator-ID"
+          "pyUserName": "Christopher Rohde",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Christopher.Rohde.ext@bwi.de"
+        },
+        {
+          "pyUserName": "Ela Jastrzebska",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_CSR"
+        },
+        {
+          "pyUserName": "Elzbieta Jastrzebska",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaAdminUser"
+        },
+        {
+          "pyUserName": "Elzbieta Jastrzebska",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Elzbieta.Jastrzebska.ext@bwi.de"
+        },
+        {
+          "pyUserName": "Gabrielle Juelicher",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Gabrielle.Juelicher.ext@bwi.de"
+        },
+        {
+          "pyUserName": "KommC Agent",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_Agent"
+        },
+        {
+          "pyUserName": "KommC Karriereberater",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_Karriereberater"
+        },
+        {
+          "pyUserName": "KommC Karrierecenter",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_Karrierecenter"
+        },
+        {
+          "pyUserName": "Natalia.Wilczewski.ext@bwi.de",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Natalia.Wilczewski.ext@bwi.de"
+        },
+        {
+          "pyUserName": "Shiva.Akbary.ext@bwi.de",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Shiva.Akbary.ext@bwi.de"
+        },
+        {
+          "pyUserName": "TestCSR_CR",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "TestCSR_CR"
+        },
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
         }
       ]
     },
     {
-      "AddressID": "d1d881ed-f75b-4ce2-9edb-df13dfcef887",
-      "Name": "Karlsruhe",
-      "Region": "Baden-Württemberg NORD (BW NORD)",
       "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
-      "pyGUID": "Karlsruhe",
+      "Region": "Hessen (HE)",
+      "pyGUID": "Frankfurt_Main",
+      "AddressID": "e4b9a30f-9200-42ac-8178-ab77acba7ec9",
+      "Name": "Frankfurt am Main",
       "BeraterList": [
         {
-          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de",
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
+        },
+        {
+          "pyUserName": "ElaCSTest",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaCSTestUser"
+        },
+        {
           "pyUserName": "Tobias Scheer",
-          "pxObjClass": "Data-Admin-Operator-ID"
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
+        }
+      ]
+    },
+    {
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pyGUID": "Frankfurt_oder",
+      "AddressID": "21450b6a-56e4-4329-bcae-51f6b84fb9f6",
+      "Name": "Frankfurt (Oder)",
+      "BeraterList": [
+        {
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
+        },
+        {
+          "pyUserName": "Anna Szarawara",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de"
+        },
+        {
+          "pyUserName": "ElaCSTest",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaCSTestUser"
+        },
+        {
+          "pyUserName": "KommC Karriereberater Messe",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_KarriereberaterMesse"
+        },
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
+        }
+      ]
+    },
+    {
+      "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pyGUID": "fe91961a-f815-4307-aaeb-33e010dcb5a4",
+      "AddressID": "75718fc7-6573-4a08-8b9e-a9b024bb6cd4",
+      "Name": "Frankfurt (Oder):Bernau",
+      "BeraterList": [
+        {
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
+        },
+        {
+          "pyUserName": "Anna Szarawara",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de"
+        },
+        {
+          "pyUserName": "ElaCSTest",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaCSTestUser"
+        },
+        {
+          "pyUserName": "KommC Karriereberater Messe",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_KarriereberaterMesse"
+        },
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
+        }
+      ]
+    },
+    {
+      "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pyGUID": "8bd696d0-0524-4055-a3a3-8dc82d1d8f66",
+      "AddressID": "4979456a-66ca-4e0b-aa27-6017f343a0b4",
+      "Name": "Frankfurt (Oder):Eberswalde",
+      "BeraterList": [
+        {
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
+        },
+        {
+          "pyUserName": "ElaCSTest",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaCSTestUser"
+        },
+        {
+          "pyUserName": "KommC Karriereberater Messe",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_KarriereberaterMesse"
+        },
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
+        }
+      ]
+    },
+    {
+      "pxObjClass": "BW-BWEnt-Data-Beratungsstelle",
+      "Region": "Berlin / Brandenburg (BE/BB)",
+      "pyGUID": "7c5bfc25-929d-4a0f-a499-907b0665fada",
+      "AddressID": "3f56ce19-93eb-469d-9124-26bdda1a8c1d",
+      "Name": "Frankfurt (Oder):Strausberg",
+      "BeraterList": [
+        {
+          "pyUserName": "Andrzej Fudala",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
+        },
+        {
+          "pyUserName": "ElaCSTest",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "ElaCSTestUser"
+        },
+        {
+          "pyUserName": "KommC Karriereberater Messe",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "KommC_KarriereberaterMesse"
+        },
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
+        }
+      ]
+    },
+    {
+      "pxObjClass": "BW-BWEnt-Data-Organisationseinheit",
+      "Region": "Baden-Württemberg (BW)",
+      "pyGUID": "Karlsruhe",
+      "AddressID": "03ac30bd-0ab0-459f-98de-d447aa3c62ac",
+      "Name": "Karlsruhe",
+      "BeraterList": [
+        {
+          "pyUserName": "Tobias Scheer",
+          "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
         }
       ]
     }
