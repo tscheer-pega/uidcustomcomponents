@@ -11,104 +11,754 @@
       "pyGUID": "Berlin_Mitte",
       "Summary": [
         {
-          "Day": "20250331",
-          "Sammel": "3",
-          "Termin": "5"
-        },
-        {
-          "Day": "20250401",
-          "Sammel": "11",
-          "Termin": "17"
-        },
-        {
-          "Day": "20250402",
-          "Sammel": "7",
-          "Termin": "2"
-        },
-        {
-          "Day": "20250403",
-          "Sammel": "3",
-          "Termin": "12"
-        },
-        {
-          "Day": "20250404",
-          "Sammel": "0",
-          "Termin": "1"
-        },
-        {
-          "Day": "20250407",
-          "Sammel": "3",
-          "Termin": "5"
-        },
-        {
-          "Day": "20250408",
-          "Sammel": "11",
-          "Termin": "17"
-        },
-        {
-          "Day": "20250409",
-          "Sammel": "7",
-          "Termin": "2"
-        },
-        {
-          "Day": "20250410",
-          "Sammel": "5",
-          "Termin": "6"
-        },
-        {
-          "Day": "20250411",
-          "Sammel": "1",
-          "Termin": "1"
-        },
-        {
-          "Day": "20250417",
-          "Sammel": "3",
-          "Termin": "5"
-        },
-        {
-          "Day": "20250422",
-          "Sammel": "11",
-          "Termin": "17"
-        },
-        {
-          "Day": "20250423",
-          "Sammel": "7",
-          "Termin": "2"
-        },
-        {
-          "Day": "20250424",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250601",
           "Sammel": "6",
-          "Termin": "8"
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 3
+          }
         },
         {
-          "Day": "20250425",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250602",
           "Sammel": "1",
-          "Termin": "1"
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250428",
-          "Sammel": "3",
-          "Termin": "5"
-        },
-        {
-          "Day": "20250429",
-          "Sammel": "1",
-          "Termin": "7"
-        },
-        {
-          "Day": "20250430",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250603",
           "Sammel": "7",
-          "Termin": "2"
+          "Termin": "9",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 3
+          }
         },
         {
-          "Day": "20250501",
-          "Sammel": "0",
-          "Termin": "0"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250604",
+          "Sammel": "8",
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250502",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250605",
+          "Sammel": "3",
+          "Termin": "0",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250606",
+          "Sammel": "10",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 1,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 0,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250607",
+          "Sammel": "3",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 3,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250608",
+          "Sammel": "7",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 3
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250609",
+          "Sammel": "2",
+          "Termin": "9",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 0,
+            "Erstberatung": 0,
+            "Folgeberatung": 0
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250610",
+          "Sammel": "7",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 0,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250611",
+          "Sammel": "8",
+          "Termin": "2",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 1,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250612",
+          "Sammel": "7",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250613",
+          "Sammel": "9",
+          "Termin": "10",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 1,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 0,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250614",
+          "Sammel": "6",
+          "Termin": "9",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 0,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 1,
+            "Erstberatung": 1,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250615",
           "Sammel": "1",
-          "Termin": "1"
+          "Termin": "2",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250616",
+          "Sammel": "8",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 3,
+            "Removed": 0,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250617",
+          "Sammel": "8",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 3,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 0
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250618",
+          "Sammel": "4",
+          "Termin": "8",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250619",
+          "Sammel": "8",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 0,
+            "Erstberatung": 0,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250620",
+          "Sammel": "9",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 3,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250621",
+          "Sammel": "2",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 3,
+            "Removed": 0,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250622",
+          "Sammel": "8",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 3,
+            "Erstberatung": 0,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250623",
+          "Sammel": "10",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 1,
+            "Erstberatung": 1,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250624",
+          "Sammel": "9",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 1,
+            "Removed": 0,
+            "Erstberatung": 1,
+            "Folgeberatung": 3
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250625",
+          "Sammel": "10",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250626",
+          "Sammel": "6",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 0,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 0,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250627",
+          "Sammel": "1",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 3
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250628",
+          "Sammel": "6",
+          "Termin": "8",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250629",
+          "Sammel": "6",
+          "Termin": "2",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 0,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 0
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250630",
+          "Sammel": "0",
+          "Termin": "10",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 0,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
         }
       ]
     },
@@ -120,94 +770,754 @@
       "pyGUID": "Muenchen",
       "Summary": [
         {
-          "Day": "20250402",
-          "Sammel": "11",
-          "Termin": "17"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250601",
+          "Sammel": "10",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 3,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250403",
-          "Sammel": "7",
-          "Termin": "0"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250602",
+          "Sammel": "10",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250404",
-          "Sammel": "3",
-          "Termin": "10"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250603",
+          "Sammel": "8",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 0,
+            "Removed": 1,
+            "Erstberatung": 0,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250407",
-          "Sammel": "3",
-          "Termin": "5"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250604",
+          "Sammel": "4",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250408",
-          "Sammel": "11",
-          "Termin": "17"
-        },
-        {
-          "Day": "20250409",
-          "Sammel": "7",
-          "Termin": "2"
-        },
-        {
-          "Day": "20250410",
-          "Sammel": "0",
-          "Termin": "0"
-        },
-        {
-          "Day": "20250411",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250605",
           "Sammel": "1",
-          "Termin": "1"
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 1,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250414",
-          "Sammel": "3",
-          "Termin": "5"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250606",
+          "Sammel": "9",
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 1,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250415",
-          "Sammel": "11",
-          "Termin": "17"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250607",
+          "Sammel": "9",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 3,
+            "Removed": 1,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250416",
-          "Sammel": "7",
-          "Termin": "2"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250608",
+          "Sammel": "6",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250417",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250609",
+          "Sammel": "4",
+          "Termin": "2",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 3
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250610",
+          "Sammel": "2",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 2,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250611",
+          "Sammel": "2",
+          "Termin": "1",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250612",
+          "Sammel": "4",
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250613",
+          "Sammel": "5",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250614",
+          "Sammel": "5",
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 0,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 0,
+            "Erstberatung": 1,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250615",
+          "Sammel": "2",
+          "Termin": "3",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 3,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 3,
+            "Erstberatung": 1,
+            "Folgeberatung": 0
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250616",
           "Sammel": "0",
-          "Termin": "0"
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 2,
+            "Intake": 0,
+            "Cancelled": 0,
+            "Removed": 2,
+            "Erstberatung": 2,
+            "Folgeberatung": 3
+          }
         },
         {
-          "Day": "20250425",
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250617",
+          "Sammel": "5",
+          "Termin": "9",
+          "SammelDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 3,
+            "Erstberatung": 2,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250618",
+          "Sammel": "4",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 3
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 0,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250619",
           "Sammel": "1",
-          "Termin": "1"
+          "Termin": "8",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 2,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 0,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250428",
-          "Sammel": "2",
-          "Termin": "1"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250620",
+          "Sammel": "8",
+          "Termin": "8",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
         },
         {
-          "Day": "20250429",
-          "Sammel": "2",
-          "Termin": "3"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250621",
+          "Sammel": "7",
+          "Termin": "8",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 3,
+            "Cancelled": 3,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 0,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 0
+          }
         },
         {
-          "Day": "20250430",
-          "Sammel": "0",
-          "Termin": "10"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250622",
+          "Sammel": "8",
+          "Termin": "10",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 0,
+            "Removed": 0,
+            "Erstberatung": 1,
+            "Folgeberatung": 3
+          }
         },
         {
-          "Day": "20250501",
-          "Sammel": "0",
-          "Termin": "0"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250623",
+          "Sammel": "6",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 2,
+            "Cancelled": 3,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 0,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
         },
         {
-          "Day": "20250502",
-          "Sammel": "0",
-          "Termin": "2"
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250624",
+          "Sammel": "7",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 0,
+            "Cancelled": 3,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 3,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 3,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 3
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250625",
+          "Sammel": "6",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 1,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 2,
+            "Erstberatung": 0,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250626",
+          "Sammel": "3",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 3,
+            "Cancelled": 0,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 0,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 1,
+            "Erstberatung": 1,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250627",
+          "Sammel": "6",
+          "Termin": "7",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 2
+          },
+          "TerminDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 1,
+            "Completed": 0,
+            "Intake": 1,
+            "Cancelled": 0,
+            "Removed": 2,
+            "Erstberatung": 3,
+            "Folgeberatung": 1
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250628",
+          "Sammel": "3",
+          "Termin": "4",
+          "SammelDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 3,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1
+          },
+          "TerminDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 0,
+            "Completed": 1,
+            "Intake": 2,
+            "Cancelled": 2,
+            "Removed": 3,
+            "Erstberatung": 2,
+            "Folgeberatung": 0
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250629",
+          "Sammel": "7",
+          "Termin": "5",
+          "SammelDetails": {
+            "Fulfillment": 1,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 1,
+            "Intake": 0,
+            "Cancelled": 1,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 1,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 1,
+            "Erstberatung": 3,
+            "Folgeberatung": 2
+          }
+        },
+        {
+          "pxObjClass": "BW-KommC-Data-OrgAppSummary",
+          "Day": "20250630",
+          "Sammel": "1",
+          "Termin": "6",
+          "SammelDetails": {
+            "Fulfillment": 3,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail",
+            "Completed": 2,
+            "Intake": 1,
+            "Cancelled": 2,
+            "Removed": 0
+          },
+          "TerminDetails": {
+            "Fulfillment": 2,
+            "pxObjClass": "BW-KommC-Data-OrgAppSummaryDetail-WithBeratungsart",
+            "Bewerbungsabgabe": 2,
+            "Completed": 3,
+            "Intake": 3,
+            "Cancelled": 2,
+            "Removed": 0,
+            "Erstberatung": 1,
+            "Folgeberatung": 0
+          }
         }
       ]
     }

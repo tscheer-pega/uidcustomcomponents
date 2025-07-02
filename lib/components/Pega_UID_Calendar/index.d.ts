@@ -105,6 +105,23 @@ export interface IOrganisationseinheit {
     Name: string;
     pzInsKey: string;
 }
+export interface ISammelDetails {
+    Fulfillment: number;
+    Completed: number;
+    Intake: number;
+    Cancelled: number;
+    Removed: number;
+}
+export interface ITerminDetails {
+    Fulfillment: number;
+    Bewerbungsabgabe: number;
+    Completed: number;
+    Intake: number;
+    Cancelled: number;
+    Removed: number;
+    Erstberatung: number;
+    Folgeberatung: number;
+}
 export interface IRawEvent {
     pyGUID?: string;
     Address?: string;
@@ -128,6 +145,8 @@ export interface IRawEvent {
     IOrganisationseinheit?: IOrganisationseinheit;
     ResourceId?: string;
     summary?: boolean;
+    SammelDetails?: ISammelDetails;
+    TerminDetails?: ITerminDetails;
 }
 export declare type TDateInfo = {
     view: {
@@ -141,6 +160,8 @@ export interface ISummary {
     Day: string;
     Sammel: string;
     Termin: string;
+    SammelDetails?: ISammelDetails;
+    TerminDetails?: ITerminDetails;
 }
 export interface IRawResource {
     pyGUID: string;

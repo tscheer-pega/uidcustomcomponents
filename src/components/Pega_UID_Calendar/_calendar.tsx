@@ -282,11 +282,19 @@ export default (props: ICalendarProps) => {
         <Button
           variant='primary'
           onClick={() => {
+            const { ResourceId: SourceAuthorID = '', OrganisationseinheitID: SourceOrgID = '' } =
+              modalProps.event._def.extendedProps.item;
+            const [TargetOrgID = '', TargetAuthorID = ''] =
+              modalProps.event._def.resourceIds[0]?.split('___');
             // Handle API call to update event
             const data = {
               StartTime: modalProps.event.start.toISOString(),
               EndTime: modalProps.event.end.toISOString(),
-              pyGUID: modalProps.event._def.extendedProps.item.pyGUID
+              pyGUID: modalProps.event._def.extendedProps.item.pyGUID,
+              SourceOrgID,
+              SourceAuthorID,
+              TargetOrgID,
+              TargetAuthorID
             };
 
             (window as any).PCore.getRestClient()
@@ -926,7 +934,7 @@ export default (props: ICalendarProps) => {
     componentProps['resourceLabelDidMount'] = resourceLabelDidMount;
     componentProps['resourceOrder'] = 'title';
     componentProps['allDaySlot'] = true;
-    slotMinWidth = 128;
+    slotMinWidth = isSummary ? 175 : 128;
     snapDuration = '00:15:00';
   }
 

@@ -9,6 +9,7 @@ export interface IPopoverEvent {
 }
 export interface IPopoverProps {
   eventInPopover: IPopoverEvent;
+  isSummary?: boolean;
   handlePopoverMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
   handlePopoverMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
   renderBeratungsartBadge: (beratungsart: string) => JSX.Element;

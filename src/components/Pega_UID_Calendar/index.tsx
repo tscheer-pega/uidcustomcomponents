@@ -170,6 +170,25 @@ export interface IOrganisationseinheit {
   pzInsKey: string;
 }
 
+export interface ISammelDetails {
+  Fulfillment: number;
+  Completed: number;
+  Intake: number;
+  Cancelled: number;
+  Removed: number;
+}
+
+export interface ITerminDetails {
+  Fulfillment: number;
+  Bewerbungsabgabe: number;
+  Completed: number;
+  Intake: number;
+  Cancelled: number;
+  Removed: number;
+  Erstberatung: number;
+  Folgeberatung: number;
+}
+
 export interface IRawEvent {
   pyGUID?: string; // UID
   Address?: string; // Address of Appointment
@@ -193,6 +212,8 @@ export interface IRawEvent {
   IOrganisationseinheit?: IOrganisationseinheit;
   ResourceId?: string;
   summary?: boolean; // only Summary
+  SammelDetails?: ISammelDetails;
+  TerminDetails?: ITerminDetails;
 }
 
 export type TDateInfo = {
@@ -206,6 +227,8 @@ export interface ISummary {
   Day: string;
   Sammel: string;
   Termin: string;
+  SammelDetails?: ISammelDetails;
+  TerminDetails?: ITerminDetails;
 }
 
 export interface IRawResource {
@@ -697,7 +720,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
               } else {
                 summary = true;
                 singleOrganisation.Summary.forEach(singleSummary => {
-                  const { Day, Sammel, Termin } = singleSummary;
+                  const { Day, Sammel, Termin, SammelDetails, TerminDetails } = singleSummary;
                   const startTime = moment(Day, 'YYYYMMDD').format();
                   const endTime = moment(Day, 'YYYYMMDD').format();
                   if (parseInt(Sammel, 10) > 0) {
@@ -707,6 +730,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       IsSerie: false,
                       SerieEnd: endTime,
                       SerieRepeat: 'Jährlich',
+                      SammelDetails,
                       StartTime: startTime,
                       Subject: `Sammeltermine: ${Sammel}`,
                       Type: EEventType.MASS_EVENT,
@@ -721,6 +745,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                       IsSerie: false,
                       SerieEnd: endTime,
                       SerieRepeat: 'Jährlich',
+                      TerminDetails,
                       StartTime: startTime,
                       Subject: `Beratungstermine: ${Termin}`,
                       Type: EEventType.APPOINTMENT,
@@ -843,6 +868,9 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
 
     if (className === createClassname) {
       options.interactionId = interactionId;
+      options.containerName = 'workarea';
+      options.skipBrowserSemanticUrlUpdate = true;
+      options.viewType = 'form';
       options.startingFields.InteractionId = interactionId;
       options.startingFields.InteractionKey = `BW-KOMMC-WORK-GRP2 ${interactionId}`;
     }
@@ -1111,7 +1139,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-06-17_2'>
+              <Text variant='h2' title='2025-07-02'>
                 {heading}
               </Text>
             </CardHeader>
@@ -1202,6 +1230,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
         )}
         <Popover
           eventInPopover={eventInPopover}
+          isSummary={isSummary}
           renderBeratungsartBadge={renderBeratungsartBadge}
           handlePopoverMouseEnter={handlePopoverMouseEnter}
           handlePopoverMouseLeave={handlePopoverMouseLeave}

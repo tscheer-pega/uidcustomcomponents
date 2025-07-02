@@ -12,10 +12,13 @@ import {
   Text
 } from '@pega/cosmos-react-core';
 import {
+  EBeratungsTyp,
   EDateTimeType,
   EEventType,
+  ETerminGoal,
   getDateTimeFromIsoString,
   getTypeIcon,
+  IOrganisationseinheit,
   TEventImpl
 } from './index';
 
@@ -28,6 +31,7 @@ export interface IPopoverEvent {
 
 export interface IPopoverProps {
   eventInPopover: IPopoverEvent;
+  isSummary?: boolean;
   handlePopoverMouseEnter: (event: React.MouseEvent<HTMLElement>) => void;
   handlePopoverMouseLeave: (event: React.MouseEvent<HTMLElement>) => void;
   renderBeratungsartBadge: (beratungsart: string) => JSX.Element;
@@ -37,13 +41,55 @@ export interface IPopoverProps {
 export default (props: IPopoverProps) => {
   const {
     eventInPopover,
+    isSummary,
     handlePopoverMouseEnter,
     handlePopoverMouseLeave,
     renderBeratungsartBadge,
     openPreviewEventOnClick
   } = props;
 
-  const type = eventInPopover.eventInfo?._def.extendedProps.item.Type || '';
+  const item = eventInPopover.eventInfo?._def.extendedProps.item || {
+    pyGUID: '',
+    Address: '',
+    AuthorID: '',
+    Capacity: '',
+    City: '',
+    EndTime: '',
+    OrganisationseinheitID: '',
+    BeratungsstelleID: '',
+    StartTime: '',
+    TerminID: '',
+    Type: EEventType.PUBLIC_HOLIDAY,
+    UtilizedCapacity: '',
+    Beratungsart: ETerminGoal._TMP_,
+    Beratungsstellentyp: EBeratungsTyp.office,
+    CompleteDay: false,
+    IsSerie: false,
+    SerieEnd: '',
+    SerieRepeat: '',
+    Subject: '',
+    IOrganisationseinheit: {} as IOrganisationseinheit,
+    ResourceId: '',
+    summary: false,
+    SammelDetails: {
+      Fulfillment: 0,
+      Completed: 0,
+      Intake: 0,
+      Cancelled: 0,
+      Removed: 0
+    },
+    TerminDetails: {
+      Fulfillment: 0,
+      Bewerbungsabgabe: 0,
+      Completed: 0,
+      Intake: 0,
+      Cancelled: 0,
+      Removed: 0,
+      Erstberatung: 0,
+      Folgeberatung: 0
+    }
+  };
+  const type = item.Type || '';
 
   return (
     <Popover
@@ -96,9 +142,7 @@ export default (props: IPopoverProps) => {
                 type === EEventType.CANCELLED) && (
                 <>
                   <div></div>
-                  <Text variant='secondary'>
-                    {eventInPopover.eventInfo?._def.extendedProps.item.TerminID}
-                  </Text>
+                  <Text variant='secondary'>{item.TerminID}</Text>
                 </>
               )}
             </Grid>
@@ -113,6 +157,173 @@ export default (props: IPopoverProps) => {
                 rowGap: 1
               }}
             >
+              {isSummary && type === EEventType.MASS_EVENT && item.SammelDetails?.Fulfillment > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Ausstehend Aufnahme
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.SammelDetails?.Fulfillment}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.MASS_EVENT && item.SammelDetails?.Completed > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Erfüllung
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.SammelDetails?.Completed}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.MASS_EVENT && item.SammelDetails?.Cancelled > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Abgebrochen
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.SammelDetails?.Cancelled}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.MASS_EVENT && item.SammelDetails?.Removed > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Entfernt
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.SammelDetails?.Removed}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.MASS_EVENT && item.SammelDetails?.Intake > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Eingabe Termindetails
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.SammelDetails?.Intake}
+                  </Text>
+                </>
+              )}
+
+              {isSummary &&
+                type === EEventType.APPOINTMENT &&
+                item.TerminDetails?.Erstberatung > 0 && (
+                  <>
+                    <Text variant='primary' className='event-label'>
+                      Erstberatung
+                    </Text>
+                    <Text variant='primary' className='event-label'>
+                      {item.TerminDetails?.Erstberatung}
+                    </Text>
+                  </>
+                )}
+
+              {isSummary &&
+                type === EEventType.APPOINTMENT &&
+                item.TerminDetails?.Folgeberatung > 0 && (
+                  <>
+                    <Text variant='primary' className='event-label'>
+                      Folgeberatung
+                    </Text>
+                    <Text variant='primary' className='event-label'>
+                      {item.TerminDetails?.Folgeberatung}
+                    </Text>
+                  </>
+                )}
+
+              {isSummary &&
+                type === EEventType.APPOINTMENT &&
+                item.TerminDetails?.Bewerbungsabgabe > 0 && (
+                  <>
+                    <Text variant='primary' className='event-label'>
+                      Bewerbungsabgabe
+                    </Text>
+                    <Text variant='primary' className='event-label'>
+                      {item.TerminDetails?.Bewerbungsabgabe}
+                    </Text>
+                  </>
+                )}
+
+              {isSummary &&
+                type === EEventType.APPOINTMENT &&
+                (item.TerminDetails?.Fulfillment > 0 ||
+                  item.TerminDetails?.Intake > 0 ||
+                  item.TerminDetails?.Completed > 0) && (
+                  <>
+                    <hr className='solid'></hr>
+                    <hr className='solid'></hr>
+                  </>
+                )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Fulfillment > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Ausstehend Aufnahme
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.TerminDetails?.Fulfillment}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Intake > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Eingabe Termindetails
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.TerminDetails?.Intake}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Completed > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Erfüllung
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.TerminDetails?.Completed}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Cancelled > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Abgebrochen
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.TerminDetails?.Cancelled}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Removed > 0 && (
+                <>
+                  <Text variant='primary' className='event-label'>
+                    Entfernt
+                  </Text>
+                  <Text variant='primary' className='event-label'>
+                    {item.TerminDetails?.Removed}
+                  </Text>
+                </>
+              )}
+
+              {isSummary && type === EEventType.APPOINTMENT && item.TerminDetails?.Fulfillment > 0 && (
+                <>
+                  <hr className='solid'></hr>
+                  <hr className='solid'></hr>
+                </>
+              )}
+
               <Icon
                 name='calendar-empty-solid'
                 role='img'
@@ -135,7 +346,7 @@ export default (props: IPopoverProps) => {
                 size='s'
                 className='icon'
               />
-              {eventInPopover.eventInfo?._def.extendedProps.item.CompleteDay ? (
+              {item.CompleteDay ? (
                 <Text variant='primary' className='event-label'>
                   Ganzer Tag
                 </Text>
@@ -150,7 +361,7 @@ export default (props: IPopoverProps) => {
               {(type === EEventType.APPOINTMENT ||
                 type === EEventType.REVOKED ||
                 type === EEventType.CANCELLED) &&
-                eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart && (
+                item.Beratungsart && (
                   <>
                     <Icon
                       name='wizard-solid'
@@ -159,15 +370,13 @@ export default (props: IPopoverProps) => {
                       size='s'
                       className='icon'
                     />
-                    {renderBeratungsartBadge(
-                      eventInPopover.eventInfo?._def.extendedProps.item.Beratungsart
-                    )}
+                    {renderBeratungsartBadge(item.Beratungsart)}
                   </>
                 )}
               {type === EEventType.MASS_EVENT &&
-                eventInPopover.eventInfo?._def.extendedProps.item.Address &&
-                eventInPopover.eventInfo?._def.extendedProps.item.UtilizedCapacity &&
-                eventInPopover.eventInfo?._def.extendedProps.item.Capacity && (
+                item.Address &&
+                item.UtilizedCapacity &&
+                item.Capacity && (
                   <>
                     <Icon
                       name='location-solid'
@@ -178,25 +387,22 @@ export default (props: IPopoverProps) => {
                     />
                     <Flex container={{ direction: 'column', alignItems: 'start' }}>
                       <Text variant='primary' className='event-label'>
-                        {eventInPopover.eventInfo._def.extendedProps.item.Address}
+                        {item.Address}
                       </Text>
                     </Flex>
                     <Icon name='users-solid' role='img' aria-label='group icon' size='s' />
                     <Flex container={{ direction: 'column', alignItems: 'start' }}>
                       <Text variant='primary' className='event-label'>
-                        {eventInPopover.eventInfo._def.extendedProps.item.UtilizedCapacity}/
-                        {eventInPopover.eventInfo._def.extendedProps.item.Capacity} Kapazität
+                        {item.UtilizedCapacity}/{item.Capacity} Kapazität
                       </Text>
                     </Flex>
                   </>
                 )}
-              {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstellentyp && (
+              {item.Beratungsstellentyp && (
                 <>
-                  {getTypeIcon(
-                    eventInPopover.eventInfo._def.extendedProps.item.Beratungsstellentyp
-                  )}
+                  {getTypeIcon(item.Beratungsstellentyp)}
                   <Text variant='primary' className='event-label'>
-                    {eventInPopover.eventInfo?._def.extendedProps.item.Beratungsstellentyp}
+                    {item.Beratungsstellentyp}
                   </Text>
                 </>
               )}
