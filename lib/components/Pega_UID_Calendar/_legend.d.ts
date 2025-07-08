@@ -1,6 +1,5 @@
 import React from 'react';
 import { DefaultTheme } from 'styled-components';
-
 export interface ILegendProps {
     legendExpanded: boolean;
     setLegendExpanded: React.Dispatch<React.SetStateAction<boolean>>;

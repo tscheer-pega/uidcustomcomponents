@@ -251,7 +251,7 @@ timeline.args = {
 export const timelineSummary = Template.bind({});
 timelineSummary.args = {
   ...Template.args,
-  interactionId: 'InteractionId',
+  // interactionId: 'InteractionId',
   showTimeline: true,
   readOnlyAccess: true,
   dataPage: 'D_TimeSlotListForOrg',

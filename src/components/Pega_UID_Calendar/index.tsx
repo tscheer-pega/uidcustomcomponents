@@ -233,7 +233,9 @@ export interface ISummary {
 
 export interface IRawResource {
   pyGUID: string;
-  AddressId: string;
+  AddressID: string;
+  OrganisationseinheitID: string;
+  BeratungsstelleID: string;
   Region: string;
   Name: string;
   Summary?: Array<ISummary>;
@@ -247,6 +249,8 @@ export interface IBerater {
   id: string;
   title: string;
   pyUserIdentifier: string;
+  BeratungsstelleID?: string; // Reference ID of Beratungsstelle
+  OrganisationseinheitID?: string; // Reference ID of Organisationseinheit
 }
 
 export interface IResource {
@@ -621,6 +625,8 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
       rawResource.BeraterList?.forEach(berater => {
         children.push({
           pyUserIdentifier: berater.pyUserIdentifier,
+          BeratungsstelleID: rawResource.BeratungsstelleID,
+          OrganisationseinheitID: rawResource.OrganisationseinheitID,
           id: `${rawResource.pyGUID}___${berater.pyUserIdentifier}`,
           title: berater.pyUserName
         });
@@ -1139,7 +1145,7 @@ export const PegaUidCalendar = (props: TCalendarProps) => {
                 </div>
               }
             >
-              <Text variant='h2' title='2025-07-02'>
+              <Text variant='h2' title='2025-07-08'>
                 {heading}
               </Text>
             </CardHeader>

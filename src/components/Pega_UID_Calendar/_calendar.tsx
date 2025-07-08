@@ -282,30 +282,52 @@ export default (props: ICalendarProps) => {
         <Button
           variant='primary'
           onClick={() => {
-            const { ResourceId: SourceAuthorID = '', OrganisationseinheitID: SourceOrgID = '' } =
-              modalProps.event._def.extendedProps.item;
-            const [TargetOrgID = '', TargetAuthorID = ''] =
-              modalProps.event._def.resourceIds[0]?.split('___');
+            const {
+              _context: context = null,
+              _def: definition = null,
+              start,
+              end
+            } = modalProps.event || {};
+            if (!context || !definition) {
+              modalProps.revert();
+              pushToaster('Fehler beim Verschieben des Termins');
+              dismiss();
+              return;
+            }
+
             // Handle API call to update event
+            const { resourceIds = [] } = definition;
+            const [resourceId = ''] = resourceIds;
+            const { resourceStore } = context.calendarApi.currentData;
+
+            const {
+              pyUserIdentifier = userId,
+              BeratungsstelleID = null,
+              OrganisationseinheitID = null
+            } = resourceStore && resourceId
+              ? resourceStore[resourceId].extendedProps
+              : definition.extendedProps.item;
+
             const data = {
-              StartTime: modalProps.event.start.toISOString(),
-              EndTime: modalProps.event.end.toISOString(),
-              pyGUID: modalProps.event._def.extendedProps.item.pyGUID,
-              SourceOrgID,
-              SourceAuthorID,
-              TargetOrgID,
-              TargetAuthorID
+              StartTime: start.toISOString(),
+              EndTime: end.toISOString(),
+              pyGUID: definition.extendedProps.item.pyGUID,
+              pyUserIdentifier,
+              BeratungsstelleID,
+              OrganisationseinheitID
+            };
+
+            const dataObject = {
+              queryPayload: {
+                data_view_ID: 'D_TimeslotMoveSavable'
+              },
+              body: {
+                data
+              }
             };
 
             (window as any).PCore.getRestClient()
-              .invokeRestApi('updateDataObject', {
-                queryPayload: {
-                  data_view_ID: 'D_TimeslotMoveSavable'
-                },
-                body: {
-                  data
-                }
-              })
+              .invokeRestApi('updateDataObject', dataObject)
               .then(() => {
                 pushToaster('Termin erfolgreich verschoben');
               })

@@ -1,5 +1,5 @@
 {
-  "fetchDateTime": "2025-06-17T08:02:07.362Z",
+  "fetchDateTime": "2025-07-07T13:09:33.194Z",
   "pxObjClass": "Pega-API-DataExploration-Data",
   "resultCount": 11,
   "data": [
@@ -8,6 +8,8 @@
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pyGUID": "Berlin_Mitte",
       "AddressID": "e19b457d-a2b8-4316-8c02-4a35a5164c40",
+      "BeratungsstelleID": "526c36eb-5782-436a-a3f4-efc8a8be56ae",
+      "OrganisationseinheitID": "Berlin_Mitte",
       "Name": "Berlin Mitte",
       "BeraterList": [
         {
@@ -87,6 +89,8 @@
       "Region": "Hessen (HE)",
       "pyGUID": "Frankfurt_Main",
       "AddressID": "e4b9a30f-9200-42ac-8178-ab77acba7ec9",
+      "OrganisationseinheitID": "Frankfurt_Main",
+      "BeratungsstelleID": "e4d1a911-8260-4c7c-bfe7-c073e03e5e33",
       "Name": "Frankfurt am Main",
       "BeraterList": [
         {
@@ -111,17 +115,14 @@
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pyGUID": "Frankfurt_oder",
       "AddressID": "21450b6a-56e4-4329-bcae-51f6b84fb9f6",
+      "OrganisationseinheitID": "Frankfurt_oder",
+      "BeratungsstelleID": "fcbb8c4a-33f4-4820-8806-c30fce97cde2",
       "Name": "Frankfurt (Oder)",
       "BeraterList": [
         {
           "pyUserName": "Andrzej Fudala",
           "pxObjClass": "Data-Admin-Operator-ID",
           "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
-        },
-        {
-          "pyUserName": "Anna Szarawara",
-          "pxObjClass": "Data-Admin-Operator-ID",
-          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de"
         },
         {
           "pyUserName": "ElaCSTest",
@@ -145,6 +146,8 @@
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pyGUID": "fe91961a-f815-4307-aaeb-33e010dcb5a4",
       "AddressID": "75718fc7-6573-4a08-8b9e-a9b024bb6cd4",
+      "OrganisationseinheitID": "Frankfurt_oder",
+      "BeratungsstelleID": "fe91961a-f815-4307-aaeb-33e010dcb5a4",
       "Name": "Frankfurt (Oder):Bernau",
       "BeraterList": [
         {
@@ -153,13 +156,8 @@
           "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
         },
         {
-          "pyUserName": "Anna Szarawara",
           "pxObjClass": "Data-Admin-Operator-ID",
-          "pyUserIdentifier": "Anna.Szarawara.ext@bwi.de"
-        },
-        {
           "pyUserName": "ElaCSTest",
-          "pxObjClass": "Data-Admin-Operator-ID",
           "pyUserIdentifier": "ElaCSTestUser"
         },
         {
@@ -168,8 +166,8 @@
           "pyUserIdentifier": "KommC_KarriereberaterMesse"
         },
         {
-          "pyUserName": "Tobias Scheer",
           "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserName": "Tobias Scheer",
           "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
         }
       ]
@@ -179,6 +177,8 @@
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pyGUID": "8bd696d0-0524-4055-a3a3-8dc82d1d8f66",
       "AddressID": "4979456a-66ca-4e0b-aa27-6017f343a0b4",
+      "OrganisationseinheitID": "Frankfurt_oder",
+      "BeratungsstelleID": "8bd696d0-0524-4055-a3a3-8dc82d1d8f66",
       "Name": "Frankfurt (Oder):Eberswalde",
       "BeraterList": [
         {
@@ -187,8 +187,8 @@
           "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
         },
         {
-          "pyUserName": "ElaCSTest",
           "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserName": "ElaCSTest",
           "pyUserIdentifier": "ElaCSTestUser"
         },
         {
@@ -197,8 +197,8 @@
           "pyUserIdentifier": "KommC_KarriereberaterMesse"
         },
         {
-          "pyUserName": "Tobias Scheer",
           "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserName": "Tobias Scheer",
           "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
         }
       ]
@@ -208,6 +208,8 @@
       "Region": "Berlin / Brandenburg (BE/BB)",
       "pyGUID": "7c5bfc25-929d-4a0f-a499-907b0665fada",
       "AddressID": "3f56ce19-93eb-469d-9124-26bdda1a8c1d",
+      "OrganisationseinheitID": "Frankfurt_oder",
+      "BeratungsstelleID": "7c5bfc25-929d-4a0f-a499-907b0665fada",
       "Name": "Frankfurt (Oder):Strausberg",
       "BeraterList": [
         {
@@ -216,8 +218,8 @@
           "pyUserIdentifier": "Andrzej.Fudala.ext@bwi.de"
         },
         {
-          "pyUserName": "ElaCSTest",
           "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserName": "ElaCSTest",
           "pyUserIdentifier": "ElaCSTestUser"
         },
         {
@@ -226,8 +228,8 @@
           "pyUserIdentifier": "KommC_KarriereberaterMesse"
         },
         {
-          "pyUserName": "Tobias Scheer",
           "pxObjClass": "Data-Admin-Operator-ID",
+          "pyUserName": "Tobias Scheer",
           "pyUserIdentifier": "Tobias.Scheer.ext@bwi.de"
         }
       ]
@@ -237,6 +239,8 @@
       "Region": "Baden-Württemberg (BW)",
       "pyGUID": "Karlsruhe",
       "AddressID": "03ac30bd-0ab0-459f-98de-d447aa3c62ac",
+      "OrganisationseinheitID": "Karlsruhe",
+      "BeratungsstelleID": "d548fbc9-774c-4fb0-87ff-927272f5e601",
       "Name": "Karlsruhe",
       "BeraterList": [
         {

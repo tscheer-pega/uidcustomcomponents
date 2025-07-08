@@ -1,6 +1,5 @@
 import { CalendarApi } from '@fullcalendar/core';
 import './create-nonce';
-
 export declare type TEventImpl = Parameters<CalendarApi['addEvent']>[0];
 export declare enum ECalendarViewType {
     Day = "timeGridDay",
@@ -165,7 +164,9 @@ export interface ISummary {
 }
 export interface IRawResource {
     pyGUID: string;
-    AddressId: string;
+    AddressID: string;
+    OrganisationseinheitID: string;
+    BeratungsstelleID: string;
     Region: string;
     Name: string;
     Summary?: Array<ISummary>;
@@ -178,6 +179,8 @@ export interface IBerater {
     id: string;
     title: string;
     pyUserIdentifier: string;
+    BeratungsstelleID?: string;
+    OrganisationseinheitID?: string;
 }
 export interface IResource {
     id: string;

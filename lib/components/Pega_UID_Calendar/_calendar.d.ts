@@ -1,6 +1,5 @@
 import React, { JSX } from 'react';
 import { ECalendarViewType, EEventType, ERoles, ETimelineViewType, IRawEvent, TEventImpl } from './index';
-
 export declare type TEvent = {
     id: string;
     title: string;

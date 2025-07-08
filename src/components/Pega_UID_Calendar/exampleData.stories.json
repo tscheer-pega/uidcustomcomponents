@@ -127,6 +127,7 @@
       "StartTime": "2025-04-05T07:00:00.000Z",
       "Subject": "Agent Smith",
       "Beratungsart": "Bewerbungsabgabe",
+      "BeratungsstelleID": "bs-id-1234",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-302",
       "OrganisationseinheitID": "Berlin_Mitte",
       "Type": "Termin"
@@ -476,6 +477,7 @@
       "StartTime": "2025-04-11T12:30:00.000Z",
       "Subject": "Agent Smith",
       "Beratungsart": "Erstberatung",
+      "BeratungsstelleID": "bs-id-1234",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-883",
       "OrganisationseinheitID": "Muenchen",
       "Type": "Termin"
@@ -686,6 +688,7 @@
       "StartTime": "2025-04-03T06:00:00.000Z",
       "Subject": "Agent Smith",
       "Beratungsart": "Folgeberatung",
+      "BeratungsstelleID": "bs-id-1234",
       "TerminID": "BW-KOMMC-WORK-GRP1 TER-606",
       "OrganisationseinheitID": "Berlin_Mitte",
       "Type": "Termin"

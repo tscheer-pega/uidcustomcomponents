@@ -21,6 +21,7 @@ import {
   IOrganisationseinheit,
   TEventImpl
 } from './index';
+import { BasePlacement as PopperBasePlacement } from '@popperjs/core';
 
 export interface IPopoverEvent {
   eventEl: HTMLDivElement | null;
@@ -48,7 +49,15 @@ export default (props: IPopoverProps) => {
     openPreviewEventOnClick
   } = props;
 
-  const item = eventInPopover.eventInfo?._def.extendedProps.item || {
+  if (!eventInPopover?.eventEl || !eventInPopover?.eventInfo) {
+    // If there is no event element or event info, return null to avoid rendering the Popover
+    // This prevents errors when trying to access properties of undefined
+    return null;
+  }
+
+  const eventEl = eventInPopover.eventEl as HTMLDivElement;
+  const eventInfo = eventInPopover.eventInfo;
+  const item = eventInfo?._def.extendedProps.item || {
     pyGUID: '',
     Address: '',
     AuthorID: '',
@@ -91,14 +100,22 @@ export default (props: IPopoverProps) => {
   };
   const type = item.Type || '';
 
+  let placement = 'bottom' as PopperBasePlacement;
+  if (
+    eventEl.getBoundingClientRect().top + window.scrollY + eventEl.clientHeight + 250 >
+    document.documentElement.clientHeight
+  ) {
+    placement = 'top';
+  }
+
   return (
     <Popover
-      show={!!eventInPopover?.eventEl && !!eventInPopover?.eventInfo}
-      target={eventInPopover.eventEl}
+      show={!!eventInfo}
+      target={eventEl}
       portal={false}
       arrow
       showDelay='short'
-      placement='auto'
+      placement={placement}
       onMouseEnter={handlePopoverMouseEnter}
       onMouseLeave={handlePopoverMouseLeave}
       className='event-popover'
@@ -133,9 +150,9 @@ export default (props: IPopoverProps) => {
             >
               <span
                 className='event-indicator'
-                style={{ backgroundColor: eventInPopover.eventInfo?._def.ui.backgroundColor }}
+                style={{ backgroundColor: eventInfo?._def.ui.backgroundColor }}
               ></span>
-              <Text variant='h3'>{eventInPopover.eventInfo?._def.title}</Text>
+              <Text variant='h3'>{eventInfo?._def.title}</Text>
               {(type === EEventType.APPOINTMENT ||
                 type === EEventType.MASS_EVENT ||
                 type === EEventType.REVOKED ||
@@ -332,7 +349,7 @@ export default (props: IPopoverProps) => {
                 className='icon'
               />
               <Text variant='primary' className='event-label'>
-                {getDateTimeFromIsoString(eventInPopover.eventInfo?.startStr, EDateTimeType.date, {
+                {getDateTimeFromIsoString(eventInfo?.startStr, EDateTimeType.date, {
                   weekday: 'long',
                   year: 'numeric',
                   month: 'long',
@@ -352,9 +369,9 @@ export default (props: IPopoverProps) => {
                 </Text>
               ) : (
                 <Text variant='primary' className='event-label'>
-                  {getDateTimeFromIsoString(eventInPopover.eventInfo?.startStr, EDateTimeType.time)}
+                  {getDateTimeFromIsoString(eventInfo?.startStr, EDateTimeType.time)}
                   {' - '}
-                  {getDateTimeFromIsoString(eventInPopover.eventInfo?.endStr, EDateTimeType.time)}
+                  {getDateTimeFromIsoString(eventInfo?.endStr, EDateTimeType.time)}
                 </Text>
               )}
 
